@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRM 開發總規劃 · 甘特追蹤板</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+  :root {
+    --bg: #eceff2; --surface: #ffffff; --surface-2: #e6ebee; --surface-3: #f4f6f8;
+    --border: #d2dade; --border-strong: #b9c4cb;
+    --text: #22303a; --text-dim: #5c6c77; --text-faint: #8a99a3;
+    --slate: #304854; --slate-soft: #4a6675;
+    --gold: #ffbe19; --gold-deep: #d99a12;
+    --done: #80c862; --active: #1d6a8c; --blocked: #eb6b32; --idle: #738995;
+    --weekend: rgba(48,72,84,0.045);
+    --grid: rgba(48,72,84,0.09);
+    --shadow: 0 1px 2px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.10);
+    --mono: "SF Mono", ui-monospace, "JetBrains Mono", "Roboto Mono", Menlo, monospace;
+    --cjk: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans", system-ui, sans-serif;
+    --row-h: 40px; --label-w: 300px; --day-w: 30px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f151a; --surface: #172128; --surface-2: #1e2a32; --surface-3: #141d24;
+      --border: #2b3944; --border-strong: #3a4b57;
+      --text: #e4ecf1; --text-dim: #93a6b1; --text-faint: #6b7c87;
+      --slate: #7ba0b2; --slate-soft: #5f8090;
+      --gold: #ffca3a; --gold-deep: #e6ad2b;
+      --done: #8fd070; --active: #4a97bd; --blocked: #f07a45; --idle: #8a9ea9;
+      --weekend: rgba(255,255,255,0.035);
+      --grid: rgba(255,255,255,0.07);
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #eceff2; --surface: #ffffff; --surface-2: #e6ebee; --surface-3: #f4f6f8;
+    --border: #d2dade; --border-strong: #b9c4cb;
+    --text: #22303a; --text-dim: #5c6c77; --text-faint: #8a99a3;
+    --slate: #304854; --slate-soft: #4a6675; --gold: #ffbe19; --gold-deep: #d99a12;
+    --done: #80c862; --active: #1d6a8c; --blocked: #eb6b32; --idle: #738995;
+    --weekend: rgba(48,72,84,0.045); --grid: rgba(48,72,84,0.09);
+    --shadow: 0 1px 2px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.10);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f151a; --surface: #172128; --surface-2: #1e2a32; --surface-3: #141d24;
+    --border: #2b3944; --border-strong: #3a4b57;
+    --text: #e4ecf1; --text-dim: #93a6b1; --text-faint: #6b7c87;
+    --slate: #7ba0b2; --slate-soft: #5f8090; --gold: #ffca3a; --gold-deep: #e6ad2b;
+    --done: #8fd070; --active: #4a97bd; --blocked: #f07a45; --idle: #8a9ea9;
+    --weekend: rgba(255,255,255,0.035); --grid: rgba(255,255,255,0.07);
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--cjk);
+    line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 28px 22px 80px; }
+
+  header.mast { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+    gap: 16px; padding-bottom: 18px; border-bottom: 2px solid var(--slate); }
+  .mast .eyebrow { font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--slate); font-weight: 700; }
+  .mast h1 { margin: 4px 0 6px; font-size: 27px; font-weight: 800; letter-spacing: -.01em;
+    text-wrap: balance; }
+  .mast .sub { color: var(--text-dim); font-size: 13.5px; max-width: 62ch; }
+  .mast .brandmark { display: flex; gap: 6px; align-items: center; }
+  .swatch { width: 13px; height: 13px; border-radius: 3px; }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)); gap: 12px;
+    margin: 18px 0 14px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+  .tile::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--slate); }
+  .tile.done::before { background: var(--done); } .tile.active::before { background: var(--active); }
+  .tile.blocked::before { background: var(--blocked); } .tile.idle::before { background: var(--idle); }
+  .tile.gold::before { background: var(--gold); }
+  .tile .k { font-size: 11px; letter-spacing: .04em; color: var(--text-dim); font-weight: 600; }
+  .tile .v { font-size: 25px; font-weight: 800; font-family: var(--mono); font-variant-numeric: tabular-nums;
+    letter-spacing: -.02em; margin-top: 2px; }
+  .tile .v small { font-size: 13px; color: var(--text-faint); font-weight: 600; }
+
+  .progressbar { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden;
+    margin-top: 8px; border: 1px solid var(--border); }
+  .progressbar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--done), var(--gold-deep)); }
+
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 14px; }
+  .toolbar .spacer { flex: 1; }
+  button.btn, a.btn { font-family: var(--cjk); font-size: 13px; font-weight: 600; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border-strong); border-radius: 8px;
+    padding: 7px 12px; cursor: pointer; transition: background .12s, border-color .12s, transform .05s;
+    text-decoration: none; display: inline-block; }
+  button.btn:hover, a.btn:hover { background: var(--surface-2); border-color: var(--slate-soft); }
+  button.btn:active { transform: translateY(1px); }
+  button.btn.primary { background: var(--slate); border-color: var(--slate); }
+  :root[data-theme="dark"] button.btn.primary { color: #0f151a; }
+  :root[data-theme="light"] button.btn.primary { color: #ffffff; }
+  button.btn.primary { color: #ffffff; }
+  @media (prefers-color-scheme: dark) { button.btn.primary { color: #0f151a; } }
+  button.btn.gold { background: var(--gold); border-color: var(--gold-deep); color: #3a2c00; }
+  button.btn:focus-visible, a.btn:focus-visible, .row:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+  .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text-dim); align-items: center; }
+  .legend .lg { display: inline-flex; gap: 5px; align-items: center; }
+  .legend .dot { width: 11px; height: 11px; border-radius: 3px; }
+
+  .gantt { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow); overflow: hidden; }
+  .scroll { overflow-x: auto; overflow-y: visible; }
+  .canvas { position: relative; min-width: max-content; }
+
+  .headrow { display: flex; position: sticky; top: 0; z-index: 6; background: var(--surface-3);
+    border-bottom: 1px solid var(--border-strong); }
+  .corner { flex: 0 0 var(--label-w); position: sticky; left: 0; z-index: 7; background: var(--surface-3);
+    border-right: 1px solid var(--border-strong); display: flex; align-items: center;
+    padding: 0 14px; font-size: 12px; font-weight: 700; color: var(--text-dim); letter-spacing: .04em; }
+  .timehead { position: relative; }
+  .monthband { display: flex; height: 22px; }
+  .monthcell { border-right: 1px solid var(--border-strong); font-size: 11px; font-weight: 700;
+    color: var(--slate); padding: 3px 0 0 7px; white-space: nowrap; letter-spacing: .02em; overflow: hidden; }
+  .dayband { display: flex; height: 26px; }
+  .daycell { width: var(--day-w); flex: 0 0 var(--day-w); text-align: center; font-size: 10.5px;
+    font-family: var(--mono); color: var(--text-faint); padding-top: 5px; border-right: 1px solid var(--grid);
+    font-variant-numeric: tabular-nums; }
+  .daycell.we { background: var(--weekend); }
+  .daycell .dow { display: block; font-size: 8.5px; color: var(--text-faint); opacity: .8; }
+
+  .phase-h { display: flex; align-items: center; position: sticky; left: 0; z-index: 4;
+    background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    min-height: 34px; }
+  .phase-h .pl { flex: 0 0 var(--label-w); position: sticky; left: 0; background: var(--surface-2);
+    display: flex; align-items: center; gap: 8px; padding: 5px 12px; border-right: 1px solid var(--border-strong); }
+  .phase-h .pnum { font-family: var(--mono); font-size: 11px; font-weight: 700; color: #fff; background: var(--slate);
+    border-radius: 5px; padding: 1px 6px; }
+  :root[data-theme="dark"] .phase-h .pnum { color: #0f151a; }
+  @media (prefers-color-scheme: dark) { .phase-h .pnum { color: #0f151a; } }
+  :root[data-theme="light"] .phase-h .pnum { color: #fff; }
+  .phase-h .pname { font-weight: 800; font-size: 14px; }
+  .phase-h .pmeta { color: var(--text-faint); font-size: 11px; font-family: var(--mono); margin-left: auto; }
+  .phase-h .fill { flex: 1; background: var(--surface-2); }
+  .miniadd { border: 1px dashed var(--border-strong); background: transparent; color: var(--text-dim);
+    border-radius: 6px; font-size: 11px; padding: 2px 7px; cursor: pointer; font-family: var(--cjk); }
+  .miniadd:hover { color: var(--slate); border-color: var(--slate-soft); }
+
+  .row { display: flex; min-height: var(--row-h); border-bottom: 1px solid var(--grid); cursor: pointer;
+    transition: background .1s; }
+  .row:hover { background: var(--surface-3); }
+  .row .label { flex: 0 0 var(--label-w); position: sticky; left: 0; z-index: 3; background: var(--surface);
+    border-right: 1px solid var(--border-strong); display: flex; align-items: center; gap: 8px;
+    padding: 4px 12px 4px 22px; }
+  .row:hover .label { background: var(--surface-3); }
+  .row .label .tname { font-size: 13px; line-height: 1.3; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .row .label .owner { margin-left: auto; flex: none; font-size: 10.5px; color: var(--text-dim);
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 1px 7px;
+    white-space: nowrap; }
+  .stpill { flex: none; width: 9px; height: 9px; border-radius: 50%; }
+  .stpill.done { background: var(--done); } .stpill.active { background: var(--active); box-shadow: 0 0 0 3px rgba(29,106,140,.25); }
+  .stpill.blocked { background: var(--blocked); } .stpill.idle { background: var(--idle); }
+  .stpill.milestone { background: var(--gold); border-radius: 2px; transform: rotate(45deg); }
+
+  .track { position: relative; flex: 1; }
+  .track .grid-bg { position: absolute; inset: 0; z-index: 0; }
+  .bar { position: absolute; top: 7px; height: calc(var(--row-h) - 15px); border-radius: 6px; z-index: 2;
+    display: flex; align-items: center; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.12);
+    border: 1px solid rgba(0,0,0,.08); }
+  .bar .fillp { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(255,255,255,.28); z-index: 1; }
+  :root[data-theme="dark"] .bar .fillp { background: rgba(0,0,0,.22); }
+  @media (prefers-color-scheme: dark){ .bar .fillp { background: rgba(0,0,0,.22); } }
+  .bar .plabel { position: relative; z-index: 2; font-size: 10.5px; font-family: var(--mono); font-weight: 700;
+    padding: 0 7px; color: rgba(0,0,0,.62); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .bar.done { background: var(--done); } .bar.active { background: var(--active); }
+  .bar.blocked { background: var(--blocked); } .bar.idle { background: var(--idle); }
+  .bar.idle .plabel { color: rgba(255,255,255,.9); }
+  .bar.blocked .plabel { color: rgba(255,255,255,.95); }
+  .bar.active .plabel { color: rgba(255,255,255,.95); }
+  .bar.done .plabel { color: rgba(24,40,20,.72); }
+  .bar:hover { filter: brightness(1.06); }
+
+  .mstone { position: absolute; top: 50%; width: 15px; height: 15px; transform: translate(-50%,-50%) rotate(45deg);
+    background: var(--gold); border: 2px solid var(--slate); z-index: 3; border-radius: 3px; box-shadow: var(--shadow); }
+  .mstone.done { background: var(--done); }
+  .mlabel { position: absolute; top: 50%; transform: translateY(-50%); left: 14px; white-space: nowrap;
+    font-size: 11px; font-weight: 700; color: var(--slate); z-index: 3; }
+
+  .todayline { position: absolute; top: 0; bottom: 0; width: 0; border-left: 2px dashed var(--slate);
+    z-index: 5; pointer-events: none; }
+  .todayflag { position: absolute; top: 0; transform: translateX(-50%); background: var(--slate); color: #fff;
+    font-size: 10px; font-family: var(--mono); font-weight: 700; padding: 1px 6px; border-radius: 0 0 5px 5px;
+    white-space: nowrap; z-index: 8; }
+  @media (prefers-color-scheme: dark){ .todayflag { color: #0f151a; } }
+  :root[data-theme="dark"] .todayflag { color: #0f151a; } :root[data-theme="light"] .todayflag { color: #fff; }
+
+  .foot { color: var(--text-faint); font-size: 12px; margin-top: 14px; line-height: 1.6; }
+  .foot code { font-family: var(--mono); background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: 11px; }
+  .note-banner { background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--gold);
+    border-radius: 8px; padding: 10px 14px; font-size: 12.5px; color: var(--text-dim); margin: 14px 0; }
+  .sync-banner { display: none; background: var(--surface-2); border: 1px solid var(--gold-deep);
+    border-left: 4px solid var(--gold); border-radius: 8px; padding: 10px 14px; font-size: 13px;
+    margin: 0 0 14px; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .sync-banner.show { display: flex; }
+  .sync-banner b { color: var(--text); }
+
+  .backdrop { position: fixed; inset: 0; background: rgba(20,28,34,.5); backdrop-filter: blur(2px);
+    display: none; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .backdrop.open { display: flex; }
+  .modal { background: var(--surface); border: 1px solid var(--border-strong); border-radius: 14px;
+    box-shadow: var(--shadow); width: min(480px, 100%); max-height: 90vh; overflow-y: auto; }
+  .modal h3 { margin: 0; padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 16px; }
+  .modal .body { padding: 16px 20px; display: grid; gap: 12px; }
+  .field { display: grid; gap: 4px; }
+  .field.row2 { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field label { font-size: 11.5px; font-weight: 700; color: var(--text-dim); letter-spacing: .02em; }
+  .field input, .field select, .field textarea { font-family: var(--cjk); font-size: 13.5px; color: var(--text);
+    background: var(--surface-3); border: 1px solid var(--border-strong); border-radius: 8px; padding: 8px 10px; width: 100%; }
+  .field textarea { resize: vertical; min-height: 54px; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--gold-deep); outline-offset: 0; border-color: var(--slate-soft); }
+  .modal .actions { display: flex; gap: 8px; padding: 14px 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .modal .actions .spacer { flex: 1; }
+  .rangewrap { display: flex; align-items: center; gap: 10px; }
+  .rangewrap input[type=range] { flex: 1; accent-color: var(--gold-deep); }
+  .rangewrap b { font-family: var(--mono); min-width: 44px; text-align: right; }
+  .danger { color: var(--blocked); border-color: var(--blocked); }
+  .danger:hover { background: rgba(235,107,50,.1); }
+
+  @media (max-width: 640px) {
+    :root { --label-w: 190px; }
+    .mast h1 { font-size: 22px; }
+    .field.row2 { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="mast">
+    <div>
+      <div class="eyebrow">喬雍環境管理 · CRM 開發</div>
+      <h1>CRM 開發總規劃 · 甘特追蹤板</h1>
+      <div class="sub">全團隊看同一份發布版（repo 的 <b>gantt.json</b>）。點任一列可試改（存成你的本機草稿）；要正式變更請由板主發布，或用「💬 開 Issue 回報」留言討論。</div>
+    </div>
+    <div class="brandmark" title="喬雍 CIS 四色系統：暗青／緗色／蔚藍／豆青">
+      <span class="swatch" style="background:#304854"></span>
+      <span class="swatch" style="background:#ffbe19"></span>
+      <span class="swatch" style="background:#1d6a8c"></span>
+      <span class="swatch" style="background:#80c862"></span>
+      <span style="font-size:11px;color:var(--text-faint);font-family:var(--mono)">CIS 四色系統</span>
+    </div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="sync-banner" id="syncBanner">
+    <span>✏️ <b>你有本機草稿，和發布版不同。</b>其他人看不到你的草稿 — 定案請發布，試看看則可隨時捨棄。</span>
+    <button class="btn gold" id="publishBtn">↥ 複製 JSON 並去 GitHub 發布</button>
+    <button class="btn" id="discardBtn">↺ 捨棄草稿，回到發布版</button>
+  </div>
+
+  <div class="note-banner" id="noteBanner"></div>
+
+  <div class="toolbar">
+    <button class="btn primary" id="addTask">＋ 新增任務</button>
+    <button class="btn" id="addPhase">＋ 新增階段</button>
+    <button class="btn" id="todayBtn">↧ 捲到今天</button>
+    <a class="btn" id="issuesLink" href="#" target="_blank" rel="noopener">💬 討論區</a>
+    <div class="spacer"></div>
+    <div class="legend">
+      <span class="lg"><span class="dot" style="background:var(--done)"></span>完成</span>
+      <span class="lg"><span class="dot" style="background:var(--active)"></span>進行中</span>
+      <span class="lg"><span class="dot" style="background:var(--idle)"></span>未開始</span>
+      <span class="lg"><span class="dot" style="background:var(--blocked)"></span>阻塞</span>
+      <span class="lg"><span class="dot" style="background:var(--gold);transform:rotate(45deg)"></span>里程碑</span>
+    </div>
+  </div>
+
+  <div class="gantt">
+    <div class="scroll" id="scroll">
+      <div class="canvas" id="canvas"></div>
+    </div>
+  </div>
+
+  <div class="toolbar" style="margin-top:14px">
+    <button class="btn" id="exportBtn">⤓ 匯出 JSON</button>
+    <button class="btn" id="importBtn">⤒ 匯入 JSON（成為草稿）</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+    <button class="btn" id="themeBtn">◐ 切換深/淺色</button>
+    <div class="spacer"></div>
+    <a class="btn" id="repoLink" href="#" target="_blank" rel="noopener">GitHub repo</a>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<!-- Editor modal -->
+<div class="backdrop" id="backdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <h3 id="mTitle">編輯任務</h3>
+    <div class="body">
+      <div class="field">
+        <label for="fName">任務名稱</label>
+        <input id="fName" type="text" placeholder="例：資料清洗批次">
+      </div>
+      <div class="field row2">
+        <div class="field">
+          <label for="fPhase">階段（子計畫）</label>
+          <select id="fPhase"></select>
+        </div>
+        <div class="field">
+          <label for="fOwner">負責人</label>
+          <input id="fOwner" type="text" placeholder="AI / 板主 / 客服 / PT">
+        </div>
+      </div>
+      <div class="field row2">
+        <div class="field">
+          <label for="fStart">開始日</label>
+          <input id="fStart" type="date">
+        </div>
+        <div class="field">
+          <label for="fEnd">結束日</label>
+          <input id="fEnd" type="date">
+        </div>
+      </div>
+      <div class="field row2">
+        <div class="field">
+          <label for="fStatus">狀態</label>
+          <select id="fStatus">
+            <option value="idle">未開始</option>
+            <option value="active">進行中</option>
+            <option value="done">完成</option>
+            <option value="blocked">阻塞</option>
+            <option value="milestone">里程碑</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fProg">進度</label>
+          <div class="rangewrap">
+            <input id="fProg" type="range" min="0" max="100" step="5">
+            <b id="fProgV">0%</b>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fNote">備註 / 依賴 / commit</label>
+        <textarea id="fNote" placeholder="例：等外部回覆後啟動（禁個資與內部細節）"></textarea>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn danger" id="delBtn">刪除</button>
+      <button class="btn" id="issueBtn">💬 開 Issue 回報</button>
+      <div class="spacer"></div>
+      <button class="btn" id="cancelBtn">取消</button>
+      <button class="btn primary" id="saveBtn">儲存草稿</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const LS_KEY = "ciaoyong-crm-gantt-pages-v1";
+const DAY = 86400000;
+const DATA_FILE = "gantt.json";
+
+/* ---------- data normalize（修法②④：三個資料入口共用的邊界消毒）---------- */
+const STATUSES = ["idle","active","done","blocked","milestone"];
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+function sanitizeId(s){ return String(s||"").replace(/[^A-Za-z0-9_-]/g,"").slice(0,40); }
+function normalizeData(j, errs){
+  errs = errs || [];
+  if (!j || typeof j !== "object" || !Array.isArray(j.phases)) { errs.push("缺少 phases 陣列"); return null; }
+  j.meta = (j.meta && typeof j.meta === "object") ? j.meta : {};
+  j.meta.title = String(j.meta.title || "");
+  j.meta.updated = DATE_RE.test(j.meta.updated) ? j.meta.updated : "";
+  const seen = new Set();
+  j.phases.forEach((p, pi) => {
+    p.id = sanitizeId(p.id) || ("p" + pi);
+    p.name = String(p.name || "");
+    if (!Array.isArray(p.tasks)) p.tasks = [];
+    p.tasks.forEach((t, ti) => {
+      t.id = sanitizeId(t.id) || ("t" + pi + "_" + ti);
+      if (seen.has(t.id)) errs.push("任務 ID 重複：" + t.id);
+      seen.add(t.id);
+      t.name = String(t.name || "");
+      t.owner = String(t.owner || "");
+      t.status = STATUSES.includes(t.status) ? t.status : "idle";
+      t.progress = Math.max(0, Math.min(100, Math.round(Number(t.progress) || 0)));
+      t.note = String(t.note || "");
+      t.deps = Array.isArray(t.deps) ? t.deps.map(sanitizeId).filter(Boolean) : [];
+      t._nodate = !(DATE_RE.test(t.start) && DATE_RE.test(t.end));
+      if (!t._nodate && parseD(t.end) < parseD(t.start)) { t.end = t.start; }
+    });
+  });
+  return j;
+}
+/* 匯出/發布時剝除內部欄位（_ 開頭） */
+function stripInternal(k, v){ return (typeof k === "string" && k.startsWith("_")) ? undefined : v; }
+
+/* ---------- repo auto-detect (owner.github.io/repo/) ---------- */
+function repoInfo(){
+  const host = location.hostname;
+  if (!host.endsWith(".github.io")) return null;
+  const owner = host.slice(0, -".github.io".length);
+  const seg = location.pathname.split("/").filter(Boolean);
+  const repo = seg.length ? seg[0] : host;
+  return { owner, repo };
+}
+const RI = repoInfo();
+const repoUrl = RI ? `https://github.com/${RI.owner}/${RI.repo}` : null;
+
+/* ---------- fallback seed (used only if gantt.json can't be fetched) ---------- */
+const SEED = { meta:{ title:"CRM 開發總規劃", updated:"" }, phases: [] };
+
+/* ---------- state ---------- */
+let published = null;  // repo 發布版
+let state = null;      // 畫面資料（草稿或發布版）
+let editing = null;
+
+function loadDraft(){
+  try { const s = JSON.parse(localStorage.getItem(LS_KEY)); if (s && s.phases) return normalizeData(s); } catch(e){}
+  return null;
+}
+function save(){
+  state._basedOn = (published && published.meta && published.meta.updated) || "";
+  localStorage.setItem(LS_KEY, JSON.stringify(state));
+}
+function isDirty(){ return JSON.stringify(state, stripInternal) !== JSON.stringify(published, stripInternal); }
+
+async function boot(){
+  try {
+    const r = await fetch(DATA_FILE + "?ts=" + Date.now(), { cache: "no-store" });
+    if (r.ok) published = await r.json();
+  } catch(e){}
+  published = normalizeData(published) || structuredClone(SEED);
+  let draft = loadDraft();
+  /* 修法③：草稿基準比對——線上版比草稿的基準新，明著問，不默默用舊草稿 */
+  if (draft && published.meta.updated && draft._basedOn !== published.meta.updated) {
+    const useNew = confirm(
+      "線上發布版（" + published.meta.updated + "）比你的草稿基準（" + (draft._basedOn || "未知") + "）新。\n\n" +
+      "按「確定」載入新發布版（你的草稿會被丟棄）；按「取消」繼續用舊草稿。");
+    if (useNew) { localStorage.removeItem(LS_KEY); draft = null; }
+  }
+  state = draft || structuredClone(published);
+  if (repoUrl) {
+    document.getElementById("issuesLink").href = repoUrl + "/issues";
+    document.getElementById("repoLink").href = repoUrl;
+  } else {
+    document.getElementById("issuesLink").style.display = "none";
+    document.getElementById("repoLink").style.display = "none";
+  }
+  render();
+  document.getElementById("todayBtn").click();
+}
+
+/* ---------- date helpers ---------- */
+function parseD(s){ const [y,m,d]=s.split("-").map(Number); return new Date(y, m-1, d); }
+function fmtD(dt){ return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0"); }
+function today(){ const n=new Date(); return new Date(n.getFullYear(),n.getMonth(),n.getDate()); }
+function allTasks(){ return state.phases.flatMap(p=>p.tasks.map(t=>({...t, phaseId:p.id}))); }
+
+function range(){
+  const ts = allTasks();
+  let min=Infinity, max=-Infinity;
+  /* 修法①：無日期任務不進時間軸計算，不崩板 */
+  ts.forEach(t=>{ if(t._nodate) return; min=Math.min(min, parseD(t.start).getTime()); max=Math.max(max, parseD(t.end).getTime()); });
+  const tdy = today().getTime();
+  min=Math.min(min,tdy); max=Math.max(max,tdy);
+  if(!isFinite(min)){ min=tdy; max=tdy; }
+  return { start: new Date(min-2*DAY), end: new Date(max+3*DAY) };
+}
+
+/* ---------- render ---------- */
+const canvas = document.getElementById("canvas");
+const MON = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+const DOW = ["日","一","二","三","四","五","六"];
+
+function render() {
+  const {start, end} = range();
+  const days = Math.round((end - start)/DAY)+1;
+  const dw = 30;
+  const trackW = days*dw;
+
+  let html = "";
+  html += `<div class="headrow"><div class="corner">子計畫 / 任務</div><div class="timehead" style="width:${trackW}px"><div class="monthband">`;
+  let i=0;
+  while(i<days){
+    const d0 = new Date(start.getTime()+i*DAY);
+    let span=0; const m0=d0.getMonth();
+    while(i+span<days && new Date(start.getTime()+(i+span)*DAY).getMonth()===m0) span++;
+    const mlabel = span*dw >= 70 ? `${d0.getFullYear()} ${MON[m0]}` : MON[m0];
+    html += `<div class="monthcell" style="width:${span*dw}px">${mlabel}</div>`;
+    i+=span;
+  }
+  html += `</div><div class="dayband">`;
+  for(let j=0;j<days;j++){
+    const d=new Date(start.getTime()+j*DAY); const wd=d.getDay(); const we=(wd===0||wd===6);
+    html += `<div class="daycell${we?" we":""}">${d.getDate()}<span class="dow">${DOW[wd]}</span></div>`;
+  }
+  html += `</div></div></div>`;
+
+  const gridBg = buildGridBg(start, days, dw);
+
+  let pnum=0;
+  state.phases.forEach(p=>{
+    pnum++;
+    const pt=p.tasks;
+    const avg = pt.length? Math.round(pt.reduce((a,t)=>a+(t.status==="milestone"?(t.progress||0):t.progress),0)/pt.length):0;
+    html += `<div class="phase-h"><div class="pl"><span class="pnum">${pnum}</span><span class="pname">${esc(p.name)}</span>`
+         + `<button class="miniadd" data-addphasetask="${p.id}">＋任務</button></div>`
+         + `<div class="fill" style="position:relative">${gridBg}<div class="track" style="position:absolute;inset:0"></div>`
+         + `<span class="pmeta" style="position:absolute;right:10px;top:8px">${avg}%</span></div></div>`;
+
+    pt.forEach(t=>{
+      let barHtml="";
+      if(t._nodate){
+        /* 修法①：無日期 → 列出但不畫條，明著標示待排程 */
+        barHtml = `<span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--blocked);font-weight:700">⚠ 未排日期</span>`;
+      } else if(t.status==="milestone"){
+        const s=parseD(t.start);
+        const off=Math.round((s-start)/DAY);
+        const cx=off*dw+dw/2;
+        barHtml = `<div class="mstone ${t.progress>=100?'done':''}" style="left:${cx}px"></div>`
+                + `<div class="mlabel" style="left:${cx+12}px">${esc(t.owner||"")}</div>`;
+      } else {
+        const s=parseD(t.start), e=parseD(t.end);
+        const off=Math.round((s-start)/DAY);
+        const len=Math.round((e-s)/DAY)+1;
+        const left=off*dw, width=Math.max(len*dw-4, dw-4);
+        barHtml = `<div class="bar ${t.status}" style="left:${left}px;width:${width}px">`
+                + `<div class="fillp" style="width:${t.progress}%"></div>`
+                + `<span class="plabel">${t.progress}%</span></div>`;
+      }
+      const depTitle = t.deps && t.deps.length ? ` title="前置：${esc(t.deps.join("、"))}"` : "";
+      html += `<div class="row" tabindex="0" data-t="${t.id}" data-p="${p.id}"${depTitle}>`
+           + `<div class="label"><span class="stpill ${t.status}" data-cycle="${t.id}" data-p="${p.id}" title="點我切換狀態"></span>`
+           + `<span class="tname">${esc(t.name)}${t.deps&&t.deps.length?` <span style="color:var(--text-faint);font-size:10px;font-family:var(--mono)">←${esc(t.deps.join(","))}</span>`:""}</span>`
+           + (t.owner&&t.status!=="milestone"?`<span class="owner">${esc(t.owner)}</span>`:``)+`</div>`
+           + `<div class="track" style="width:${trackW}px">${gridBg}${barHtml}</div></div>`;
+    });
+  });
+
+  canvas.innerHTML = html;
+
+  const tdyOff = Math.round((today()-start)/DAY);
+  const tdyX = tdyOff*dw + dw/2;
+  const bodyTop = document.querySelector(".headrow").offsetHeight;
+  const line = document.createElement("div");
+  line.className="todayline";
+  line.style.left = `calc(var(--label-w) + ${tdyX}px)`;
+  line.style.top = bodyTop+"px";
+  canvas.appendChild(line);
+  const flag = document.createElement("div");
+  flag.className="todayflag"; flag.textContent="今天 "+fmtD(today()).slice(5);
+  flag.style.left = `calc(var(--label-w) + ${tdyX}px)`;
+  flag.style.top = "0px";
+  canvas.appendChild(flag);
+
+  renderTiles();
+  renderFoot();
+  document.getElementById("syncBanner").classList.toggle("show", isDirty());
+  wire();
+}
+
+function buildGridBg(start, days, dw){
+  let segs="";
+  for(let j=0;j<days;j++){
+    const d=new Date(start.getTime()+j*DAY); const wd=d.getDay();
+    if(wd===0||wd===6) segs+=`<div style="position:absolute;left:${j*dw}px;top:0;bottom:0;width:${dw}px;background:var(--weekend)"></div>`;
+  }
+  return `<div class="grid-bg" style="background:repeating-linear-gradient(90deg,transparent 0,transparent ${dw-1}px,var(--grid) ${dw-1}px,var(--grid) ${dw}px)">${segs}</div>`;
+}
+
+function renderTiles(){
+  const ts=allTasks();
+  const norm = ts.filter(t=>t.status!=="milestone");
+  const total=norm.length;
+  const cnt={done:0,active:0,blocked:0,idle:0,milestone:0};
+  ts.forEach(t=>cnt[t.status]++);
+  const overall = total? Math.round(norm.reduce((a,t)=>a+t.progress,0)/total):0;
+  const ms = ts.filter(t=>t.status==="milestone").map(t=>({...t,d:parseD(t.start)})).sort((a,b)=>a.d-b.d);
+  const tdy=today();
+  const nextMs = ms.find(m=>m.d>=tdy) || ms[ms.length-1];
+  const tiles=[
+    {cls:"gold", k:"整體進度", v:`${overall}<small>%</small>`, bar:overall},
+    {cls:"done", k:"已完成", v:`${cnt.done}<small>/${total}</small>`},
+    {cls:"active", k:"進行中", v:`${cnt.active}`},
+    {cls:"idle", k:"未開始", v:`${cnt.idle}`},
+    {cls:"blocked", k:"阻塞", v:`${cnt.blocked}`},
+    {cls:"", k:"下一里程碑", v: nextMs?`<span style="font-size:14px">${esc(shortName(nextMs.name))}</span>`:"—", mstoneDate: nextMs?fmtD(nextMs.d):""},
+  ];
+  document.getElementById("tiles").innerHTML = tiles.map(t=>
+    `<div class="tile ${t.cls}"><div class="k">${t.k}</div><div class="v">${t.v}</div>`
+    + (t.bar!=null?`<div class="progressbar"><i style="width:${t.bar}%"></i></div>`:"")
+    + (t.mstoneDate?`<div class="k" style="margin-top:4px;font-family:var(--mono)">${t.mstoneDate}</div>`:"")
+    + `</div>`).join("");
+}
+function shortName(n){ return n.length>14? n.slice(0,13)+"…" : n; }
+
+function renderFoot(){
+  const upd = published && published.meta && published.meta.updated ? published.meta.updated : "—";
+  document.getElementById("noteBanner").innerHTML =
+    `📌 發布版更新日：<b style="font-family:var(--mono)">${esc(upd)}</b>。`
+    + `已完成任務為真實日期；未來任務日期為排程規劃（板主核定）。修改流程：同事在板上試改 → 「💬 開 Issue 回報」或匯出 JSON 給板主；<b>板主</b>核定後發布，全團隊即同步。`
+    + `紅線：本板不出現客戶與個資（連代號都不用），人員一律角色代稱。`;
+  document.getElementById("foot").innerHTML =
+    `發布版存於 repo 的 <code>gantt.json</code>（單一真相）；你的編輯先存成本機草稿，發布後才對所有人生效。`
+    + `配色依喬雍 CIS 唯一 SoT：主色 暗青 <code>#304854</code>／緗色 <code>#ffbe19</code>；狀態 — 蔚藍 <code>#1d6a8c</code>（進行中）·豆青 <code>#80c862</code>（完成）·蒼色 <code>#738995</code>（未開始）·陽橙 <code>#eb6b32</code>（阻塞）。`;
+}
+function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* ---------- interactions ---------- */
+function wire(){
+  canvas.querySelectorAll(".row").forEach(r=>{
+    r.addEventListener("click", e=>{
+      if(e.target.closest("[data-cycle]")) return;
+      openEditor(r.dataset.p, r.dataset.t);
+    });
+    r.addEventListener("keydown", e=>{ if(e.key==="Enter") openEditor(r.dataset.p, r.dataset.t); });
+  });
+  canvas.querySelectorAll("[data-cycle]").forEach(el=>{
+    el.addEventListener("click", e=>{ e.stopPropagation(); cycleStatus(el.dataset.p, el.dataset.cycle); });
+  });
+  canvas.querySelectorAll("[data-addphasetask]").forEach(b=>{
+    b.addEventListener("click", e=>{ e.stopPropagation(); openEditor(b.dataset.addphasetask, null, true); });
+  });
+}
+
+const CYCLE = ["idle","active","done","blocked"];
+function cycleStatus(pid, tid){
+  const t = find(pid,tid); if(!t) return;
+  if(t.status==="milestone"){ t.progress = t.progress>=100?0:100; }
+  else {
+    const i = CYCLE.indexOf(t.status);
+    t.status = CYCLE[(i+1)%CYCLE.length];
+    if(t.status==="done") t.progress=100;
+    else if(t.status==="idle") t.progress=0;
+    else if(t.status==="active" && (t.progress===0||t.progress===100)) t.progress=30;
+  }
+  save(); render();
+}
+function find(pid,tid){ const p=state.phases.find(p=>p.id===pid); return p&&p.tasks.find(t=>t.id===tid); }
+
+/* ---------- modal ---------- */
+const bd=document.getElementById("backdrop");
+function fillPhaseSelect(sel){
+  document.getElementById("fPhase").innerHTML = state.phases.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join("");
+  if(sel) document.getElementById("fPhase").value=sel;
+}
+function openEditor(pid, tid, isNew){
+  fillPhaseSelect(pid);
+  if(isNew || !tid){
+    editing={new:true};
+    document.getElementById("mTitle").textContent="新增任務";
+    document.getElementById("delBtn").style.display="none";
+    document.getElementById("issueBtn").style.display="none";
+    setForm({name:"",owner:"AI",start:fmtD(today()),end:fmtD(today()),status:"idle",progress:0,note:""});
+  } else {
+    editing={pid,tid};
+    const t=find(pid,tid);
+    document.getElementById("mTitle").textContent="編輯任務";
+    document.getElementById("delBtn").style.display="";
+    document.getElementById("issueBtn").style.display = repoUrl ? "" : "none";
+    setForm(t);
+  }
+  bd.classList.add("open");
+  document.getElementById("fName").focus();
+}
+function setForm(t){
+  fName.value=t.name; fOwner.value=t.owner||""; fStart.value=t.start; fEnd.value=t.end;
+  fStatus.value=t.status; fProg.value=t.progress; fProgV.textContent=t.progress+"%";
+  fNote.value=t.note||"";
+}
+function closeModal(){ bd.classList.remove("open"); editing=null; }
+
+document.getElementById("fProg").addEventListener("input",e=>{ fProgV.textContent=e.target.value+"%"; });
+document.getElementById("fStatus").addEventListener("change",e=>{
+  if(e.target.value==="done"){ fProg.value=100; fProgV.textContent="100%"; }
+  if(e.target.value==="idle"){ fProg.value=0; fProgV.textContent="0%"; }
+});
+document.getElementById("saveBtn").addEventListener("click",()=>{
+  /* 修法⑤：日期必填，不默默補今天 */
+  if(!fStart.value || !fEnd.value){ alert("開始日與結束日必填（本板不自動補日期）。"); return; }
+  const data={ name:fName.value.trim()||"未命名任務", owner:fOwner.value.trim(),
+    start:fStart.value, end:fEnd.value,
+    status:fStatus.value, progress:Number(fProg.value), note:fNote.value.trim() };
+  if(parseD(data.end)<parseD(data.start)) data.end=data.start;
+  const targetP = document.getElementById("fPhase").value;
+  if(editing.new){
+    const p=state.phases.find(p=>p.id===targetP);
+    p.tasks.push({ id:"t"+Date.now(), ...data });
+  } else {
+    const t=find(editing.pid,editing.tid);
+    Object.assign(t,data);
+    if(targetP!==editing.pid){
+      const from=state.phases.find(p=>p.id===editing.pid);
+      from.tasks=from.tasks.filter(x=>x.id!==t.id);
+      state.phases.find(p=>p.id===targetP).tasks.push(t);
+    }
+  }
+  save(); render(); closeModal();
+});
+document.getElementById("delBtn").addEventListener("click",()=>{
+  if(!editing||editing.new) return;
+  if(!confirm("刪除這個任務（存成草稿）？")) return;
+  const p=state.phases.find(p=>p.id===editing.pid);
+  p.tasks=p.tasks.filter(x=>x.id!==editing.tid);
+  save(); render(); closeModal();
+});
+document.getElementById("issueBtn").addEventListener("click",()=>{
+  if(!editing||editing.new||!repoUrl) return;
+  const t=find(editing.pid,editing.tid);
+  const p=state.phases.find(p=>p.id===editing.pid);
+  const title = `[任務回報] ${t.name}`;
+  const body = `**階段**：${p.name}\n**任務**：${t.name}\n**目前**：${t.start} → ${t.end}｜狀態 ${t.status}｜進度 ${t.progress}%\n\n**想調整／回報的內容**：\n- `;
+  window.open(`${repoUrl}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, "_blank");
+});
+document.getElementById("cancelBtn").addEventListener("click",closeModal);
+bd.addEventListener("click",e=>{ if(e.target===bd) closeModal(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&bd.classList.contains("open")) closeModal(); });
+
+/* ---------- sync banner ---------- */
+document.getElementById("discardBtn").addEventListener("click",()=>{
+  if(!confirm("捨棄本機草稿，回到發布版？")) return;
+  localStorage.removeItem(LS_KEY);
+  state = structuredClone(published);
+  render();
+});
+document.getElementById("publishBtn").addEventListener("click",async ()=>{
+  state.meta = state.meta || {};
+  state.meta.updated = fmtD(today());
+  save();
+  const json = JSON.stringify(state, stripInternal, 2);
+  let copied = false;
+  try { await navigator.clipboard.writeText(json); copied = true; } catch(e){}
+  if(!copied){
+    const blob=new Blob([json],{type:"application/json"});
+    const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+    a.download="gantt.json"; a.click();
+  }
+  alert(copied
+    ? "已把 JSON 複製到剪貼簿。接著會開 GitHub 編輯頁：全選舊內容 → 貼上 → Commit changes 即發布。"
+    : "已下載 gantt.json。請到 GitHub 用它取代 repo 裡的 gantt.json。");
+  if(repoUrl) window.open(`${repoUrl}/edit/main/gantt.json`, "_blank");
+});
+
+/* ---------- toolbar ---------- */
+document.getElementById("addTask").addEventListener("click",()=>{
+  if(!state.phases.length){ alert("請先新增一個階段。"); return; }
+  openEditor(state.phases[0].id,null,true);
+});
+document.getElementById("addPhase").addEventListener("click",()=>{
+  const name=prompt("新階段（子計畫）名稱：");
+  if(!name) return;
+  state.phases.push({id:"p"+Date.now(), name:name.trim(), tasks:[]});
+  save(); render();
+});
+document.getElementById("todayBtn").addEventListener("click",()=>{
+  const {start}=range(); const dw=30;
+  const x=Math.round((today()-start)/DAY)*dw;
+  document.getElementById("scroll").scrollTo({left:Math.max(0,x-200), behavior:"smooth"});
+});
+document.getElementById("exportBtn").addEventListener("click",()=>{
+  const blob=new Blob([JSON.stringify(state,stripInternal,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download="crm-gantt-"+fmtD(today()).replace(/-/g,"")+".json"; a.click();
+});
+document.getElementById("importBtn").addEventListener("click",()=>document.getElementById("importFile").click());
+document.getElementById("importFile").addEventListener("change",e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{
+    /* 修法④：匯入走完整驗證，不合格列明原因拒收 */
+    try{
+      const errs=[];
+      const j=normalizeData(JSON.parse(rd.result), errs);
+      if(!j) throw new Error(errs.join("；"));
+      if(errs.length && !confirm("匯入資料有 "+errs.length+" 個問題：\n\n"+errs.slice(0,8).join("\n")+"\n\n仍要匯入（已自動夾正的部分照夾正後）？")) return;
+      state=j; save(); render();
+    }catch(err){ alert("匯入失敗："+(err.message||"檔案格式不符")); }
+  };
+  rd.readAsText(f); e.target.value="";
+});
+document.getElementById("themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const sysDark=window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const next = cur? (cur==="dark"?"light":"dark") : (sysDark?"light":"dark");
+  document.documentElement.setAttribute("data-theme",next);
+});
+
+boot();
+</script>
+</body>
+</html>
