@@ -13,7 +13,18 @@ import json
 import os
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
+
+
+def is_real_date(s) -> bool:
+    """格式正確且真實存在（擋 2026-99-99 這類會被 JS Date 滾動的值）。"""
+    try:
+        datetime.strptime(str(s), "%Y-%m-%d")
+        return True
+    except (ValueError, TypeError):
+        return False
+
 
 STATUSES = {"idle", "active", "done", "blocked", "milestone"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -69,6 +80,8 @@ def check_schema(path: Path) -> list[str]:
             for d in ("start", "end"):
                 if not DATE_RE.match(str(t.get(d, ""))):
                     errs.append(f"「{label}」{d} 缺漏或非 YYYY-MM-DD")
+                elif not is_real_date(t[d]):
+                    errs.append(f"「{label}」{d} 不是真實存在的日期：{t[d]}")
             if DATE_RE.match(str(t.get("start", ""))) and DATE_RE.match(str(t.get("end", ""))) \
                     and t["end"] < t["start"]:
                 errs.append(f"「{label}」end 早於 start")

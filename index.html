@@ -18,7 +18,7 @@
     --shadow: 0 1px 2px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.10);
     --mono: "SF Mono", ui-monospace, "JetBrains Mono", "Roboto Mono", Menlo, monospace;
     --cjk: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans", system-ui, sans-serif;
-    --row-h: 40px; --label-w: 300px; --day-w: 30px;
+    --row-h: 46px; --label-w: 340px; --day-w: 34px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -55,7 +55,8 @@
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--cjk);
     line-height: 1.5; -webkit-font-smoothing: antialiased; }
-  .wrap { max-width: 1280px; margin: 0 auto; padding: 28px 22px 80px; }
+  .wrap { max-width: none; margin: 0 auto; padding: 24px 36px 80px; }
+  @media (min-width: 2200px) { .wrap { max-width: 2140px; } }
 
   header.mast { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
     gap: 16px; padding-bottom: 18px; border-bottom: 2px solid var(--slate); }
@@ -105,12 +106,13 @@
 
   .gantt { background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
     box-shadow: var(--shadow); overflow: hidden; }
-  .scroll { overflow-x: auto; overflow-y: visible; }
+  /* 凍結窗格：容器雙向捲動，表頭 sticky top、任務欄 sticky left、角落雙向固定 */
+  .scroll { overflow: auto; max-height: calc(100vh - 170px); min-height: 320px; }
   .canvas { position: relative; min-width: max-content; }
 
   .headrow { display: flex; position: sticky; top: 0; z-index: 6; background: var(--surface-3);
     border-bottom: 1px solid var(--border-strong); }
-  .corner { flex: 0 0 var(--label-w); position: sticky; left: 0; z-index: 7; background: var(--surface-3);
+  .corner { flex: 0 0 var(--label-w); position: sticky; left: 0; z-index: 9; background: var(--surface-3);
     border-right: 1px solid var(--border-strong); display: flex; align-items: center;
     padding: 0 14px; font-size: 12px; font-weight: 700; color: var(--text-dim); letter-spacing: .04em; }
   .timehead { position: relative; }
@@ -118,16 +120,16 @@
   .monthcell { border-right: 1px solid var(--border-strong); font-size: 11px; font-weight: 700;
     color: var(--slate); padding: 3px 0 0 7px; white-space: nowrap; letter-spacing: .02em; overflow: hidden; }
   .dayband { display: flex; height: 26px; }
-  .daycell { width: var(--day-w); flex: 0 0 var(--day-w); text-align: center; font-size: 10.5px;
+  .daycell { width: var(--day-w); flex: 0 0 var(--day-w); text-align: center; font-size: 11.5px;
     font-family: var(--mono); color: var(--text-faint); padding-top: 5px; border-right: 1px solid var(--grid);
     font-variant-numeric: tabular-nums; }
   .daycell.we { background: var(--weekend); }
   .daycell .dow { display: block; font-size: 8.5px; color: var(--text-faint); opacity: .8; }
 
-  .phase-h { display: flex; align-items: center; position: sticky; left: 0; z-index: 4;
+  .phase-h { display: flex; align-items: center; z-index: 4;
     background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
     min-height: 34px; }
-  .phase-h .pl { flex: 0 0 var(--label-w); position: sticky; left: 0; background: var(--surface-2);
+  .phase-h .pl { flex: 0 0 var(--label-w); position: sticky; left: 0; z-index: 4; background: var(--surface-2);
     display: flex; align-items: center; gap: 8px; padding: 5px 12px; border-right: 1px solid var(--border-strong); }
   .phase-h .pnum { font-family: var(--mono); font-size: 11px; font-weight: 700; color: #fff; background: var(--slate);
     border-radius: 5px; padding: 1px 6px; }
@@ -148,7 +150,7 @@
     border-right: 1px solid var(--border-strong); display: flex; align-items: center; gap: 8px;
     padding: 4px 12px 4px 22px; }
   .row:hover .label { background: var(--surface-3); }
-  .row .label .tname { font-size: 13px; line-height: 1.3; overflow: hidden;
+  .row .label .tname { font-size: 14px; line-height: 1.35; overflow: hidden;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
   .row .label .owner { margin-left: auto; flex: none; font-size: 10.5px; color: var(--text-dim);
     background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; padding: 1px 7px;
@@ -226,8 +228,28 @@
     :root { --label-w: 190px; }
     .mast h1 { font-size: 22px; }
     .field.row2 { grid-template-columns: 1fr; }
+    .wrap { padding: 20px 14px 60px; }
   }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+  /* 檢視／編輯雙模式：預設檢視（非程式背景同事只看到需要的東西） */
+  body:not(.edit-mode) .edit-only { display: none !important; }
+  body:not(.edit-mode) .miniadd { display: none !important; }
+  body.edit-mode #editToggle { background: var(--gold); border-color: var(--gold-deep); color: #3a2c00; }
+
+  /* 使用說明／任務檢視 modal 的補充樣式 */
+  .guide { display: grid; gap: 14px; }
+  .guide .step { display: flex; gap: 12px; align-items: flex-start; }
+  .guide .n { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--slate);
+    color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  :root[data-theme="dark"] .guide .n { color: #0f151a; }
+  @media (prefers-color-scheme: dark){ .guide .n { color: #0f151a; } }
+  :root[data-theme="light"] .guide .n { color: #fff; }
+  .guide b { color: var(--text); }
+  .guide .step div { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+  .kv { display: grid; grid-template-columns: 88px 1fr; gap: 6px 12px; font-size: 14px; }
+  .kv .k { color: var(--text-dim); font-weight: 700; }
+  .kv .v { color: var(--text); }
 </style>
 </head>
 <body>
@@ -237,7 +259,7 @@
     <div>
       <div class="eyebrow">喬雍環境管理 · CRM 開發</div>
       <h1>CRM 開發總規劃 · 甘特追蹤板</h1>
-      <div class="sub">全團隊看同一份發布版（repo 的 <b>gantt.json</b>）。點任一列可試改（存成你的本機草稿）；要正式變更請由板主發布，或用「💬 開 Issue 回報」留言討論。</div>
+      <div class="sub">看進度：打開就是最新版，不用登入。想反映意見：<b>點任一列任務 →「💬 回報」</b>。不確定怎麼用？點右邊「❓ 使用說明」。</div>
     </div>
     <div class="brandmark" title="喬雍 CIS 四色系統：暗青／緗色／蔚藍／豆青">
       <span class="swatch" style="background:#304854"></span>
@@ -252,25 +274,29 @@
 
   <div class="sync-banner" id="syncBanner">
     <span>✏️ <b>你有本機草稿，和發布版不同。</b>其他人看不到你的草稿 — 定案請發布，試看看則可隨時捨棄。</span>
-    <button class="btn gold" id="publishBtn">↥ 複製 JSON 並去 GitHub 發布</button>
+    <button class="btn gold edit-only" id="publishBtn">↥ 複製 JSON 並去 GitHub 發布</button>
     <button class="btn" id="discardBtn">↺ 捨棄草稿，回到發布版</button>
   </div>
 
   <div class="note-banner" id="noteBanner"></div>
 
   <div class="toolbar">
-    <button class="btn primary" id="addTask">＋ 新增任務</button>
-    <button class="btn" id="addPhase">＋ 新增階段</button>
+    <button class="btn gold" id="helpBtn">❓ 使用說明</button>
     <button class="btn" id="todayBtn">↧ 捲到今天</button>
+    <button class="btn" id="zoomOut" title="縮小">A−</button>
+    <button class="btn" id="zoomIn" title="放大">A＋</button>
     <a class="btn" id="issuesLink" href="#" target="_blank" rel="noopener">💬 討論區</a>
+    <button class="btn primary edit-only" id="addTask">＋ 新增任務</button>
+    <button class="btn edit-only" id="addPhase">＋ 新增階段</button>
     <div class="spacer"></div>
     <div class="legend">
       <span class="lg"><span class="dot" style="background:var(--done)"></span>完成</span>
       <span class="lg"><span class="dot" style="background:var(--active)"></span>進行中</span>
       <span class="lg"><span class="dot" style="background:var(--idle)"></span>未開始</span>
-      <span class="lg"><span class="dot" style="background:var(--blocked)"></span>阻塞</span>
+      <span class="lg"><span class="dot" style="background:var(--blocked)"></span>卡住等待</span>
       <span class="lg"><span class="dot" style="background:var(--gold);transform:rotate(45deg)"></span>里程碑</span>
     </div>
+    <button class="btn" id="editToggle" title="板主／進階者用：開啟後可直接在板上試改">✏️ 編輯模式：關</button>
   </div>
 
   <div class="gantt">
@@ -280,12 +306,12 @@
   </div>
 
   <div class="toolbar" style="margin-top:14px">
-    <button class="btn" id="exportBtn">⤓ 匯出 JSON</button>
-    <button class="btn" id="importBtn">⤒ 匯入 JSON（成為草稿）</button>
+    <button class="btn edit-only" id="exportBtn">⤓ 匯出 JSON</button>
+    <button class="btn edit-only" id="importBtn">⤒ 匯入 JSON（成為草稿）</button>
     <input type="file" id="importFile" accept="application/json,.json" hidden>
     <button class="btn" id="themeBtn">◐ 切換深/淺色</button>
     <div class="spacer"></div>
-    <a class="btn" id="repoLink" href="#" target="_blank" rel="noopener">GitHub repo</a>
+    <a class="btn edit-only" id="repoLink" href="#" target="_blank" rel="noopener">GitHub repo</a>
   </div>
 
   <div class="foot" id="foot"></div>
@@ -354,6 +380,44 @@
   </div>
 </div>
 
+<!-- 使用說明 modal -->
+<div class="backdrop" id="helpBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="hTitle">
+    <h3 id="hTitle">這個看板怎麼用？</h3>
+    <div class="body guide">
+      <div class="step"><span class="n">1</span><div><b>看進度</b><br>
+        打開網頁就是最新版，免登入。橫條＝任務的起訖日期；顏色看下方圖例
+        （綠＝完成、藍＝進行中、灰＝未開始、橘＝卡住等待）。虛線＝今天。
+        表格可上下左右捲動，左欄與日期列會固定不動。</div></div>
+      <div class="step"><span class="n">2</span><div><b>想反映意見（例：日期不對、有做過但沒記到）</b><br>
+        點那一列任務 → 跳出視窗 → 按「<b>💬 回報這個任務</b>」→ 寫下你想說的 → 送出。
+        板主看到後會更新。（回報需要免費 GitHub 帳號，第一次會請你註冊）</div></div>
+      <div class="step"><span class="n">3</span><div><b>不會有「改壞」的問題</b><br>
+        這個頁面對你是唯讀的——你在板上做什麼都不會影響別人看到的內容。
+        正式變更只有板主能發布。</div></div>
+    </div>
+    <div class="actions">
+      <div class="spacer"></div>
+      <button class="btn primary" id="helpClose">知道了，開始看</button>
+    </div>
+  </div>
+</div>
+
+<!-- 任務檢視 modal（檢視模式點任務用） -->
+<div class="backdrop" id="viewBackdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="vTitle">
+    <h3 id="vTitle">任務內容</h3>
+    <div class="body">
+      <div class="kv" id="vBody"></div>
+    </div>
+    <div class="actions">
+      <button class="btn gold" id="vIssueBtn">💬 回報這個任務</button>
+      <div class="spacer"></div>
+      <button class="btn" id="vCloseBtn">關閉</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const LS_KEY = "ciaoyong-crm-gantt-pages-v1";
 const DAY = 86400000;
@@ -376,7 +440,10 @@ function normalizeData(j, errs){
     if (!Array.isArray(p.tasks)) p.tasks = [];
     p.tasks.forEach((t, ti) => {
       t.id = sanitizeId(t.id) || ("t" + pi + "_" + ti);
-      if (seen.has(t.id)) errs.push("任務 ID 重複：" + t.id);
+      if (seen.has(t.id)) {   // 只改「後出現的重複項」；原持有者不動，deps 指向不受影響
+        errs.push("任務 ID 重複：" + t.id + "（後者已改名保唯一）");
+        t.id = t.id + "_x" + pi + "_" + ti;
+      }
       seen.add(t.id);
       t.name = String(t.name || "");
       t.owner = String(t.owner || "");
@@ -384,7 +451,9 @@ function normalizeData(j, errs){
       t.progress = Math.max(0, Math.min(100, Math.round(Number(t.progress) || 0)));
       t.note = String(t.note || "");
       t.deps = Array.isArray(t.deps) ? t.deps.map(sanitizeId).filter(Boolean) : [];
-      t._nodate = !(DATE_RE.test(t.start) && DATE_RE.test(t.end));
+      /* 日期需格式正確「且」是真實存在的日期（擋 2026-99-99 這類滾動失真） */
+      const realD = s => DATE_RE.test(s) && fmtD(parseD(s)) === s;
+      t._nodate = !(realD(t.start) && realD(t.end));
       if (!t._nodate && parseD(t.end) < parseD(t.start)) { t.end = t.start; }
     });
   });
@@ -412,6 +481,59 @@ const SEED = { meta:{ title:"CRM 開發總規劃", updated:"" }, phases: [] };
 let published = null;  // repo 發布版
 let state = null;      // 畫面資料（草稿或發布版）
 let editing = null;
+let viewing = null;    // 檢視模式正在看的任務
+
+/* ---------- 檢視／編輯模式＋縮放 ---------- */
+const LS_ZOOM = "ciaoyong-gantt-zoom";
+const LS_SEEN = "ciaoyong-gantt-help-seen-v1";
+const ZOOMS = [{dw:26,row:40},{dw:34,row:46},{dw:44,row:56}];
+let zoomIdx = Math.min(ZOOMS.length-1, Math.max(0, Number(localStorage.getItem(LS_ZOOM)) || 1));
+let DW = ZOOMS[zoomIdx].dw;
+let EDIT_MODE = false;   // 每次載入都從檢視模式開始（共用電腦安全預設）
+let lastFocus = null;    // modal 關閉後把焦點還給觸發元素
+function applyMode(){
+  document.body.classList.toggle("edit-mode", EDIT_MODE);
+  document.getElementById("editToggle").textContent = EDIT_MODE ? "✏️ 編輯模式：開" : "✏️ 編輯模式：關";
+}
+function applyZoom(){
+  const z = ZOOMS[zoomIdx]; DW = z.dw;
+  document.documentElement.style.setProperty("--day-w", z.dw + "px");
+  document.documentElement.style.setProperty("--row-h", z.row + "px");
+}
+/* 縮放時保留視窗中心的日期位置 */
+function rezoom(newIdx){
+  const sc = document.getElementById("scroll");
+  const oldDW = DW;
+  const centerDays = (sc.scrollLeft + sc.clientWidth/2) / oldDW;
+  zoomIdx = newIdx; localStorage.setItem(LS_ZOOM, zoomIdx);
+  applyZoom(); render();
+  sc.scrollLeft = Math.max(0, centerDays * DW - sc.clientWidth/2);
+}
+/* modal 開關統一走這裡：焦點移入／關閉還原（修 a11y 高風險項） */
+function openModal(el, focusSel){
+  lastFocus = document.activeElement;
+  el.classList.add("open");
+  let f = focusSel ? el.querySelector(focusSel) : null;
+  if (!f || f.offsetParent === null)   // 指定目標被隱藏（如無 repo 時的回報鈕）→ 找第一個可見控件
+    f = [...el.querySelectorAll("input,select,textarea,button")].find(x => x.offsetParent !== null);
+  if (f) f.focus();
+}
+function closeModalEl(el){
+  el.classList.remove("open");
+  if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch(e){} }
+  lastFocus = null;
+}
+/* 簡易 focus trap：Tab 不跑出開著的 modal */
+document.addEventListener("keydown", e => {
+  if (e.key !== "Tab") return;
+  const openBd = document.querySelector(".backdrop.open");
+  if (!openBd) return;
+  const list = [...openBd.querySelectorAll("button,[href],input,select,textarea")].filter(x => x.offsetParent !== null);
+  if (!list.length) return;
+  const first = list[0], last = list[list.length - 1];
+  if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+  else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+});
 
 function loadDraft(){
   try { const s = JSON.parse(localStorage.getItem(LS_KEY)); if (s && s.phases) return normalizeData(s); } catch(e){}
@@ -445,8 +567,16 @@ async function boot(){
     document.getElementById("issuesLink").style.display = "none";
     document.getElementById("repoLink").style.display = "none";
   }
+  applyMode();
+  applyZoom();
   render();
   document.getElementById("todayBtn").click();
+  if (!localStorage.getItem(LS_SEEN)) openModal(document.getElementById("helpBackdrop"), "#helpClose");
+}
+/* 說明視窗：任何方式關閉都記錄已看過，不重複打擾 */
+function closeHelp(){
+  localStorage.setItem(LS_SEEN, "1");
+  closeModalEl(document.getElementById("helpBackdrop"));
 }
 
 /* ---------- date helpers ---------- */
@@ -474,7 +604,7 @@ const DOW = ["日","一","二","三","四","五","六"];
 function render() {
   const {start, end} = range();
   const days = Math.round((end - start)/DAY)+1;
-  const dw = 30;
+  const dw = DW;
   const trackW = days*dw;
 
   let html = "";
@@ -503,9 +633,9 @@ function render() {
     const pt=p.tasks;
     const avg = pt.length? Math.round(pt.reduce((a,t)=>a+(t.status==="milestone"?(t.progress||0):t.progress),0)/pt.length):0;
     html += `<div class="phase-h"><div class="pl"><span class="pnum">${pnum}</span><span class="pname">${esc(p.name)}</span>`
+         + `<span class="pmeta">${avg}%</span>`
          + `<button class="miniadd" data-addphasetask="${p.id}">＋任務</button></div>`
-         + `<div class="fill" style="position:relative">${gridBg}<div class="track" style="position:absolute;inset:0"></div>`
-         + `<span class="pmeta" style="position:absolute;right:10px;top:8px">${avg}%</span></div></div>`;
+         + `<div class="fill" style="position:relative">${gridBg}</div></div>`;
 
     pt.forEach(t=>{
       let barHtml="";
@@ -528,8 +658,9 @@ function render() {
                 + `<span class="plabel">${t.progress}%</span></div>`;
       }
       const depTitle = t.deps && t.deps.length ? ` title="前置：${esc(t.deps.join("、"))}"` : "";
+      const pillTitle = EDIT_MODE ? "點我切換狀態" : "點整列可看任務內容";
       html += `<div class="row" tabindex="0" data-t="${t.id}" data-p="${p.id}"${depTitle}>`
-           + `<div class="label"><span class="stpill ${t.status}" data-cycle="${t.id}" data-p="${p.id}" title="點我切換狀態"></span>`
+           + `<div class="label"><span class="stpill ${t.status}" data-cycle="${t.id}" data-p="${p.id}" title="${pillTitle}"></span>`
            + `<span class="tname">${esc(t.name)}${t.deps&&t.deps.length?` <span style="color:var(--text-faint);font-size:10px;font-family:var(--mono)">←${esc(t.deps.join(","))}</span>`:""}</span>`
            + (t.owner&&t.status!=="milestone"?`<span class="owner">${esc(t.owner)}</span>`:``)+`</div>`
            + `<div class="track" style="width:${trackW}px">${gridBg}${barHtml}</div></div>`;
@@ -574,7 +705,7 @@ function renderTiles(){
   const cnt={done:0,active:0,blocked:0,idle:0,milestone:0};
   ts.forEach(t=>cnt[t.status]++);
   const overall = total? Math.round(norm.reduce((a,t)=>a+t.progress,0)/total):0;
-  const ms = ts.filter(t=>t.status==="milestone").map(t=>({...t,d:parseD(t.start)})).sort((a,b)=>a.d-b.d);
+  const ms = ts.filter(t=>t.status==="milestone" && !t._nodate).map(t=>({...t,d:parseD(t.start)})).sort((a,b)=>a.d-b.d);
   const tdy=today();
   const nextMs = ms.find(m=>m.d>=tdy) || ms[ms.length-1];
   const tiles=[
@@ -595,9 +726,12 @@ function shortName(n){ return n.length>14? n.slice(0,13)+"…" : n; }
 
 function renderFoot(){
   const upd = published && published.meta && published.meta.updated ? published.meta.updated : "—";
+  const flow = EDIT_MODE
+    ? `修改流程：板上試改（本機草稿）→「↥ 發布」到 GitHub；或「💬 開 Issue 回報」討論。`
+    : `想反映意見：點任一列任務 → 按「💬 回報這個任務」，板主看到會更新。`;
   document.getElementById("noteBanner").innerHTML =
     `📌 發布版更新日：<b style="font-family:var(--mono)">${esc(upd)}</b>。`
-    + `已完成任務為真實日期；未來任務日期為排程規劃（板主核定）。修改流程：同事在板上試改 → 「💬 開 Issue 回報」或匯出 JSON 給板主；<b>板主</b>核定後發布，全團隊即同步。`
+    + `已完成任務為真實日期；未來任務日期為排程規劃（板主核定）。${flow}`
     + `紅線：本板不出現客戶與個資（連代號都不用），人員一律角色代稱。`;
   document.getElementById("foot").innerHTML =
     `發布版存於 repo 的 <code>gantt.json</code>（單一真相）；你的編輯先存成本機草稿，發布後才對所有人生效。`
@@ -609,18 +743,60 @@ function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">
 function wire(){
   canvas.querySelectorAll(".row").forEach(r=>{
     r.addEventListener("click", e=>{
-      if(e.target.closest("[data-cycle]")) return;
-      openEditor(r.dataset.p, r.dataset.t);
+      if(EDIT_MODE && e.target.closest("[data-cycle]")) return;
+      EDIT_MODE ? openEditor(r.dataset.p, r.dataset.t) : openViewer(r.dataset.p, r.dataset.t);
     });
-    r.addEventListener("keydown", e=>{ if(e.key==="Enter") openEditor(r.dataset.p, r.dataset.t); });
+    r.addEventListener("keydown", e=>{ if(e.key==="Enter") (EDIT_MODE?openEditor:openViewer)(r.dataset.p, r.dataset.t); });
   });
   canvas.querySelectorAll("[data-cycle]").forEach(el=>{
-    el.addEventListener("click", e=>{ e.stopPropagation(); cycleStatus(el.dataset.p, el.dataset.cycle); });
+    el.addEventListener("click", e=>{
+      if(!EDIT_MODE) return;                 // 檢視模式點狀態點＝走整列的檢視視窗
+      e.stopPropagation(); cycleStatus(el.dataset.p, el.dataset.cycle);
+    });
   });
   canvas.querySelectorAll("[data-addphasetask]").forEach(b=>{
-    b.addEventListener("click", e=>{ e.stopPropagation(); openEditor(b.dataset.addphasetask, null, true); });
+    b.addEventListener("click", e=>{ if(!EDIT_MODE) return; e.stopPropagation(); openEditor(b.dataset.addphasetask, null, true); });
   });
 }
+
+/* ---------- 檢視模式：任務內容視窗（唯讀＋回報） ---------- */
+const STATUS_LABEL = { idle:"未開始", active:"進行中", done:"完成", blocked:"卡住等待", milestone:"里程碑" };
+function openIssueFor(pname, t){
+  if(!repoUrl) return;
+  const title = `[任務回報] ${t.name}`;
+  const body = `**階段**：${pname}\n**任務**：${t.name}\n**目前**：${t.start||"—"} → ${t.end||"—"}｜狀態 ${STATUS_LABEL[t.status]||t.status}｜進度 ${t.progress}%\n\n**想調整／回報的內容**：\n- `;
+  window.open(`${repoUrl}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, "_blank");
+}
+const vbd = document.getElementById("viewBackdrop");
+function openViewer(pid, tid){
+  const p = state.phases.find(p=>p.id===pid); const t = find(pid,tid);
+  if(!p || !t) return;
+  viewing = {pid, tid};
+  const rows = [
+    ["任務", esc(t.name)],
+    ["階段", esc(p.name)],
+    ["負責", esc(t.owner||"—")],
+    ["日期", t._nodate ? "（未排日期）" : `${esc(t.start)} → ${esc(t.end)}`],
+    ["狀態", `${STATUS_LABEL[t.status]||esc(t.status)}｜進度 ${t.progress}%`],
+  ];
+  if(t.deps && t.deps.length) rows.push(["前置", esc(t.deps.join("、"))]);
+  if(t.note) rows.push(["備註", esc(t.note)]);
+  document.getElementById("vBody").innerHTML = rows.map(([k,v])=>`<div class="k">${k}</div><div class="v">${v}</div>`).join("");
+  document.getElementById("vIssueBtn").style.display = repoUrl ? "" : "none";
+  openModal(vbd, "#vIssueBtn");
+}
+function closeViewer(){ closeModalEl(vbd); viewing=null; }
+document.getElementById("vCloseBtn").addEventListener("click", closeViewer);
+document.getElementById("vIssueBtn").addEventListener("click",()=>{
+  if(!viewing) return;
+  const p = state.phases.find(p=>p.id===viewing.pid); const t = find(viewing.pid, viewing.tid);
+  if(p && t) openIssueFor(p.name, t);
+  closeViewer();   // 開回報分頁後關窗，避免使用者卡在原地
+});
+vbd.addEventListener("click",e=>{ if(e.target===vbd) closeViewer(); });
+document.getElementById("helpBackdrop").addEventListener("click",e=>{
+  if(e.target===document.getElementById("helpBackdrop")) closeHelp();
+});
 
 const CYCLE = ["idle","active","done","blocked"];
 function cycleStatus(pid, tid){
@@ -659,15 +835,14 @@ function openEditor(pid, tid, isNew){
     document.getElementById("issueBtn").style.display = repoUrl ? "" : "none";
     setForm(t);
   }
-  bd.classList.add("open");
-  document.getElementById("fName").focus();
+  openModal(bd, "#fName");
 }
 function setForm(t){
   fName.value=t.name; fOwner.value=t.owner||""; fStart.value=t.start; fEnd.value=t.end;
   fStatus.value=t.status; fProg.value=t.progress; fProgV.textContent=t.progress+"%";
   fNote.value=t.note||"";
 }
-function closeModal(){ bd.classList.remove("open"); editing=null; }
+function closeModal(){ closeModalEl(bd); editing=null; }
 
 document.getElementById("fProg").addEventListener("input",e=>{ fProgV.textContent=e.target.value+"%"; });
 document.getElementById("fStatus").addEventListener("change",e=>{
@@ -707,13 +882,17 @@ document.getElementById("issueBtn").addEventListener("click",()=>{
   if(!editing||editing.new||!repoUrl) return;
   const t=find(editing.pid,editing.tid);
   const p=state.phases.find(p=>p.id===editing.pid);
-  const title = `[任務回報] ${t.name}`;
-  const body = `**階段**：${p.name}\n**任務**：${t.name}\n**目前**：${t.start} → ${t.end}｜狀態 ${t.status}｜進度 ${t.progress}%\n\n**想調整／回報的內容**：\n- `;
-  window.open(`${repoUrl}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`, "_blank");
+  openIssueFor(p.name, t);
+  closeModal();   // 與檢視視窗一致：開回報分頁後關窗
 });
 document.getElementById("cancelBtn").addEventListener("click",closeModal);
 bd.addEventListener("click",e=>{ if(e.target===bd) closeModal(); });
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&bd.classList.contains("open")) closeModal(); });
+document.addEventListener("keydown",e=>{
+  if(e.key!=="Escape") return;
+  if(bd.classList.contains("open")) closeModal();
+  if(vbd.classList.contains("open")) closeViewer();
+  if(document.getElementById("helpBackdrop").classList.contains("open")) closeHelp();
+});
 
 /* ---------- sync banner ---------- */
 document.getElementById("discardBtn").addEventListener("click",()=>{
@@ -723,6 +902,7 @@ document.getElementById("discardBtn").addEventListener("click",()=>{
   render();
 });
 document.getElementById("publishBtn").addEventListener("click",async ()=>{
+  if(!EDIT_MODE) return;
   state.meta = state.meta || {};
   state.meta.updated = fmtD(today());
   save();
@@ -742,27 +922,38 @@ document.getElementById("publishBtn").addEventListener("click",async ()=>{
 
 /* ---------- toolbar ---------- */
 document.getElementById("addTask").addEventListener("click",()=>{
+  if(!EDIT_MODE) return;
   if(!state.phases.length){ alert("請先新增一個階段。"); return; }
   openEditor(state.phases[0].id,null,true);
 });
 document.getElementById("addPhase").addEventListener("click",()=>{
+  if(!EDIT_MODE) return;
   const name=prompt("新階段（子計畫）名稱：");
   if(!name) return;
   state.phases.push({id:"p"+Date.now(), name:name.trim(), tasks:[]});
   save(); render();
 });
 document.getElementById("todayBtn").addEventListener("click",()=>{
-  const {start}=range(); const dw=30;
+  const {start}=range(); const dw=DW;
   const x=Math.round((today()-start)/DAY)*dw;
   document.getElementById("scroll").scrollTo({left:Math.max(0,x-200), behavior:"smooth"});
 });
+document.getElementById("zoomIn").addEventListener("click",()=>{ if(zoomIdx<ZOOMS.length-1) rezoom(zoomIdx+1); });
+document.getElementById("zoomOut").addEventListener("click",()=>{ if(zoomIdx>0) rezoom(zoomIdx-1); });
+document.getElementById("editToggle").addEventListener("click",()=>{
+  EDIT_MODE=!EDIT_MODE; applyMode(); render();   // re-render：狀態點提示與 banner 文案跟著模式換
+});
+document.getElementById("helpBtn").addEventListener("click",()=>openModal(document.getElementById("helpBackdrop"), "#helpClose"));
+document.getElementById("helpClose").addEventListener("click", closeHelp);
 document.getElementById("exportBtn").addEventListener("click",()=>{
+  if(!EDIT_MODE) return;
   const blob=new Blob([JSON.stringify(state,stripInternal,2)],{type:"application/json"});
   const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
   a.download="crm-gantt-"+fmtD(today()).replace(/-/g,"")+".json"; a.click();
 });
-document.getElementById("importBtn").addEventListener("click",()=>document.getElementById("importFile").click());
+document.getElementById("importBtn").addEventListener("click",()=>{ if(EDIT_MODE) document.getElementById("importFile").click(); });
 document.getElementById("importFile").addEventListener("change",e=>{
+  if(!EDIT_MODE) return;
   const f=e.target.files[0]; if(!f) return;
   const rd=new FileReader();
   rd.onload=()=>{
