@@ -45,9 +45,30 @@
 ## 更新 SOP（板主／AI）
 
 1. 改 `gantt.json`
-2. `python3 validate.py`（schema ＋ 紅線樣態掃描）**通過才可 commit**
-3. commit ＋ push（本 repo 的 `gantt.json` 更新屬常設授權範圍）
-4. push 後 CI 會再跑一次 validate 當保險
+2. `python3 update_gantt.py --message "一句話說明"` —— 它會自動：
+   pull 最新 → 蓋 `meta.updated` → 跑 `validate.py` → commit → push
+3. push 後 CI 會再跑一次 validate 當保險
+
+## 給 AI 的維護 SOP（同事的 Claude／AI 照此執行）
+
+> 適用對象：擁有本 repo write 權限的 GitHub 帳號（org 成員）。
+> 一次性設定：`gh auth login`（或已設 git 憑證）。
+
+1. **取得／更新 repo**：
+   - 本機沒有：`git clone https://github.com/ciaoyong/ciaoyong-gantt.git`
+   - 已有：先 `git pull`
+2. **只改 `gantt.json`**，依上方「資料格式」：
+   - 改日期／狀態／進度：找到該任務改欄位值（status 五值、progress 0–100、
+     done 必 100、日期 YYYY-MM-DD 且 end ≥ start）
+   - 新增任務：加進對應 phase 的 `tasks`，`id` 全域唯一、`deps` 填前置任務 id
+   - **本 repo 其他檔案一律不動**（index.html／validate.py 等由板主維護）
+3. **發布**：`python3 update_gantt.py --message "一句話說明"`
+   （自動驗證＋推送；驗證不過會列出原因，修好重跑）
+4. **push 被拒**＝別人剛更新過：重跑一次 update_gantt.py 即可（內建 rebase）
+5. 🔴 **公開紅線（每次都要自檢）**：gantt.json 與 commit 訊息**不可出現**
+   客戶姓名／電話／地址／LINE ID／Email／統編／客戶代號；人員一律
+   角色代稱（板主／AI／客服／PT／業務）；任務名用抽象流程詞。
+   拿不準就不要寫，回報板主。
 
 ## 🔴 公開紅線
 
