@@ -29,6 +29,19 @@
      "progress": 100,
      "note": "",
      "deps": []
+    },
+    {
+     "id": "pilot2",
+     "name": "第二批百筆試跑（摘要＋照片索引）",
+     "owner": "AI·PT",
+     "start": "2026-06-05",
+     "end": "2026-06-16",
+     "status": "done",
+     "progress": 100,
+     "note": "起日為板主推估；照片批 6/16 下載",
+     "deps": [
+      "pilot"
+     ]
     }
    ]
   },
@@ -96,6 +109,19 @@
      "deps": [
       "a4"
      ]
+    },
+    {
+     "id": "reorg",
+     "name": "資料底座重整（主體／來源分離＋試跑隔離）",
+     "owner": "AI·板主",
+     "start": "2026-07-06",
+     "end": "2026-07-06",
+     "status": "done",
+     "progress": 100,
+     "note": "含計畫文件收斂結案",
+     "deps": [
+      "a4"
+     ]
     }
    ]
   },
@@ -103,6 +129,28 @@
    "id": "p3",
    "name": "客戶主檔建置",
    "tasks": [
+    {
+     "id": "match",
+     "name": "跨匯出識別機制（三層匹配＋同名拆分）",
+     "owner": "AI",
+     "start": "2026-06-15",
+     "end": "2026-06-15",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "recode",
+     "name": "編碼制度重編裁示",
+     "owner": "板主",
+     "start": "2026-06-18",
+     "end": "2026-06-18",
+     "status": "milestone",
+     "progress": 100,
+     "note": "含跨團隊建置討論交接",
+     "deps": []
+    },
     {
      "id": "m1",
      "name": "編碼制度定案＋對話全文錄入",
