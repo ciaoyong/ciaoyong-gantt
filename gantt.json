@@ -9,39 +9,48 @@
    "name": "試辦階段",
    "tasks": [
     {
-     "id": "pilot",
-     "name": "試辦計劃＋樣本試跑",
-     "owner": "AI·板主",
-     "start": "2026-05-24",
-     "end": "2026-05-31",
-     "status": "done",
-     "progress": 100,
-     "note": "首批試跑 20 位 5/26；客服 5/27 回覆意見",
+     "id": "oa",
+     "name": "業務開通 LINE OA",
+     "owner": "業務",
+     "start": "2026-04-27",
+     "end": "2026-08-31",
+     "status": "active",
+     "progress": 55,
+     "note": "進度為板主粗估",
      "deps": []
     },
     {
-     "id": "rev1",
-     "name": "第一輪外部審查回覆",
+     "id": "pilot",
+     "name": "第一輪 summary 品質檢驗（20 位）",
      "owner": "客服",
-     "start": "2026-05-27",
+     "start": "2026-05-26",
      "end": "2026-05-27",
-     "status": "milestone",
+     "status": "done",
      "progress": 100,
      "note": "",
      "deps": []
     },
     {
-     "id": "pilot2",
-     "name": "第二批百筆試跑（摘要＋照片索引）",
-     "owner": "AI·PT",
-     "start": "2026-06-05",
-     "end": "2026-06-16",
+     "id": "rev2",
+     "name": "第二輪 summary 品質檢驗（100 位）",
+     "owner": "客服",
+     "start": "2026-06-22",
+     "end": "2026-06-26",
      "status": "done",
      "progress": 100,
-     "note": "起日為板主推估；照片批 6/16 下載",
-     "deps": [
-      "pilot"
-     ]
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "rev3",
+     "name": "第三輪 summary 品質檢驗（30 位）",
+     "owner": "客服",
+     "start": "2026-07-04",
+     "end": "2026-07-12",
+     "status": "active",
+     "progress": 50,
+     "note": "全局第一擋點；進度為板主粗估",
+     "deps": []
     }
    ]
   },
@@ -98,19 +107,6 @@
      ]
     },
     {
-     "id": "rev2",
-     "name": "第二輪外部審查回覆",
-     "owner": "客服",
-     "start": "2026-06-26",
-     "end": "2026-06-26",
-     "status": "milestone",
-     "progress": 100,
-     "note": "第二批客服回覆（原誤記 7/5＝入檔日，2026-07-06 更正）",
-     "deps": [
-      "pilot2"
-     ]
-    },
-    {
      "id": "reorg",
      "name": "資料底座重整（主體／來源分離＋試跑隔離）",
      "owner": "AI·板主",
@@ -129,6 +125,17 @@
    "id": "p3",
    "name": "客戶主檔建置",
    "tasks": [
+    {
+     "id": "sum",
+     "name": "summary 任務",
+     "owner": "AI·PT",
+     "start": "2026-05-20",
+     "end": "2026-07-15",
+     "status": "active",
+     "progress": 60,
+     "note": "三批試跑產出；進度為板主粗估",
+     "deps": []
+    },
     {
      "id": "match",
      "name": "跨匯出識別機制（三層匹配＋同名拆分）",
@@ -206,19 +213,6 @@
      "progress": 20,
      "note": "滾動進行；進度為板主粗估",
      "deps": []
-    },
-    {
-     "id": "rev3",
-     "name": "第三輪外部審查",
-     "owner": "客服",
-     "start": "2026-07-06",
-     "end": "2026-07-13",
-     "status": "active",
-     "progress": 0,
-     "note": "全局第一擋點",
-     "deps": [
-      "a4"
-     ]
     },
     {
      "id": "q5",
