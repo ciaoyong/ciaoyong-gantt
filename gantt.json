@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "CRM 開發總規劃",
-    "updated": "2026-07-06"
+    "updated": "2026-07-07"
   },
   "phases": [
     {
@@ -45,8 +45,8 @@
           "id": "rev3",
           "name": "第三輪 summary 品質檢驗（30 位）",
           "owner": "客服",
-          "start": "2026-07-04",
-          "end": "2026-07-12",
+          "start": "2026-07-06",
+          "end": "2026-07-13",
           "status": "active",
           "progress": 50,
           "note": "全局第一擋點；進度為板主粗估",
@@ -282,7 +282,7 @@
           "id": "q8",
           "name": "即時同步（雙來源）",
           "owner": "AI·板主",
-          "start": "2026-07-06",
+          "start": "2026-07-20",
           "end": "2026-08-27",
           "status": "active",
           "progress": 25,
