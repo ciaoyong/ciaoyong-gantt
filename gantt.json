@@ -606,11 +606,11 @@
           "id": "report-data-layer",
           "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
           "owner": "AI",
-          "start": "2026-07-14",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "外包程式代工＋AI 審修；日期為估",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "提前完成：GSC 四維快照＋社群貼文層＋標準化資料檔，已實測",
           "deps": [
             "seo-weekly"
           ]
@@ -619,11 +619,11 @@
           "id": "report-ana-auto",
           "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
           "owner": "AI",
-          "start": "2026-07-16",
+          "start": "2026-07-12",
           "end": "2026-07-22",
-          "status": "idle",
-          "progress": 0,
-          "note": "首播驗收後啟用；板主已核",
+          "status": "active",
+          "progress": 80,
+          "note": "引擎完工已實測（主筆＋稽核退回機制驗證過）；等週三首播驗收後啟用",
           "deps": [
             "seo-weekly",
             "report-data-layer"
@@ -635,9 +635,9 @@
           "owner": "AI·板主",
           "start": "2026-07-14",
           "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "上稿／發文／推播自動餵＋人工補列",
+          "status": "active",
+          "progress": 70,
+          "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
           "deps": []
         }
       ]
