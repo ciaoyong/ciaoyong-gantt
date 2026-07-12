@@ -187,6 +187,17 @@
             "brand-frame",
             "phase2-build"
           ]
+        },
+        {
+          "id": "kn-maintenance",
+          "name": "kn 線維運（編輯回覆優化＋退回輪 patch 驗收）",
+          "owner": "AI·板主",
+          "start": "2026-07-14",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "patch 驗收需板主在場",
+          "deps": []
         }
       ]
     },
@@ -242,6 +253,17 @@
           "status": "idle",
           "progress": 0,
           "note": "內環 Act 首批",
+          "deps": []
+        },
+        {
+          "id": "q3-refresh",
+          "name": "Q3 除舊佈新（archive 瘦身＋IG/FB Bio 改寫）",
+          "owner": "AI·板主",
+          "start": "2026-08-01",
+          "end": "2026-09-30",
+          "status": "idle",
+          "progress": 0,
+          "note": "Q3 觸發已到期；Bio 改寫等品牌定框後一次到位",
           "deps": []
         }
       ]
@@ -546,6 +568,28 @@
           "status": "idle",
           "progress": 0,
           "note": "轉換鏈最後一環；併下批廠商工單（板主已拍板）",
+          "deps": []
+        },
+        {
+          "id": "hs-legacy-cleanup",
+          "name": "好室舊站殘留治理收口（301對應/孤兒清查/客服刪除三件套）",
+          "owner": "板主·廠商",
+          "start": "2026-07-21",
+          "end": "2026-08-08",
+          "status": "idle",
+          "progress": 0,
+          "note": "對象為舊站客服端；plan×3 已收斂待發",
+          "deps": []
+        },
+        {
+          "id": "cy-hocom-fixes",
+          "name": "喬雍站模板層修正批次（客服交接清單）",
+          "owner": "板主·廠商",
+          "start": "2026-07-21",
+          "end": "2026-08-15",
+          "status": "idle",
+          "progress": 0,
+          "note": "hocom 客服端工單；HEAD/JS 暫解已上、待模板根治",
           "deps": []
         }
       ]
