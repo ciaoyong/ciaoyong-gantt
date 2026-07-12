@@ -439,8 +439,8 @@
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
-          "progress": 10,
-          "note": "部分平台外部審核中；日期為估",
+          "progress": 60,
+          "note": "FB×2＋IG 已接通（API 鑰匙落地）；GBP 等外部審核",
           "deps": []
         },
         {
