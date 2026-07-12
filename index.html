@@ -250,6 +250,9 @@
   .kv { display: grid; grid-template-columns: 88px 1fr; gap: 6px 12px; font-size: 14px; }
   .kv .k { color: var(--text-dim); font-weight: 700; }
   .kv .v { color: var(--text); }
+.phase-h{cursor:pointer;user-select:none}
+.phase-h .chev{display:inline-block;width:14px;color:var(--text-faint);font-size:11px}
+.phase-h.collapsed .pname{opacity:.75}
 </style>
 </head>
 <body>
@@ -583,13 +586,21 @@ function closeHelp(){
 function parseD(s){ const [y,m,d]=s.split("-").map(Number); return new Date(y, m-1, d); }
 function fmtD(dt){ return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(2,"0")+"-"+String(dt.getDate()).padStart(2,"0"); }
 function today(){ const n=new Date(); return new Date(n.getFullYear(),n.getMonth(),n.getDate()); }
+const LS_COLLAPSE="ciaoyong-gantt-collapse-v1";
+function collapseMap(){ try{return JSON.parse(localStorage.getItem(LS_COLLAPSE)||"{}")}catch(e){return{}} }
+function isCollapsed(p){ const m=collapseMap(); return (p.id in m)? !!m[p.id] : p.name.startsWith("\ud83d\uddc4"); }
+function toggleCollapse(id){ const m=collapseMap(); const p=state.phases.find(x=>x.id===id); if(!p)return;
+  m[id]=!isCollapsed(p); localStorage.setItem(LS_COLLAPSE,JSON.stringify(m)); render(); }
+
 function allTasks(){ return state.phases.flatMap(p=>p.tasks.map(t=>({...t, phaseId:p.id}))); }
 
 function range(){
   const ts = allTasks();
   let min=Infinity, max=-Infinity;
   /* 修法①：無日期任務不進時間軸計算，不崩板 */
-  ts.forEach(t=>{ if(t._nodate) return; min=Math.min(min, parseD(t.start).getTime()); max=Math.max(max, parseD(t.end).getTime()); });
+  ts.forEach(t=>{ if(t._nodate) return;
+    const ph=state.phases.find(p=>p.id===t.phaseId); if(ph && isCollapsed(ph)) return;
+    min=Math.min(min, parseD(t.start).getTime()); max=Math.max(max, parseD(t.end).getTime()); });
   const tdy = today().getTime();
   min=Math.min(min,tdy); max=Math.max(max,tdy);
   if(!isFinite(min)){ min=tdy; max=tdy; }
@@ -632,12 +643,13 @@ function render() {
     pnum++;
     const pt=p.tasks;
     const avg = pt.length? Math.round(pt.reduce((a,t)=>a+(t.status==="milestone"?(t.progress||0):t.progress),0)/pt.length):0;
-    html += `<div class="phase-h"><div class="pl"><span class="pnum">${pnum}</span><span class="pname">${esc(p.name)}</span>`
-         + `<span class="pmeta">${avg}%</span>`
+    const coll = isCollapsed(p);
+    html += `<div class="phase-h${coll?" collapsed":""}" data-collapse="${p.id}" title="點標題列收合／展開"><div class="pl"><span class="chev">${coll?"▸":"▾"}</span><span class="pnum">${pnum}</span><span class="pname">${esc(p.name)}</span>`
+         + `<span class="pmeta">${coll?pt.length+" 項・":""}${avg}%</span>`
          + `<button class="miniadd" data-addphasetask="${p.id}">＋任務</button></div>`
          + `<div class="fill" style="position:relative">${gridBg}</div></div>`;
 
-    pt.forEach(t=>{
+    if(!coll) pt.forEach(t=>{
       let barHtml="";
       if(t._nodate){
         /* 修法①：無日期 → 列出但不畫條，明著標示待排程 */
@@ -741,6 +753,9 @@ function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">
 
 /* ---------- interactions ---------- */
 function wire(){
+  document.querySelectorAll("[data-collapse]").forEach(el=>{
+    el.addEventListener("click",e=>{ if(e.target.closest("button,a,input")) return; toggleCollapse(el.dataset.collapse); });
+  });
   canvas.querySelectorAll(".row").forEach(r=>{
     r.addEventListener("click", e=>{
       if(EDIT_MODE && e.target.closest("[data-cycle]")) return;

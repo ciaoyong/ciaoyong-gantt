@@ -882,6 +882,100 @@
           ]
         }
       ]
+    },
+    {
+      "id": "hist",
+      "name": "🗄 已完工歷史（4 月中起・點標題展開）",
+      "tasks": [
+        {
+          "id": "hist-mkt-audit",
+          "name": "行銷現況盤點（雙品牌官網 57 頁深度爬取）",
+          "owner": "AI·板主",
+          "start": "2026-04-16",
+          "end": "2026-04-16",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "hist-content-meeting",
+          "name": "雙品牌網站內容編輯會議定案（三版位分工＋R&R）",
+          "owner": "板主",
+          "start": "2026-05-23",
+          "end": "2026-05-23",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "hist-blog-gem",
+          "name": "Blog 排版 Gem 路線（評估→試作→判定暫停）",
+          "owner": "AI·板主",
+          "start": "2026-05-26",
+          "end": "2026-06-25",
+          "status": "done",
+          "progress": 100,
+          "note": "6/25 判定暫不續做，路線收斂到自動上稿線",
+          "deps": []
+        },
+        {
+          "id": "hist-brandbook",
+          "name": "好室品牌書定稿（策略＋品牌精神三值/Slogan/CTA）",
+          "owner": "板主",
+          "start": "2026-06-26",
+          "end": "2026-06-27",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "hist-cy-css",
+          "name": "喬雍官網 CSS 地基全站化＋內容整備",
+          "owner": "AI",
+          "start": "2026-06-29",
+          "end": "2026-07-05",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "hist-redirects",
+          "name": "雙品牌舊頁轉址與殘留清查批次",
+          "owner": "AI",
+          "start": "2026-07-01",
+          "end": "2026-07-03",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "hist-kn-line",
+          "name": "喬雍知識文章自動上稿線開發上線",
+          "owner": "AI",
+          "start": "2026-07-02",
+          "end": "2026-07-11",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "hist-seo-phase1",
+          "name": "GSC/GA4 接手 Phase 1 全通（週報／月表／PDF 報表引擎）",
+          "owner": "AI",
+          "start": "2026-07-09",
+          "end": "2026-07-10",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        }
+      ]
     }
   ]
 }
