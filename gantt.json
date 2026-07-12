@@ -5,546 +5,8 @@
   },
   "phases": [
     {
-      "id": "p1",
-      "name": "S1 基礎層·CRM｜試辦階段",
-      "tasks": [
-        {
-          "id": "oa",
-          "name": "業務開通 LINE OA",
-          "owner": "業務",
-          "start": "2026-04-27",
-          "end": "2026-08-31",
-          "status": "active",
-          "progress": 55,
-          "note": "進度為板主粗估",
-          "deps": []
-        },
-        {
-          "id": "pilot",
-          "name": "第一輪 summary 品質檢驗（20 位）",
-          "owner": "客服",
-          "start": "2026-05-26",
-          "end": "2026-05-27",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "rev2",
-          "name": "第二輪 summary 品質檢驗（100 位）",
-          "owner": "客服",
-          "start": "2026-06-22",
-          "end": "2026-06-26",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "rev3",
-          "name": "第三輪 summary 品質檢驗（30 位）",
-          "owner": "客服",
-          "start": "2026-07-06",
-          "end": "2026-07-13",
-          "status": "active",
-          "progress": 50,
-          "note": "全局第一擋點；進度為板主粗估",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "p2",
-      "name": "S1 基礎層·CRM｜歷史資料歸檔",
-      "tasks": [
-        {
-          "id": "a1",
-          "name": "歸檔計劃定案＋編號盤查",
-          "owner": "AI·板主",
-          "start": "2026-07-02",
-          "end": "2026-07-03",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "a2",
-          "name": "資料匯入（全量批）",
-          "owner": "板主",
-          "start": "2026-07-03",
-          "end": "2026-07-03",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "a3",
-          "name": "資料清洗＋編碼比對",
-          "owner": "AI",
-          "start": "2026-07-04",
-          "end": "2026-07-04",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "a2"
-          ]
-        },
-        {
-          "id": "a4",
-          "name": "試跑批摘要產出＋平台同步",
-          "owner": "AI·PT",
-          "start": "2026-07-04",
-          "end": "2026-07-04",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "a3"
-          ]
-        },
-        {
-          "id": "reorg",
-          "name": "資料底座重整（主體／來源分離＋試跑隔離）",
-          "owner": "AI·板主",
-          "start": "2026-07-06",
-          "end": "2026-07-06",
-          "status": "done",
-          "progress": 100,
-          "note": "含計畫文件收斂結案",
-          "deps": [
-            "a4"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p3",
-      "name": "S1 基礎層·CRM｜客戶主檔建置",
-      "tasks": [
-        {
-          "id": "sum",
-          "name": "summary 任務",
-          "owner": "AI·PT",
-          "start": "2026-05-20",
-          "end": "2026-07-15",
-          "status": "active",
-          "progress": 60,
-          "note": "三批試跑產出；進度為板主粗估",
-          "deps": []
-        },
-        {
-          "id": "match",
-          "name": "跨匯出識別機制（三層匹配＋同名拆分）",
-          "owner": "AI",
-          "start": "2026-06-15",
-          "end": "2026-06-15",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "recode",
-          "name": "編碼制度重編",
-          "owner": "板主",
-          "start": "2026-07-03",
-          "end": "2026-07-25",
-          "status": "active",
-          "progress": 50,
-          "note": "7/3 裁示啟動，預計 7/25 完成；進度為板主粗估",
-          "deps": []
-        },
-        {
-          "id": "m1",
-          "name": "編碼制度定案＋對話全文錄入",
-          "owner": "AI",
-          "start": "2026-07-04",
-          "end": "2026-07-04",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "a3"
-          ]
-        },
-        {
-          "id": "m2",
-          "name": "欄位清洗（聯絡方式／來源）",
-          "owner": "AI",
-          "start": "2026-07-05",
-          "end": "2026-07-05",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "m1"
-          ]
-        },
-        {
-          "id": "m3",
-          "name": "開發總規劃定案＋主檔更名",
-          "owner": "AI·板主",
-          "start": "2026-07-05",
-          "end": "2026-07-05",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "m2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p4",
-      "name": "S1 基礎層·CRM｜開發主線",
-      "tasks": [
-        {
-          "id": "img",
-          "name": "影像資料檢核與補抓",
-          "owner": "PT",
-          "start": "2026-07-04",
-          "end": "2026-09-30",
-          "status": "active",
-          "progress": 20,
-          "note": "滾動進行；進度為板主粗估",
-          "deps": []
-        },
-        {
-          "id": "q5",
-          "name": "影像連結建檔",
-          "owner": "AI·PT",
-          "start": "2026-07-10",
-          "end": "2026-09-30",
-          "status": "active",
-          "progress": 10,
-          "note": "隨影像補抓滾動供料",
-          "deps": [
-            "img",
-            "m1"
-          ]
-        },
-        {
-          "id": "q1",
-          "name": "摘要規則改版＋交叉審查",
-          "owner": "AI",
-          "start": "2026-07-10",
-          "end": "2026-07-10",
-          "status": "done",
-          "progress": 100,
-          "note": "提前完成：規則合併單一定案＋模型校準（兩輪）＋自動格式驗證工具",
-          "deps": [
-            "rev3"
-          ]
-        },
-        {
-          "id": "q2",
-          "name": "全量摘要產出（含平台同步）",
-          "owner": "AI·PT",
-          "start": "2026-07-11",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "量產計劃書已核准；範圍含第二帳號；上傳收斂為活躍客戶首波＋週增量（混合自動化）",
-          "deps": [
-            "q1"
-          ]
-        },
-        {
-          "id": "q3",
-          "name": "資料結構自我描述",
-          "owner": "AI",
-          "start": "2026-07-20",
-          "end": "2026-07-28",
-          "status": "idle",
-          "progress": 0,
-          "note": "依 q1 定稿格式，與 q2 並行",
-          "deps": [
-            "q1"
-          ]
-        },
-        {
-          "id": "q6",
-          "name": "單據錄入",
-          "owner": "AI·客服",
-          "start": "2026-07-20",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "等單據檔案提供",
-          "deps": []
-        },
-        {
-          "id": "q8",
-          "name": "即時同步（雙來源）",
-          "owner": "AI·板主",
-          "start": "2026-07-20",
-          "end": "2026-08-27",
-          "status": "active",
-          "progress": 25,
-          "note": "設計段提前完成：雙來源計劃書＋接收器實作＋格式合併規格（兩輪交叉審定）；待端點選型與欄位盤點",
-          "deps": [
-            "db"
-          ]
-        },
-        {
-          "id": "q4",
-          "name": "備份完整性機制",
-          "owner": "AI·板主",
-          "start": "2026-07-31",
-          "end": "2026-08-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "主檔定型後起算之運行期",
-          "deps": [
-            "q2",
-            "q3"
-          ]
-        },
-        {
-          "id": "db",
-          "name": "資料庫底座與查詢介面",
-          "owner": "AI",
-          "start": "2026-08-01",
-          "end": "2026-08-05",
-          "status": "idle",
-          "progress": 0,
-          "note": "儲存格式改定伺服器式資料庫（檔案為真相源、資料庫為衍生查詢層）",
-          "deps": [
-            "q2",
-            "q3"
-          ]
-        },
-        {
-          "id": "out",
-          "name": "知識產出（SOP／PDCA）",
-          "owner": "AI",
-          "start": "2026-08-01",
-          "end": "2026-08-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "q2"
-          ]
-        },
-        {
-          "id": "q7",
-          "name": "第二來源對話結構化",
-          "owner": "AI",
-          "start": "2026-08-06",
-          "end": "2026-08-12",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "q2",
-            "db"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "s2",
-      "name": "S2 基礎層｜資料通路與報表",
-      "tasks": [
-        {
-          "id": "seo-weekly",
-          "name": "首份自動流量週報驗收",
-          "owner": "AI",
-          "start": "2026-07-15",
-          "end": "2026-07-15",
-          "status": "milestone",
-          "progress": 0,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "src-social-connect",
-          "name": "社群流量監測接入（三平台）",
-          "owner": "AI·板主",
-          "start": "2026-07-12",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 60,
-          "note": "FB×2＋IG 已接通（API 鑰匙落地）；GBP 等外部審核",
-          "deps": []
-        },
-        {
-          "id": "report-data-layer",
-          "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "提前完成：GSC 四維快照＋社群貼文層＋標準化資料檔，已實測",
-          "deps": [
-            "seo-weekly"
-          ]
-        },
-        {
-          "id": "report-ana-auto",
-          "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-22",
-          "status": "active",
-          "progress": 80,
-          "note": "引擎完工已實測（主筆＋稽核退回機制驗證過）；等週三首播驗收後啟用",
-          "deps": [
-            "seo-weekly",
-            "report-data-layer"
-          ]
-        },
-        {
-          "id": "marketing-actions",
-          "name": "行銷工作紀錄表起建",
-          "owner": "AI·板主",
-          "start": "2026-07-14",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 70,
-          "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "p5",
-      "name": "S3 基礎層｜品牌策略定框（內容總閘）",
-      "tasks": [
-        {
-          "id": "brand-frame",
-          "name": "好室品牌策略定框（找頭）",
-          "owner": "板主",
-          "start": "2026-07-12",
-          "end": "2026-08-01",
-          "status": "active",
-          "progress": 10,
-          "note": "行銷線最大前置；日期與進度為粗估",
-          "deps": []
-        },
-        {
-          "id": "slogan-fix",
-          "name": "輔助標語改寫定案",
-          "owner": "板主",
-          "start": "2026-08-01",
-          "end": "2026-08-01",
-          "status": "milestone",
-          "progress": 0,
-          "note": "日期為估",
-          "deps": [
-            "brand-frame"
-          ]
-        },
-        {
-          "id": "about-rewrite",
-          "name": "官網「關於我們」語調改寫定稿",
-          "owner": "AI·板主",
-          "start": "2026-08-03",
-          "end": "2026-08-07",
-          "status": "idle",
-          "progress": 0,
-          "note": "改寫稿內部討論中",
-          "deps": [
-            "brand-frame"
-          ]
-        },
-        {
-          "id": "mkt-plan-rev",
-          "name": "行銷計畫與社群計畫修訂",
-          "owner": "板主·AI",
-          "start": "2026-08-03",
-          "end": "2026-08-14",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "brand-frame"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p9",
-      "name": "S4 基礎層｜官網地面與知識庫收尾",
-      "tasks": [
-        {
-          "id": "wiki-restruct",
-          "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "wiki-consist",
-          "name": "知識庫矛盾與過時修正批次",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "vendor-batch",
-          "name": "官網修正工單批次（追蹤碼驗收／轉址／資訊對齊）",
-          "owner": "板主·廠商",
-          "start": "2026-07-12",
-          "end": "2026-07-25",
-          "status": "active",
-          "progress": 30,
-          "note": "廠商端進行中；日期與進度為估",
-          "deps": []
-        },
-        {
-          "id": "wiki-datafix",
-          "name": "知識庫欄位補值（待板主提供數值）",
-          "owner": "板主·AI",
-          "start": "2026-07-14",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "含基本資料欄位與年度營運數字",
-          "deps": []
-        },
-        {
-          "id": "faq-layout-vendor",
-          "name": "FAQ 版型 A 廠商工單（側欄目錄＋h2/h3＋CTA 版位）",
-          "owner": "板主·廠商",
-          "start": "2026-07-13",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "工單已擬妥待送；與 vendor-batch 同批追蹤",
-          "deps": []
-        },
-        {
-          "id": "faq-selfserve",
-          "name": "FAQ 基本修繕包上線（可讀性＋深連結＋手機修正）",
-          "owner": "AI",
-          "start": "2026-07-14",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "修繕包已備妥；避開廠商後台工作窗後擇時上線",
-          "deps": []
-        }
-      ]
-    },
-    {
       "id": "ring-p",
-      "name": "內環 P｜選題",
+      "name": "內環 P｜選題（Plan）",
       "tasks": [
         {
           "id": "topic-plan",
@@ -574,7 +36,7 @@
     },
     {
       "id": "ring-d",
-      "name": "內環 D｜六線產製上稿",
+      "name": "內環 D｜六線產製上稿（Do）",
       "tasks": [
         {
           "id": "phase2-approve",
@@ -729,8 +191,8 @@
       ]
     },
     {
-      "id": "ring-ca",
-      "name": "內環 C+A｜成效回看與調整",
+      "id": "ring-c",
+      "name": "內環 C｜成效回看（Check）",
       "tasks": [
         {
           "id": "seo-cy-crawl",
@@ -755,17 +217,6 @@
           "deps": []
         },
         {
-          "id": "act-legacy-fix",
-          "name": "舊文補強批次（死連結＋排版＋SEO 待補）",
-          "owner": "AI",
-          "start": "2026-08-01",
-          "end": "2026-08-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "內環 Act 首批",
-          "deps": []
-        },
-        {
           "id": "cycle1",
           "name": "內環全環首轉（選題→上稿→回看跑通一圈）",
           "owner": "AI·板主",
@@ -779,8 +230,25 @@
       ]
     },
     {
+      "id": "ring-a",
+      "name": "內環 A｜調整與補強（Act）",
+      "tasks": [
+        {
+          "id": "act-legacy-fix",
+          "name": "舊文補強批次（死連結＋排版＋SEO 待補）",
+          "owner": "AI",
+          "start": "2026-08-01",
+          "end": "2026-08-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "內環 Act 首批",
+          "deps": []
+        }
+      ]
+    },
+    {
       "id": "outer",
-      "name": "外環｜品牌校準（客戶認知三源→落差分析）",
+      "name": "外環｜品牌校準 PDCA（客戶認知三源→落差→回饋策略）",
       "tasks": [
         {
           "id": "src-search",
@@ -873,6 +341,544 @@
           "note": "",
           "deps": [
             "b2b-oa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "基礎層 S2｜資料通路與報表",
+      "tasks": [
+        {
+          "id": "seo-weekly",
+          "name": "首份自動流量週報驗收",
+          "owner": "AI",
+          "start": "2026-07-15",
+          "end": "2026-07-15",
+          "status": "milestone",
+          "progress": 0,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "src-social-connect",
+          "name": "社群流量監測接入（三平台）",
+          "owner": "AI·板主",
+          "start": "2026-07-12",
+          "end": "2026-07-31",
+          "status": "active",
+          "progress": 60,
+          "note": "FB×2＋IG 已接通（API 鑰匙落地）；GBP 等外部審核",
+          "deps": []
+        },
+        {
+          "id": "report-data-layer",
+          "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "提前完成：GSC 四維快照＋社群貼文層＋標準化資料檔，已實測",
+          "deps": [
+            "seo-weekly"
+          ]
+        },
+        {
+          "id": "report-ana-auto",
+          "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-22",
+          "status": "active",
+          "progress": 80,
+          "note": "引擎完工已實測（主筆＋稽核退回機制驗證過）；等週三首播驗收後啟用",
+          "deps": [
+            "seo-weekly",
+            "report-data-layer"
+          ]
+        },
+        {
+          "id": "marketing-actions",
+          "name": "行銷工作紀錄表起建",
+          "owner": "AI·板主",
+          "start": "2026-07-14",
+          "end": "2026-07-31",
+          "status": "active",
+          "progress": 70,
+          "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "name": "基礎層 S3｜品牌策略定框（內容總閘）",
+      "tasks": [
+        {
+          "id": "brand-frame",
+          "name": "好室品牌策略定框（找頭）",
+          "owner": "板主",
+          "start": "2026-07-12",
+          "end": "2026-08-01",
+          "status": "active",
+          "progress": 10,
+          "note": "行銷線最大前置；日期與進度為粗估",
+          "deps": []
+        },
+        {
+          "id": "slogan-fix",
+          "name": "輔助標語改寫定案",
+          "owner": "板主",
+          "start": "2026-08-01",
+          "end": "2026-08-01",
+          "status": "milestone",
+          "progress": 0,
+          "note": "日期為估",
+          "deps": [
+            "brand-frame"
+          ]
+        },
+        {
+          "id": "about-rewrite",
+          "name": "官網「關於我們」語調改寫定稿",
+          "owner": "AI·板主",
+          "start": "2026-08-03",
+          "end": "2026-08-07",
+          "status": "idle",
+          "progress": 0,
+          "note": "改寫稿內部討論中",
+          "deps": [
+            "brand-frame"
+          ]
+        },
+        {
+          "id": "mkt-plan-rev",
+          "name": "行銷計畫與社群計畫修訂",
+          "owner": "板主·AI",
+          "start": "2026-08-03",
+          "end": "2026-08-14",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "brand-frame"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "name": "基礎層 S4｜官網地面與知識庫",
+      "tasks": [
+        {
+          "id": "wiki-restruct",
+          "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "wiki-consist",
+          "name": "知識庫矛盾與過時修正批次",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "vendor-batch",
+          "name": "官網修正工單批次（追蹤碼驗收／轉址／資訊對齊）",
+          "owner": "板主·廠商",
+          "start": "2026-07-12",
+          "end": "2026-07-25",
+          "status": "active",
+          "progress": 30,
+          "note": "廠商端進行中；日期與進度為估",
+          "deps": []
+        },
+        {
+          "id": "wiki-datafix",
+          "name": "知識庫欄位補值（待板主提供數值）",
+          "owner": "板主·AI",
+          "start": "2026-07-14",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "含基本資料欄位與年度營運數字",
+          "deps": []
+        },
+        {
+          "id": "faq-layout-vendor",
+          "name": "FAQ 版型 A 廠商工單（側欄目錄＋h2/h3＋CTA 版位）",
+          "owner": "板主·廠商",
+          "start": "2026-07-13",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "工單已擬妥待送；與 vendor-batch 同批追蹤",
+          "deps": []
+        },
+        {
+          "id": "faq-selfserve",
+          "name": "FAQ 基本修繕包上線（可讀性＋深連結＋手機修正）",
+          "owner": "AI",
+          "start": "2026-07-14",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "修繕包已備妥；避開廠商後台工作窗後擇時上線",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "p1",
+      "name": "基礎層 S1｜CRM：試辦階段",
+      "tasks": [
+        {
+          "id": "oa",
+          "name": "業務開通 LINE OA",
+          "owner": "業務",
+          "start": "2026-04-27",
+          "end": "2026-08-31",
+          "status": "active",
+          "progress": 55,
+          "note": "進度為板主粗估",
+          "deps": []
+        },
+        {
+          "id": "pilot",
+          "name": "第一輪 summary 品質檢驗（20 位）",
+          "owner": "客服",
+          "start": "2026-05-26",
+          "end": "2026-05-27",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "rev2",
+          "name": "第二輪 summary 品質檢驗（100 位）",
+          "owner": "客服",
+          "start": "2026-06-22",
+          "end": "2026-06-26",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "rev3",
+          "name": "第三輪 summary 品質檢驗（30 位）",
+          "owner": "客服",
+          "start": "2026-07-06",
+          "end": "2026-07-13",
+          "status": "active",
+          "progress": 50,
+          "note": "全局第一擋點；進度為板主粗估",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "name": "基礎層 S1｜CRM：歷史資料歸檔",
+      "tasks": [
+        {
+          "id": "a1",
+          "name": "歸檔計劃定案＋編號盤查",
+          "owner": "AI·板主",
+          "start": "2026-07-02",
+          "end": "2026-07-03",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "a2",
+          "name": "資料匯入（全量批）",
+          "owner": "板主",
+          "start": "2026-07-03",
+          "end": "2026-07-03",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "a3",
+          "name": "資料清洗＋編碼比對",
+          "owner": "AI",
+          "start": "2026-07-04",
+          "end": "2026-07-04",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": [
+            "a2"
+          ]
+        },
+        {
+          "id": "a4",
+          "name": "試跑批摘要產出＋平台同步",
+          "owner": "AI·PT",
+          "start": "2026-07-04",
+          "end": "2026-07-04",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": [
+            "a3"
+          ]
+        },
+        {
+          "id": "reorg",
+          "name": "資料底座重整（主體／來源分離＋試跑隔離）",
+          "owner": "AI·板主",
+          "start": "2026-07-06",
+          "end": "2026-07-06",
+          "status": "done",
+          "progress": 100,
+          "note": "含計畫文件收斂結案",
+          "deps": [
+            "a4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "name": "基礎層 S1｜CRM：客戶主檔建置",
+      "tasks": [
+        {
+          "id": "sum",
+          "name": "summary 任務",
+          "owner": "AI·PT",
+          "start": "2026-05-20",
+          "end": "2026-07-15",
+          "status": "active",
+          "progress": 60,
+          "note": "三批試跑產出；進度為板主粗估",
+          "deps": []
+        },
+        {
+          "id": "match",
+          "name": "跨匯出識別機制（三層匹配＋同名拆分）",
+          "owner": "AI",
+          "start": "2026-06-15",
+          "end": "2026-06-15",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "recode",
+          "name": "編碼制度重編",
+          "owner": "板主",
+          "start": "2026-07-03",
+          "end": "2026-07-25",
+          "status": "active",
+          "progress": 50,
+          "note": "7/3 裁示啟動，預計 7/25 完成；進度為板主粗估",
+          "deps": []
+        },
+        {
+          "id": "m1",
+          "name": "編碼制度定案＋對話全文錄入",
+          "owner": "AI",
+          "start": "2026-07-04",
+          "end": "2026-07-04",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": [
+            "a3"
+          ]
+        },
+        {
+          "id": "m2",
+          "name": "欄位清洗（聯絡方式／來源）",
+          "owner": "AI",
+          "start": "2026-07-05",
+          "end": "2026-07-05",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": [
+            "m1"
+          ]
+        },
+        {
+          "id": "m3",
+          "name": "開發總規劃定案＋主檔更名",
+          "owner": "AI·板主",
+          "start": "2026-07-05",
+          "end": "2026-07-05",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": [
+            "m2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "name": "基礎層 S1｜CRM：開發主線",
+      "tasks": [
+        {
+          "id": "img",
+          "name": "影像資料檢核與補抓",
+          "owner": "PT",
+          "start": "2026-07-04",
+          "end": "2026-09-30",
+          "status": "active",
+          "progress": 20,
+          "note": "滾動進行；進度為板主粗估",
+          "deps": []
+        },
+        {
+          "id": "q5",
+          "name": "影像連結建檔",
+          "owner": "AI·PT",
+          "start": "2026-07-10",
+          "end": "2026-09-30",
+          "status": "active",
+          "progress": 10,
+          "note": "隨影像補抓滾動供料",
+          "deps": [
+            "img",
+            "m1"
+          ]
+        },
+        {
+          "id": "q1",
+          "name": "摘要規則改版＋交叉審查",
+          "owner": "AI",
+          "start": "2026-07-10",
+          "end": "2026-07-10",
+          "status": "done",
+          "progress": 100,
+          "note": "提前完成：規則合併單一定案＋模型校準（兩輪）＋自動格式驗證工具",
+          "deps": [
+            "rev3"
+          ]
+        },
+        {
+          "id": "q2",
+          "name": "全量摘要產出（含平台同步）",
+          "owner": "AI·PT",
+          "start": "2026-07-11",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "量產計劃書已核准；範圍含第二帳號；上傳收斂為活躍客戶首波＋週增量（混合自動化）",
+          "deps": [
+            "q1"
+          ]
+        },
+        {
+          "id": "q3",
+          "name": "資料結構自我描述",
+          "owner": "AI",
+          "start": "2026-07-20",
+          "end": "2026-07-28",
+          "status": "idle",
+          "progress": 0,
+          "note": "依 q1 定稿格式，與 q2 並行",
+          "deps": [
+            "q1"
+          ]
+        },
+        {
+          "id": "q6",
+          "name": "單據錄入",
+          "owner": "AI·客服",
+          "start": "2026-07-20",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "等單據檔案提供",
+          "deps": []
+        },
+        {
+          "id": "q8",
+          "name": "即時同步（雙來源）",
+          "owner": "AI·板主",
+          "start": "2026-07-20",
+          "end": "2026-08-27",
+          "status": "active",
+          "progress": 25,
+          "note": "設計段提前完成：雙來源計劃書＋接收器實作＋格式合併規格（兩輪交叉審定）；待端點選型與欄位盤點",
+          "deps": [
+            "db"
+          ]
+        },
+        {
+          "id": "q4",
+          "name": "備份完整性機制",
+          "owner": "AI·板主",
+          "start": "2026-07-31",
+          "end": "2026-08-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "主檔定型後起算之運行期",
+          "deps": [
+            "q2",
+            "q3"
+          ]
+        },
+        {
+          "id": "db",
+          "name": "資料庫底座與查詢介面",
+          "owner": "AI",
+          "start": "2026-08-01",
+          "end": "2026-08-05",
+          "status": "idle",
+          "progress": 0,
+          "note": "儲存格式改定伺服器式資料庫（檔案為真相源、資料庫為衍生查詢層）",
+          "deps": [
+            "q2",
+            "q3"
+          ]
+        },
+        {
+          "id": "out",
+          "name": "知識產出（SOP／PDCA）",
+          "owner": "AI",
+          "start": "2026-08-01",
+          "end": "2026-08-15",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "q2"
+          ]
+        },
+        {
+          "id": "q7",
+          "name": "第二來源對話結構化",
+          "owner": "AI",
+          "start": "2026-08-06",
+          "end": "2026-08-12",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "q2",
+            "db"
           ]
         }
       ]
