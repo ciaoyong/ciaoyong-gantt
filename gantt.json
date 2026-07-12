@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "喬雍 內容行銷PDCA × CRM 總計畫",
-    "updated": "2026-07-12"
+    "updated": "2026-07-13"
   },
   "phases": [
     {
@@ -197,6 +197,28 @@
           "status": "idle",
           "progress": 0,
           "note": "patch 驗收需板主在場",
+          "deps": []
+        },
+        {
+          "id": "gbp-qa",
+          "name": "GBP 自問自答預埋（FAQ→問答格式交接包）",
+          "owner": "AI·板主",
+          "start": "2026-07-21",
+          "end": "2026-08-08",
+          "status": "idle",
+          "progress": 0,
+          "note": "AI 產交接文字包、板主以 Gemini 更新 GBP；細節後議",
+          "deps": []
+        },
+        {
+          "id": "gbp-products",
+          "name": "GBP 產品目錄（服務卡片交接包）",
+          "owner": "AI·板主",
+          "start": "2026-08-01",
+          "end": "2026-08-22",
+          "status": "idle",
+          "progress": 0,
+          "note": "前置：圖片尺寸規範；同上分工",
           "deps": []
         }
       ]
