@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "CRM 開發總規劃",
-    "updated": "2026-07-10"
+    "title": "喬雍 CRM 開發 × 行銷工作 總規劃",
+    "updated": "2026-07-12"
   },
   "phases": [
     {
@@ -345,6 +345,393 @@
             "q2",
             "db"
           ]
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "name": "行銷：品牌基礎",
+      "tasks": [
+        {
+          "id": "brand-frame",
+          "name": "好室品牌策略定框（找頭）",
+          "owner": "板主",
+          "start": "2026-07-12",
+          "end": "2026-08-01",
+          "status": "active",
+          "progress": 10,
+          "note": "行銷線最大前置；日期與進度為粗估",
+          "deps": []
+        },
+        {
+          "id": "slogan-fix",
+          "name": "輔助標語改寫定案",
+          "owner": "板主",
+          "start": "2026-08-01",
+          "end": "2026-08-01",
+          "status": "milestone",
+          "progress": 0,
+          "note": "日期為估",
+          "deps": [
+            "brand-frame"
+          ]
+        },
+        {
+          "id": "about-rewrite",
+          "name": "官網「關於我們」語調改寫定稿",
+          "owner": "AI·板主",
+          "start": "2026-08-03",
+          "end": "2026-08-07",
+          "status": "idle",
+          "progress": 0,
+          "note": "改寫稿內部討論中",
+          "deps": [
+            "brand-frame"
+          ]
+        },
+        {
+          "id": "mkt-plan-rev",
+          "name": "行銷計畫與社群計畫修訂",
+          "owner": "板主·AI",
+          "start": "2026-08-03",
+          "end": "2026-08-14",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "brand-frame"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "name": "行銷：客戶認知三源",
+      "tasks": [
+        {
+          "id": "seo-weekly",
+          "name": "首份自動流量週報驗收",
+          "owner": "AI",
+          "start": "2026-07-15",
+          "end": "2026-07-15",
+          "status": "milestone",
+          "progress": 0,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "src-search",
+          "name": "搜尋源編入（客戶搜尋語彙第一版）",
+          "owner": "AI",
+          "start": "2026-07-15",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "資料已在手，週報首播後開編",
+          "deps": [
+            "seo-weekly"
+          ]
+        },
+        {
+          "id": "src-social-connect",
+          "name": "社群流量監測接入（三平台）",
+          "owner": "AI·板主",
+          "start": "2026-07-12",
+          "end": "2026-07-31",
+          "status": "active",
+          "progress": 10,
+          "note": "部分平台外部審核中；日期為估",
+          "deps": []
+        },
+        {
+          "id": "src-social-edit",
+          "name": "社群源編入",
+          "owner": "AI",
+          "start": "2026-08-03",
+          "end": "2026-08-05",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "src-social-connect"
+          ]
+        },
+        {
+          "id": "crm-feedback",
+          "name": "對話源素材包首批回流",
+          "owner": "AI",
+          "start": "2026-08-12",
+          "end": "2026-08-12",
+          "status": "milestone",
+          "progress": 0,
+          "note": "交接規格已備；預計約一個月；日期為估",
+          "deps": [
+            "out"
+          ]
+        },
+        {
+          "id": "src-dialog-edit",
+          "name": "對話源編入＋客戶認知三源整合",
+          "owner": "AI",
+          "start": "2026-08-17",
+          "end": "2026-08-21",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "crm-feedback",
+            "src-search",
+            "src-social-edit"
+          ]
+        },
+        {
+          "id": "persona-b2c",
+          "name": "好室客戶輪廓建置",
+          "owner": "AI",
+          "start": "2026-08-24",
+          "end": "2026-08-28",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "crm-feedback"
+          ]
+        },
+        {
+          "id": "b2b-oa",
+          "name": "B2B 客服線 LINE OA 開通",
+          "owner": "業務",
+          "start": "2026-09-01",
+          "end": "2026-09-30",
+          "status": "idle",
+          "progress": 0,
+          "note": "排於 2C 客服線之後；日期為估",
+          "deps": [
+            "oa"
+          ]
+        },
+        {
+          "id": "persona-b2b",
+          "name": "喬雍客戶理解建置",
+          "owner": "AI",
+          "start": "2026-10-01",
+          "end": "2026-10-15",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "b2b-oa"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "name": "行銷：SEO 與內容",
+      "tasks": [
+        {
+          "id": "seo-cy-crawl",
+          "name": "喬雍官網 SEO 現況彙整回知識庫",
+          "owner": "AI",
+          "start": "2026-07-14",
+          "end": "2026-07-15",
+          "status": "idle",
+          "progress": 0,
+          "note": "設定已上站，直接撈",
+          "deps": []
+        },
+        {
+          "id": "seo-hs-crawl",
+          "name": "好室官網 SEO 現況彙整（含重整）",
+          "owner": "AI",
+          "start": "2026-07-16",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "站上較零亂，帶回重新整理",
+          "deps": []
+        },
+        {
+          "id": "phase2-approve",
+          "name": "內容管線骨架計畫批准",
+          "owner": "板主",
+          "start": "2026-07-14",
+          "end": "2026-07-14",
+          "status": "milestone",
+          "progress": 0,
+          "note": "日期為估",
+          "deps": []
+        },
+        {
+          "id": "phase2-build",
+          "name": "好室 blog 管線骨架建置（六週）",
+          "owner": "AI",
+          "start": "2026-07-15",
+          "end": "2026-08-25",
+          "status": "idle",
+          "progress": 0,
+          "note": "管線層先行，內容閘另計",
+          "deps": [
+            "phase2-approve"
+          ]
+        },
+        {
+          "id": "topic-plan",
+          "name": "選題清單改版＋內容產出追蹤表",
+          "owner": "AI",
+          "start": "2026-07-20",
+          "end": "2026-07-24",
+          "status": "idle",
+          "progress": 0,
+          "note": "織品題材優先化",
+          "deps": [
+            "phase2-approve"
+          ]
+        },
+        {
+          "id": "content-gate",
+          "name": "好室內容正式上線",
+          "owner": "板主",
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "status": "milestone",
+          "progress": 0,
+          "note": "雙前置：品牌定框＋管線建成；日期為估",
+          "deps": [
+            "brand-frame",
+            "phase2-build"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "name": "行銷：制式 QA 與 KM",
+      "tasks": [
+        {
+          "id": "qa-cy-batch",
+          "name": "喬雍官網文章 QA 首批編製",
+          "owner": "AI",
+          "start": "2026-07-16",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "seo-cy-crawl"
+          ]
+        },
+        {
+          "id": "qa-cy-flow",
+          "name": "新文章隨稿三問答常態線",
+          "owner": "AI",
+          "start": "2026-07-20",
+          "end": "2026-09-30",
+          "status": "idle",
+          "progress": 0,
+          "note": "隨上稿滾動，銜接既有隨稿問答產出",
+          "deps": [
+            "qa-cy-batch"
+          ]
+        },
+        {
+          "id": "qa-hs-collect",
+          "name": "好室定稿素材蒐集",
+          "owner": "AI·板主",
+          "start": "2026-07-12",
+          "end": "2026-08-01",
+          "status": "active",
+          "progress": 10,
+          "note": "品牌定框前的準備段",
+          "deps": []
+        },
+        {
+          "id": "qa-hs-build",
+          "name": "好室 QA 編製",
+          "owner": "AI",
+          "start": "2026-08-10",
+          "end": "2026-08-21",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "brand-frame",
+            "qa-hs-collect"
+          ]
+        },
+        {
+          "id": "km-scope",
+          "name": "喬雍 KM 範圍定義",
+          "owner": "板主·AI",
+          "start": "2026-08-01",
+          "end": "2026-08-07",
+          "status": "idle",
+          "progress": 0,
+          "note": "等板主描述需求輪廓；日期為估",
+          "deps": []
+        },
+        {
+          "id": "km-build",
+          "name": "喬雍 KM 建置",
+          "owner": "AI",
+          "start": "2026-08-10",
+          "end": "2026-08-28",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "km-scope"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "name": "行銷：知識庫與外部收尾",
+      "tasks": [
+        {
+          "id": "wiki-restruct",
+          "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "wiki-consist",
+          "name": "知識庫矛盾與過時修正批次",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "vendor-batch",
+          "name": "官網修正工單批次（追蹤碼驗收／轉址／資訊對齊）",
+          "owner": "板主·廠商",
+          "start": "2026-07-12",
+          "end": "2026-07-25",
+          "status": "active",
+          "progress": 30,
+          "note": "廠商端進行中；日期與進度為估",
+          "deps": []
+        },
+        {
+          "id": "wiki-datafix",
+          "name": "知識庫欄位補值（待板主提供數值）",
+          "owner": "板主·AI",
+          "start": "2026-07-14",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "含基本資料欄位與年度營運數字",
+          "deps": []
         }
       ]
     }
