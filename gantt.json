@@ -601,6 +601,44 @@
             "brand-frame",
             "phase2-build"
           ]
+        },
+        {
+          "id": "report-data-layer",
+          "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
+          "owner": "AI",
+          "start": "2026-07-14",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "外包程式代工＋AI 審修；日期為估",
+          "deps": [
+            "seo-weekly"
+          ]
+        },
+        {
+          "id": "report-ana-auto",
+          "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
+          "owner": "AI",
+          "start": "2026-07-16",
+          "end": "2026-07-22",
+          "status": "idle",
+          "progress": 0,
+          "note": "首播驗收後啟用；板主已核",
+          "deps": [
+            "seo-weekly",
+            "report-data-layer"
+          ]
+        },
+        {
+          "id": "marketing-actions",
+          "name": "行銷工作紀錄表起建",
+          "owner": "AI·板主",
+          "start": "2026-07-14",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "上稿／發文／推播自動餵＋人工補列",
+          "deps": []
         }
       ]
     },
