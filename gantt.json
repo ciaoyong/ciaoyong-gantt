@@ -1,12 +1,12 @@
 {
   "meta": {
-    "title": "喬雍 CRM 開發 × 行銷工作 總規劃",
+    "title": "喬雍 PDCA 總計畫 · CRM 開發 × 行銷內容（雙環×基礎層）",
     "updated": "2026-07-12"
   },
   "phases": [
     {
       "id": "p1",
-      "name": "試辦階段",
+      "name": "S1 基礎層·CRM｜試辦階段",
       "tasks": [
         {
           "id": "oa",
@@ -56,7 +56,7 @@
     },
     {
       "id": "p2",
-      "name": "歷史資料歸檔",
+      "name": "S1 基礎層·CRM｜歷史資料歸檔",
       "tasks": [
         {
           "id": "a1",
@@ -123,7 +123,7 @@
     },
     {
       "id": "p3",
-      "name": "客戶主檔建置",
+      "name": "S1 基礎層·CRM｜客戶主檔建置",
       "tasks": [
         {
           "id": "sum",
@@ -201,7 +201,7 @@
     },
     {
       "id": "p4",
-      "name": "開發主線",
+      "name": "S1 基礎層·CRM｜開發主線",
       "tasks": [
         {
           "id": "img",
@@ -349,8 +349,74 @@
       ]
     },
     {
+      "id": "s2",
+      "name": "S2 基礎層｜資料通路與報表",
+      "tasks": [
+        {
+          "id": "seo-weekly",
+          "name": "首份自動流量週報驗收",
+          "owner": "AI",
+          "start": "2026-07-15",
+          "end": "2026-07-15",
+          "status": "milestone",
+          "progress": 0,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "src-social-connect",
+          "name": "社群流量監測接入（三平台）",
+          "owner": "AI·板主",
+          "start": "2026-07-12",
+          "end": "2026-07-31",
+          "status": "active",
+          "progress": 60,
+          "note": "FB×2＋IG 已接通（API 鑰匙落地）；GBP 等外部審核",
+          "deps": []
+        },
+        {
+          "id": "report-data-layer",
+          "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "提前完成：GSC 四維快照＋社群貼文層＋標準化資料檔，已實測",
+          "deps": [
+            "seo-weekly"
+          ]
+        },
+        {
+          "id": "report-ana-auto",
+          "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-22",
+          "status": "active",
+          "progress": 80,
+          "note": "引擎完工已實測（主筆＋稽核退回機制驗證過）；等週三首播驗收後啟用",
+          "deps": [
+            "seo-weekly",
+            "report-data-layer"
+          ]
+        },
+        {
+          "id": "marketing-actions",
+          "name": "行銷工作紀錄表起建",
+          "owner": "AI·板主",
+          "start": "2026-07-14",
+          "end": "2026-07-31",
+          "status": "active",
+          "progress": 70,
+          "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
+          "deps": []
+        }
+      ]
+    },
+    {
       "id": "p5",
-      "name": "行銷：品牌基礎",
+      "name": "S3 基礎層｜品牌策略定框（內容總閘）",
       "tasks": [
         {
           "id": "brand-frame",
@@ -405,20 +471,317 @@
       ]
     },
     {
-      "id": "p6",
-      "name": "行銷：客戶認知三源",
+      "id": "p9",
+      "name": "S4 基礎層｜官網地面與知識庫收尾",
       "tasks": [
         {
-          "id": "seo-weekly",
-          "name": "首份自動流量週報驗收",
+          "id": "wiki-restruct",
+          "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
           "owner": "AI",
-          "start": "2026-07-15",
-          "end": "2026-07-15",
-          "status": "milestone",
-          "progress": 0,
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
           "note": "",
           "deps": []
         },
+        {
+          "id": "wiki-consist",
+          "name": "知識庫矛盾與過時修正批次",
+          "owner": "AI",
+          "start": "2026-07-12",
+          "end": "2026-07-12",
+          "status": "done",
+          "progress": 100,
+          "note": "",
+          "deps": []
+        },
+        {
+          "id": "vendor-batch",
+          "name": "官網修正工單批次（追蹤碼驗收／轉址／資訊對齊）",
+          "owner": "板主·廠商",
+          "start": "2026-07-12",
+          "end": "2026-07-25",
+          "status": "active",
+          "progress": 30,
+          "note": "廠商端進行中；日期與進度為估",
+          "deps": []
+        },
+        {
+          "id": "wiki-datafix",
+          "name": "知識庫欄位補值（待板主提供數值）",
+          "owner": "板主·AI",
+          "start": "2026-07-14",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "含基本資料欄位與年度營運數字",
+          "deps": []
+        },
+        {
+          "id": "faq-layout-vendor",
+          "name": "FAQ 版型 A 廠商工單（側欄目錄＋h2/h3＋CTA 版位）",
+          "owner": "板主·廠商",
+          "start": "2026-07-13",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "工單已擬妥待送；與 vendor-batch 同批追蹤",
+          "deps": []
+        },
+        {
+          "id": "faq-selfserve",
+          "name": "FAQ 基本修繕包上線（可讀性＋深連結＋手機修正）",
+          "owner": "AI",
+          "start": "2026-07-14",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "修繕包已備妥；避開廠商後台工作窗後擇時上線",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "ring-p",
+      "name": "內環 P｜選題",
+      "tasks": [
+        {
+          "id": "topic-plan",
+          "name": "選題清單改版＋內容產出追蹤表",
+          "owner": "AI",
+          "start": "2026-07-20",
+          "end": "2026-07-24",
+          "status": "idle",
+          "progress": 0,
+          "note": "織品題材優先化",
+          "deps": [
+            "phase2-approve"
+          ]
+        },
+        {
+          "id": "faq-bank",
+          "name": "FAQ 題庫引擎（搜尋詞＋客服口語題→候選題）",
+          "owner": "AI",
+          "start": "2026-07-14",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "W12 段二；分類架構待內部確認，管道先建",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "ring-d",
+      "name": "內環 D｜六線產製上稿",
+      "tasks": [
+        {
+          "id": "phase2-approve",
+          "name": "內容管線骨架計畫批准",
+          "owner": "板主",
+          "start": "2026-07-14",
+          "end": "2026-07-14",
+          "status": "milestone",
+          "progress": 0,
+          "note": "日期為估",
+          "deps": []
+        },
+        {
+          "id": "phase2-build",
+          "name": "好室 blog 管線骨架建置（六週）",
+          "owner": "AI",
+          "start": "2026-07-15",
+          "end": "2026-08-25",
+          "status": "idle",
+          "progress": 0,
+          "note": "管線層先行，內容閘另計",
+          "deps": [
+            "phase2-approve"
+          ]
+        },
+        {
+          "id": "gl-select",
+          "name": "相簿選片管線（雲端評分→終審→修圖）",
+          "owner": "AI·板主",
+          "start": "2026-07-12",
+          "end": "2026-08-15",
+          "status": "active",
+          "progress": 0,
+          "note": "2 萬張→35 本案例；分類樹審視中",
+          "deps": []
+        },
+        {
+          "id": "gl-publish",
+          "name": "相簿上架（頁面模組上稿器＋35 本）",
+          "owner": "AI",
+          "start": "2026-07-20",
+          "end": "2026-08-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "先行上線、不受 9/1 閘門限制",
+          "deps": [
+            "gl-select"
+          ]
+        },
+        {
+          "id": "faq-publisher",
+          "name": "FAQ 選題表單＋自動上稿器",
+          "owner": "AI",
+          "start": "2026-07-14",
+          "end": "2026-08-08",
+          "status": "idle",
+          "progress": 0,
+          "note": "先行上線、不受 9/1 閘門限制",
+          "deps": [
+            "faq-bank"
+          ]
+        },
+        {
+          "id": "qa-cy-batch",
+          "name": "喬雍官網文章 QA 首批編製",
+          "owner": "AI",
+          "start": "2026-07-16",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "seo-cy-crawl"
+          ]
+        },
+        {
+          "id": "qa-cy-flow",
+          "name": "新文章隨稿三問答常態線",
+          "owner": "AI",
+          "start": "2026-07-20",
+          "end": "2026-09-30",
+          "status": "idle",
+          "progress": 0,
+          "note": "隨上稿滾動，銜接既有隨稿問答產出",
+          "deps": [
+            "qa-cy-batch"
+          ]
+        },
+        {
+          "id": "qa-hs-collect",
+          "name": "好室定稿素材蒐集",
+          "owner": "AI·板主",
+          "start": "2026-07-12",
+          "end": "2026-08-01",
+          "status": "active",
+          "progress": 10,
+          "note": "品牌定框前的準備段",
+          "deps": []
+        },
+        {
+          "id": "qa-hs-build",
+          "name": "好室 QA 編製",
+          "owner": "AI",
+          "start": "2026-08-10",
+          "end": "2026-08-21",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "brand-frame",
+            "qa-hs-collect"
+          ]
+        },
+        {
+          "id": "km-scope",
+          "name": "喬雍 KM 範圍定義",
+          "owner": "板主·AI",
+          "start": "2026-08-01",
+          "end": "2026-08-07",
+          "status": "idle",
+          "progress": 0,
+          "note": "等板主描述需求輪廓；日期為估",
+          "deps": []
+        },
+        {
+          "id": "km-build",
+          "name": "喬雍 KM 建置",
+          "owner": "AI",
+          "start": "2026-08-10",
+          "end": "2026-08-28",
+          "status": "idle",
+          "progress": 0,
+          "note": "",
+          "deps": [
+            "km-scope"
+          ]
+        },
+        {
+          "id": "content-gate",
+          "name": "好室內容正式上線",
+          "owner": "板主",
+          "start": "2026-09-01",
+          "end": "2026-09-01",
+          "status": "milestone",
+          "progress": 0,
+          "note": "雙前置：品牌定框＋管線建成；日期為估",
+          "deps": [
+            "brand-frame",
+            "phase2-build"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ring-ca",
+      "name": "內環 C+A｜成效回看與調整",
+      "tasks": [
+        {
+          "id": "seo-cy-crawl",
+          "name": "喬雍官網 SEO 現況彙整回知識庫",
+          "owner": "AI",
+          "start": "2026-07-14",
+          "end": "2026-07-15",
+          "status": "idle",
+          "progress": 0,
+          "note": "設定已上站，直接撈",
+          "deps": []
+        },
+        {
+          "id": "seo-hs-crawl",
+          "name": "好室官網 SEO 現況彙整（含重整）",
+          "owner": "AI",
+          "start": "2026-07-16",
+          "end": "2026-07-18",
+          "status": "idle",
+          "progress": 0,
+          "note": "站上較零亂，帶回重新整理",
+          "deps": []
+        },
+        {
+          "id": "act-legacy-fix",
+          "name": "舊文補強批次（死連結＋排版＋SEO 待補）",
+          "owner": "AI",
+          "start": "2026-08-01",
+          "end": "2026-08-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "內環 Act 首批",
+          "deps": []
+        },
+        {
+          "id": "cycle1",
+          "name": "內環全環首轉（選題→上稿→回看跑通一圈）",
+          "owner": "AI·板主",
+          "start": "2026-08-15",
+          "end": "2026-08-15",
+          "status": "milestone",
+          "progress": 0,
+          "note": "系統自我修正能力驗收點",
+          "deps": []
+        }
+      ]
+    },
+    {
+      "id": "outer",
+      "name": "外環｜品牌校準（客戶認知三源→落差分析）",
+      "tasks": [
         {
           "id": "src-search",
           "name": "搜尋源編入（客戶搜尋語彙第一版）",
@@ -431,17 +794,6 @@
           "deps": [
             "seo-weekly"
           ]
-        },
-        {
-          "id": "src-social-connect",
-          "name": "社群流量監測接入（三平台）",
-          "owner": "AI·板主",
-          "start": "2026-07-12",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 60,
-          "note": "FB×2＋IG 已接通（API 鑰匙落地）；GBP 等外部審核",
-          "deps": []
         },
         {
           "id": "src-social-edit",
@@ -522,254 +874,6 @@
           "deps": [
             "b2b-oa"
           ]
-        }
-      ]
-    },
-    {
-      "id": "p7",
-      "name": "行銷：SEO 與內容",
-      "tasks": [
-        {
-          "id": "seo-cy-crawl",
-          "name": "喬雍官網 SEO 現況彙整回知識庫",
-          "owner": "AI",
-          "start": "2026-07-14",
-          "end": "2026-07-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "設定已上站，直接撈",
-          "deps": []
-        },
-        {
-          "id": "seo-hs-crawl",
-          "name": "好室官網 SEO 現況彙整（含重整）",
-          "owner": "AI",
-          "start": "2026-07-16",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "站上較零亂，帶回重新整理",
-          "deps": []
-        },
-        {
-          "id": "phase2-approve",
-          "name": "內容管線骨架計畫批准",
-          "owner": "板主",
-          "start": "2026-07-14",
-          "end": "2026-07-14",
-          "status": "milestone",
-          "progress": 0,
-          "note": "日期為估",
-          "deps": []
-        },
-        {
-          "id": "phase2-build",
-          "name": "好室 blog 管線骨架建置（六週）",
-          "owner": "AI",
-          "start": "2026-07-15",
-          "end": "2026-08-25",
-          "status": "idle",
-          "progress": 0,
-          "note": "管線層先行，內容閘另計",
-          "deps": [
-            "phase2-approve"
-          ]
-        },
-        {
-          "id": "topic-plan",
-          "name": "選題清單改版＋內容產出追蹤表",
-          "owner": "AI",
-          "start": "2026-07-20",
-          "end": "2026-07-24",
-          "status": "idle",
-          "progress": 0,
-          "note": "織品題材優先化",
-          "deps": [
-            "phase2-approve"
-          ]
-        },
-        {
-          "id": "content-gate",
-          "name": "好室內容正式上線",
-          "owner": "板主",
-          "start": "2026-09-01",
-          "end": "2026-09-01",
-          "status": "milestone",
-          "progress": 0,
-          "note": "雙前置：品牌定框＋管線建成；日期為估",
-          "deps": [
-            "brand-frame",
-            "phase2-build"
-          ]
-        },
-        {
-          "id": "report-data-layer",
-          "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "提前完成：GSC 四維快照＋社群貼文層＋標準化資料檔，已實測",
-          "deps": [
-            "seo-weekly"
-          ]
-        },
-        {
-          "id": "report-ana-auto",
-          "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-22",
-          "status": "active",
-          "progress": 80,
-          "note": "引擎完工已實測（主筆＋稽核退回機制驗證過）；等週三首播驗收後啟用",
-          "deps": [
-            "seo-weekly",
-            "report-data-layer"
-          ]
-        },
-        {
-          "id": "marketing-actions",
-          "name": "行銷工作紀錄表起建",
-          "owner": "AI·板主",
-          "start": "2026-07-14",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 70,
-          "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "p8",
-      "name": "行銷：制式 QA 與 KM",
-      "tasks": [
-        {
-          "id": "qa-cy-batch",
-          "name": "喬雍官網文章 QA 首批編製",
-          "owner": "AI",
-          "start": "2026-07-16",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "seo-cy-crawl"
-          ]
-        },
-        {
-          "id": "qa-cy-flow",
-          "name": "新文章隨稿三問答常態線",
-          "owner": "AI",
-          "start": "2026-07-20",
-          "end": "2026-09-30",
-          "status": "idle",
-          "progress": 0,
-          "note": "隨上稿滾動，銜接既有隨稿問答產出",
-          "deps": [
-            "qa-cy-batch"
-          ]
-        },
-        {
-          "id": "qa-hs-collect",
-          "name": "好室定稿素材蒐集",
-          "owner": "AI·板主",
-          "start": "2026-07-12",
-          "end": "2026-08-01",
-          "status": "active",
-          "progress": 10,
-          "note": "品牌定框前的準備段",
-          "deps": []
-        },
-        {
-          "id": "qa-hs-build",
-          "name": "好室 QA 編製",
-          "owner": "AI",
-          "start": "2026-08-10",
-          "end": "2026-08-21",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "brand-frame",
-            "qa-hs-collect"
-          ]
-        },
-        {
-          "id": "km-scope",
-          "name": "喬雍 KM 範圍定義",
-          "owner": "板主·AI",
-          "start": "2026-08-01",
-          "end": "2026-08-07",
-          "status": "idle",
-          "progress": 0,
-          "note": "等板主描述需求輪廓；日期為估",
-          "deps": []
-        },
-        {
-          "id": "km-build",
-          "name": "喬雍 KM 建置",
-          "owner": "AI",
-          "start": "2026-08-10",
-          "end": "2026-08-28",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "km-scope"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p9",
-      "name": "行銷：知識庫與外部收尾",
-      "tasks": [
-        {
-          "id": "wiki-restruct",
-          "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "wiki-consist",
-          "name": "知識庫矛盾與過時修正批次",
-          "owner": "AI",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "vendor-batch",
-          "name": "官網修正工單批次（追蹤碼驗收／轉址／資訊對齊）",
-          "owner": "板主·廠商",
-          "start": "2026-07-12",
-          "end": "2026-07-25",
-          "status": "active",
-          "progress": 30,
-          "note": "廠商端進行中；日期與進度為估",
-          "deps": []
-        },
-        {
-          "id": "wiki-datafix",
-          "name": "知識庫欄位補值（待板主提供數值）",
-          "owner": "板主·AI",
-          "start": "2026-07-14",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "含基本資料欄位與年度營運數字",
-          "deps": []
         }
       ]
     }
