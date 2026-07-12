@@ -536,6 +536,17 @@
           "progress": 0,
           "note": "修繕包已備妥；避開廠商後台工作窗後擇時上線",
           "deps": []
+        },
+        {
+          "id": "ga4-keyevents",
+          "name": "GA4 key events 事件埋設（表單/電話/LINE 點擊）",
+          "owner": "板主·廠商",
+          "start": "2026-07-14",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "轉換鏈最後一環；併下批廠商工單（板主已拍板）",
+          "deps": []
         }
       ]
     },
