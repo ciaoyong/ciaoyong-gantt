@@ -27,9 +27,9 @@
           "owner": "AI",
           "start": "2026-07-12",
           "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "W12 段二；分類架構待內部確認，管道先建",
+          "status": "active",
+          "progress": 30,
+          "note": "W12 段二；入料已升級（0點擊問句＋雙源語彙）；分類架構待內部確認",
           "deps": []
         }
       ]
@@ -55,9 +55,9 @@
           "owner": "AI",
           "start": "2026-07-10",
           "end": "2026-08-25",
-          "status": "idle",
-          "progress": 0,
-          "note": "管線層先行，內容閘另計",
+          "status": "active",
+          "progress": 65,
+          "note": "W1–W5 骨架＋逐段表單＋元件單已成（07-11）；上稿器到草稿即停；待首篇 live pilot",
           "deps": [
             "phase2-approve"
           ]
@@ -69,8 +69,8 @@
           "start": "2026-07-12",
           "end": "2026-08-15",
           "status": "active",
-          "progress": 0,
-          "note": "2 萬張→35 本案例；分類樹審視中",
+          "progress": 20,
+          "note": "2 萬張→35 本案例；plan 定稿＋全表樹狀圖審視中＋評審 prompt 已備",
           "deps": []
         },
         {
@@ -80,8 +80,8 @@
           "start": "2026-07-20",
           "end": "2026-08-31",
           "status": "idle",
-          "progress": 0,
-          "note": "先行上線、不受 9/1 閘門限制",
+          "progress": 10,
+          "note": "先行上線、不受 9/1 閘門限制；上稿器規格已定案、程式待發包",
           "deps": [
             "gl-select"
           ]
@@ -93,8 +93,8 @@
           "start": "2026-07-12",
           "end": "2026-08-08",
           "status": "idle",
-          "progress": 0,
-          "note": "先行上線、不受 9/1 閘門限制",
+          "progress": 10,
+          "note": "先行上線、不受 9/1 閘門限制；規格已齊、程式待發包",
           "deps": [
             "faq-bank"
           ]
@@ -576,8 +576,8 @@
           "owner": "AI",
           "start": "2026-07-12",
           "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
+          "status": "active",
+          "progress": 70,
           "note": "修繕包已備妥；避開廠商後台工作窗後擇時上線",
           "deps": []
         },
