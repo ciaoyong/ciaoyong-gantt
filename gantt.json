@@ -102,7 +102,7 @@
         {
           "id": "qa-cy-batch",
           "name": "喬雍官網文章 QA 首批編製",
-          "owner": "AI",
+          "owner": "喬雍CC",
           "start": "2026-07-16",
           "end": "2026-07-18",
           "status": "idle",
@@ -115,7 +115,7 @@
         {
           "id": "qa-cy-flow",
           "name": "新文章隨稿三問答常態線",
-          "owner": "AI",
+          "owner": "喬雍CC",
           "start": "2026-07-20",
           "end": "2026-09-30",
           "status": "idle",
@@ -191,7 +191,7 @@
         {
           "id": "kn-maintenance",
           "name": "kn 線維運（編輯回覆優化＋退回輪 patch 驗收）",
-          "owner": "AI·板主",
+          "owner": "喬雍CC·板主",
           "start": "2026-07-14",
           "end": "2026-07-31",
           "status": "idle",
@@ -230,7 +230,7 @@
         {
           "id": "seo-cy-crawl",
           "name": "喬雍官網 SEO 現況彙整回知識庫",
-          "owner": "AI",
+          "owner": "喬雍CC",
           "start": "2026-07-14",
           "end": "2026-07-15",
           "status": "idle",
