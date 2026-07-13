@@ -686,7 +686,7 @@
         {
           "id": "a1",
           "name": "歸檔計劃定案＋編號盤查",
-          "owner": "AI·板主",
+          "owner": "CRMCC·板主",
           "start": "2026-07-02",
           "end": "2026-07-03",
           "status": "done",
@@ -708,7 +708,7 @@
         {
           "id": "a3",
           "name": "資料清洗＋編碼比對",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-07-04",
           "end": "2026-07-04",
           "status": "done",
@@ -721,7 +721,7 @@
         {
           "id": "a4",
           "name": "試跑批摘要產出＋平台同步",
-          "owner": "AI·PT",
+          "owner": "CRMCC·PT",
           "start": "2026-07-04",
           "end": "2026-07-04",
           "status": "done",
@@ -734,7 +734,7 @@
         {
           "id": "reorg",
           "name": "資料底座重整（主體／來源分離＋試跑隔離）",
-          "owner": "AI·板主",
+          "owner": "CRMCC·板主",
           "start": "2026-07-06",
           "end": "2026-07-06",
           "status": "done",
@@ -753,7 +753,7 @@
         {
           "id": "sum",
           "name": "summary 任務",
-          "owner": "AI·PT",
+          "owner": "CRMCC·PT",
           "start": "2026-05-20",
           "end": "2026-07-15",
           "status": "active",
@@ -764,7 +764,7 @@
         {
           "id": "match",
           "name": "跨匯出識別機制（三層匹配＋同名拆分）",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-06-15",
           "end": "2026-06-15",
           "status": "done",
@@ -786,7 +786,7 @@
         {
           "id": "m1",
           "name": "編碼制度定案＋對話全文錄入",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-07-04",
           "end": "2026-07-04",
           "status": "done",
@@ -799,7 +799,7 @@
         {
           "id": "m2",
           "name": "欄位清洗（聯絡方式／來源）",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-07-05",
           "end": "2026-07-05",
           "status": "done",
@@ -812,7 +812,7 @@
         {
           "id": "m3",
           "name": "開發總規劃定案＋主檔更名",
-          "owner": "AI·板主",
+          "owner": "CRMCC·板主",
           "start": "2026-07-05",
           "end": "2026-07-05",
           "status": "done",
@@ -842,12 +842,12 @@
         {
           "id": "q5",
           "name": "影像連結建檔",
-          "owner": "AI·PT",
+          "owner": "CRMCC·PT",
           "start": "2026-07-10",
           "end": "2026-09-30",
           "status": "active",
           "progress": 20,
-          "note": "分類清單建檔完成，對位（media_map）待跑",
+          "note": "對位機制建置（媒體↔對話標記腳本）＋缺件稽核驅動補抓",
           "deps": [
             "img",
             "m1"
@@ -856,7 +856,7 @@
         {
           "id": "q1",
           "name": "摘要規則改版＋交叉審查",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-07-10",
           "end": "2026-07-10",
           "status": "done",
@@ -869,7 +869,7 @@
         {
           "id": "q2",
           "name": "全量摘要產出（含平台同步）",
-          "owner": "AI·PT",
+          "owner": "CRMCC·PT",
           "start": "2026-07-11",
           "end": "2026-07-31",
           "status": "idle",
@@ -882,7 +882,7 @@
         {
           "id": "q3",
           "name": "資料結構自我描述",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-07-20",
           "end": "2026-07-28",
           "status": "idle",
@@ -895,7 +895,7 @@
         {
           "id": "q6",
           "name": "單據錄入",
-          "owner": "AI·客服",
+          "owner": "CRMCC·客服",
           "start": "2026-07-20",
           "end": "2026-07-31",
           "status": "idle",
@@ -906,7 +906,7 @@
         {
           "id": "q8",
           "name": "即時同步（雙來源）",
-          "owner": "AI·板主",
+          "owner": "CRMCC·板主",
           "start": "2026-07-20",
           "end": "2026-08-27",
           "status": "active",
@@ -919,7 +919,7 @@
         {
           "id": "q4",
           "name": "備份完整性機制",
-          "owner": "AI·板主",
+          "owner": "CRMCC·板主",
           "start": "2026-07-31",
           "end": "2026-08-31",
           "status": "idle",
@@ -933,7 +933,7 @@
         {
           "id": "db",
           "name": "資料庫底座與查詢介面",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-08-01",
           "end": "2026-08-05",
           "status": "idle",
@@ -947,7 +947,7 @@
         {
           "id": "out",
           "name": "知識產出（SOP／PDCA）",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-08-01",
           "end": "2026-08-15",
           "status": "idle",
@@ -960,7 +960,7 @@
         {
           "id": "q7",
           "name": "第二來源對話結構化",
-          "owner": "AI",
+          "owner": "CRMCC",
           "start": "2026-08-06",
           "end": "2026-08-12",
           "status": "idle",
