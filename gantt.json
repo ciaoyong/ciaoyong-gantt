@@ -396,29 +396,29 @@
         {
           "id": "seo-weekly",
           "name": "首份自動流量週報驗收",
-          "owner": "AI",
+          "owner": "報表CC",
           "start": "2026-07-15",
           "end": "2026-07-15",
           "status": "milestone",
           "progress": 0,
-          "note": "",
+          "note": "launchd 已掛（週三 14:00）；首播全鏈驗收：PDF→Drive→LINE 群",
           "deps": []
         },
         {
           "id": "src-social-connect",
           "name": "社群流量監測接入（三平台）",
-          "owner": "AI·板主",
+          "owner": "報表CC·板主",
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
           "progress": 60,
-          "note": "FB×2＋IG 已接通（API 鑰匙落地）；GBP 等外部審核",
+          "note": "FB×2＋IG 已接通（Graph API，token 落地）；GBP 等外部 API 審核",
           "deps": []
         },
         {
           "id": "report-data-layer",
           "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
-          "owner": "AI",
+          "owner": "報表CC",
           "start": "2026-07-10",
           "end": "2026-07-12",
           "status": "done",
@@ -431,12 +431,12 @@
         {
           "id": "report-ana-auto",
           "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
-          "owner": "AI",
+          "owner": "報表CC",
           "start": "2026-07-12",
           "end": "2026-07-22",
           "status": "active",
           "progress": 80,
-          "note": "引擎完工已實測（主筆＋稽核退回機制驗證過）；等週三首播驗收後啟用",
+          "note": "引擎完工實測（主筆＋稽核退回機制驗證過）；主筆＝Claude Opus，Codex 獨立稽核；等週三首播驗收後啟用（旗標 SEO_ANALYSIS_ENABLED）",
           "deps": [
             "seo-weekly",
             "report-data-layer"
@@ -445,13 +445,26 @@
         {
           "id": "marketing-actions",
           "name": "行銷工作紀錄表起建",
-          "owner": "AI·板主",
+          "owner": "報表CC·板主",
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
           "progress": 70,
           "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
           "deps": []
+        },
+        {
+          "id": "market-scan",
+          "name": "外部市場字與同業內容掃描（月線）",
+          "owner": "報表CC",
+          "start": "2026-07-13",
+          "end": "2026-08-03",
+          "status": "active",
+          "progress": 90,
+          "note": "本 session 完工：同業內容月掃引擎（sitemap/blog 新文 diff）＋搜尋聯想長尾字對照 GSC 盲區＋圖表報表；12 家區域同業名單（季更）；乾淨 baseline 已建；兩輪 code/cross review 修正。餘：8/3 隨月報首航",
+          "deps": [
+            "report-data-layer"
+          ]
         }
       ]
     },
