@@ -1002,7 +1002,7 @@
         {
           "id": "hist-blog-gem",
           "name": "Blog 排版 Gem 路線（評估→試作→判定暫停）",
-          "owner": "AI·板主",
+          "owner": "喬雍CC·板主",
           "start": "2026-05-26",
           "end": "2026-06-25",
           "status": "done",
@@ -1024,7 +1024,7 @@
         {
           "id": "hist-cy-css",
           "name": "喬雍官網 CSS 地基全站化＋內容整備",
-          "owner": "AI",
+          "owner": "喬雍CC",
           "start": "2026-06-29",
           "end": "2026-07-05",
           "status": "done",
@@ -1035,9 +1035,9 @@
         {
           "id": "hist-redirects",
           "name": "雙品牌舊頁轉址與殘留清查批次",
-          "owner": "AI",
-          "start": "2026-07-01",
-          "end": "2026-07-03",
+          "owner": "喬雍CC",
+          "start": "2026-07-02",
+          "end": "2026-07-07",
           "status": "done",
           "progress": 100,
           "note": "",
@@ -1046,9 +1046,9 @@
         {
           "id": "hist-kn-line",
           "name": "喬雍知識文章自動上稿線開發上線",
-          "owner": "AI",
+          "owner": "喬雍CC",
           "start": "2026-07-02",
-          "end": "2026-07-11",
+          "end": "2026-07-10",
           "status": "done",
           "progress": 100,
           "note": "",
@@ -1057,7 +1057,7 @@
         {
           "id": "hist-seo-phase1",
           "name": "GSC/GA4 接手 Phase 1 全通（週報／月表／PDF 報表引擎）",
-          "owner": "AI",
+          "owner": "報表CC",
           "start": "2026-07-09",
           "end": "2026-07-10",
           "status": "done",
