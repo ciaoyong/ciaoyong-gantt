@@ -297,12 +297,12 @@
         {
           "id": "src-search",
           "name": "搜尋源編入（客戶搜尋語彙第一版）",
-          "owner": "AI",
+          "owner": "PDCACC",
           "start": "2026-07-15",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "資料已在手；前置已解除（週報 7/15 首播成功），可開編",
+          "end": "2026-07-17",
+          "status": "done",
+          "progress": 100,
+          "note": "7/17 完成：客戶搜尋語彙 v0（GSC 兩週窗、好室 275 詞十叢集＋0 點擊選題清單）入 brand-wiki/alignment/；警訊＝喬雍 B2B 詞掛零",
           "deps": [
             "seo-weekly"
           ]
