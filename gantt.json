@@ -102,7 +102,7 @@
         {
           "id": "qa-cy-batch",
           "name": "喬雍官網文章 QA 首批編製",
-          "owner": "喬雍CC",
+          "owner": "喬雍",
           "start": "2026-07-16",
           "end": "2026-07-18",
           "status": "idle",
@@ -115,7 +115,7 @@
         {
           "id": "qa-cy-flow",
           "name": "新文章隨稿三問答常態線",
-          "owner": "喬雍CC",
+          "owner": "喬雍",
           "start": "2026-07-20",
           "end": "2026-09-30",
           "status": "idle",
@@ -152,24 +152,24 @@
         },
         {
           "id": "km-scope",
-          "name": "喬雍 KM 範圍定義",
-          "owner": "板主·AI",
+          "name": "喬雍官網維護工具｜範圍定義",
+          "owner": "喬雍",
           "start": "2026-08-01",
           "end": "2026-08-07",
           "status": "idle",
           "progress": 0,
-          "note": "等板主描述需求輪廓；日期為估",
+          "note": "2026-07-18 板主釐清：屬喬雍官網維護工具、非知識管理；等板主描述需求輪廓；日期為估",
           "deps": []
         },
         {
           "id": "km-build",
-          "name": "喬雍 KM 建置",
-          "owner": "AI",
+          "name": "喬雍官網維護工具｜建置",
+          "owner": "喬雍",
           "start": "2026-08-10",
           "end": "2026-08-28",
           "status": "idle",
           "progress": 0,
-          "note": "",
+          "note": "2026-07-18 板主釐清：屬喬雍官網維護工具、非知識管理",
           "deps": [
             "km-scope"
           ]
@@ -191,7 +191,7 @@
         {
           "id": "kn-maintenance",
           "name": "kn 線維運（編輯回覆優化＋退回輪 patch 驗收）",
-          "owner": "喬雍CC·板主",
+          "owner": "喬雍·板主",
           "start": "2026-07-14",
           "end": "2026-07-31",
           "status": "idle",
@@ -230,7 +230,7 @@
         {
           "id": "seo-cy-crawl",
           "name": "喬雍官網 SEO 現況彙整回知識庫",
-          "owner": "喬雍CC",
+          "owner": "喬雍",
           "start": "2026-07-14",
           "end": "2026-07-15",
           "status": "idle",
@@ -323,7 +323,7 @@
         {
           "id": "crm-feedback",
           "name": "對話源素材包首批回流",
-          "owner": "AI",
+          "owner": "報表",
           "start": "2026-08-12",
           "end": "2026-08-12",
           "status": "milestone",
@@ -418,7 +418,7 @@
         {
           "id": "g3",
           "name": "詢問/成交數據接入（消費 CRM 週摘）",
-          "owner": "報表CC·板主",
+          "owner": "報表·板主",
           "start": "2026-07-21",
           "end": "2026-08-08",
           "status": "idle",
@@ -472,7 +472,7 @@
         {
           "id": "seo-weekly",
           "name": "首份自動流量週報驗收",
-          "owner": "報表CC",
+          "owner": "報表",
           "start": "2026-07-15",
           "end": "2026-07-15",
           "status": "milestone",
@@ -483,7 +483,7 @@
         {
           "id": "src-social-connect",
           "name": "社群流量監測接入（三平台）",
-          "owner": "報表CC·板主",
+          "owner": "報表·板主",
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
@@ -494,7 +494,7 @@
         {
           "id": "report-data-layer",
           "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
-          "owner": "報表CC",
+          "owner": "報表",
           "start": "2026-07-10",
           "end": "2026-07-12",
           "status": "done",
@@ -507,7 +507,7 @@
         {
           "id": "report-ana-auto",
           "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
-          "owner": "報表CC",
+          "owner": "報表",
           "start": "2026-07-12",
           "end": "2026-07-22",
           "status": "active",
@@ -521,7 +521,7 @@
         {
           "id": "marketing-actions",
           "name": "行銷工作紀錄表起建",
-          "owner": "報表CC·板主",
+          "owner": "報表·板主",
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
@@ -532,7 +532,7 @@
         {
           "id": "market-scan",
           "name": "外部市場字與同業內容掃描（月線）",
-          "owner": "報表CC",
+          "owner": "報表",
           "start": "2026-07-13",
           "end": "2026-08-03",
           "status": "active",
@@ -1270,7 +1270,7 @@
         {
           "id": "hist-cy-css",
           "name": "喬雍官網 CSS 地基全站化＋內容整備",
-          "owner": "喬雍CC",
+          "owner": "喬雍",
           "start": "2026-06-29",
           "end": "2026-07-05",
           "status": "done",
@@ -1281,7 +1281,7 @@
         {
           "id": "hist-redirects",
           "name": "雙品牌舊頁轉址與殘留清查批次",
-          "owner": "喬雍CC",
+          "owner": "喬雍",
           "start": "2026-07-02",
           "end": "2026-07-07",
           "status": "done",
@@ -1292,7 +1292,7 @@
         {
           "id": "hist-kn-line",
           "name": "喬雍知識文章自動上稿線開發上線",
-          "owner": "喬雍CC",
+          "owner": "喬雍",
           "start": "2026-07-02",
           "end": "2026-07-10",
           "status": "done",
@@ -1303,7 +1303,7 @@
         {
           "id": "hist-seo-phase1",
           "name": "GSC/GA4 接手 Phase 1 全通（週報／月表／PDF 報表引擎）",
-          "owner": "報表CC",
+          "owner": "報表",
           "start": "2026-07-09",
           "end": "2026-07-10",
           "status": "done",
