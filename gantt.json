@@ -24,7 +24,7 @@
         {
           "id": "faq-bank",
           "name": "FAQ 題庫引擎（搜尋詞＋客服口語題→候選題）",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
@@ -52,7 +52,7 @@
         {
           "id": "phase2-build",
           "name": "好室 blog 管線骨架建置（六週）",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-10",
           "end": "2026-08-25",
           "status": "active",
@@ -65,7 +65,7 @@
         {
           "id": "gl-select",
           "name": "相簿選片管線（雲端評分→終審→修圖）",
-          "owner": "好室CC·板主",
+          "owner": "好室·板主",
           "start": "2026-07-12",
           "end": "2026-08-15",
           "status": "active",
@@ -76,7 +76,7 @@
         {
           "id": "gl-publish",
           "name": "相簿上架（頁面模組上稿器＋35 本）",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-20",
           "end": "2026-08-31",
           "status": "idle",
@@ -89,7 +89,7 @@
         {
           "id": "faq-publisher",
           "name": "FAQ 選題表單＋自動上稿器",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-12",
           "end": "2026-08-08",
           "status": "idle",
@@ -128,7 +128,7 @@
         {
           "id": "qa-hs-collect",
           "name": "好室定稿素材蒐集",
-          "owner": "好室CC·板主",
+          "owner": "好室·板主",
           "start": "2026-07-12",
           "end": "2026-08-01",
           "status": "active",
@@ -139,7 +139,7 @@
         {
           "id": "qa-hs-build",
           "name": "好室 QA 編製",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-08-10",
           "end": "2026-08-21",
           "status": "idle",
@@ -202,7 +202,7 @@
         {
           "id": "gbp-qa",
           "name": "GBP 自問自答預埋（FAQ→問答格式交接包）",
-          "owner": "好室CC·板主",
+          "owner": "好室·板主",
           "start": "2026-07-21",
           "end": "2026-08-08",
           "status": "idle",
@@ -213,7 +213,7 @@
         {
           "id": "gbp-products",
           "name": "GBP 產品目錄（服務卡片交接包）",
-          "owner": "好室CC·板主",
+          "owner": "好室·板主",
           "start": "2026-08-01",
           "end": "2026-08-22",
           "status": "idle",
@@ -241,7 +241,7 @@
         {
           "id": "seo-hs-crawl",
           "name": "好室官網 SEO 現況彙整（含重整）",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-16",
           "end": "2026-07-18",
           "status": "idle",
@@ -269,7 +269,7 @@
         {
           "id": "act-legacy-fix",
           "name": "舊文補強批次（死連結＋排版＋SEO 待補）",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-08-01",
           "end": "2026-08-31",
           "status": "idle",
@@ -351,7 +351,7 @@
         {
           "id": "persona-b2c",
           "name": "好室客戶輪廓建置",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-08-24",
           "end": "2026-08-28",
           "status": "idle",
@@ -575,7 +575,7 @@
         {
           "id": "about-rewrite",
           "name": "官網「關於我們」語調改寫定稿",
-          "owner": "好室CC·板主",
+          "owner": "好室·板主",
           "start": "2026-07-06",
           "end": "2026-08-07",
           "status": "idle",
@@ -662,7 +662,7 @@
         {
           "id": "faq-selfserve",
           "name": "FAQ 基本修繕包上線（可讀性＋深連結＋手機修正）",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-12",
           "end": "2026-07-18",
           "status": "active",
@@ -723,7 +723,7 @@
         {
           "id": "mig-backup",
           "name": "全站備份＋補抓完整資產",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-16",
           "end": "2026-07-17",
           "status": "done",
@@ -734,7 +734,7 @@
         {
           "id": "mig-infra",
           "name": "新站 repo＋Cloudflare Pages 接通",
-          "owner": "好室CC·板主",
+          "owner": "好室·板主",
           "start": "2026-07-16",
           "end": "2026-07-16",
           "status": "done",
@@ -745,7 +745,7 @@
         {
           "id": "mig-build",
           "name": "內容清洗→靜態站建置（Phase 2）",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-07-16",
           "end": "2026-07-17",
           "status": "done",
@@ -759,7 +759,7 @@
         {
           "id": "mig-verify",
           "name": "部署驗收（臨時網址全頁面＋RWD）",
-          "owner": "板主·好室CC",
+          "owner": "板主·好室",
           "start": "2026-07-17",
           "end": "2026-07-22",
           "status": "active",
@@ -772,7 +772,7 @@
         {
           "id": "mig-form",
           "name": "官網諮詢表單接入定案",
-          "owner": "板主·好室CC",
+          "owner": "板主·好室",
           "start": "2026-07-17",
           "end": "2026-07-31",
           "status": "idle",
@@ -798,7 +798,7 @@
         {
           "id": "mig-dns",
           "name": "網域切換上線",
-          "owner": "板主·好室CC",
+          "owner": "板主·好室",
           "start": "2026-07-31",
           "end": "2026-07-31",
           "status": "milestone",
@@ -811,7 +811,7 @@
         {
           "id": "mig-aftercare",
           "name": "下游資產退役與改寫批次",
-          "owner": "好室CC",
+          "owner": "好室",
           "start": "2026-08-01",
           "end": "2026-08-15",
           "status": "idle",
@@ -1248,7 +1248,7 @@
         {
           "id": "hist-blog-gem",
           "name": "Blog 排版 Gem 路線（評估→試作→判定暫停）",
-          "owner": "好室CC·板主",
+          "owner": "好室·板主",
           "start": "2026-05-27",
           "end": "2026-06-26",
           "status": "done",
