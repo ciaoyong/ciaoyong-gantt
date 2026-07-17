@@ -723,7 +723,7 @@
         {
           "id": "mig-backup",
           "name": "全站備份＋補抓完整資產",
-          "owner": "搬遷CC",
+          "owner": "好室CC",
           "start": "2026-07-16",
           "end": "2026-07-17",
           "status": "done",
@@ -734,7 +734,7 @@
         {
           "id": "mig-infra",
           "name": "新站 repo＋Cloudflare Pages 接通",
-          "owner": "搬遷CC·板主",
+          "owner": "好室CC·板主",
           "start": "2026-07-16",
           "end": "2026-07-16",
           "status": "done",
@@ -745,7 +745,7 @@
         {
           "id": "mig-build",
           "name": "內容清洗→靜態站建置（Phase 2）",
-          "owner": "搬遷CC",
+          "owner": "好室CC",
           "start": "2026-07-16",
           "end": "2026-07-17",
           "status": "done",
@@ -759,12 +759,12 @@
         {
           "id": "mig-verify",
           "name": "部署驗收（臨時網址全頁面＋RWD）",
-          "owner": "板主·搬遷CC",
+          "owner": "板主·好室CC",
           "start": "2026-07-17",
           "end": "2026-07-22",
-          "status": "idle",
-          "progress": 0,
-          "note": "部署已就緒，等板主驗收（手機可驗）：首頁／服務頁／相簿燈箱／FAQ／CTA；日期為估",
+          "status": "active",
+          "progress": 60,
+          "note": "已推送 pages.dev、乾淨網址路由/資產/破圖 CC 複驗過；codex 桌機+手機視覺稽核過（整體 PASS）；空相簿隱藏交接 codex 待跑；剩板主手機終驗＋Cloudflare 後台設定（www→apex、query redirect）",
           "deps": [
             "mig-build"
           ]
@@ -772,7 +772,7 @@
         {
           "id": "mig-form",
           "name": "官網諮詢表單接入定案",
-          "owner": "板主·搬遷CC",
+          "owner": "板主·好室CC",
           "start": "2026-07-17",
           "end": "2026-07-31",
           "status": "idle",
@@ -798,7 +798,7 @@
         {
           "id": "mig-dns",
           "name": "網域切換上線",
-          "owner": "板主·搬遷CC",
+          "owner": "板主·好室CC",
           "start": "2026-07-31",
           "end": "2026-07-31",
           "status": "milestone",
@@ -811,7 +811,7 @@
         {
           "id": "mig-aftercare",
           "name": "下游資產退役與改寫批次",
-          "owner": "搬遷CC·好室CC",
+          "owner": "好室CC",
           "start": "2026-08-01",
           "end": "2026-08-15",
           "status": "idle",
