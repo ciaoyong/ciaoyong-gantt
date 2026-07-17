@@ -1168,6 +1168,58 @@
       ]
     },
     {
+      "id": "s5-it",
+      "name": "基礎層 S5｜IT（地端伺服器與跨線基礎設施）",
+      "tasks": [
+        {
+          "id": "it-server",
+          "name": "地端伺服器建置與加固（加密／帳號隔離／防火牆／本地備份）",
+          "owner": "IT",
+          "start": "2026-07-16",
+          "end": "2026-07-18",
+          "status": "done",
+          "progress": 100,
+          "note": "過渡機服役中；全套=全碟加密+金鑰門+四帳號隔離+守門員+進出簿+防火牆+Time Machine",
+          "deps": []
+        },
+        {
+          "id": "it-channel",
+          "name": "跨線管道（郵局倉治理＋巡倉通知＋讀寫稽核）",
+          "owner": "IT",
+          "start": "2026-07-16",
+          "end": "2026-07-18",
+          "status": "active",
+          "progress": 90,
+          "note": "三線通道全通、巡邏通知上線；餘：倉用途終裁一項＋成對倉雙向開通",
+          "deps": []
+        },
+        {
+          "id": "it-runbook",
+          "name": "IT 操作手冊（runbooks，為未來拆分預備）",
+          "owner": "IT",
+          "start": "2026-07-17",
+          "end": "2026-07-18",
+          "status": "done",
+          "progress": 100,
+          "note": "7 篇：建置/鑰匙/守門員/進出簿/巡倉/雷區",
+          "deps": []
+        },
+        {
+          "id": "it-migrate",
+          "name": "正式機遷移＋異地密文備份（321 補齊）",
+          "owner": "IT",
+          "start": "2026-10-01",
+          "end": "2026-10-15",
+          "status": "idle",
+          "progress": 0,
+          "note": "等正式機到貨（十月）；含備份碟汰換；日期為估",
+          "deps": [
+            "it-server"
+          ]
+        }
+      ]
+    },
+    {
       "id": "hist",
       "name": "🗄 已完工歷史（4 月中起・點標題展開）",
       "tasks": [
