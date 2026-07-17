@@ -11,7 +11,7 @@
         {
           "id": "topic-plan",
           "name": "選題清單改版＋內容產出追蹤表",
-          "owner": "AI",
+          "owner": "PM",
           "start": "2026-07-20",
           "end": "2026-07-24",
           "status": "idle",
@@ -252,7 +252,7 @@
         {
           "id": "cycle1",
           "name": "內環全環首轉（選題→上稿→回看跑通一圈）",
-          "owner": "AI·板主",
+          "owner": "PM·板主",
           "start": "2026-08-15",
           "end": "2026-08-15",
           "status": "milestone",
@@ -269,7 +269,7 @@
         {
           "id": "act-legacy-fix",
           "name": "舊文補強批次（死連結＋排版＋SEO 待補）",
-          "owner": "AI",
+          "owner": "好室CC",
           "start": "2026-08-01",
           "end": "2026-08-31",
           "status": "idle",
@@ -280,7 +280,7 @@
         {
           "id": "q3-refresh",
           "name": "Q3 除舊佈新（archive 瘦身＋IG/FB Bio 改寫）",
-          "owner": "AI·板主",
+          "owner": "PM·板主",
           "start": "2026-08-01",
           "end": "2026-09-30",
           "status": "idle",
@@ -297,7 +297,7 @@
         {
           "id": "src-search",
           "name": "搜尋源編入（客戶搜尋語彙第一版）",
-          "owner": "PDCACC",
+          "owner": "PM",
           "start": "2026-07-15",
           "end": "2026-07-17",
           "status": "done",
@@ -310,7 +310,7 @@
         {
           "id": "src-social-edit",
           "name": "社群源編入",
-          "owner": "AI",
+          "owner": "PM",
           "start": "2026-08-03",
           "end": "2026-08-05",
           "status": "idle",
@@ -336,7 +336,7 @@
         {
           "id": "src-dialog-edit",
           "name": "對話源編入＋客戶認知三源整合",
-          "owner": "AI",
+          "owner": "PM",
           "start": "2026-08-17",
           "end": "2026-08-21",
           "status": "idle",
@@ -377,7 +377,7 @@
         {
           "id": "persona-b2b",
           "name": "喬雍客戶理解建置",
-          "owner": "AI",
+          "owner": "PM",
           "start": "2026-10-01",
           "end": "2026-10-15",
           "status": "idle",
@@ -396,7 +396,7 @@
         {
           "id": "g1",
           "name": "2026 行銷目標定調＋KPI 覆核",
-          "owner": "PDCACC·板主",
+          "owner": "PM·板主",
           "start": "2026-07-18",
           "end": "2026-07-25",
           "status": "idle",
@@ -407,7 +407,7 @@
         {
           "id": "gc",
           "name": "織物內容補齊＋作品案例居家化",
-          "owner": "PDCACC·板主",
+          "owner": "PM·板主",
           "start": "2026-07-21",
           "end": "2026-08-22",
           "status": "idle",
@@ -440,7 +440,7 @@
         {
           "id": "g8",
           "name": "小編 KPI v2（活動量→成效指標）",
-          "owner": "PDCACC·板主",
+          "owner": "PM·板主",
           "start": "2026-08-04",
           "end": "2026-08-15",
           "status": "idle",
@@ -453,7 +453,7 @@
         {
           "id": "g2",
           "name": "自來客月度靶（詢問/成交件數）",
-          "owner": "PDCACC",
+          "owner": "PM",
           "start": "2026-08-11",
           "end": "2026-08-22",
           "status": "idle",
@@ -575,7 +575,7 @@
         {
           "id": "about-rewrite",
           "name": "官網「關於我們」語調改寫定稿",
-          "owner": "AI·板主",
+          "owner": "好室CC·板主",
           "start": "2026-07-06",
           "end": "2026-08-07",
           "status": "idle",
@@ -588,7 +588,7 @@
         {
           "id": "mkt-plan-rev",
           "name": "行銷計畫與社群計畫修訂",
-          "owner": "板主·AI",
+          "owner": "板主·PM",
           "start": "2026-08-03",
           "end": "2026-08-14",
           "status": "idle",
@@ -607,7 +607,7 @@
         {
           "id": "wiki-restruct",
           "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
-          "owner": "AI",
+          "owner": "PM",
           "start": "2026-07-12",
           "end": "2026-07-12",
           "status": "done",
@@ -618,7 +618,7 @@
         {
           "id": "wiki-consist",
           "name": "知識庫矛盾與過時修正批次",
-          "owner": "AI",
+          "owner": "PM",
           "start": "2026-07-12",
           "end": "2026-07-12",
           "status": "done",
@@ -640,7 +640,7 @@
         {
           "id": "wiki-datafix",
           "name": "知識庫欄位補值（待板主提供數值）",
-          "owner": "板主·AI",
+          "owner": "板主·PM",
           "start": "2026-07-14",
           "end": "2026-07-18",
           "status": "idle",
@@ -880,7 +880,7 @@
         {
           "id": "a1",
           "name": "歸檔計劃定案＋編號盤查",
-          "owner": "CRMCC·板主",
+          "owner": "CRM·板主",
           "start": "2026-07-02",
           "end": "2026-07-03",
           "status": "done",
@@ -902,7 +902,7 @@
         {
           "id": "a3",
           "name": "資料清洗＋編碼比對",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-07-04",
           "end": "2026-07-04",
           "status": "done",
@@ -915,7 +915,7 @@
         {
           "id": "a4",
           "name": "試跑批摘要產出＋平台同步",
-          "owner": "CRMCC·PT",
+          "owner": "CRM·PT",
           "start": "2026-07-04",
           "end": "2026-07-04",
           "status": "done",
@@ -928,7 +928,7 @@
         {
           "id": "reorg",
           "name": "資料底座重整（主體／來源分離＋試跑隔離）",
-          "owner": "CRMCC·板主",
+          "owner": "CRM·板主",
           "start": "2026-07-06",
           "end": "2026-07-06",
           "status": "done",
@@ -947,7 +947,7 @@
         {
           "id": "sum",
           "name": "summary 任務",
-          "owner": "CRMCC·PT",
+          "owner": "CRM·PT",
           "start": "2026-05-20",
           "end": "2026-07-31",
           "status": "active",
@@ -958,7 +958,7 @@
         {
           "id": "match",
           "name": "跨匯出識別機制（三層匹配＋同名拆分）",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-06-15",
           "end": "2026-06-15",
           "status": "done",
@@ -980,7 +980,7 @@
         {
           "id": "m1",
           "name": "編碼制度定案＋對話全文錄入",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-07-04",
           "end": "2026-07-04",
           "status": "done",
@@ -993,7 +993,7 @@
         {
           "id": "m2",
           "name": "欄位清洗（聯絡方式／來源）",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-07-05",
           "end": "2026-07-05",
           "status": "done",
@@ -1006,7 +1006,7 @@
         {
           "id": "m3",
           "name": "開發總規劃定案＋主檔更名",
-          "owner": "CRMCC·板主",
+          "owner": "CRM·板主",
           "start": "2026-07-05",
           "end": "2026-07-05",
           "status": "done",
@@ -1036,7 +1036,7 @@
         {
           "id": "q5",
           "name": "影像連結建檔",
-          "owner": "CRMCC·PT",
+          "owner": "CRM·PT",
           "start": "2026-07-10",
           "end": "2026-09-30",
           "status": "active",
@@ -1050,7 +1050,7 @@
         {
           "id": "q1",
           "name": "摘要規則改版＋交叉審查",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-07-10",
           "end": "2026-07-10",
           "status": "done",
@@ -1063,7 +1063,7 @@
         {
           "id": "q2",
           "name": "全量摘要產出（含平台同步）",
-          "owner": "CRMCC·PT",
+          "owner": "CRM·PT",
           "start": "2026-07-11",
           "end": "2026-07-31",
           "status": "idle",
@@ -1076,7 +1076,7 @@
         {
           "id": "q3",
           "name": "資料結構自我描述",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-07-20",
           "end": "2026-07-28",
           "status": "idle",
@@ -1089,7 +1089,7 @@
         {
           "id": "q6",
           "name": "單據錄入",
-          "owner": "CRMCC·客服",
+          "owner": "CRM·客服",
           "start": "2026-07-20",
           "end": "2026-07-31",
           "status": "idle",
@@ -1100,7 +1100,7 @@
         {
           "id": "q8",
           "name": "即時同步（雙來源）",
-          "owner": "CRMCC·板主",
+          "owner": "CRM·板主",
           "start": "2026-07-14",
           "end": "2026-08-27",
           "status": "active",
@@ -1113,7 +1113,7 @@
         {
           "id": "q4",
           "name": "備份完整性機制",
-          "owner": "CRMCC·板主",
+          "owner": "CRM·板主",
           "start": "2026-07-17",
           "end": "2026-08-31",
           "status": "active",
@@ -1127,7 +1127,7 @@
         {
           "id": "db",
           "name": "資料庫底座與查詢介面",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-07-16",
           "end": "2026-08-05",
           "status": "active",
@@ -1141,7 +1141,7 @@
         {
           "id": "out",
           "name": "知識產出（SOP／PDCA）",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-08-01",
           "end": "2026-08-15",
           "status": "idle",
@@ -1154,7 +1154,7 @@
         {
           "id": "q7",
           "name": "第二來源對話結構化",
-          "owner": "CRMCC",
+          "owner": "CRM",
           "start": "2026-08-06",
           "end": "2026-08-12",
           "status": "idle",
@@ -1226,7 +1226,7 @@
         {
           "id": "hist-mkt-audit",
           "name": "行銷現況盤點（雙品牌官網 57 頁深度爬取）",
-          "owner": "PDCACC·板主",
+          "owner": "PM·板主",
           "start": "2026-04-16",
           "end": "2026-04-16",
           "status": "done",
