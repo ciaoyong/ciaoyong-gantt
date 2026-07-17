@@ -630,6 +630,124 @@
       ]
     },
     {
+      "id": "s5",
+      "name": "基礎層 S5｜好室官網自管化搬遷（7/31 斷點）",
+      "tasks": [
+        {
+          "id": "mig-decision",
+          "name": "自管化決策定案",
+          "owner": "板主",
+          "start": "2026-07-16",
+          "end": "2026-07-16",
+          "status": "done",
+          "progress": 100,
+          "note": "平台自管化拍板；依據與細節見內部 plan（不上板）",
+          "deps": []
+        },
+        {
+          "id": "mig-backup",
+          "name": "全站備份＋補抓完整資產",
+          "owner": "搬遷CC",
+          "start": "2026-07-16",
+          "end": "2026-07-17",
+          "status": "done",
+          "progress": 100,
+          "note": "84 頁 HTML＋352 圖＋CSS/JS/字型補齊（7/17 凌晨完成）；異地副本另列 mig-offsite",
+          "deps": []
+        },
+        {
+          "id": "mig-infra",
+          "name": "新站 repo＋Cloudflare Pages 接通",
+          "owner": "搬遷CC·板主",
+          "start": "2026-07-16",
+          "end": "2026-07-16",
+          "status": "done",
+          "progress": 100,
+          "note": "自動部署開通、臨時網址就緒；帳號公司可收回、已開兩階段驗證",
+          "deps": []
+        },
+        {
+          "id": "mig-build",
+          "name": "內容清洗→靜態站建置（Phase 2）",
+          "owner": "搬遷CC",
+          "start": "2026-07-16",
+          "end": "2026-07-17",
+          "status": "done",
+          "progress": 100,
+          "note": "66 頁乾淨網址樹＋352 圖；圖片鏈路在地化 330 處；表單改 LINE-CTA；301 表 30 條＋sitemap＋robots；破圖 0；已推送自動部署",
+          "deps": [
+            "mig-backup",
+            "mig-infra"
+          ]
+        },
+        {
+          "id": "mig-verify",
+          "name": "部署驗收（臨時網址全頁面＋RWD）",
+          "owner": "板主·搬遷CC",
+          "start": "2026-07-17",
+          "end": "2026-07-22",
+          "status": "idle",
+          "progress": 0,
+          "note": "部署已就緒，等板主驗收（手機可驗）：首頁／服務頁／相簿燈箱／FAQ／CTA；日期為估",
+          "deps": [
+            "mig-build"
+          ]
+        },
+        {
+          "id": "mig-form",
+          "name": "官網諮詢表單接入定案",
+          "owner": "板主·搬遷CC",
+          "start": "2026-07-17",
+          "end": "2026-07-31",
+          "status": "idle",
+          "progress": 0,
+          "note": "自填表單需上層裁示；接派工通路格式詢問中；先以 LINE-CTA 上線、不卡切換",
+          "deps": [
+            "mig-build"
+          ]
+        },
+        {
+          "id": "mig-offsite",
+          "name": "備份異地副本（含資料庫層備份）",
+          "owner": "板主",
+          "start": "2026-07-17",
+          "end": "2026-07-25",
+          "status": "idle",
+          "progress": 0,
+          "note": "現為單一本機副本；外接碟一次拷（站點備份＋資料庫備份一併）；日期為估",
+          "deps": [
+            "mig-backup"
+          ]
+        },
+        {
+          "id": "mig-dns",
+          "name": "網域切換上線",
+          "owner": "板主·搬遷CC",
+          "start": "2026-07-31",
+          "end": "2026-07-31",
+          "status": "milestone",
+          "progress": 0,
+          "note": "需板主在場（網域商登入）；切換前確認網域郵件（MX/SPF）實際使用狀況",
+          "deps": [
+            "mig-verify"
+          ]
+        },
+        {
+          "id": "mig-aftercare",
+          "name": "下游資產退役與改寫批次",
+          "owner": "搬遷CC·好室CC",
+          "start": "2026-08-01",
+          "end": "2026-08-15",
+          "status": "idle",
+          "progress": 0,
+          "note": "依 7/17 退役盤點：上稿 skill／後台手冊退役、五線上稿終點與基礎建設 SoT 改寫；日期為估",
+          "deps": [
+            "mig-dns"
+          ]
+        }
+      ]
+    },
+    {
       "id": "p1",
       "name": "基礎層 S1｜CRM：試辦階段",
       "tasks": [
