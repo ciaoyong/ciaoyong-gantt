@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "喬雍 內容行銷PDCA × CRM 總計畫",
-    "updated": "2026-07-17"
+    "updated": "2026-07-18"
   },
   "phases": [
     {
@@ -1114,11 +1114,11 @@
           "id": "q4",
           "name": "備份完整性機制",
           "owner": "CRMCC·板主",
-          "start": "2026-07-31",
+          "start": "2026-07-17",
           "end": "2026-08-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "主檔定型後起算之運行期",
+          "status": "active",
+          "progress": 10,
+          "note": "備份本地層就位：Time Machine 加密外接碟首備完成（07-17、每小時自動）；異地密文層＋完整性監控（>24h 無備份告警）待正式硬體到貨。未離地前不算完整",
           "deps": [
             "q2",
             "q3"
