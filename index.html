@@ -599,6 +599,24 @@ async function boot(){
   applyZoom();
   render();
   document.getElementById("todayBtn").click();
+  /* 錨點：網址帶 #<子計畫id>（例 #s5-it）直接跳該段並閃示，供跨文件連結 */
+  if (location.hash) {
+    const pid = decodeURIComponent(location.hash.slice(1));
+    const p = state.phases.find(x => x.id === pid);
+    if (p) {
+      if (isCollapsed(p)) {
+        const m = collapseMap(); m[pid] = false;
+        localStorage.setItem(LS_COLLAPSE, JSON.stringify(m));
+        render(); document.getElementById("todayBtn").click();
+      }
+      const el = document.querySelector(`[data-collapse="${CSS.escape(pid)}"]`);
+      if (el) {
+        el.scrollIntoView({ block: "start", behavior: "smooth" });
+        el.style.outline = "3px solid var(--gold)";
+        setTimeout(() => { el.style.outline = ""; }, 4000);
+      }
+    }
+  }
   if (!localStorage.getItem(LS_SEEN)) openModal(document.getElementById("helpBackdrop"), "#helpClose");
 }
 /* 說明視窗：任何方式關閉都記錄已看過，不重複打擾 */
