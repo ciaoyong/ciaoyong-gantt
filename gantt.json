@@ -1,1350 +1,1376 @@
 {
-  "meta": {
-    "title": "喬雍 內容行銷PDCA × CRM 總計畫",
-    "updated": "2026-07-18"
-  },
-  "phases": [
+ "meta": {
+  "title": "喬雍 內容行銷PDCA × CRM 總計畫",
+  "updated": "2026-07-18"
+ },
+ "phases": [
+  {
+   "id": "ring-p",
+   "name": "內環 P｜選題（Plan）",
+   "tasks": [
     {
-      "id": "ring-p",
-      "name": "內環 P｜選題（Plan）",
-      "tasks": [
-        {
-          "id": "topic-plan",
-          "name": "選題清單改版＋內容產出追蹤表",
-          "owner": "PM",
-          "start": "2026-07-20",
-          "end": "2026-07-24",
-          "status": "idle",
-          "progress": 0,
-          "note": "織品題材優先化",
-          "deps": [
-            "phase2-approve"
-          ]
-        },
-        {
-          "id": "faq-bank",
-          "name": "FAQ 題庫引擎（搜尋詞＋客服口語題→候選題）",
-          "owner": "好室",
-          "start": "2026-07-12",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 30,
-          "note": "W12 段二；入料已升級（0點擊問句＋雙源語彙）；分類架構待內部確認",
-          "deps": []
-        }
-      ]
+     "id": "topic-plan",
+     "name": "選題清單改版＋內容產出追蹤表",
+     "owner": "PM",
+     "start": "2026-07-20",
+     "end": "2026-07-24",
+     "status": "idle",
+     "progress": 0,
+     "note": "織品題材優先化",
+     "deps": [
+      "phase2-approve"
+     ]
     },
     {
-      "id": "ring-d",
-      "name": "內環 D｜六線產製上稿（Do）",
-      "tasks": [
-        {
-          "id": "phase2-approve",
-          "name": "內容管線骨架計畫批准",
-          "owner": "板主",
-          "start": "2026-07-14",
-          "end": "2026-07-14",
-          "status": "milestone",
-          "progress": 0,
-          "note": "日期為估",
-          "deps": []
-        },
-        {
-          "id": "phase2-build",
-          "name": "好室 blog 管線骨架建置（六週）",
-          "owner": "好室",
-          "start": "2026-07-10",
-          "end": "2026-08-25",
-          "status": "active",
-          "progress": 65,
-          "note": "W1–W5 骨架＋逐段表單＋元件單已成（07-11）；上稿器到草稿即停；待首篇 live pilot",
-          "deps": [
-            "phase2-approve"
-          ]
-        },
-        {
-          "id": "gl-select",
-          "name": "相簿選片管線（雲端評分→終審→修圖）",
-          "owner": "好室·板主",
-          "start": "2026-07-12",
-          "end": "2026-08-15",
-          "status": "active",
-          "progress": 35,
-          "note": "2 萬張→35 本案例；後台全表拉齊＋舊『分錯/量不均』疑翻案（7/14）；Step 0 套件裝妥（7/15）；剩 pid42 歸屬＋pilot 選定兩拍板即產段 B 分夾任務單",
-          "deps": []
-        },
-        {
-          "id": "gl-publish",
-          "name": "相簿上架（頁面模組上稿器＋35 本）",
-          "owner": "好室",
-          "start": "2026-07-20",
-          "end": "2026-08-31",
-          "status": "idle",
-          "progress": 10,
-          "note": "先行上線、不受 9/1 閘門限制；上稿器規格已定案、程式待發包",
-          "deps": [
-            "gl-select"
-          ]
-        },
-        {
-          "id": "faq-publisher",
-          "name": "FAQ 選題表單＋自動上稿器",
-          "owner": "好室",
-          "start": "2026-07-12",
-          "end": "2026-08-08",
-          "status": "idle",
-          "progress": 10,
-          "note": "先行上線、不受 9/1 閘門限制；規格已齊、程式待發包",
-          "deps": [
-            "faq-bank"
-          ]
-        },
-        {
-          "id": "qa-cy-batch",
-          "name": "喬雍官網文章 QA 首批編製",
-          "owner": "喬雍",
-          "start": "2026-07-21",
-          "end": "2026-07-25",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "seo-cy-crawl"
-          ]
-        },
-        {
-          "id": "qa-cy-flow",
-          "name": "新文章隨稿三問答常態線",
-          "owner": "喬雍",
-          "start": "2026-07-20",
-          "end": "2026-09-30",
-          "status": "idle",
-          "progress": 0,
-          "note": "隨上稿滾動，銜接既有隨稿問答產出",
-          "deps": [
-            "qa-cy-batch"
-          ]
-        },
-        {
-          "id": "qa-hs-collect",
-          "name": "好室定稿素材蒐集",
-          "owner": "好室·板主",
-          "start": "2026-07-12",
-          "end": "2026-08-01",
-          "status": "active",
-          "progress": 10,
-          "note": "品牌定框前的準備段",
-          "deps": []
-        },
-        {
-          "id": "qa-hs-build",
-          "name": "好室 QA 編製",
-          "owner": "好室",
-          "start": "2026-08-10",
-          "end": "2026-08-21",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "brand-frame",
-            "qa-hs-collect"
-          ]
-        },
-        {
-          "id": "km-scope",
-          "name": "喬雍官網維護工具｜範圍定義",
-          "owner": "喬雍",
-          "start": "2026-08-01",
-          "end": "2026-08-07",
-          "status": "idle",
-          "progress": 0,
-          "note": "2026-07-18 板主釐清：屬喬雍官網維護工具、非知識管理；等板主描述需求輪廓；日期為估",
-          "deps": []
-        },
-        {
-          "id": "km-build",
-          "name": "喬雍官網維護工具｜建置",
-          "owner": "喬雍",
-          "start": "2026-08-10",
-          "end": "2026-08-28",
-          "status": "idle",
-          "progress": 0,
-          "note": "2026-07-18 板主釐清：屬喬雍官網維護工具、非知識管理",
-          "deps": [
-            "km-scope"
-          ]
-        },
-        {
-          "id": "content-gate",
-          "name": "好室內容正式上線",
-          "owner": "板主",
-          "start": "2026-09-01",
-          "end": "2026-09-01",
-          "status": "milestone",
-          "progress": 0,
-          "note": "雙前置：品牌定框＋管線建成；日期為估",
-          "deps": [
-            "brand-frame",
-            "phase2-build"
-          ]
-        },
-        {
-          "id": "kn-maintenance",
-          "name": "kn 線維運（編輯回覆優化＋退回輪 patch 驗收）",
-          "owner": "喬雍·板主",
-          "start": "2026-07-14",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "patch 驗收需板主在場",
-          "deps": []
-        },
-        {
-          "id": "gbp-qa",
-          "name": "GBP 自問自答預埋（FAQ→問答格式交接包）",
-          "owner": "好室·板主",
-          "start": "2026-07-21",
-          "end": "2026-08-08",
-          "status": "idle",
-          "progress": 0,
-          "note": "AI 產交接文字包、板主以 Gemini 更新 GBP；細節後議",
-          "deps": []
-        },
-        {
-          "id": "gbp-products",
-          "name": "GBP 產品目錄（服務卡片交接包）",
-          "owner": "好室·板主",
-          "start": "2026-08-01",
-          "end": "2026-08-22",
-          "status": "idle",
-          "progress": 0,
-          "note": "前置：圖片尺寸規範；同上分工",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "ring-c",
-      "name": "內環 C｜成效回看（Check）",
-      "tasks": [
-        {
-          "id": "seo-cy-crawl",
-          "name": "喬雍官網 SEO 現況彙整回知識庫",
-          "owner": "喬雍",
-          "start": "2026-07-21",
-          "end": "2026-07-25",
-          "status": "idle",
-          "progress": 0,
-          "note": "設定已上站，直接撈；7/16 盤點：逾期未動",
-          "deps": []
-        },
-        {
-          "id": "seo-hs-crawl",
-          "name": "好室官網 SEO 現況彙整（含重整）",
-          "owner": "好室",
-          "start": "2026-07-16",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "站上較零亂，帶回重新整理",
-          "deps": []
-        },
-        {
-          "id": "cycle1",
-          "name": "內環全環首轉（選題→上稿→回看跑通一圈）",
-          "owner": "PM·板主",
-          "start": "2026-08-15",
-          "end": "2026-08-15",
-          "status": "milestone",
-          "progress": 0,
-          "note": "系統自我修正能力驗收點",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "ring-a",
-      "name": "內環 A｜調整與補強（Act）",
-      "tasks": [
-        {
-          "id": "act-legacy-fix",
-          "name": "舊文補強批次（死連結＋排版＋SEO 待補）",
-          "owner": "好室",
-          "start": "2026-08-01",
-          "end": "2026-08-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "內環 Act 首批",
-          "deps": []
-        },
-        {
-          "id": "q3-refresh",
-          "name": "Q3 除舊佈新（archive 瘦身＋IG/FB Bio 改寫）",
-          "owner": "PM·板主",
-          "start": "2026-08-01",
-          "end": "2026-09-30",
-          "status": "idle",
-          "progress": 0,
-          "note": "Q3 觸發已到期；Bio 改寫等品牌定框後一次到位",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "outer",
-      "name": "外環｜品牌校準 PDCA（客戶認知三源→落差→回饋策略）",
-      "tasks": [
-        {
-          "id": "src-search",
-          "name": "搜尋源編入（客戶搜尋語彙第一版）",
-          "owner": "PM",
-          "start": "2026-07-15",
-          "end": "2026-07-17",
-          "status": "done",
-          "progress": 100,
-          "note": "7/17 完成：客戶搜尋語彙 v0（GSC 兩週窗、好室 275 詞十叢集＋0 點擊選題清單）入 brand-wiki/alignment/；警訊＝喬雍 B2B 詞掛零",
-          "deps": [
-            "seo-weekly"
-          ]
-        },
-        {
-          "id": "src-social-edit",
-          "name": "社群源編入",
-          "owner": "PM",
-          "start": "2026-08-03",
-          "end": "2026-08-05",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "src-social-connect"
-          ]
-        },
-        {
-          "id": "crm-feedback",
-          "name": "對話源素材包首批回流",
-          "owner": "報表",
-          "start": "2026-08-12",
-          "end": "2026-08-12",
-          "status": "milestone",
-          "progress": 0,
-          "note": "交接規格已備；預計約一個月；日期為估",
-          "deps": [
-            "out"
-          ]
-        },
-        {
-          "id": "src-dialog-edit",
-          "name": "對話源編入＋客戶認知三源整合",
-          "owner": "PM",
-          "start": "2026-08-17",
-          "end": "2026-08-21",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "crm-feedback",
-            "src-search",
-            "src-social-edit"
-          ]
-        },
-        {
-          "id": "persona-b2c",
-          "name": "好室客戶輪廓建置",
-          "owner": "好室",
-          "start": "2026-08-24",
-          "end": "2026-08-28",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "crm-feedback"
-          ]
-        },
-        {
-          "id": "b2b-oa",
-          "name": "B2B 客服線 LINE OA 開通",
-          "owner": "業務",
-          "start": "2026-09-01",
-          "end": "2026-09-30",
-          "status": "idle",
-          "progress": 0,
-          "note": "排於 2C 客服線之後；日期為估",
-          "deps": [
-            "oa"
-          ]
-        },
-        {
-          "id": "persona-b2b",
-          "name": "喬雍客戶理解建置",
-          "owner": "PM",
-          "start": "2026-10-01",
-          "end": "2026-10-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "b2b-oa"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "gm",
-      "name": "行銷｜目標校準與補洞（2026-07-17 體檢 v3）",
-      "tasks": [
-        {
-          "id": "g1",
-          "name": "2026 行銷目標定調＋KPI 覆核",
-          "owner": "PM·板主",
-          "start": "2026-07-18",
-          "end": "2026-07-25",
-          "status": "idle",
-          "progress": 60,
-          "note": "北極星方向已定（自來客佔比翻轉／一站式／織物 flagship，2026-07-17 板主確認）；剩：舊 KPI 逐條續用/改值/廢＋通路 KPI 補目標值；精確月靶待 CRM 報表對齊",
-          "deps": []
-        },
-        {
-          "id": "gc",
-          "name": "織物內容補齊＋作品案例居家化",
-          "owner": "PM·板主",
-          "start": "2026-07-21",
-          "end": "2026-08-22",
-          "status": "idle",
-          "progress": 0,
-          "note": "體檢 v3 首要缺口：織物為 flagship 但官網織物文章近乎零、作品案例偏商用端；補 Blog 織物 Pillar-Cluster＋案例居家化，對接搜尋語彙 0 點擊清單",
-          "deps": []
-        },
-        {
-          "id": "g3",
-          "name": "詢問/成交數據接入（消費 CRM 週摘）",
-          "owner": "報表·板主",
-          "start": "2026-07-21",
-          "end": "2026-08-08",
-          "status": "idle",
-          "progress": 0,
-          "note": "CRM 端週摘產出器已上線；行銷側＝消費其 JSON、自來客 vs 平台分流；含平台來源歸因；報價段掛號待評估；日期為估",
-          "deps": []
-        },
-        {
-          "id": "g5",
-          "name": "B2B 行銷立場定案",
-          "owner": "板主",
-          "start": "2026-08-01",
-          "end": "2026-08-01",
-          "status": "milestone",
-          "progress": 0,
-          "note": "主力已定義（駐點/清潔工程，7/17）；剩二選一：搜尋端進客開工或明文走轉介＋業務；日期為估",
-          "deps": []
-        },
-        {
-          "id": "g8",
-          "name": "小編 KPI v2（活動量→成效指標）",
-          "owner": "PM·板主",
-          "start": "2026-08-04",
-          "end": "2026-08-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "KPI 稽核 2026H1 已自我建議改版；框架依 g1；日期為估",
-          "deps": [
-            "g1"
-          ]
-        },
-        {
-          "id": "g2",
-          "name": "自來客月度靶（詢問/成交件數）",
-          "owner": "PM",
-          "start": "2026-08-11",
-          "end": "2026-08-22",
-          "status": "idle",
-          "progress": 0,
-          "note": "需 g3 基準數據到手才能反推；產出＝內容線量化靶；口徑為自來客件數（回購不屬行銷職掌）；日期為估",
-          "deps": [
-            "g3"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "s2",
-      "name": "基礎層 S2｜資料通路與報表",
-      "tasks": [
-        {
-          "id": "seo-weekly",
-          "name": "首份自動流量週報驗收",
-          "owner": "報表",
-          "start": "2026-07-15",
-          "end": "2026-07-15",
-          "status": "milestone",
-          "progress": 100,
-          "note": "✅ 7/15 首播全鏈驗收成功（週三 14:00 launchd、零 warning）；v1.5 已改網頁版（GitHub Pages）＋LINE 固定網址，Drive PDF 撤役",
-          "deps": []
-        },
-        {
-          "id": "src-social-connect",
-          "name": "社群流量監測接入（三平台）",
-          "owner": "報表·板主",
-          "start": "2026-07-12",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 60,
-          "note": "FB×2＋IG 已接通（Graph API，token 落地）；GBP 等外部 API 審核",
-          "deps": []
-        },
-        {
-          "id": "report-data-layer",
-          "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
-          "owner": "報表",
-          "start": "2026-07-10",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "提前完成：GSC 四維快照＋社群貼文層＋標準化資料檔，已實測",
-          "deps": [
-            "seo-weekly"
-          ]
-        },
-        {
-          "id": "report-ana-auto",
-          "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
-          "owner": "報表",
-          "start": "2026-07-12",
-          "end": "2026-07-22",
-          "status": "active",
-          "progress": 80,
-          "note": "引擎完工實測（主筆＋稽核退回機制驗證過）；主筆＝Claude Opus，Codex 獨立稽核；等週三首播驗收後啟用（旗標 SEO_ANALYSIS_ENABLED）",
-          "deps": [
-            "seo-weekly",
-            "report-data-layer"
-          ]
-        },
-        {
-          "id": "marketing-actions",
-          "name": "行銷工作紀錄表起建",
-          "owner": "報表·板主",
-          "start": "2026-07-12",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 70,
-          "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
-          "deps": []
-        },
-        {
-          "id": "market-scan",
-          "name": "外部市場字與同業內容掃描（月線）",
-          "owner": "報表",
-          "start": "2026-07-13",
-          "end": "2026-08-03",
-          "status": "active",
-          "progress": 90,
-          "note": "本 session 完工：同業內容月掃引擎（sitemap/blog 新文 diff）＋搜尋聯想長尾字對照 GSC 盲區＋圖表報表；12 家區域同業名單（季更）；乾淨 baseline 已建；兩輪 code/cross review 修正。餘：8/3 隨月報首航",
-          "deps": [
-            "report-data-layer"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p5",
-      "name": "基礎層 S3｜品牌策略定框（內容總閘）",
-      "tasks": [
-        {
-          "id": "brand-frame",
-          "name": "好室品牌策略定框（找頭）",
-          "owner": "板主",
-          "start": "2026-07-03",
-          "end": "2026-08-01",
-          "status": "active",
-          "progress": 10,
-          "note": "行銷線最大前置；日期與進度為粗估",
-          "deps": []
-        },
-        {
-          "id": "slogan-fix",
-          "name": "輔助標語改寫定案",
-          "owner": "板主",
-          "start": "2026-08-01",
-          "end": "2026-08-01",
-          "status": "milestone",
-          "progress": 0,
-          "note": "日期為估",
-          "deps": [
-            "brand-frame"
-          ]
-        },
-        {
-          "id": "about-rewrite",
-          "name": "官網「關於我們」語調改寫定稿",
-          "owner": "好室·板主",
-          "start": "2026-07-06",
-          "end": "2026-08-07",
-          "status": "idle",
-          "progress": 0,
-          "note": "改寫稿內部討論中",
-          "deps": [
-            "brand-frame"
-          ]
-        },
-        {
-          "id": "mkt-plan-rev",
-          "name": "行銷計畫與社群計畫修訂",
-          "owner": "板主·PM",
-          "start": "2026-08-03",
-          "end": "2026-08-14",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "brand-frame"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p9",
-      "name": "基礎層 S4｜官網地面與知識庫",
-      "tasks": [
-        {
-          "id": "wiki-restruct",
-          "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
-          "owner": "PM",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "wiki-consist",
-          "name": "知識庫矛盾與過時修正批次",
-          "owner": "PM",
-          "start": "2026-07-12",
-          "end": "2026-07-12",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "vendor-batch",
-          "name": "官網修正工單批次（追蹤碼驗收／轉址／資訊對齊）",
-          "owner": "板主·廠商",
-          "start": "2026-07-07",
-          "end": "2026-07-25",
-          "status": "active",
-          "progress": 30,
-          "note": "廠商端進行中；日期與進度為估",
-          "deps": []
-        },
-        {
-          "id": "wiki-datafix",
-          "name": "知識庫欄位補值（待板主提供數值）",
-          "owner": "板主·PM",
-          "start": "2026-07-14",
-          "end": "2026-07-18",
-          "status": "idle",
-          "progress": 0,
-          "note": "含基本資料欄位與年度營運數字",
-          "deps": []
-        },
-        {
-          "id": "faq-layout-vendor",
-          "name": "FAQ 版型 A 廠商工單（側欄目錄＋h2/h3＋CTA 版位）",
-          "owner": "板主·廠商",
-          "start": "2026-07-12",
-          "end": "2026-07-31",
-          "status": "blocked",
-          "progress": 0,
-          "note": "2026-07-14 放棄外包（已交完整規格＋程式碼包仍無法理解需求）；功能併入自管搬遷後自建（搬遷已提前：7/16 定案 7/31 前搬自管靜態站），素材已備妥",
-          "deps": []
-        },
-        {
-          "id": "faq-selfserve",
-          "name": "FAQ 基本修繕包上線（可讀性＋深連結＋手機修正）",
-          "owner": "好室",
-          "start": "2026-07-12",
-          "end": "2026-07-18",
-          "status": "active",
-          "progress": 70,
-          "note": "修繕包已備妥；避開廠商後台工作窗後擇時上線",
-          "deps": []
-        },
-        {
-          "id": "ga4-keyevents",
-          "name": "GA4 key events 事件埋設（表單/電話/LINE 點擊）",
-          "owner": "板主·廠商",
-          "start": "2026-07-14",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "轉換鏈最後一環；併下批廠商工單（板主已拍板）",
-          "deps": []
-        },
-        {
-          "id": "hs-legacy-cleanup",
-          "name": "好室舊站殘留治理收口（301對應/孤兒清查/客服刪除三件套）",
-          "owner": "板主·廠商",
-          "start": "2026-07-21",
-          "end": "2026-08-08",
-          "status": "idle",
-          "progress": 0,
-          "note": "對象為舊站客服端；plan×3 已收斂待發",
-          "deps": []
-        },
-        {
-          "id": "cy-hocom-fixes",
-          "name": "喬雍站模板層修正批次（客服交接清單）",
-          "owner": "板主·廠商",
-          "start": "2026-07-21",
-          "end": "2026-08-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "hocom 客服端工單；HEAD/JS 暫解已上、待模板根治",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "s5",
-      "name": "基礎層 S5｜好室官網自管化搬遷（7/31 斷點）",
-      "tasks": [
-        {
-          "id": "mig-decision",
-          "name": "自管化決策定案",
-          "owner": "板主",
-          "start": "2026-07-16",
-          "end": "2026-07-16",
-          "status": "done",
-          "progress": 100,
-          "note": "平台自管化拍板；依據與細節見內部 plan（不上板）",
-          "deps": []
-        },
-        {
-          "id": "mig-backup",
-          "name": "全站備份＋補抓完整資產",
-          "owner": "好室",
-          "start": "2026-07-16",
-          "end": "2026-07-17",
-          "status": "done",
-          "progress": 100,
-          "note": "84 頁 HTML＋352 圖＋CSS/JS/字型補齊（7/17 凌晨完成）；異地副本另列 mig-offsite",
-          "deps": []
-        },
-        {
-          "id": "mig-infra",
-          "name": "新站 repo＋Cloudflare Pages 接通",
-          "owner": "好室·板主",
-          "start": "2026-07-16",
-          "end": "2026-07-16",
-          "status": "done",
-          "progress": 100,
-          "note": "自動部署開通、臨時網址就緒；帳號公司可收回、已開兩階段驗證",
-          "deps": []
-        },
-        {
-          "id": "mig-build",
-          "name": "內容清洗→靜態站建置（Phase 2）",
-          "owner": "好室",
-          "start": "2026-07-16",
-          "end": "2026-07-17",
-          "status": "done",
-          "progress": 100,
-          "note": "66 頁乾淨網址樹＋352 圖；圖片鏈路在地化 330 處；表單改 LINE-CTA；301 表 30 條＋sitemap＋robots；破圖 0；已推送自動部署",
-          "deps": [
-            "mig-backup",
-            "mig-infra"
-          ]
-        },
-        {
-          "id": "mig-verify",
-          "name": "部署驗收（臨時網址全頁面＋RWD）",
-          "owner": "板主·好室",
-          "start": "2026-07-17",
-          "end": "2026-07-18",
-          "status": "done",
-          "progress": 100,
-          "note": "已推送 pages.dev、乾淨網址路由/資產/破圖 CC 複驗過；codex 桌機+手機視覺稽核過（整體 PASS）；空相簿隱藏交接 codex 待跑；剩板主手機終驗＋Cloudflare 後台設定（www→apex、query redirect）",
-          "deps": [
-            "mig-build"
-          ]
-        },
-        {
-          "id": "mig-form",
-          "name": "官網諮詢表單接入定案",
-          "owner": "板主·好室",
-          "start": "2026-07-17",
-          "end": "2026-07-18",
-          "status": "done",
-          "progress": 100,
-          "note": "定案＝不設自填表單（議題註銷；派工端若回格式再議）",
-          "deps": [
-            "mig-build"
-          ]
-        },
-        {
-          "id": "mig-offsite",
-          "name": "備份異地副本（含資料庫層備份）",
-          "owner": "板主",
-          "start": "2026-07-17",
-          "end": "2026-07-18",
-          "status": "done",
-          "progress": 100,
-          "note": "現為單一本機副本；外接碟一次拷（站點備份＋資料庫備份一併）；日期為估",
-          "deps": [
-            "mig-backup"
-          ]
-        },
-        {
-          "id": "mig-dns",
-          "name": "網域切換上線",
-          "owner": "板主·好室",
-          "start": "2026-07-31",
-          "end": "2026-07-31",
-          "status": "milestone",
-          "progress": 0,
-          "note": "需板主在場（網域商登入）；切換前確認網域郵件（MX/SPF）實際使用狀況",
-          "deps": [
-            "mig-verify"
-          ]
-        },
-        {
-          "id": "mig-aftercare",
-          "name": "下游資產退役與改寫批次",
-          "owner": "好室",
-          "start": "2026-08-01",
-          "end": "2026-08-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "依 7/17 退役盤點：上稿 skill／後台手冊退役、五線上稿終點與基礎建設 SoT 改寫；日期為估",
-          "deps": [
-            "mig-dns"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p1",
-      "name": "基礎層 S1｜CRM：試辦階段",
-      "tasks": [
-        {
-          "id": "oa",
-          "name": "業務開通 LINE OA",
-          "owner": "業務",
-          "start": "2026-04-27",
-          "end": "2026-08-31",
-          "status": "active",
-          "progress": 55,
-          "note": "進度為板主粗估",
-          "deps": []
-        },
-        {
-          "id": "pilot",
-          "name": "第一輪 summary 品質檢驗（20 位）",
-          "owner": "客服",
-          "start": "2026-05-26",
-          "end": "2026-05-27",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "rev2",
-          "name": "第二輪 summary 品質檢驗（100 位）",
-          "owner": "客服",
-          "start": "2026-06-22",
-          "end": "2026-06-26",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "rev3",
-          "name": "第三輪 summary 品質檢驗（30 位）",
-          "owner": "客服",
-          "start": "2026-07-06",
-          "end": "2026-07-13",
-          "status": "done",
-          "progress": 100,
-          "note": "全局第一擋點；7/16 盤點板主確認已完成（完成日未詳，暫沿排程迄日）",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "p2",
-      "name": "基礎層 S1｜CRM：歷史資料歸檔",
-      "tasks": [
-        {
-          "id": "a1",
-          "name": "歸檔計劃定案＋編號盤查",
-          "owner": "CRM·板主",
-          "start": "2026-07-02",
-          "end": "2026-07-03",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "a2",
-          "name": "資料匯入（全量批）",
-          "owner": "板主",
-          "start": "2026-07-03",
-          "end": "2026-07-03",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "a3",
-          "name": "資料清洗＋編碼比對",
-          "owner": "CRM",
-          "start": "2026-07-04",
-          "end": "2026-07-04",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "a2"
-          ]
-        },
-        {
-          "id": "a4",
-          "name": "試跑批摘要產出＋平台同步",
-          "owner": "CRM·PT",
-          "start": "2026-07-04",
-          "end": "2026-07-04",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "a3"
-          ]
-        },
-        {
-          "id": "reorg",
-          "name": "資料底座重整（主體／來源分離＋試跑隔離）",
-          "owner": "CRM·板主",
-          "start": "2026-07-06",
-          "end": "2026-07-06",
-          "status": "done",
-          "progress": 100,
-          "note": "含計畫文件收斂結案",
-          "deps": [
-            "a4"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p3",
-      "name": "基礎層 S1｜CRM：客戶主檔建置",
-      "tasks": [
-        {
-          "id": "sum",
-          "name": "summary 任務",
-          "owner": "CRM·PT",
-          "start": "2026-05-20",
-          "end": "2026-07-31",
-          "status": "active",
-          "progress": 60,
-          "note": "三批試跑產出；7/16 盤點：仍進行中，迄日延至 7/31（估）；進度為板主粗估",
-          "deps": []
-        },
-        {
-          "id": "match",
-          "name": "跨匯出識別機制（三層匹配＋同名拆分）",
-          "owner": "CRM",
-          "start": "2026-06-15",
-          "end": "2026-06-15",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "recode",
-          "name": "編碼制度重編",
-          "owner": "板主",
-          "start": "2026-07-03",
-          "end": "2026-07-25",
-          "status": "active",
-          "progress": 50,
-          "note": "7/3 裁示啟動，預計 7/25 完成；進度為板主粗估",
-          "deps": []
-        },
-        {
-          "id": "m1",
-          "name": "編碼制度定案＋對話全文錄入",
-          "owner": "CRM",
-          "start": "2026-07-04",
-          "end": "2026-07-04",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "a3"
-          ]
-        },
-        {
-          "id": "m2",
-          "name": "欄位清洗（聯絡方式／來源）",
-          "owner": "CRM",
-          "start": "2026-07-05",
-          "end": "2026-07-05",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "m1"
-          ]
-        },
-        {
-          "id": "m3",
-          "name": "開發總規劃定案＋主檔更名",
-          "owner": "CRM·板主",
-          "start": "2026-07-05",
-          "end": "2026-07-05",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": [
-            "m2"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p4",
-      "name": "基礎層 S1｜CRM：開發主線",
-      "tasks": [
-        {
-          "id": "img",
-          "name": "影像資料檢核與補抓",
-          "owner": "PT",
-          "start": "2026-07-04",
-          "end": "2026-09-30",
-          "status": "active",
-          "progress": 60,
-          "note": "入庫完成；分類盤點完成（文件/照片/前後切分），待欄位回補",
-          "deps": []
-        },
-        {
-          "id": "q5",
-          "name": "影像連結建檔",
-          "owner": "CRM·PT",
-          "start": "2026-07-10",
-          "end": "2026-09-30",
-          "status": "active",
-          "progress": 20,
-          "note": "對位機制建置（媒體↔對話標記腳本）＋缺件稽核驅動補抓",
-          "deps": [
-            "img",
-            "m1"
-          ]
-        },
-        {
-          "id": "q1",
-          "name": "摘要規則改版＋交叉審查",
-          "owner": "CRM",
-          "start": "2026-07-10",
-          "end": "2026-07-10",
-          "status": "done",
-          "progress": 100,
-          "note": "提前完成：規則合併單一定案＋模型校準（兩輪）＋自動格式驗證工具",
-          "deps": [
-            "rev3"
-          ]
-        },
-        {
-          "id": "q2",
-          "name": "全量摘要產出（含平台同步）",
-          "owner": "CRM·PT",
-          "start": "2026-07-11",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "量產計劃書已核准；07-17 呈現層改向評估中（記事本上稿暫停、改探看板呈現，待外部回覆）；單據欄位化（AS1）定為前置",
-          "deps": [
-            "q1"
-          ]
-        },
-        {
-          "id": "q3",
-          "name": "資料結構自我描述",
-          "owner": "CRM",
-          "start": "2026-07-20",
-          "end": "2026-07-28",
-          "status": "idle",
-          "progress": 0,
-          "note": "依 q1 定稿格式，與 q2 並行",
-          "deps": [
-            "q1"
-          ]
-        },
-        {
-          "id": "q6",
-          "name": "單據錄入",
-          "owner": "CRM·客服",
-          "start": "2026-07-20",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "等單據檔案提供",
-          "deps": []
-        },
-        {
-          "id": "q8",
-          "name": "即時同步（雙來源）",
-          "owner": "CRM·IT·板主",
-          "start": "2026-07-14",
-          "end": "2026-08-27",
-          "status": "active",
-          "progress": 65,
-          "note": "LINE 線：收訊機 Phase A 完，待裝機；Asana 線：全量首撈完成對帳過（7,542 件＋留言全撈），欄位化＋對鍵 plan 已核准待啟動；Asana raw 進資料倉暫緩＝卡老闆回覆（to B／to C 是否一起建；to B 橫跨特清與駐點兩部門）（管道歸 IT、內容歸 CRM）",
-          "deps": [
-            "db"
-          ]
-        },
-        {
-          "id": "q4",
-          "name": "備份完整性機制",
-          "owner": "IT·板主",
-          "start": "2026-07-17",
-          "end": "2026-08-31",
-          "status": "active",
-          "progress": 25,
-          "note": "備份本地層就位：Time Machine 加密外接碟每小時自動＋完整性監控上線（8h 無備份→通知）；異地密文層待正式硬體到貨。未離地前不出界（備份機制歸 IT 線維運）",
-          "deps": [
-            "q2",
-            "q3"
-          ]
-        },
-        {
-          "id": "db",
-          "name": "資料庫資料層與查詢介面",
-          "owner": "CRM",
-          "start": "2026-07-16",
-          "end": "2026-08-05",
-          "status": "active",
-          "progress": 15,
-          "note": "底座建置與入庫實跑已認領歸 IT 線（見 S5-IT）；本任務＝資料交付（原始檔進倉，現為卡點）＋查詢介面（待主檔定型＋硬體到位）。檔案為真相源、資料庫為衍生查詢層",
-          "deps": [
-            "q2",
-            "q3"
-          ]
-        },
-        {
-          "id": "out",
-          "name": "知識產出（SOP／PDCA）",
-          "owner": "CRM",
-          "start": "2026-08-01",
-          "end": "2026-08-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "q2"
-          ]
-        },
-        {
-          "id": "q7",
-          "name": "第二來源對話結構化",
-          "owner": "CRM",
-          "start": "2026-08-06",
-          "end": "2026-08-12",
-          "status": "idle",
-          "progress": 0,
-          "note": "",
-          "deps": [
-            "q2",
-            "db"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "s5-it",
-      "name": "基礎層 S5｜IT（地端伺服器與跨線基礎設施）",
-      "tasks": [
-        {
-          "id": "it-server",
-          "name": "地端伺服器建置與加固（加密／帳號隔離／防火牆／本地備份）",
-          "owner": "IT",
-          "start": "2026-07-16",
-          "end": "2026-07-18",
-          "status": "done",
-          "progress": 100,
-          "note": "過渡機服役中；全套=全碟加密+金鑰門+四帳號隔離+守門員+進出簿+防火牆+Time Machine",
-          "deps": []
-        },
-        {
-          "id": "it-channel",
-          "name": "跨線管道（郵局倉治理＋巡倉通知＋讀寫稽核）",
-          "owner": "IT",
-          "start": "2026-07-16",
-          "end": "2026-07-18",
-          "status": "active",
-          "progress": 95,
-          "note": "三線通道全通、巡邏通知上線；倉用途終裁已下並落地（規則入 README＋內容閘復崗）；餘：成對倉雙向開通",
-          "deps": []
-        },
-        {
-          "id": "it-runbook",
-          "name": "IT 操作手冊（runbooks，為未來拆分預備）",
-          "owner": "IT",
-          "start": "2026-07-17",
-          "end": "2026-07-18",
-          "status": "done",
-          "progress": 100,
-          "note": "8 篇：建置/鑰匙/守門員/進出簿/巡倉/DB重建/雷區；infra 腳本已版本化",
-          "deps": []
-        },
-        {
-          "id": "it-migrate",
-          "name": "正式機遷移＋異地密文備份（321 補齊）",
-          "owner": "IT",
-          "start": "2026-10-01",
-          "end": "2026-10-15",
-          "status": "idle",
-          "progress": 0,
-          "note": "等正式機到貨（十月）；含備份碟汰換；日期為估",
-          "deps": [
-            "it-server"
-          ]
-        },
-        {
-          "id": "it-db-import",
-          "name": "資料庫入庫建置（腳本主鍵修正→首批兩表實跑）",
-          "owner": "IT",
-          "start": "2026-07-19",
-          "end": "2026-07-25",
-          "status": "idle",
-          "progress": 0,
-          "note": "自 S1 開發主線認領（建置側）；建置已備妥等料——卡點＝來源資料未進倉（資料交付歸 CRM 線）；步驟＝腳本主鍵補齊修正→首批兩表實跑→行數對帳；日期為估",
-          "deps": []
-        },
-        {
-          "id": "it-gateway",
-          "name": "出境閘道 Gateway（規格併資料庫權限層＋建置）",
-          "owner": "IT",
-          "start": "2026-07-21",
-          "end": "2026-08-07",
-          "status": "idle",
-          "progress": 0,
-          "note": "雲端 AI 用資料的唯一出口；本線立場已回（中央一個、IT 維運、規格一份文件）；待老闆裁示後開工；日期為估",
-          "deps": []
-        },
-        {
-          "id": "it-backup-tail",
-          "name": "備份鏈收尾（重開機解鎖驗證＋金鑰輪替）",
-          "owner": "IT",
-          "start": "2026-07-19",
-          "end": "2026-07-23",
-          "status": "idle",
-          "progress": 0,
-          "note": "伺服器重開機驗證加密備份卷自動解鎖＋備份金鑰機上輪替（新鑰只落紙本）；日期為估",
-          "deps": []
-        }
-      ]
-    },
-    {
-      "id": "hist",
-      "name": "🗄 已完工歷史（4 月中起・點標題展開）",
-      "tasks": [
-        {
-          "id": "hist-mkt-audit",
-          "name": "行銷現況盤點（雙品牌官網 57 頁深度爬取）",
-          "owner": "PM·板主",
-          "start": "2026-04-16",
-          "end": "2026-04-16",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "hist-content-meeting",
-          "name": "雙品牌網站內容編輯會議定案（三版位分工＋R&R）",
-          "owner": "板主",
-          "start": "2026-05-23",
-          "end": "2026-05-23",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "hist-blog-gem",
-          "name": "Blog 排版 Gem 路線（評估→試作→判定暫停）",
-          "owner": "好室·板主",
-          "start": "2026-05-27",
-          "end": "2026-06-26",
-          "status": "done",
-          "progress": 100,
-          "note": "6/25 判定暫不續做（6/26 成品歸檔收尾），路線收斂到自動上稿線",
-          "deps": []
-        },
-        {
-          "id": "hist-brandbook",
-          "name": "好室品牌書定稿（策略＋品牌精神三值/Slogan/CTA）",
-          "owner": "板主",
-          "start": "2026-06-26",
-          "end": "2026-06-27",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "hist-cy-css",
-          "name": "喬雍官網 CSS 地基全站化＋內容整備",
-          "owner": "喬雍",
-          "start": "2026-06-29",
-          "end": "2026-07-05",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "hist-redirects",
-          "name": "雙品牌舊頁轉址與殘留清查批次",
-          "owner": "喬雍",
-          "start": "2026-07-02",
-          "end": "2026-07-07",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "hist-kn-line",
-          "name": "喬雍知識文章自動上稿線開發上線",
-          "owner": "喬雍",
-          "start": "2026-07-02",
-          "end": "2026-07-10",
-          "status": "done",
-          "progress": 100,
-          "note": "",
-          "deps": []
-        },
-        {
-          "id": "hist-seo-phase1",
-          "name": "GSC/GA4 接手 Phase 1 全通（週報／月表／PDF 報表引擎）",
-          "owner": "報表",
-          "start": "2026-07-09",
-          "end": "2026-07-10",
-          "status": "done",
-          "progress": 100,
-          "note": "GSC/GA4 四源接手＋週報(週三14:00)/月表(每月3日08:00)/PDF 報表引擎三迭代＋launchd×2；7/10 一日全通，7/09 計畫核准前置；完工後交棒 report-data-layer",
-          "deps": []
-        }
-      ]
+     "id": "faq-bank",
+     "name": "FAQ 題庫引擎（搜尋詞＋客服口語題→候選題）",
+     "owner": "好室",
+     "start": "2026-07-12",
+     "end": "2026-07-31",
+     "status": "active",
+     "progress": 30,
+     "note": "W12 段二；入料已升級（0點擊問句＋雙源語彙）；分類架構待內部確認",
+     "deps": []
     }
-  ]
+   ]
+  },
+  {
+   "id": "ring-d",
+   "name": "內環 D｜六線產製上稿（Do）",
+   "tasks": [
+    {
+     "id": "phase2-approve",
+     "name": "內容管線骨架計畫批准",
+     "owner": "板主",
+     "start": "2026-07-14",
+     "end": "2026-07-14",
+     "status": "milestone",
+     "progress": 0,
+     "note": "日期為估",
+     "deps": []
+    },
+    {
+     "id": "phase2-build",
+     "name": "好室 blog 管線骨架建置（六週）",
+     "owner": "好室",
+     "start": "2026-07-10",
+     "end": "2026-08-25",
+     "status": "active",
+     "progress": 65,
+     "note": "W1–W5 骨架＋逐段表單＋元件單已成（07-11）；上稿器到草稿即停；待首篇 live pilot",
+     "deps": [
+      "phase2-approve"
+     ]
+    },
+    {
+     "id": "gl-select",
+     "name": "相簿選片管線（雲端評分→終審→修圖）",
+     "owner": "好室·板主",
+     "start": "2026-07-12",
+     "end": "2026-08-15",
+     "status": "active",
+     "progress": 35,
+     "note": "2 萬張→35 本案例；後台全表拉齊＋舊『分錯/量不均』疑翻案（7/14）；Step 0 套件裝妥（7/15）；剩 pid42 歸屬＋pilot 選定兩拍板即產段 B 分夾任務單",
+     "deps": []
+    },
+    {
+     "id": "gl-publish",
+     "name": "相簿上架（頁面模組上稿器＋35 本）",
+     "owner": "好室",
+     "start": "2026-07-20",
+     "end": "2026-08-31",
+     "status": "idle",
+     "progress": 10,
+     "note": "先行上線、不受 9/1 閘門限制；上稿器規格已定案、程式待發包",
+     "deps": [
+      "gl-select"
+     ]
+    },
+    {
+     "id": "faq-publisher",
+     "name": "FAQ 選題表單＋自動上稿器",
+     "owner": "好室",
+     "start": "2026-07-12",
+     "end": "2026-08-08",
+     "status": "idle",
+     "progress": 10,
+     "note": "先行上線、不受 9/1 閘門限制；規格已齊、程式待發包",
+     "deps": [
+      "faq-bank"
+     ]
+    },
+    {
+     "id": "qa-cy-batch",
+     "name": "喬雍官網文章 QA 首批編製",
+     "owner": "喬雍",
+     "start": "2026-07-21",
+     "end": "2026-07-25",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "seo-cy-crawl"
+     ]
+    },
+    {
+     "id": "qa-cy-flow",
+     "name": "新文章隨稿三問答常態線",
+     "owner": "喬雍",
+     "start": "2026-07-20",
+     "end": "2026-09-30",
+     "status": "idle",
+     "progress": 0,
+     "note": "隨上稿滾動，銜接既有隨稿問答產出",
+     "deps": [
+      "qa-cy-batch"
+     ]
+    },
+    {
+     "id": "qa-hs-collect",
+     "name": "好室定稿素材蒐集",
+     "owner": "好室·板主",
+     "start": "2026-07-12",
+     "end": "2026-08-01",
+     "status": "active",
+     "progress": 10,
+     "note": "品牌定框前的準備段",
+     "deps": []
+    },
+    {
+     "id": "qa-hs-build",
+     "name": "好室 QA 編製",
+     "owner": "好室",
+     "start": "2026-08-10",
+     "end": "2026-08-21",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "brand-frame",
+      "qa-hs-collect"
+     ]
+    },
+    {
+     "id": "km-scope",
+     "name": "喬雍官網維護工具｜範圍定義",
+     "owner": "喬雍",
+     "start": "2026-08-01",
+     "end": "2026-08-07",
+     "status": "idle",
+     "progress": 0,
+     "note": "2026-07-18 板主釐清：屬喬雍官網維護工具、非知識管理；等板主描述需求輪廓；日期為估",
+     "deps": []
+    },
+    {
+     "id": "km-build",
+     "name": "喬雍官網維護工具｜建置",
+     "owner": "喬雍",
+     "start": "2026-08-10",
+     "end": "2026-08-28",
+     "status": "idle",
+     "progress": 0,
+     "note": "2026-07-18 板主釐清：屬喬雍官網維護工具、非知識管理",
+     "deps": [
+      "km-scope"
+     ]
+    },
+    {
+     "id": "content-gate",
+     "name": "好室內容正式上線",
+     "owner": "板主",
+     "start": "2026-09-01",
+     "end": "2026-09-01",
+     "status": "milestone",
+     "progress": 0,
+     "note": "雙前置：品牌定框＋管線建成；日期為估",
+     "deps": [
+      "brand-frame",
+      "phase2-build"
+     ]
+    },
+    {
+     "id": "kn-maintenance",
+     "name": "kn 線維運（編輯回覆優化＋退回輪 patch 驗收）",
+     "owner": "喬雍·板主",
+     "start": "2026-07-14",
+     "end": "2026-07-31",
+     "status": "idle",
+     "progress": 0,
+     "note": "patch 驗收需板主在場",
+     "deps": []
+    },
+    {
+     "id": "gbp-qa",
+     "name": "GBP 自問自答預埋（FAQ→問答格式交接包）",
+     "owner": "好室·板主",
+     "start": "2026-07-21",
+     "end": "2026-08-08",
+     "status": "idle",
+     "progress": 0,
+     "note": "AI 產交接文字包、板主以 Gemini 更新 GBP；細節後議",
+     "deps": []
+    },
+    {
+     "id": "gbp-products",
+     "name": "GBP 產品目錄（服務卡片交接包）",
+     "owner": "好室·板主",
+     "start": "2026-08-01",
+     "end": "2026-08-22",
+     "status": "idle",
+     "progress": 0,
+     "note": "前置：圖片尺寸規範；同上分工",
+     "deps": []
+    }
+   ]
+  },
+  {
+   "id": "ring-c",
+   "name": "內環 C｜成效回看（Check）",
+   "tasks": [
+    {
+     "id": "seo-cy-crawl",
+     "name": "喬雍官網 SEO 現況彙整回知識庫",
+     "owner": "喬雍",
+     "start": "2026-07-21",
+     "end": "2026-07-25",
+     "status": "idle",
+     "progress": 0,
+     "note": "設定已上站，直接撈；7/16 盤點：逾期未動",
+     "deps": []
+    },
+    {
+     "id": "seo-hs-crawl",
+     "name": "好室官網 SEO 現況彙整（含重整）",
+     "owner": "好室",
+     "start": "2026-07-16",
+     "end": "2026-07-18",
+     "status": "idle",
+     "progress": 0,
+     "note": "站上較零亂，帶回重新整理",
+     "deps": []
+    },
+    {
+     "id": "cycle1",
+     "name": "內環全環首轉（選題→上稿→回看跑通一圈）",
+     "owner": "PM·板主",
+     "start": "2026-08-15",
+     "end": "2026-08-15",
+     "status": "milestone",
+     "progress": 0,
+     "note": "系統自我修正能力驗收點",
+     "deps": []
+    }
+   ]
+  },
+  {
+   "id": "ring-a",
+   "name": "內環 A｜調整與補強（Act）",
+   "tasks": [
+    {
+     "id": "act-legacy-fix",
+     "name": "舊文補強批次（死連結＋排版＋SEO 待補）",
+     "owner": "好室",
+     "start": "2026-08-01",
+     "end": "2026-08-31",
+     "status": "idle",
+     "progress": 0,
+     "note": "內環 Act 首批",
+     "deps": []
+    },
+    {
+     "id": "q3-refresh",
+     "name": "Q3 除舊佈新（archive 瘦身＋IG/FB Bio 改寫）",
+     "owner": "PM·板主",
+     "start": "2026-08-01",
+     "end": "2026-09-30",
+     "status": "idle",
+     "progress": 0,
+     "note": "Q3 觸發已到期；Bio 改寫等品牌定框後一次到位",
+     "deps": []
+    }
+   ]
+  },
+  {
+   "id": "outer",
+   "name": "外環｜品牌校準 PDCA（客戶認知三源→落差→回饋策略）",
+   "tasks": [
+    {
+     "id": "src-search",
+     "name": "搜尋源編入（客戶搜尋語彙第一版）",
+     "owner": "PM",
+     "start": "2026-07-15",
+     "end": "2026-07-17",
+     "status": "done",
+     "progress": 100,
+     "note": "7/17 完成：客戶搜尋語彙 v0（GSC 兩週窗、好室 275 詞十叢集＋0 點擊選題清單）入 brand-wiki/alignment/；警訊＝喬雍 B2B 詞掛零",
+     "deps": [
+      "seo-weekly"
+     ]
+    },
+    {
+     "id": "src-social-edit",
+     "name": "社群源編入",
+     "owner": "PM",
+     "start": "2026-08-03",
+     "end": "2026-08-05",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "src-social-connect"
+     ]
+    },
+    {
+     "id": "crm-feedback",
+     "name": "對話源素材包首批回流",
+     "owner": "報表",
+     "start": "2026-08-12",
+     "end": "2026-08-12",
+     "status": "milestone",
+     "progress": 0,
+     "note": "交接規格已備；預計約一個月；日期為估",
+     "deps": [
+      "out"
+     ]
+    },
+    {
+     "id": "src-dialog-edit",
+     "name": "對話源編入＋客戶認知三源整合",
+     "owner": "PM",
+     "start": "2026-08-17",
+     "end": "2026-08-21",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "crm-feedback",
+      "src-search",
+      "src-social-edit"
+     ]
+    },
+    {
+     "id": "persona-b2c",
+     "name": "好室客戶輪廓建置",
+     "owner": "好室",
+     "start": "2026-08-24",
+     "end": "2026-08-28",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "crm-feedback"
+     ]
+    },
+    {
+     "id": "b2b-oa",
+     "name": "B2B 客服線 LINE OA 開通",
+     "owner": "業務",
+     "start": "2026-09-01",
+     "end": "2026-09-30",
+     "status": "idle",
+     "progress": 0,
+     "note": "排於 2C 客服線之後；日期為估",
+     "deps": [
+      "oa"
+     ]
+    },
+    {
+     "id": "persona-b2b",
+     "name": "喬雍客戶理解建置",
+     "owner": "PM",
+     "start": "2026-10-01",
+     "end": "2026-10-15",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "b2b-oa"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gm",
+   "name": "行銷｜目標校準與補洞（2026-07-17 體檢 v3）",
+   "tasks": [
+    {
+     "id": "g1",
+     "name": "2026 行銷目標定調＋KPI 覆核",
+     "owner": "PM·板主",
+     "start": "2026-07-18",
+     "end": "2026-07-25",
+     "status": "idle",
+     "progress": 60,
+     "note": "北極星方向已定（自來客佔比翻轉／一站式／織物 flagship，2026-07-17 板主確認）；剩：舊 KPI 逐條續用/改值/廢＋通路 KPI 補目標值；精確月靶待 CRM 報表對齊",
+     "deps": []
+    },
+    {
+     "id": "gc",
+     "name": "織物內容補齊＋作品案例居家化",
+     "owner": "PM·板主",
+     "start": "2026-07-21",
+     "end": "2026-08-22",
+     "status": "idle",
+     "progress": 0,
+     "note": "體檢 v3 首要缺口：織物為 flagship 但官網織物文章近乎零、作品案例偏商用端；補 Blog 織物 Pillar-Cluster＋案例居家化，對接搜尋語彙 0 點擊清單",
+     "deps": []
+    },
+    {
+     "id": "g3",
+     "name": "詢問/成交數據接入（消費 CRM 週摘）",
+     "owner": "報表·板主",
+     "start": "2026-07-21",
+     "end": "2026-08-08",
+     "status": "idle",
+     "progress": 0,
+     "note": "CRM 端週摘產出器已上線；行銷側＝消費其 JSON、自來客 vs 平台分流；含平台來源歸因；報價段掛號待評估；日期為估",
+     "deps": []
+    },
+    {
+     "id": "g5",
+     "name": "B2B 行銷立場定案",
+     "owner": "板主",
+     "start": "2026-08-01",
+     "end": "2026-08-01",
+     "status": "milestone",
+     "progress": 0,
+     "note": "主力已定義（駐點/清潔工程，7/17）；剩二選一：搜尋端進客開工或明文走轉介＋業務；日期為估",
+     "deps": []
+    },
+    {
+     "id": "g8",
+     "name": "小編 KPI v2（活動量→成效指標）",
+     "owner": "PM·板主",
+     "start": "2026-08-04",
+     "end": "2026-08-15",
+     "status": "idle",
+     "progress": 0,
+     "note": "KPI 稽核 2026H1 已自我建議改版；框架依 g1；日期為估",
+     "deps": [
+      "g1"
+     ]
+    },
+    {
+     "id": "g2",
+     "name": "自來客月度靶（詢問/成交件數）",
+     "owner": "PM",
+     "start": "2026-08-11",
+     "end": "2026-08-22",
+     "status": "idle",
+     "progress": 0,
+     "note": "需 g3 基準數據到手才能反推；產出＝內容線量化靶；口徑為自來客件數（回購不屬行銷職掌）；日期為估",
+     "deps": [
+      "g3"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "name": "基礎層 S2｜資料通路與報表",
+   "tasks": [
+    {
+     "id": "seo-weekly",
+     "name": "首份自動流量週報驗收",
+     "owner": "報表",
+     "start": "2026-07-15",
+     "end": "2026-07-15",
+     "status": "milestone",
+     "progress": 100,
+     "note": "✅ 7/15 首播全鏈驗收成功（週三 14:00 launchd、零 warning）；v1.5 已改網頁版（GitHub Pages）＋LINE 固定網址，Drive PDF 撤役",
+     "deps": []
+    },
+    {
+     "id": "src-social-connect",
+     "name": "社群流量監測接入（三平台）",
+     "owner": "報表·板主",
+     "start": "2026-07-12",
+     "end": "2026-07-31",
+     "status": "active",
+     "progress": 60,
+     "note": "FB×2＋IG 已接通（Graph API，token 落地）；GBP 等外部 API 審核",
+     "deps": []
+    },
+    {
+     "id": "report-data-layer",
+     "name": "報表資料層統一（標準化 JSON＋搜尋快照＋貼文層）",
+     "owner": "報表",
+     "start": "2026-07-10",
+     "end": "2026-07-12",
+     "status": "done",
+     "progress": 100,
+     "note": "提前完成：GSC 四維快照＋社群貼文層＋標準化資料檔，已實測",
+     "deps": [
+      "seo-weekly"
+     ]
+    },
+    {
+     "id": "report-ana-auto",
+     "name": "週報解讀頁自動化（AI 主筆＋獨立稽核）",
+     "owner": "報表",
+     "start": "2026-07-12",
+     "end": "2026-07-22",
+     "status": "active",
+     "progress": 80,
+     "note": "引擎完工實測（主筆＋稽核退回機制驗證過）；主筆＝Claude Opus，Codex 獨立稽核；等週三首播驗收後啟用（旗標 SEO_ANALYSIS_ENABLED）",
+     "deps": [
+      "seo-weekly",
+      "report-data-layer"
+     ]
+    },
+    {
+     "id": "marketing-actions",
+     "name": "行銷工作紀錄表起建",
+     "owner": "報表·板主",
+     "start": "2026-07-12",
+     "end": "2026-07-31",
+     "status": "active",
+     "progress": 70,
+     "note": "表＋自動同步＋人工表單全完工；餘：常態運轉觀察",
+     "deps": []
+    },
+    {
+     "id": "market-scan",
+     "name": "外部市場字與同業內容掃描（月線）",
+     "owner": "報表",
+     "start": "2026-07-13",
+     "end": "2026-08-03",
+     "status": "active",
+     "progress": 90,
+     "note": "本 session 完工：同業內容月掃引擎（sitemap/blog 新文 diff）＋搜尋聯想長尾字對照 GSC 盲區＋圖表報表；12 家區域同業名單（季更）；乾淨 baseline 已建；兩輪 code/cross review 修正。餘：8/3 隨月報首航",
+     "deps": [
+      "report-data-layer"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p5",
+   "name": "基礎層 S3｜品牌策略定框（內容總閘）",
+   "tasks": [
+    {
+     "id": "brand-frame",
+     "name": "好室品牌策略定框（找頭）",
+     "owner": "板主",
+     "start": "2026-07-03",
+     "end": "2026-08-01",
+     "status": "active",
+     "progress": 10,
+     "note": "行銷線最大前置；日期與進度為粗估",
+     "deps": []
+    },
+    {
+     "id": "slogan-fix",
+     "name": "輔助標語改寫定案",
+     "owner": "板主",
+     "start": "2026-08-01",
+     "end": "2026-08-01",
+     "status": "milestone",
+     "progress": 0,
+     "note": "日期為估",
+     "deps": [
+      "brand-frame"
+     ]
+    },
+    {
+     "id": "about-rewrite",
+     "name": "官網「關於我們」語調改寫定稿",
+     "owner": "好室·板主",
+     "start": "2026-07-06",
+     "end": "2026-08-07",
+     "status": "idle",
+     "progress": 0,
+     "note": "改寫稿內部討論中",
+     "deps": [
+      "brand-frame"
+     ]
+    },
+    {
+     "id": "mkt-plan-rev",
+     "name": "行銷計畫與社群計畫修訂",
+     "owner": "板主·PM",
+     "start": "2026-08-03",
+     "end": "2026-08-14",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "brand-frame"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p9",
+   "name": "基礎層 S4｜官網地面與知識庫",
+   "tasks": [
+    {
+     "id": "wiki-restruct",
+     "name": "知識庫結構收斂（指標檔拆除＋索引直連）",
+     "owner": "PM",
+     "start": "2026-07-12",
+     "end": "2026-07-12",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "wiki-consist",
+     "name": "知識庫矛盾與過時修正批次",
+     "owner": "PM",
+     "start": "2026-07-12",
+     "end": "2026-07-12",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "vendor-batch",
+     "name": "官網修正工單批次（追蹤碼驗收／轉址／資訊對齊）",
+     "owner": "板主·廠商",
+     "start": "2026-07-07",
+     "end": "2026-07-25",
+     "status": "active",
+     "progress": 30,
+     "note": "廠商端進行中；日期與進度為估",
+     "deps": []
+    },
+    {
+     "id": "wiki-datafix",
+     "name": "知識庫欄位補值（待板主提供數值）",
+     "owner": "板主·PM",
+     "start": "2026-07-14",
+     "end": "2026-07-18",
+     "status": "idle",
+     "progress": 0,
+     "note": "含基本資料欄位與年度營運數字",
+     "deps": []
+    },
+    {
+     "id": "faq-layout-vendor",
+     "name": "FAQ 版型 A 廠商工單（側欄目錄＋h2/h3＋CTA 版位）",
+     "owner": "板主·廠商",
+     "start": "2026-07-12",
+     "end": "2026-07-31",
+     "status": "blocked",
+     "progress": 0,
+     "note": "2026-07-14 放棄外包（已交完整規格＋程式碼包仍無法理解需求）；功能併入自管搬遷後自建（搬遷已提前：7/16 定案 7/31 前搬自管靜態站），素材已備妥",
+     "deps": []
+    },
+    {
+     "id": "faq-selfserve",
+     "name": "FAQ 基本修繕包上線（可讀性＋深連結＋手機修正）",
+     "owner": "好室",
+     "start": "2026-07-12",
+     "end": "2026-07-18",
+     "status": "active",
+     "progress": 70,
+     "note": "修繕包已備妥；避開廠商後台工作窗後擇時上線",
+     "deps": []
+    },
+    {
+     "id": "ga4-keyevents",
+     "name": "GA4 key events 事件埋設（表單/電話/LINE 點擊）",
+     "owner": "板主·廠商",
+     "start": "2026-07-14",
+     "end": "2026-07-31",
+     "status": "idle",
+     "progress": 0,
+     "note": "轉換鏈最後一環；併下批廠商工單（板主已拍板）",
+     "deps": []
+    },
+    {
+     "id": "hs-legacy-cleanup",
+     "name": "好室舊站殘留治理收口（301對應/孤兒清查/客服刪除三件套）",
+     "owner": "板主·廠商",
+     "start": "2026-07-21",
+     "end": "2026-08-08",
+     "status": "idle",
+     "progress": 0,
+     "note": "對象為舊站客服端；plan×3 已收斂待發",
+     "deps": []
+    },
+    {
+     "id": "cy-hocom-fixes",
+     "name": "喬雍站模板層修正批次（客服交接清單）",
+     "owner": "板主·廠商",
+     "start": "2026-07-21",
+     "end": "2026-08-15",
+     "status": "idle",
+     "progress": 0,
+     "note": "hocom 客服端工單；HEAD/JS 暫解已上、待模板根治",
+     "deps": []
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "name": "基礎層 S5｜好室官網自管化搬遷（7/31 斷點）",
+   "tasks": [
+    {
+     "id": "mig-decision",
+     "name": "自管化決策定案",
+     "owner": "板主",
+     "start": "2026-07-16",
+     "end": "2026-07-16",
+     "status": "done",
+     "progress": 100,
+     "note": "平台自管化拍板；依據與細節見內部 plan（不上板）",
+     "deps": []
+    },
+    {
+     "id": "mig-backup",
+     "name": "全站備份＋補抓完整資產",
+     "owner": "好室",
+     "start": "2026-07-16",
+     "end": "2026-07-17",
+     "status": "done",
+     "progress": 100,
+     "note": "84 頁 HTML＋352 圖＋CSS/JS/字型補齊（7/17 凌晨完成）；異地副本另列 mig-offsite",
+     "deps": []
+    },
+    {
+     "id": "mig-infra",
+     "name": "新站 repo＋Cloudflare Pages 接通",
+     "owner": "好室·板主",
+     "start": "2026-07-16",
+     "end": "2026-07-16",
+     "status": "done",
+     "progress": 100,
+     "note": "自動部署開通、臨時網址就緒；帳號公司可收回、已開兩階段驗證",
+     "deps": []
+    },
+    {
+     "id": "mig-build",
+     "name": "內容清洗→靜態站建置（Phase 2）",
+     "owner": "好室",
+     "start": "2026-07-16",
+     "end": "2026-07-17",
+     "status": "done",
+     "progress": 100,
+     "note": "66 頁乾淨網址樹＋352 圖；圖片鏈路在地化 330 處；表單改 LINE-CTA；301 表 30 條＋sitemap＋robots；破圖 0；已推送自動部署",
+     "deps": [
+      "mig-backup",
+      "mig-infra"
+     ]
+    },
+    {
+     "id": "mig-verify",
+     "name": "部署驗收（臨時網址全頁面＋RWD）",
+     "owner": "板主·好室",
+     "start": "2026-07-17",
+     "end": "2026-07-18",
+     "status": "done",
+     "progress": 100,
+     "note": "已推送 pages.dev、乾淨網址路由/資產/破圖 CC 複驗過；codex 桌機+手機視覺稽核過（整體 PASS）；空相簿隱藏交接 codex 待跑；剩板主手機終驗＋Cloudflare 後台設定（www→apex、query redirect）",
+     "deps": [
+      "mig-build"
+     ]
+    },
+    {
+     "id": "mig-form",
+     "name": "官網諮詢表單接入定案",
+     "owner": "板主·好室",
+     "start": "2026-07-17",
+     "end": "2026-07-18",
+     "status": "done",
+     "progress": 100,
+     "note": "定案＝不設自填表單（議題註銷；派工端若回格式再議）",
+     "deps": [
+      "mig-build"
+     ]
+    },
+    {
+     "id": "mig-offsite",
+     "name": "備份異地副本（含資料庫層備份）",
+     "owner": "板主",
+     "start": "2026-07-17",
+     "end": "2026-07-18",
+     "status": "done",
+     "progress": 100,
+     "note": "現為單一本機副本；外接碟一次拷（站點備份＋資料庫備份一併）；日期為估",
+     "deps": [
+      "mig-backup"
+     ]
+    },
+    {
+     "id": "opt-batch",
+     "name": "新站優化批次（視覺/文案/結構）",
+     "owner": "好室",
+     "start": "2026-07-19",
+     "end": "2026-08-10",
+     "status": "active",
+     "progress": 15,
+     "note": "上線後優化 23 項（SEO/轉換、視覺破版、手機、細節、結構工程）分批執行；文案素材已定稿",
+     "deps": [
+      "mig-build"
+     ]
+    },
+    {
+     "id": "opt-clear",
+     "name": "優化終審與清零",
+     "owner": "好室·板主",
+     "start": "2026-08-11",
+     "end": "2026-08-18",
+     "status": "idle",
+     "progress": 0,
+     "note": "雙重終審＋殘項收斂到零；死線 8/19 05:00",
+     "deps": [
+      "opt-batch"
+     ]
+    },
+    {
+     "id": "mig-dns",
+     "name": "網域切換上線",
+     "owner": "板主·好室",
+     "start": "2026-07-31",
+     "end": "2026-07-31",
+     "status": "milestone",
+     "progress": 0,
+     "note": "需板主在場（網域商登入）；切換前確認網域郵件（MX/SPF）實際使用狀況",
+     "deps": [
+      "mig-verify"
+     ]
+    },
+    {
+     "id": "mig-aftercare",
+     "name": "下游資產退役與改寫批次",
+     "owner": "好室",
+     "start": "2026-08-01",
+     "end": "2026-08-15",
+     "status": "idle",
+     "progress": 0,
+     "note": "依 7/17 退役盤點：上稿 skill／後台手冊退役、五線上稿終點與基礎建設 SoT 改寫；日期為估",
+     "deps": [
+      "mig-dns"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p1",
+   "name": "基礎層 S1｜CRM：試辦階段",
+   "tasks": [
+    {
+     "id": "oa",
+     "name": "業務開通 LINE OA",
+     "owner": "業務",
+     "start": "2026-04-27",
+     "end": "2026-08-31",
+     "status": "active",
+     "progress": 55,
+     "note": "進度為板主粗估",
+     "deps": []
+    },
+    {
+     "id": "pilot",
+     "name": "第一輪 summary 品質檢驗（20 位）",
+     "owner": "客服",
+     "start": "2026-05-26",
+     "end": "2026-05-27",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "rev2",
+     "name": "第二輪 summary 品質檢驗（100 位）",
+     "owner": "客服",
+     "start": "2026-06-22",
+     "end": "2026-06-26",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "rev3",
+     "name": "第三輪 summary 品質檢驗（30 位）",
+     "owner": "客服",
+     "start": "2026-07-06",
+     "end": "2026-07-13",
+     "status": "done",
+     "progress": 100,
+     "note": "全局第一擋點；7/16 盤點板主確認已完成（完成日未詳，暫沿排程迄日）",
+     "deps": []
+    }
+   ]
+  },
+  {
+   "id": "p2",
+   "name": "基礎層 S1｜CRM：歷史資料歸檔",
+   "tasks": [
+    {
+     "id": "a1",
+     "name": "歸檔計劃定案＋編號盤查",
+     "owner": "CRM·板主",
+     "start": "2026-07-02",
+     "end": "2026-07-03",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "a2",
+     "name": "資料匯入（全量批）",
+     "owner": "板主",
+     "start": "2026-07-03",
+     "end": "2026-07-03",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "a3",
+     "name": "資料清洗＋編碼比對",
+     "owner": "CRM",
+     "start": "2026-07-04",
+     "end": "2026-07-04",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": [
+      "a2"
+     ]
+    },
+    {
+     "id": "a4",
+     "name": "試跑批摘要產出＋平台同步",
+     "owner": "CRM·PT",
+     "start": "2026-07-04",
+     "end": "2026-07-04",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": [
+      "a3"
+     ]
+    },
+    {
+     "id": "reorg",
+     "name": "資料底座重整（主體／來源分離＋試跑隔離）",
+     "owner": "CRM·板主",
+     "start": "2026-07-06",
+     "end": "2026-07-06",
+     "status": "done",
+     "progress": 100,
+     "note": "含計畫文件收斂結案",
+     "deps": [
+      "a4"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p3",
+   "name": "基礎層 S1｜CRM：客戶主檔建置",
+   "tasks": [
+    {
+     "id": "sum",
+     "name": "summary 任務",
+     "owner": "CRM·PT",
+     "start": "2026-05-20",
+     "end": "2026-07-31",
+     "status": "active",
+     "progress": 60,
+     "note": "三批試跑產出；7/16 盤點：仍進行中，迄日延至 7/31（估）；進度為板主粗估",
+     "deps": []
+    },
+    {
+     "id": "match",
+     "name": "跨匯出識別機制（三層匹配＋同名拆分）",
+     "owner": "CRM",
+     "start": "2026-06-15",
+     "end": "2026-06-15",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "recode",
+     "name": "編碼制度重編",
+     "owner": "板主",
+     "start": "2026-07-03",
+     "end": "2026-07-25",
+     "status": "active",
+     "progress": 50,
+     "note": "7/3 裁示啟動，預計 7/25 完成；進度為板主粗估",
+     "deps": []
+    },
+    {
+     "id": "m1",
+     "name": "編碼制度定案＋對話全文錄入",
+     "owner": "CRM",
+     "start": "2026-07-04",
+     "end": "2026-07-04",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": [
+      "a3"
+     ]
+    },
+    {
+     "id": "m2",
+     "name": "欄位清洗（聯絡方式／來源）",
+     "owner": "CRM",
+     "start": "2026-07-05",
+     "end": "2026-07-05",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": [
+      "m1"
+     ]
+    },
+    {
+     "id": "m3",
+     "name": "開發總規劃定案＋主檔更名",
+     "owner": "CRM·板主",
+     "start": "2026-07-05",
+     "end": "2026-07-05",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": [
+      "m2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "p4",
+   "name": "基礎層 S1｜CRM：開發主線",
+   "tasks": [
+    {
+     "id": "img",
+     "name": "影像資料檢核與補抓",
+     "owner": "PT",
+     "start": "2026-07-04",
+     "end": "2026-09-30",
+     "status": "active",
+     "progress": 60,
+     "note": "入庫完成；分類盤點完成（文件/照片/前後切分），待欄位回補",
+     "deps": []
+    },
+    {
+     "id": "q5",
+     "name": "影像連結建檔",
+     "owner": "CRM·PT",
+     "start": "2026-07-10",
+     "end": "2026-09-30",
+     "status": "active",
+     "progress": 20,
+     "note": "對位機制建置（媒體↔對話標記腳本）＋缺件稽核驅動補抓",
+     "deps": [
+      "img",
+      "m1"
+     ]
+    },
+    {
+     "id": "q1",
+     "name": "摘要規則改版＋交叉審查",
+     "owner": "CRM",
+     "start": "2026-07-10",
+     "end": "2026-07-10",
+     "status": "done",
+     "progress": 100,
+     "note": "提前完成：規則合併單一定案＋模型校準（兩輪）＋自動格式驗證工具",
+     "deps": [
+      "rev3"
+     ]
+    },
+    {
+     "id": "q2",
+     "name": "全量摘要產出（含平台同步）",
+     "owner": "CRM·PT",
+     "start": "2026-07-11",
+     "end": "2026-07-31",
+     "status": "idle",
+     "progress": 0,
+     "note": "量產計劃書已核准；07-17 呈現層改向評估中（記事本上稿暫停、改探看板呈現，待外部回覆）；單據欄位化（AS1）定為前置",
+     "deps": [
+      "q1"
+     ]
+    },
+    {
+     "id": "q3",
+     "name": "資料結構自我描述",
+     "owner": "CRM",
+     "start": "2026-07-20",
+     "end": "2026-07-28",
+     "status": "idle",
+     "progress": 0,
+     "note": "依 q1 定稿格式，與 q2 並行",
+     "deps": [
+      "q1"
+     ]
+    },
+    {
+     "id": "q6",
+     "name": "單據錄入",
+     "owner": "CRM·客服",
+     "start": "2026-07-20",
+     "end": "2026-07-31",
+     "status": "idle",
+     "progress": 0,
+     "note": "等單據檔案提供",
+     "deps": []
+    },
+    {
+     "id": "q8",
+     "name": "即時同步（雙來源）",
+     "owner": "CRM·IT·板主",
+     "start": "2026-07-14",
+     "end": "2026-08-27",
+     "status": "active",
+     "progress": 65,
+     "note": "LINE 線：收訊機 Phase A 完，待裝機；Asana 線：全量首撈完成對帳過（7,542 件＋留言全撈），欄位化＋對鍵 plan 已核准待啟動；Asana raw 進資料倉暫緩＝卡老闆回覆（to B／to C 是否一起建；to B 橫跨特清與駐點兩部門）（管道歸 IT、內容歸 CRM）",
+     "deps": [
+      "db"
+     ]
+    },
+    {
+     "id": "q4",
+     "name": "備份完整性機制",
+     "owner": "IT·板主",
+     "start": "2026-07-17",
+     "end": "2026-08-31",
+     "status": "active",
+     "progress": 25,
+     "note": "備份本地層就位：Time Machine 加密外接碟每小時自動＋完整性監控上線（8h 無備份→通知）；異地密文層待正式硬體到貨。未離地前不出界（備份機制歸 IT 線維運）",
+     "deps": [
+      "q2",
+      "q3"
+     ]
+    },
+    {
+     "id": "db",
+     "name": "資料庫資料層與查詢介面",
+     "owner": "CRM",
+     "start": "2026-07-16",
+     "end": "2026-08-05",
+     "status": "active",
+     "progress": 15,
+     "note": "底座建置與入庫實跑已認領歸 IT 線（見 S5-IT）；本任務＝資料交付（原始檔進倉，現為卡點）＋查詢介面（待主檔定型＋硬體到位）。檔案為真相源、資料庫為衍生查詢層",
+     "deps": [
+      "q2",
+      "q3"
+     ]
+    },
+    {
+     "id": "out",
+     "name": "知識產出（SOP／PDCA）",
+     "owner": "CRM",
+     "start": "2026-08-01",
+     "end": "2026-08-15",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "q2"
+     ]
+    },
+    {
+     "id": "q7",
+     "name": "第二來源對話結構化",
+     "owner": "CRM",
+     "start": "2026-08-06",
+     "end": "2026-08-12",
+     "status": "idle",
+     "progress": 0,
+     "note": "",
+     "deps": [
+      "q2",
+      "db"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s5-it",
+   "name": "基礎層 S5｜IT（地端伺服器與跨線基礎設施）",
+   "tasks": [
+    {
+     "id": "it-server",
+     "name": "地端伺服器建置與加固（加密／帳號隔離／防火牆／本地備份）",
+     "owner": "IT",
+     "start": "2026-07-16",
+     "end": "2026-07-18",
+     "status": "done",
+     "progress": 100,
+     "note": "過渡機服役中；全套=全碟加密+金鑰門+四帳號隔離+守門員+進出簿+防火牆+Time Machine",
+     "deps": []
+    },
+    {
+     "id": "it-channel",
+     "name": "跨線管道（郵局倉治理＋巡倉通知＋讀寫稽核）",
+     "owner": "IT",
+     "start": "2026-07-16",
+     "end": "2026-07-18",
+     "status": "active",
+     "progress": 95,
+     "note": "三線通道全通、巡邏通知上線；倉用途終裁已下並落地（規則入 README＋內容閘復崗）；餘：成對倉雙向開通",
+     "deps": []
+    },
+    {
+     "id": "it-runbook",
+     "name": "IT 操作手冊（runbooks，為未來拆分預備）",
+     "owner": "IT",
+     "start": "2026-07-17",
+     "end": "2026-07-18",
+     "status": "done",
+     "progress": 100,
+     "note": "8 篇：建置/鑰匙/守門員/進出簿/巡倉/DB重建/雷區；infra 腳本已版本化",
+     "deps": []
+    },
+    {
+     "id": "it-migrate",
+     "name": "正式機遷移＋異地密文備份（321 補齊）",
+     "owner": "IT",
+     "start": "2026-10-01",
+     "end": "2026-10-15",
+     "status": "idle",
+     "progress": 0,
+     "note": "等正式機到貨（十月）；含備份碟汰換；日期為估",
+     "deps": [
+      "it-server"
+     ]
+    },
+    {
+     "id": "it-db-import",
+     "name": "資料庫入庫建置（腳本主鍵修正→首批兩表實跑）",
+     "owner": "IT",
+     "start": "2026-07-19",
+     "end": "2026-07-25",
+     "status": "idle",
+     "progress": 0,
+     "note": "自 S1 開發主線認領（建置側）；建置已備妥等料——卡點＝來源資料未進倉（資料交付歸 CRM 線）；步驟＝腳本主鍵補齊修正→首批兩表實跑→行數對帳；日期為估",
+     "deps": []
+    },
+    {
+     "id": "it-gateway",
+     "name": "出境閘道 Gateway（規格併資料庫權限層＋建置）",
+     "owner": "IT",
+     "start": "2026-07-21",
+     "end": "2026-08-07",
+     "status": "idle",
+     "progress": 0,
+     "note": "雲端 AI 用資料的唯一出口；本線立場已回（中央一個、IT 維運、規格一份文件）；待老闆裁示後開工；日期為估",
+     "deps": []
+    },
+    {
+     "id": "it-backup-tail",
+     "name": "備份鏈收尾（重開機解鎖驗證＋金鑰輪替）",
+     "owner": "IT",
+     "start": "2026-07-19",
+     "end": "2026-07-23",
+     "status": "idle",
+     "progress": 0,
+     "note": "伺服器重開機驗證加密備份卷自動解鎖＋備份金鑰機上輪替（新鑰只落紙本）；日期為估",
+     "deps": []
+    }
+   ]
+  },
+  {
+   "id": "hist",
+   "name": "🗄 已完工歷史（4 月中起・點標題展開）",
+   "tasks": [
+    {
+     "id": "hist-mkt-audit",
+     "name": "行銷現況盤點（雙品牌官網 57 頁深度爬取）",
+     "owner": "PM·板主",
+     "start": "2026-04-16",
+     "end": "2026-04-16",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "hist-content-meeting",
+     "name": "雙品牌網站內容編輯會議定案（三版位分工＋R&R）",
+     "owner": "板主",
+     "start": "2026-05-23",
+     "end": "2026-05-23",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "hist-blog-gem",
+     "name": "Blog 排版 Gem 路線（評估→試作→判定暫停）",
+     "owner": "好室·板主",
+     "start": "2026-05-27",
+     "end": "2026-06-26",
+     "status": "done",
+     "progress": 100,
+     "note": "6/25 判定暫不續做（6/26 成品歸檔收尾），路線收斂到自動上稿線",
+     "deps": []
+    },
+    {
+     "id": "hist-brandbook",
+     "name": "好室品牌書定稿（策略＋品牌精神三值/Slogan/CTA）",
+     "owner": "板主",
+     "start": "2026-06-26",
+     "end": "2026-06-27",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "hist-cy-css",
+     "name": "喬雍官網 CSS 地基全站化＋內容整備",
+     "owner": "喬雍",
+     "start": "2026-06-29",
+     "end": "2026-07-05",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "hist-redirects",
+     "name": "雙品牌舊頁轉址與殘留清查批次",
+     "owner": "喬雍",
+     "start": "2026-07-02",
+     "end": "2026-07-07",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "hist-kn-line",
+     "name": "喬雍知識文章自動上稿線開發上線",
+     "owner": "喬雍",
+     "start": "2026-07-02",
+     "end": "2026-07-10",
+     "status": "done",
+     "progress": 100,
+     "note": "",
+     "deps": []
+    },
+    {
+     "id": "hist-seo-phase1",
+     "name": "GSC/GA4 接手 Phase 1 全通（週報／月表／PDF 報表引擎）",
+     "owner": "報表",
+     "start": "2026-07-09",
+     "end": "2026-07-10",
+     "status": "done",
+     "progress": 100,
+     "note": "GSC/GA4 四源接手＋週報(週三14:00)/月表(每月3日08:00)/PDF 報表引擎三迭代＋launchd×2；7/10 一日全通，7/09 計畫核准前置；完工後交棒 report-data-layer",
+     "deps": []
+    }
+   ]
+  }
+ ]
 }
