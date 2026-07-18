@@ -1105,7 +1105,7 @@
           "end": "2026-08-27",
           "status": "active",
           "progress": 65,
-          "note": "LINE 線：收訊機 Phase A 完，待裝機；Asana 線：全量首撈完成對帳過（7,542 件＋留言全撈），欄位化＋對鍵 plan 已核准待啟動",
+          "note": "LINE 線：收訊機 Phase A 完，待裝機；Asana 線：全量首撈完成對帳過（7,542 件＋留言全撈），欄位化＋對鍵 plan 已核准待啟動；Asana raw 進資料倉暫緩＝卡老闆回覆（to B／to C 是否一起建；to B 橫跨特清與駐點兩部門）",
           "deps": [
             "db"
           ]
