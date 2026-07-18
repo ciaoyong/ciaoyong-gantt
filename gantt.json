@@ -103,8 +103,8 @@
           "id": "qa-cy-batch",
           "name": "喬雍官網文章 QA 首批編製",
           "owner": "喬雍",
-          "start": "2026-07-16",
-          "end": "2026-07-18",
+          "start": "2026-07-21",
+          "end": "2026-07-25",
           "status": "idle",
           "progress": 0,
           "note": "",
@@ -231,8 +231,8 @@
           "id": "seo-cy-crawl",
           "name": "喬雍官網 SEO 現況彙整回知識庫",
           "owner": "喬雍",
-          "start": "2026-07-14",
-          "end": "2026-07-15",
+          "start": "2026-07-21",
+          "end": "2026-07-25",
           "status": "idle",
           "progress": 0,
           "note": "設定已上站，直接撈；7/16 盤點：逾期未動",
@@ -400,7 +400,7 @@
           "start": "2026-07-18",
           "end": "2026-07-25",
           "status": "idle",
-          "progress": 40,
+          "progress": 60,
           "note": "北極星方向已定（自來客佔比翻轉／一站式／織物 flagship，2026-07-17 板主確認）；剩：舊 KPI 逐條續用/改值/廢＋通路 KPI 補目標值；精確月靶待 CRM 報表對齊",
           "deps": []
         },
@@ -761,9 +761,9 @@
           "name": "部署驗收（臨時網址全頁面＋RWD）",
           "owner": "板主·好室",
           "start": "2026-07-17",
-          "end": "2026-07-22",
-          "status": "active",
-          "progress": 60,
+          "end": "2026-07-18",
+          "status": "done",
+          "progress": 100,
           "note": "已推送 pages.dev、乾淨網址路由/資產/破圖 CC 複驗過；codex 桌機+手機視覺稽核過（整體 PASS）；空相簿隱藏交接 codex 待跑；剩板主手機終驗＋Cloudflare 後台設定（www→apex、query redirect）",
           "deps": [
             "mig-build"
@@ -774,10 +774,10 @@
           "name": "官網諮詢表單接入定案",
           "owner": "板主·好室",
           "start": "2026-07-17",
-          "end": "2026-07-31",
-          "status": "idle",
-          "progress": 0,
-          "note": "自填表單需上層裁示；接派工通路格式詢問中；先以 LINE-CTA 上線、不卡切換",
+          "end": "2026-07-18",
+          "status": "done",
+          "progress": 100,
+          "note": "定案＝不設自填表單（議題註銷；派工端若回格式再議）",
           "deps": [
             "mig-build"
           ]
@@ -787,9 +787,9 @@
           "name": "備份異地副本（含資料庫層備份）",
           "owner": "板主",
           "start": "2026-07-17",
-          "end": "2026-07-25",
-          "status": "idle",
-          "progress": 0,
+          "end": "2026-07-18",
+          "status": "done",
+          "progress": 100,
           "note": "現為單一本機副本；外接碟一次拷（站點備份＋資料庫備份一併）；日期為估",
           "deps": [
             "mig-backup"
