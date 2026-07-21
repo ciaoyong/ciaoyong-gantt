@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "喬雍 內容行銷PDCA × CRM 總計畫",
-    "updated": "2026-07-19"
+    "updated": "2026-07-21"
   },
   "phases": [
     {
@@ -498,8 +498,8 @@
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
-          "progress": 60,
-          "note": "FB×2＋IG 已接通（Graph API，token 落地）；GBP 等外部 API 審核",
+          "progress": 75,
+          "note": "FB×2＋IG 已接通（Graph API，token 落地、永不過期）；GBP API 申請 2026-07-21 查明【已遭拒】（帳戶未過品質檢查），非審核中——改走 Places API 唯讀（最多 5 則、不能回覆）；重送建議待好室新站上線後",
           "deps": []
         },
         {
@@ -551,6 +551,19 @@
           "note": "本 session 完工：同業內容月掃引擎（sitemap/blog 新文 diff）＋搜尋聯想長尾字對照 GSC 盲區＋圖表報表；12 家區域同業名單（季更）；乾淨 baseline 已建；兩輪 code/cross review 修正。餘：8/3 隨月報首航",
           "deps": [
             "report-data-layer"
+          ]
+        },
+        {
+          "id": "social-inbox-watch",
+          "name": "社群收件匣監看（FB/IG 留言＋私訊＋GBP 評價→LINE）",
+          "owner": "PM",
+          "start": "2026-07-21",
+          "end": "2026-07-21",
+          "status": "done",
+          "progress": 100,
+          "note": "每小時輪詢、純監看不自動回覆（粉專內建自動回覆留著）；通知先推板主、順了改一行交接客服（8/1 後歸屬）。IG 私訊未納入：權限僅 Standard access，送審會連既有權限一起重審且不可撤回，風險過高故擱置；替代＝Business Suite App 推播",
+          "deps": [
+            "src-social-connect"
           ]
         }
       ]
