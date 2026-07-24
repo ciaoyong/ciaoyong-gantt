@@ -706,9 +706,9 @@
           "owner": "板主·廠商",
           "start": "2026-07-07",
           "end": "2026-07-25",
-          "status": "active",
-          "progress": 30,
-          "note": "廠商端進行中；日期與進度為估",
+          "status": "done",
+          "progress": 100,
+          "note": "追蹤碼驗收完成：新分析碼已淨化、舊追蹤碼因套版寫死無法移除（已於數據端濾除認賠）；網址正規化與轉址以前端暫解為終態；sitemap 已提交搜尋主控台（狀態成功、9 頁）。剩餘模板層項目 hocom 無法自助修，收斂至 cy-hocom-fixes。",
           "deps": []
         },
         {
@@ -772,9 +772,9 @@
           "owner": "板主·廠商",
           "start": "2026-07-21",
           "end": "2026-08-15",
-          "status": "idle",
+          "status": "blocked",
           "progress": 0,
-          "note": "hocom 客服端工單；HEAD/JS 暫解已上、待模板根治",
+          "note": "hocom 模板/DB 層修正路線放棄（客服拒做／套版改不了先例）：可前端暫解項（lang／canonical／og:type）以 JS 為終態、其餘模板瑕疵（表單結構、輪播 alt、favicon 存檔重置、舊追蹤碼）認賠；根治併未來自管遷移（比照 FAQ 版型）。唯搜尋引擎主動通知驗證檔待另法放置。",
           "deps": []
         }
       ]
