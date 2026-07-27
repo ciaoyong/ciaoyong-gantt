@@ -153,11 +153,11 @@
       "status": "blocked",
       "gantt_phase": "ring-c",
       "gantt_ids": [
-        "seo-cy-crawl",
-        "seo-hs-crawl"
+        "cycle1"
       ],
       "current": "",
-      "next_step": "兩項現況彙整皆逾期零進度；根因是上游產出近乎為零、無標的可回看"
+      "next_step": "雙官網 SEO 現況彙整已完成（一次性準備，非回看機制）；回看要能轉，等內環有內容產出——全環首轉里程碑 8/15",
+      "evidence": "進度以全環首轉里程碑為準；ring-c 兩項彙整任務已 done 但屬準備工作"
     },
     {
       "id": "ring-a",
@@ -185,7 +185,7 @@
       "gantt_ids": [
         "src-search"
       ],
-      "current": "已編入，週報持續供料",
+      "current": "已編入知識庫、週報持續供料（100% 指編入任務完成，非外環轉完）",
       "next_step": "累積滿一季升 v1"
     },
     {
