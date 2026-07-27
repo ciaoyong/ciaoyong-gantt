@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "喬雍 內容行銷PDCA × CRM 總計畫",
-    "updated": "2026-07-26"
+    "updated": "2026-07-27"
   },
   "phases": [
     {
@@ -113,7 +113,7 @@
         {
           "id": "qa-cy-batch",
           "name": "喬雍官網文章 QA 首批編製",
-          "owner": "喬雍",
+          "owner": "喬雍內容",
           "start": "2026-07-21",
           "end": "2026-07-25",
           "status": "idle",
@@ -126,7 +126,7 @@
         {
           "id": "qa-cy-flow",
           "name": "新文章隨稿三問答常態線",
-          "owner": "喬雍",
+          "owner": "喬雍內容",
           "start": "2026-07-20",
           "end": "2026-09-30",
           "status": "idle",
@@ -164,7 +164,7 @@
         {
           "id": "km-scope",
           "name": "喬雍官網維護工具｜範圍定義",
-          "owner": "喬雍",
+          "owner": "編輯室平台",
           "start": "2026-08-01",
           "end": "2026-08-07",
           "status": "idle",
@@ -175,7 +175,7 @@
         {
           "id": "km-build",
           "name": "喬雍官網維護工具｜建置",
-          "owner": "喬雍",
+          "owner": "編輯室平台",
           "start": "2026-08-10",
           "end": "2026-08-28",
           "status": "idle",
@@ -202,7 +202,7 @@
         {
           "id": "kn-maintenance",
           "name": "kn 線維運（編輯回覆優化＋退回輪 patch 驗收）",
-          "owner": "喬雍·板主",
+          "owner": "編輯室平台·板主",
           "start": "2026-07-14",
           "end": "2026-07-31",
           "status": "idle",
@@ -213,7 +213,7 @@
         {
           "id": "review-hub",
           "name": "審稿總站（編輯審稿網頁化，kn 先行）",
-          "owner": "喬雍·板主",
+          "owner": "編輯室平台·板主",
           "start": "2026-07-18",
           "end": "2026-08-01",
           "status": "active",
@@ -224,7 +224,7 @@
         {
           "id": "review-hub-access",
           "name": "審稿平台改『登入制』上線（整站定稿後）",
-          "owner": "喬雍·板主",
+          "owner": "編輯室平台·板主",
           "start": "2026-08-04",
           "end": "2026-08-08",
           "status": "idle",
@@ -265,7 +265,7 @@
         {
           "id": "seo-cy-crawl",
           "name": "喬雍官網 SEO 現況彙整回知識庫",
-          "owner": "喬雍",
+          "owner": "喬雍內容",
           "start": "2026-07-21",
           "end": "2026-07-25",
           "status": "idle",
