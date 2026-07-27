@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDCA 運行圖</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>↻</text></svg>">
+<style>
+  :root {
+    --bg: #eceff2;
+    --surface: #ffffff;
+    --surface-2: #e6ebee;
+    --surface-3: #f4f6f8;
+    --border: #d2dade;
+    --border-strong: #b9c4cb;
+    --text: #22303a;
+    --text-dim: #5c6c77;
+    --text-faint: #8a99a3;
+    --slate: #304854;
+    --slate-soft: #4a6675;
+    --gold: #ffbe19;
+    --gold-deep: #d99a12;
+    --done: #80c862;
+    --active: #1d6a8c;
+    --blocked: #eb6b32;
+    --idle: #738995;
+    --shadow: 0 1px 2px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.10);
+    --mono: "SF Mono", ui-monospace, "JetBrains Mono", "Roboto Mono", Menlo, monospace;
+    --cjk: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans", system-ui, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f151a;
+      --surface: #172128;
+      --surface-2: #1e2a32;
+      --surface-3: #141d24;
+      --border: #2b3944;
+      --border-strong: #3a4b57;
+      --text: #e4ecf1;
+      --text-dim: #93a6b1;
+      --text-faint: #6b7c87;
+      --slate: #7ba0b2;
+      --slate-soft: #5f8090;
+      --gold: #ffca3a;
+      --gold-deep: #e6ad2b;
+      --done: #8fd070;
+      --active: #4a97bd;
+      --blocked: #f07a45;
+      --idle: #8a9ea9;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #eceff2;
+    --surface: #ffffff;
+    --surface-2: #e6ebee;
+    --surface-3: #f4f6f8;
+    --border: #d2dade;
+    --border-strong: #b9c4cb;
+    --text: #22303a;
+    --text-dim: #5c6c77;
+    --text-faint: #8a99a3;
+    --slate: #304854;
+    --slate-soft: #4a6675;
+    --gold: #ffbe19;
+    --gold-deep: #d99a12;
+    --done: #80c862;
+    --active: #1d6a8c;
+    --blocked: #eb6b32;
+    --idle: #738995;
+    --shadow: 0 1px 2px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.10);
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0f151a;
+    --surface: #172128;
+    --surface-2: #1e2a32;
+    --surface-3: #141d24;
+    --border: #2b3944;
+    --border-strong: #3a4b57;
+    --text: #e4ecf1;
+    --text-dim: #93a6b1;
+    --text-faint: #6b7c87;
+    --slate: #7ba0b2;
+    --slate-soft: #5f8090;
+    --gold: #ffca3a;
+    --gold-deep: #e6ad2b;
+    --done: #8fd070;
+    --active: #4a97bd;
+    --blocked: #f07a45;
+    --idle: #8a9ea9;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--cjk);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  a {
+    font: inherit;
+  }
+
+  .wrap {
+    width: min(1600px, 100%);
+    margin: 0 auto;
+    padding: 22px 30px 42px;
+  }
+
+  .mast {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--slate);
+  }
+
+  .mast-copy {
+    min-width: 0;
+  }
+
+  .eyebrow {
+    color: var(--slate);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .18em;
+  }
+
+  h1 {
+    margin: 4px 0 5px;
+    font-size: clamp(23px, 2.3vw, 31px);
+    line-height: 1.25;
+    letter-spacing: -.02em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 14px;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .meta time {
+    color: var(--text);
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 12px;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .12s, border-color .12s, transform .05s;
+  }
+
+  .btn:hover {
+    background: var(--surface-2);
+    border-color: var(--slate-soft);
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn:focus-visible,
+  .node-card:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--gold-deep);
+    outline-offset: 2px;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    margin: 13px 0 0;
+    color: var(--text-dim);
+    font-size: 12px;
+  }
+
+  .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--idle);
+  }
+
+  .status-dot.open {
+    background: var(--done);
+  }
+
+  .status-dot.partial {
+    background: var(--active);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--active) 22%, transparent);
+  }
+
+  .status-dot.blocked {
+    background: var(--blocked);
+  }
+
+  .loading,
+  .error-panel {
+    margin: 22px 0;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+  }
+
+  .loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dim);
+  }
+
+  .spinner {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    border: 2px solid var(--border-strong);
+    border-top-color: var(--active);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+  }
+
+  .error-panel {
+    display: none;
+    border-left: 4px solid var(--blocked);
+  }
+
+  .error-panel.show {
+    display: block;
+  }
+
+  .error-panel h2 {
+    margin: 0 0 6px;
+    font-size: 17px;
+  }
+
+  .error-panel p {
+    margin: 0;
+    color: var(--text-dim);
+    overflow-wrap: anywhere;
+  }
+
+  .diagram {
+    display: none;
+    margin-top: 18px;
+  }
+
+  .diagram.ready {
+    display: grid;
+    gap: 7px;
+  }
+
+  .band {
+    min-width: 0;
+    padding: 13px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+  }
+
+  .band.outer {
+    border-top: 4px solid var(--slate);
+  }
+
+  .band.inner {
+    border-top: 4px solid var(--gold);
+  }
+
+  .band.source {
+    border-top: 4px solid var(--active);
+  }
+
+  .band-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .band-title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .band-cadence {
+    flex: none;
+    color: var(--text-faint);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .node-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+  }
+
+  .node-wrap {
+    position: relative;
+    min-width: 0;
+  }
+
+  .node-wrap:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -19px;
+    z-index: 2;
+    width: 14px;
+    color: var(--slate-soft);
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+    transform: translateY(-50%);
+  }
+
+  .inner .node-wrap:not(:last-child)::after {
+    color: var(--gold-deep);
+  }
+
+  .node-card {
+    position: relative;
+    display: block;
+    min-width: 0;
+    min-height: 145px;
+    padding: 12px 12px 11px 15px;
+    color: var(--text);
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: border-color .12s, transform .12s, box-shadow .12s;
+  }
+
+  .node-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--idle);
+  }
+
+  .node-card.open::before {
+    background: var(--done);
+  }
+
+  .node-card.partial::before {
+    background: var(--active);
+  }
+
+  .node-card.blocked::before {
+    background: var(--blocked);
+  }
+
+  .node-card[href]:hover {
+    border-color: var(--slate-soft);
+    box-shadow: 0 6px 18px rgba(34,48,58,.11);
+    transform: translateY(-1px);
+  }
+
+  .node-card[href] {
+    cursor: pointer;
+  }
+
+  .node-card:not([href]) {
+    cursor: default;
+  }
+
+  .node-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: start;
+  }
+
+  .node-name {
+    min-width: 0;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .progress {
+    color: var(--slate);
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .progress.missing {
+    color: var(--text-faint);
+  }
+
+  .node-line {
+    margin-top: 5px;
+    color: var(--text-dim);
+    font-size: 11.5px;
+    overflow-wrap: anywhere;
+  }
+
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    color: var(--text-dim);
+    font-size: 11.5px;
+  }
+
+  .work {
+    margin: 8px 0 0;
+    color: var(--text);
+    font-size: 12px;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+
+  .work-label {
+    color: var(--text-dim);
+    font-weight: 700;
+  }
+
+  .children {
+    margin-top: 9px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+
+  .children summary {
+    color: var(--text-dim);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .child-list {
+    display: grid;
+    gap: 5px;
+    margin-top: 7px;
+  }
+
+  .child {
+    display: flex;
+    min-width: 0;
+    align-items: flex-start;
+    gap: 7px;
+    padding: 5px 7px;
+    background: var(--surface-2);
+    border-radius: 6px;
+    color: var(--text-dim);
+    font-size: 11px;
+  }
+
+  .child .status-dot {
+    width: 8px;
+    height: 8px;
+    margin-top: 4px;
+  }
+
+  .child-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .connector {
+    display: grid;
+    min-height: 30px;
+    place-items: center;
+    color: var(--slate-soft);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .connector::before {
+    content: "";
+    width: 2px;
+    height: 11px;
+    background: currentColor;
+  }
+
+  .connector::after {
+    content: "▼";
+    margin-top: -4px;
+    font-size: 11px;
+  }
+
+  .connector.up {
+    color: var(--active);
+  }
+
+  .connector.up::before {
+    order: 2;
+  }
+
+  .connector.up::after {
+    content: "▲";
+    order: 1;
+    margin: 0 0 -4px;
+  }
+
+  .connector-label {
+    order: 1;
+    padding: 1px 8px;
+    background: var(--bg);
+    border-radius: 999px;
+  }
+
+  .connector.up .connector-label {
+    order: 3;
+  }
+
+  .note {
+    margin: 13px 0 0;
+    padding: 9px 12px;
+    color: var(--text-dim);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    font-size: 12px;
+    overflow-wrap: anywhere;
+  }
+
+  .foot {
+    margin-top: 12px;
+    color: var(--text-faint);
+    font-size: 11px;
+    text-align: right;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .wrap {
+      padding: 18px 16px 36px;
+    }
+
+    .node-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .node-wrap:not(:last-child)::after {
+      display: none;
+    }
+
+    .source .node-wrap:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .wrap {
+      padding: 15px 12px 30px;
+    }
+
+    .mast {
+      align-items: stretch;
+    }
+
+    .actions,
+    .actions .btn {
+      width: 100%;
+    }
+
+    .meta {
+      display: grid;
+      gap: 3px;
+    }
+
+    .legend {
+      gap: 7px 12px;
+    }
+
+    .band {
+      padding: 11px;
+    }
+
+    .band-head {
+      display: block;
+    }
+
+    .band-cadence {
+      margin-top: 2px;
+    }
+
+    .node-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    .source .node-wrap:last-child {
+      grid-column: auto;
+    }
+
+    .node-wrap:not(:last-child)::after {
+      content: "↓";
+      display: block;
+      top: auto;
+      right: 50%;
+      bottom: -22px;
+      width: 16px;
+      transform: translateX(50%);
+    }
+
+    .node-card {
+      min-height: 0;
+    }
+
+    .connector {
+      min-height: 35px;
+    }
+
+    .foot {
+      text-align: left;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="mast">
+    <div class="mast-copy">
+      <div class="eyebrow" id="eyebrow">PDCA</div>
+      <h1 id="pageTitle">PDCA 運行圖</h1>
+      <div class="meta" id="meta" aria-live="polite"></div>
+    </div>
+    <nav class="actions" aria-label="頁面操作">
+      <a class="btn" href="index.html">← 回甘特總表</a>
+      <button class="btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 切換深／淺色</button>
+    </nav>
+  </header>
+
+  <div class="legend" aria-label="狀態圖例">
+    <span class="legend-item"><i class="status-dot open"></i>通</span>
+    <span class="legend-item"><i class="status-dot partial"></i>部分</span>
+    <span class="legend-item"><i class="status-dot blocked"></i>未通</span>
+    <span class="legend-item">進度為 gantt_ids 對應任務的平均值</span>
+  </div>
+
+  <section class="loading" id="loading" aria-live="polite">
+    <i class="spinner" aria-hidden="true"></i>
+    <span>正在載入運行資料…</span>
+  </section>
+
+  <section class="error-panel" id="errorPanel" role="alert" aria-live="assertive">
+    <h2>資料暫時無法載入</h2>
+    <p id="errorMessage">請確認 gantt.json 與 pdca.json 已放在同一目錄，並重新整理頁面。</p>
+  </section>
+
+  <div class="diagram" id="diagram">
+    <section class="band outer" aria-labelledby="outerTitle">
+      <div class="band-head">
+        <h2 class="band-title" id="outerTitle">外環：品牌校準 PDCA</h2>
+        <span class="band-cadence">季度級</span>
+      </div>
+      <div class="node-grid" id="outerNodes"></div>
+    </section>
+
+    <div class="connector" aria-label="策略定框下發">
+      <span class="connector-label">策略定框下發</span>
+    </div>
+
+    <section class="band inner" aria-labelledby="innerTitle">
+      <div class="band-head">
+        <h2 class="band-title" id="innerTitle">內環：內容 PDCA</h2>
+        <span class="band-cadence">週／月級</span>
+      </div>
+      <div class="node-grid" id="innerNodes"></div>
+    </section>
+
+    <div class="connector up" aria-label="源頭層供養內環">
+      <span class="connector-label">供養</span>
+    </div>
+
+    <section class="band source" aria-labelledby="sourceTitle">
+      <div class="band-head">
+        <h2 class="band-title" id="sourceTitle">源頭層 S1–S5</h2>
+        <span class="band-cadence">持續入料</span>
+      </div>
+      <div class="node-grid" id="sourceNodes"></div>
+    </section>
+
+    <p class="note" id="pdcaNote" hidden></p>
+    <footer class="foot">資料由 gantt.json ＋ pdca.json 驅動</footer>
+  </div>
+</main>
+
+<script>
+(() => {
+  "use strict";
+
+  const STATUS_LABELS = Object.freeze({
+    open: "通",
+    partial: "部分",
+    blocked: "未通"
+  });
+
+  const LAYERS = Object.freeze(["outer", "inner", "source"]);
+  const layerTargets = Object.freeze({
+    outer: "outerNodes",
+    inner: "innerNodes",
+    source: "sourceNodes"
+  });
+
+  const loading = document.getElementById("loading");
+  const diagram = document.getElementById("diagram");
+  const errorPanel = document.getElementById("errorPanel");
+  const errorMessage = document.getElementById("errorMessage");
+
+  function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, character => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[character]);
+  }
+
+  function safeStatus(status) {
+    return Object.prototype.hasOwnProperty.call(STATUS_LABELS, status)
+      ? status
+      : "blocked";
+  }
+
+  function assertData(gantt, pdca) {
+    if (!gantt || typeof gantt !== "object" || !Array.isArray(gantt.phases)) {
+      throw new Error("gantt.json 格式不符：缺少 phases 陣列。");
+    }
+
+    if (!pdca || typeof pdca !== "object" || !Array.isArray(pdca.nodes)) {
+      throw new Error("pdca.json 格式不符：缺少 nodes 陣列。");
+    }
+  }
+
+  async function fetchJSON(filename) {
+    let response;
+
+    try {
+      response = await fetch(filename + "?ts=" + Date.now(), {
+        cache: "no-store"
+      });
+    } catch (error) {
+      throw new Error(filename + " 連線失敗。");
+    }
+
+    if (!response.ok) {
+      throw new Error(filename + " 載入失敗（HTTP " + response.status + "）。");
+    }
+
+    try {
+      return await response.json();
+    } catch (error) {
+      throw new Error(filename + " 不是有效的 JSON。");
+    }
+  }
+
+  function buildTaskMap(gantt) {
+    const taskMap = new Map();
+
+    gantt.phases.forEach(phase => {
+      if (!phase || !Array.isArray(phase.tasks)) {
+        return;
+      }
+
+      phase.tasks.forEach(task => {
+        if (task && task.id != null) {
+          taskMap.set(String(task.id), task);
+        }
+      });
+    });
+
+    return taskMap;
+  }
+
+  function calculateProgress(node, taskMap) {
+    const ids = Array.isArray(node.gantt_ids) ? node.gantt_ids : [];
+    const progressValues = [];
+
+    ids.forEach(rawId => {
+      const id = String(rawId);
+      const task = taskMap.get(id);
+
+      if (!task) {
+        console.warn("[PDCA] 找不到 gantt_id：", id, "（節點：", node.id, "）");
+        return;
+      }
+
+      const progress = Number(task.progress);
+
+      if (!Number.isFinite(progress)) {
+        console.warn("[PDCA] progress 不是數字：", id, task.progress);
+        return;
+      }
+
+      progressValues.push(Math.max(0, Math.min(100, progress)));
+    });
+
+    if (progressValues.length === 0) {
+      return null;
+    }
+
+    const total = progressValues.reduce((sum, value) => sum + value, 0);
+    return Math.round(total / progressValues.length);
+  }
+
+  function makeChildren(children) {
+    if (!Array.isArray(children) || children.length === 0) {
+      return "";
+    }
+
+    const rows = children.map(child => {
+      const status = safeStatus(child && child.status);
+      const name = escapeHTML(child && child.name);
+
+      return [
+        '<div class="child">',
+        '<i class="status-dot ', status, '" aria-hidden="true"></i>',
+        '<span class="child-name">', name, "</span>",
+        "</div>"
+      ].join("");
+    }).join("");
+
+    return [
+      '<details class="children">',
+      "<summary>型別產線細目（", children.length, "）</summary>",
+      '<div class="child-list">', rows, "</div>",
+      "</details>"
+    ].join("");
+  }
+
+  function makeNode(node, taskMap) {
+    const status = safeStatus(node.status);
+    const statusLabel = STATUS_LABELS[status];
+    const progress = calculateProgress(node, taskMap);
+    const progressText = progress == null ? "—" : progress + "%";
+    const progressClass = progress == null ? "progress missing" : "progress";
+    const hasCurrent = typeof node.current === "string" && node.current.trim() !== "";
+    const workText = hasCurrent ? node.current : node.next_step;
+    const workLabel = hasCurrent ? "正在執行：" : "下一步：";
+    const href = typeof node.gantt_phase === "string" && node.gantt_phase.trim()
+      ? ' href="index.html#' + encodeURIComponent(node.gantt_phase.trim()) + '"'
+      : "";
+    const name = escapeHTML(node.name);
+    const line = escapeHTML(node.line);
+    const escapedWork = escapeHTML(workText);
+    const aria = escapeHTML(
+      [node.name, node.line, statusLabel, progressText, workLabel, workText]
+        .filter(Boolean)
+        .join("，")
+    );
+
+    return [
+      '<div class="node-wrap">',
+      '<a class="node-card ', status, '"', href,
+      ' aria-label="', aria, '">',
+      '<div class="node-top">',
+      '<div class="node-name">', name, "</div>",
+      '<div class="', progressClass, '">', progressText, "</div>",
+      "</div>",
+      '<div class="node-line">', line, "</div>",
+      '<div class="status-row">',
+      '<i class="status-dot ', status, '" aria-hidden="true"></i>',
+      "<span>", statusLabel, "</span>",
+      "</div>",
+      escapedWork
+        ? '<p class="work"><span class="work-label">' +
+          workLabel +
+          "</span>" +
+          escapedWork +
+          "</p>"
+        : "",
+      makeChildren(node.children),
+      "</a>",
+      "</div>"
+    ].join("");
+  }
+
+  function renderMeta(gantt, pdca) {
+    const ganttUpdated = escapeHTML(gantt.meta && gantt.meta.updated || "—");
+    const pdcaUpdated = escapeHTML(pdca.meta && pdca.meta.updated || "—");
+
+    document.getElementById("meta").innerHTML = [
+      "<span>甘特更新：<time>", ganttUpdated, "</time></span>",
+      "<span>PDCA 更新：<time>", pdcaUpdated, "</time></span>"
+    ].join("");
+
+    const title = gantt.meta && typeof gantt.meta.title === "string"
+      ? gantt.meta.title
+      : "PDCA";
+
+    document.title = title + "｜PDCA 運行圖";
+    document.getElementById("eyebrow").textContent = title;
+    document.getElementById("pageTitle").textContent = title + "｜PDCA 運行圖";
+
+    const note = pdca.meta && typeof pdca.meta.note === "string"
+      ? pdca.meta.note.trim()
+      : "";
+    const noteElement = document.getElementById("pdcaNote");
+
+    if (note) {
+      noteElement.textContent = note;
+      noteElement.hidden = false;
+    }
+  }
+
+  function renderNodes(pdca, taskMap) {
+    LAYERS.forEach(layer => {
+      const nodes = pdca.nodes
+        .filter(node => node && node.layer === layer)
+        .slice()
+        .sort((a, b) => {
+          const aSeq = Number.isFinite(Number(a.seq)) ? Number(a.seq) : Infinity;
+          const bSeq = Number.isFinite(Number(b.seq)) ? Number(b.seq) : Infinity;
+          return aSeq - bSeq;
+        });
+
+      const target = document.getElementById(layerTargets[layer]);
+      target.style.setProperty("--columns", Math.max(1, nodes.length));
+      target.innerHTML = nodes.map(node => makeNode(node, taskMap)).join("");
+    });
+  }
+
+  function showError(error) {
+    loading.hidden = true;
+    diagram.classList.remove("ready");
+    errorPanel.classList.add("show");
+    errorMessage.textContent =
+      (error && error.message ? error.message + " " : "") +
+      "請確認 gantt.json 與 pdca.json 已放在同一目錄，再重新整理頁面。";
+    console.error("[PDCA] 初始化失敗：", error);
+  }
+
+  async function boot() {
+    try {
+      const [gantt, pdca] = await Promise.all([
+        fetchJSON("gantt.json"),
+        fetchJSON("pdca.json")
+      ]);
+
+      assertData(gantt, pdca);
+      const taskMap = buildTaskMap(gantt);
+
+      renderMeta(gantt, pdca);
+      renderNodes(pdca, taskMap);
+
+      loading.hidden = true;
+      errorPanel.classList.remove("show");
+      diagram.classList.add("ready");
+    } catch (error) {
+      showError(error);
+    }
+  }
+
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const next = current
+      ? (current === "dark" ? "light" : "dark")
+      : (systemDark ? "light" : "dark");
+
+    document.documentElement.setAttribute("data-theme", next);
+  });
+
+  boot();
+})();
+</script>
+</body>
+</html>

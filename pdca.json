@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "updated": "2026-07-27",
+    "source": "健檢D＋PM 抽驗",
+    "model": "雙環×源頭層（外環品牌校準／內環 P→D→C→A／源頭層 S1–S5）",
+    "legend": {
+      "open": "通——資料或稿件真的在流動",
+      "partial": "部分——機制在，但料沒進或只試跑",
+      "blocked": "未通——閒置或被上游卡住"
+    },
+    "note": "手工欄位由 PM 每次甘特發布時同步更新；07-27 板主裁示已反映（一線一線驗收／FB 暫不動／喬雍官網凍結）"
+  },
+  "nodes": [
+    {
+      "id": "s1",
+      "layer": "source",
+      "seq": 1,
+      "name": "S1 客戶資料週摘餵入",
+      "line": "報表",
+      "status": "partial",
+      "gantt_phase": "gm",
+      "gantt_ids": [
+        "g3"
+      ],
+      "current": "接讀邏輯已通，週摘仍標試跑、件數為零",
+      "next_step": "7/29 週鏈首戰確認落檔；收訊裝置到位後轉正式口徑"
+    },
+    {
+      "id": "s2",
+      "layer": "source",
+      "seq": 2,
+      "name": "S2 資料通路與報表",
+      "line": "報表",
+      "status": "open",
+      "gantt_phase": "s2",
+      "gantt_ids": [
+        "report-ana-auto",
+        "market-scan",
+        "src-social-connect",
+        "marketing-actions",
+        "report-ux"
+      ],
+      "current": "解讀頁自動化與市場月掃收尾，社群三平台接入七成",
+      "next_step": "7/29 全鏈自動首戰；8/3 市場月線首航"
+    },
+    {
+      "id": "s3",
+      "layer": "source",
+      "seq": 3,
+      "name": "S3 品牌策略定框",
+      "line": "板主",
+      "status": "blocked",
+      "gantt_phase": "p5",
+      "gantt_ids": [
+        "brand-frame",
+        "slogan-fix",
+        "about-rewrite",
+        "mkt-plan-rev"
+      ],
+      "current": "定框已認領但三週僅一成，下游三項未起跑",
+      "next_step": "等定框拍板；期間內容線只做不受閘管的事實類內容"
+    },
+    {
+      "id": "s4",
+      "layer": "source",
+      "seq": 4,
+      "name": "S4 B2B 官網地面",
+      "line": "喬雍",
+      "status": "partial",
+      "gantt_phase": "p9",
+      "gantt_ids": [
+        "faq-selfserve",
+        "ga4-keyevents"
+      ],
+      "current": "凍結維護中（僅上稿）",
+      "next_step": "⚠ 已決策搬離現平台改自管靜態站（板主 07-27）；搬離日待新站完成（未定），此前除上稿外暫不維護。轉換事件喬雍側等外部工單"
+    },
+    {
+      "id": "s5",
+      "layer": "source",
+      "seq": 5,
+      "name": "S5 B2C 官網自管化",
+      "line": "好室",
+      "status": "open",
+      "gantt_phase": "s5",
+      "gantt_ids": [
+        "opt-batch"
+      ],
+      "current": "新站已上線（提前八天），優化批次進行中",
+      "next_step": "8/11 起優化終審與清零；下游資產退役 8/1 起"
+    },
+    {
+      "id": "ring-p",
+      "layer": "inner",
+      "seq": 6,
+      "name": "P 選題",
+      "line": "PM",
+      "status": "partial",
+      "gantt_phase": "ring-p",
+      "gantt_ids": [
+        "faq-bank",
+        "pdca-pilot",
+        "topic-plan"
+      ],
+      "current": "題庫引擎三成、單題全環試轉起跑",
+      "next_step": "選題表收正式（已逾原訂日、零進度）——料在、表未成"
+    },
+    {
+      "id": "ring-d",
+      "layer": "inner",
+      "seq": 7,
+      "name": "D 產製與上稿",
+      "line": "編輯室／喬雍／好室",
+      "status": "partial",
+      "gantt_phase": "ring-d",
+      "gantt_ids": [
+        "review-hub",
+        "phase2-build",
+        "gl-select",
+        "qa-hs-collect"
+      ],
+      "current": "審稿站批 7 已佈署；12 型別站上已建。驗收紀律＝一線一線開放：第一線（結構化檢視）驗收中、尚未通過、仍在修改",
+      "next_step": "第一線驗收過後才開下一線（節奏由板主控、不催）；新拆七類寫作規範待訂；核可→上站人工段補銜接",
+      "children": [
+        {
+          "name": "結構化檢視（第一線，驗收中）",
+          "status": "partial"
+        },
+        {
+          "name": "喬雍知識文章（月線）",
+          "status": "partial"
+        },
+        {
+          "name": "喬雍 FB（暫不動——小編續幫，板主 07-27 裁）",
+          "status": "blocked"
+        },
+        {
+          "name": "好室 Blog（佔位稿）",
+          "status": "partial"
+        },
+        {
+          "name": "其餘九類（型別在、生稿零）",
+          "status": "blocked"
+        }
+      ]
+    },
+    {
+      "id": "ring-c",
+      "layer": "inner",
+      "seq": 8,
+      "name": "C 成效回看",
+      "line": "喬雍／好室",
+      "status": "blocked",
+      "gantt_phase": "ring-c",
+      "gantt_ids": [
+        "seo-cy-crawl",
+        "seo-hs-crawl"
+      ],
+      "current": "",
+      "next_step": "兩項現況彙整皆逾期零進度；根因是上游產出近乎為零、無標的可回看"
+    },
+    {
+      "id": "ring-a",
+      "layer": "inner",
+      "seq": 9,
+      "name": "A 調整與補強",
+      "line": "好室／PM",
+      "status": "blocked",
+      "gantt_phase": "ring-a",
+      "gantt_ids": [
+        "act-legacy-fix",
+        "q3-refresh"
+      ],
+      "current": "",
+      "next_step": "舊文補強不依賴新產出，可 8 月提前起跑；其餘待全環首轉後定"
+    },
+    {
+      "id": "outer-search",
+      "layer": "outer",
+      "seq": 10,
+      "name": "搜尋源",
+      "line": "PM",
+      "status": "open",
+      "gantt_phase": "outer",
+      "gantt_ids": [
+        "src-search"
+      ],
+      "current": "已編入，週報持續供料",
+      "next_step": "累積滿一季升 v1"
+    },
+    {
+      "id": "outer-social",
+      "layer": "outer",
+      "seq": 11,
+      "name": "社群源",
+      "line": "報表→PM",
+      "status": "partial",
+      "gantt_phase": "outer",
+      "gantt_ids": [
+        "src-social-connect",
+        "src-social-edit"
+      ],
+      "current": "抓取端七成、收件匣監看每小時在跑",
+      "next_step": "8/3 起編入客戶認知——料現在只進報表、未進外環"
+    },
+    {
+      "id": "outer-dialog",
+      "layer": "outer",
+      "seq": 12,
+      "name": "對話源",
+      "line": "報表→PM",
+      "status": "blocked",
+      "gantt_phase": "outer",
+      "gantt_ids": [
+        "crm-feedback",
+        "src-dialog-edit"
+      ],
+      "current": "",
+      "next_step": "素材包首批回流 8/12；8/17 起三源整合"
+    },
+    {
+      "id": "outer-gap",
+      "layer": "outer",
+      "seq": 13,
+      "name": "落差分析→策略回饋",
+      "line": "PM",
+      "status": "blocked",
+      "gantt_phase": "outer",
+      "gantt_ids": [
+        "outer-standing",
+        "persona-b2c",
+        "persona-b2b"
+      ],
+      "current": "",
+      "next_step": "常設對帳 8/1 起建；⚠ 回饋落點＝品牌定框，該節點停滯、回饋暫無著陸點"
+    }
+  ]
+}
