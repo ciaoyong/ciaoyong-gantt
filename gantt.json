@@ -52,7 +52,7 @@
         {
           "id": "phase2-approve",
           "name": "內容管線骨架計畫批准",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-07-14",
           "end": "2026-07-14",
           "status": "milestone",
@@ -76,7 +76,7 @@
         {
           "id": "gl-select",
           "name": "相簿選片管線（雲端評分→終審→修圖）",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-07-12",
           "end": "2026-08-15",
           "status": "active",
@@ -139,7 +139,7 @@
         {
           "id": "qa-hs-collect",
           "name": "好室定稿素材蒐集",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-07-12",
           "end": "2026-08-01",
           "status": "active",
@@ -188,7 +188,7 @@
         {
           "id": "content-gate",
           "name": "好室內容正式上線",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-09-01",
           "end": "2026-09-01",
           "status": "milestone",
@@ -202,7 +202,7 @@
         {
           "id": "kn-maintenance",
           "name": "kn 線維運（編輯回覆優化＋退回輪 patch 驗收）",
-          "owner": "編輯室·板主",
+          "owner": "編輯室",
           "start": "2026-07-14",
           "end": "2026-07-31",
           "status": "idle",
@@ -213,7 +213,7 @@
         {
           "id": "review-hub",
           "name": "審稿總站（編輯審稿網頁化，kn 先行）",
-          "owner": "編輯室·板主",
+          "owner": "編輯室",
           "start": "2026-07-18",
           "end": "2026-08-01",
           "status": "active",
@@ -224,7 +224,7 @@
         {
           "id": "review-hub-access",
           "name": "審稿站改『登入制』上線（整站定稿後）",
-          "owner": "編輯室·板主",
+          "owner": "編輯室",
           "start": "2026-08-04",
           "end": "2026-08-08",
           "status": "idle",
@@ -237,7 +237,7 @@
         {
           "id": "gbp-qa",
           "name": "GBP 自問自答預埋（FAQ→問答格式交接包）",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-07-21",
           "end": "2026-08-08",
           "status": "idle",
@@ -248,7 +248,7 @@
         {
           "id": "gbp-products",
           "name": "GBP 產品目錄（服務卡片交接包）",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-08-01",
           "end": "2026-08-22",
           "status": "idle",
@@ -298,7 +298,7 @@
         {
           "id": "cycle1",
           "name": "內環全環首轉（選題→上稿→回看跑通一圈）",
-          "owner": "PM·板主",
+          "owner": "PM",
           "start": "2026-08-15",
           "end": "2026-08-15",
           "status": "milestone",
@@ -326,7 +326,7 @@
         {
           "id": "q3-refresh",
           "name": "Q3 除舊佈新（archive 瘦身＋IG/FB Bio 改寫）",
-          "owner": "PM·板主",
+          "owner": "PM",
           "start": "2026-08-01",
           "end": "2026-09-30",
           "status": "idle",
@@ -455,7 +455,7 @@
         {
           "id": "g1",
           "name": "2026 行銷目標定調＋KPI 覆核",
-          "owner": "PM·板主",
+          "owner": "PM",
           "start": "2026-07-18",
           "end": "2026-07-25",
           "status": "idle",
@@ -477,7 +477,7 @@
         {
           "id": "g3",
           "name": "詢問/成交數據接入（消費 CRM 週摘）",
-          "owner": "報表·板主",
+          "owner": "報表",
           "start": "2026-07-21",
           "end": "2026-08-08",
           "status": "active",
@@ -488,7 +488,7 @@
         {
           "id": "g5",
           "name": "B2B 行銷立場定案",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-08-01",
           "end": "2026-08-01",
           "status": "milestone",
@@ -499,7 +499,7 @@
         {
           "id": "g8",
           "name": "小編 KPI v2（活動量→成效指標）",
-          "owner": "PM·板主",
+          "owner": "PM",
           "start": "2026-08-04",
           "end": "2026-08-15",
           "status": "idle",
@@ -542,7 +542,7 @@
         {
           "id": "src-social-connect",
           "name": "社群流量監測接入（三平台）",
-          "owner": "報表·板主",
+          "owner": "報表",
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
@@ -580,7 +580,7 @@
         {
           "id": "marketing-actions",
           "name": "行銷工作紀錄表起建",
-          "owner": "報表·板主",
+          "owner": "報表",
           "start": "2026-07-12",
           "end": "2026-07-31",
           "status": "active",
@@ -659,7 +659,7 @@
         {
           "id": "brand-frame",
           "name": "好室品牌策略定框（找頭）",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-07-03",
           "end": "2026-08-01",
           "status": "active",
@@ -670,7 +670,7 @@
         {
           "id": "slogan-fix",
           "name": "輔助標語改寫定案",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-08-01",
           "end": "2026-08-01",
           "status": "milestone",
@@ -683,7 +683,7 @@
         {
           "id": "about-rewrite",
           "name": "官網「關於我們」語調改寫定稿",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-07-06",
           "end": "2026-08-07",
           "status": "idle",
@@ -696,7 +696,7 @@
         {
           "id": "mkt-plan-rev",
           "name": "行銷計畫與社群計畫修訂",
-          "owner": "板主·PM",
+          "owner": "PM",
           "start": "2026-08-03",
           "end": "2026-08-14",
           "status": "idle",
@@ -748,7 +748,7 @@
         {
           "id": "wiki-datafix",
           "name": "知識庫欄位補值（待板主提供數值）",
-          "owner": "板主·PM",
+          "owner": "PM",
           "start": "2026-07-14",
           "end": "2026-07-18",
           "status": "blocked",
@@ -820,7 +820,7 @@
         {
           "id": "mig-decision",
           "name": "自管化決策定案",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-07-16",
           "end": "2026-07-16",
           "status": "done",
@@ -842,7 +842,7 @@
         {
           "id": "mig-infra",
           "name": "新站 repo＋Cloudflare Pages 接通",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-07-16",
           "end": "2026-07-16",
           "status": "done",
@@ -867,7 +867,7 @@
         {
           "id": "mig-verify",
           "name": "部署驗收（臨時網址全頁面＋RWD）",
-          "owner": "板主·好室",
+          "owner": "好室",
           "start": "2026-07-17",
           "end": "2026-07-18",
           "status": "done",
@@ -880,7 +880,7 @@
         {
           "id": "mig-form",
           "name": "官網諮詢表單接入定案",
-          "owner": "板主·好室",
+          "owner": "好室",
           "start": "2026-07-17",
           "end": "2026-07-18",
           "status": "done",
@@ -893,7 +893,7 @@
         {
           "id": "mig-offsite",
           "name": "備份異地副本（含資料庫層備份）",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-07-17",
           "end": "2026-07-18",
           "status": "done",
@@ -919,7 +919,7 @@
         {
           "id": "opt-clear",
           "name": "優化終審與清零",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-08-11",
           "end": "2026-08-18",
           "status": "idle",
@@ -932,7 +932,7 @@
         {
           "id": "mig-dns",
           "name": "網域切換上線",
-          "owner": "板主·好室",
+          "owner": "好室",
           "start": "2026-07-23",
           "end": "2026-07-23",
           "status": "milestone",
@@ -1014,7 +1014,7 @@
         {
           "id": "a1",
           "name": "歸檔計劃定案＋編號盤查",
-          "owner": "CRM·板主",
+          "owner": "CRM",
           "start": "2026-07-02",
           "end": "2026-07-03",
           "status": "done",
@@ -1025,7 +1025,7 @@
         {
           "id": "a2",
           "name": "資料匯入（全量批）",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-07-03",
           "end": "2026-07-03",
           "status": "done",
@@ -1062,7 +1062,7 @@
         {
           "id": "reorg",
           "name": "資料底座重整（主體／來源分離＋試跑隔離）",
-          "owner": "CRM·板主",
+          "owner": "CRM",
           "start": "2026-07-06",
           "end": "2026-07-06",
           "status": "done",
@@ -1103,7 +1103,7 @@
         {
           "id": "recode",
           "name": "編碼制度重編",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-07-03",
           "end": "2026-08-04",
           "status": "blocked",
@@ -1140,7 +1140,7 @@
         {
           "id": "m3",
           "name": "開發總規劃定案＋主檔更名",
-          "owner": "CRM·板主",
+          "owner": "CRM",
           "start": "2026-07-05",
           "end": "2026-07-05",
           "status": "done",
@@ -1247,7 +1247,7 @@
         {
           "id": "q8",
           "name": "即時同步（雙來源）",
-          "owner": "CRM·IT·板主",
+          "owner": "CRM·IT",
           "start": "2026-07-14",
           "end": "2026-08-27",
           "status": "active",
@@ -1260,7 +1260,7 @@
         {
           "id": "q4",
           "name": "備份完整性機制",
-          "owner": "IT·板主",
+          "owner": "IT",
           "start": "2026-07-17",
           "end": "2026-08-31",
           "status": "active",
@@ -1453,7 +1453,7 @@
         {
           "id": "hist-mkt-audit",
           "name": "行銷現況盤點（雙品牌官網 57 頁深度爬取）",
-          "owner": "PM·板主",
+          "owner": "PM",
           "start": "2026-04-16",
           "end": "2026-04-16",
           "status": "done",
@@ -1464,7 +1464,7 @@
         {
           "id": "hist-content-meeting",
           "name": "雙品牌網站內容編輯會議定案（三版位分工＋R&R）",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-05-23",
           "end": "2026-05-23",
           "status": "done",
@@ -1475,7 +1475,7 @@
         {
           "id": "hist-blog-gem",
           "name": "Blog 排版 Gem 路線（評估→試作→判定暫停）",
-          "owner": "好室·板主",
+          "owner": "好室",
           "start": "2026-05-27",
           "end": "2026-06-26",
           "status": "done",
@@ -1486,7 +1486,7 @@
         {
           "id": "hist-brandbook",
           "name": "好室品牌書定稿（策略＋品牌精神三值/Slogan/CTA）",
-          "owner": "板主",
+          "owner": null,
           "start": "2026-06-26",
           "end": "2026-06-27",
           "status": "done",

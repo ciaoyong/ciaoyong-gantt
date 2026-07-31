@@ -276,7 +276,7 @@
       <div class="eyebrow">喬雍環境管理 · CRM 開發</div>
       <h1>喬雍 內容行銷PDCA × CRM 總計畫</h1>
       <div class="sub">看進度：打開就是最新版，不用登入。想反映意見：<b>點任一列任務 →「💬 回報」</b>。不確定怎麼用？點右邊「❓ 使用說明」。</div>
-      <div class="sub" style="margin-top:6px"><a href="pdca.html" style="color:#1d6a8c;font-weight:600;text-decoration:none">↻ PDCA 運行圖</a>　—　看整體流程哪裡通、哪裡卡、現在在做什麼</div>
+      <div class="sub" style="margin-top:8px"><a href="pdca.html" style="display:inline-block;padding:7px 16px;background:#1d6a8c;color:#fff;font-weight:700;border-radius:8px;text-decoration:none;font-size:14px">↻ PDCA 運行圖</a><span style="margin-left:8px">看整體流程哪裡通、哪裡卡、現在在做什麼</span></div>
     </div>
     <div class="brandmark" title="喬雍 CIS 四色系統：暗青／緗色／蔚藍／豆青">
       <span class="swatch" style="background:#304854"></span>
@@ -352,7 +352,7 @@
         </div>
         <div class="field">
           <label for="fOwner">負責人</label>
-          <input id="fOwner" type="text" placeholder="AI / 板主 / 客服 / PT">
+          <input id="fOwner" type="text" placeholder="PM / 好室 / 喬雍 / 報表">
         </div>
       </div>
       <div class="field row2">
@@ -632,7 +632,7 @@ function fmtD(dt){ return dt.getFullYear()+"-"+String(dt.getMonth()+1).padStart(
 function today(){ const n=new Date(); return new Date(n.getFullYear(),n.getMonth(),n.getDate()); }
 const LS_COLLAPSE="ciaoyong-gantt-collapse-v1";
 function collapseMap(){ try{return JSON.parse(localStorage.getItem(LS_COLLAPSE)||"{}")}catch(e){return{}} }
-function isCollapsed(p){ const m=collapseMap(); return (p.id in m)? !!m[p.id] : p.name.startsWith("\ud83d\uddc4"); }
+function isCollapsed(p){ const m=collapseMap(); return (p.id in m)? !!m[p.id] : true; /* 2026-07-31 板主裁：首次開啟預設全收合 */ }
 function toggleCollapse(id){ const m=collapseMap(); const p=state.phases.find(x=>x.id===id); if(!p)return;
   m[id]=!isCollapsed(p); localStorage.setItem(LS_COLLAPSE,JSON.stringify(m)); render(); }
 
@@ -801,7 +801,8 @@ function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">
 /* ---------- 負責人／狀態一鍵篩選 ---------- */
 function renderFilters(){
   // 負責人按鈕：從資料動態產生（「AI·板主」拆成兩人各一顆）
-  const owners = [...new Set(state.phases.flatMap(p=>p.tasks.flatMap(ownerNames)))];
+  const HIDE_OWNER_BTN = ["業務","客服"]; /* 2026-07-31 板主裁：拿掉快篩鈕、任務 owner 欄不動 */
+  const owners = [...new Set(state.phases.flatMap(p=>p.tasks.flatMap(ownerNames)))].filter(o=>!HIDE_OWNER_BTN.includes(o));
   const box = document.getElementById("ownerFilters");
   box.innerHTML = owners.map(o=>
     `<button class="btn ownbtn${o===ownerFilter?" on":""}" data-ownf="${esc(o)}" title="一鍵列出「${esc(o)}」負責的任務；再點一次取消">👤 ${esc(o)}</button>`).join("");
