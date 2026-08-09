@@ -2,1042 +2,440 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PDCA 運行圖</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PDCA 運行圖 v5</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>↻</text></svg>">
 <style>
-  :root {
-    --bg: #eceff2;
-    --surface: #ffffff;
-    --surface-2: #e6ebee;
-    --surface-3: #f4f6f8;
-    --border: #d2dade;
-    --border-strong: #b9c4cb;
-    --text: #22303a;
-    --text-dim: #5c6c77;
-    --text-faint: #8a99a3;
-    --slate: #304854;
-    --slate-soft: #4a6675;
-    --gold: #ffbe19;
-    --gold-deep: #d99a12;
-    --done: #80c862;
-    --active: #1d6a8c;
-    --blocked: #eb6b32;
-    --idle: #738995;
-    --shadow: 0 1px 2px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.10);
-    --mono: "SF Mono", ui-monospace, "JetBrains Mono", "Roboto Mono", Menlo, monospace;
-    --cjk: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Hiragino Sans", system-ui, sans-serif;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0f151a;
-      --surface: #172128;
-      --surface-2: #1e2a32;
-      --surface-3: #141d24;
-      --border: #2b3944;
-      --border-strong: #3a4b57;
-      --text: #e4ecf1;
-      --text-dim: #93a6b1;
-      --text-faint: #6b7c87;
-      --slate: #7ba0b2;
-      --slate-soft: #5f8090;
-      --gold: #ffca3a;
-      --gold-deep: #e6ad2b;
-      --done: #8fd070;
-      --active: #4a97bd;
-      --blocked: #f07a45;
-      --idle: #8a9ea9;
-      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
-    }
-  }
-
-  :root[data-theme="light"] {
-    --bg: #eceff2;
-    --surface: #ffffff;
-    --surface-2: #e6ebee;
-    --surface-3: #f4f6f8;
-    --border: #d2dade;
-    --border-strong: #b9c4cb;
-    --text: #22303a;
-    --text-dim: #5c6c77;
-    --text-faint: #8a99a3;
-    --slate: #304854;
-    --slate-soft: #4a6675;
-    --gold: #ffbe19;
-    --gold-deep: #d99a12;
-    --done: #80c862;
-    --active: #1d6a8c;
-    --blocked: #eb6b32;
-    --idle: #738995;
-    --shadow: 0 1px 2px rgba(34,48,58,.06), 0 8px 24px rgba(34,48,58,.10);
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #0f151a;
-    --surface: #172128;
-    --surface-2: #1e2a32;
-    --surface-3: #141d24;
-    --border: #2b3944;
-    --border-strong: #3a4b57;
-    --text: #e4ecf1;
-    --text-dim: #93a6b1;
-    --text-faint: #6b7c87;
-    --slate: #7ba0b2;
-    --slate-soft: #5f8090;
-    --gold: #ffca3a;
-    --gold-deep: #e6ad2b;
-    --done: #8fd070;
-    --active: #4a97bd;
-    --blocked: #f07a45;
-    --idle: #8a9ea9;
-    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html,
-  body {
-    min-width: 0;
-    overflow-x: hidden;
-  }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--cjk);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  button,
-  a {
-    font: inherit;
-  }
-
-  .wrap {
-    width: min(1600px, 100%);
-    margin: 0 auto;
-    padding: 22px 30px 42px;
-  }
-
-  .mast {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 16px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--slate);
-  }
-
-  .mast-copy {
-    min-width: 0;
-  }
-
-  .eyebrow {
-    color: var(--slate);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .18em;
-  }
-
-  h1 {
-    margin: 4px 0 5px;
-    font-size: clamp(23px, 2.3vw, 31px);
-    line-height: 1.25;
-    letter-spacing: -.02em;
-    text-wrap: balance;
-    overflow-wrap: anywhere;
-  }
-
-  .meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px 14px;
-    color: var(--text-dim);
-    font-size: 12px;
-  }
-
-  .meta time {
-    color: var(--text);
-    font-family: var(--mono);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .btn {
-    display: inline-flex;
-    min-height: 38px;
-    align-items: center;
-    justify-content: center;
-    padding: 7px 12px;
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background .12s, border-color .12s, transform .05s;
-  }
-
-  .btn:hover {
-    background: var(--surface-2);
-    border-color: var(--slate-soft);
-  }
-
-  .btn:active {
-    transform: translateY(1px);
-  }
-
-  .btn:focus-visible,
-  .node-card:focus-visible,
-  summary:focus-visible {
-    outline: 2px solid var(--gold-deep);
-    outline-offset: 2px;
-  }
-
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 16px;
-    margin: 13px 0 0;
-    color: var(--text-dim);
-    font-size: 12px;
-  }
-
-  .legend-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .status-dot {
-    width: 10px;
-    height: 10px;
-    flex: none;
-    border-radius: 50%;
-    background: var(--idle);
-  }
-
-  .status-dot.open {
-    background: var(--done);
-  }
-
-  .status-dot.partial {
-    background: var(--active);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--active) 22%, transparent);
-  }
-
-  .status-dot.blocked {
-    background: var(--blocked);
-  }
-
-  .loading,
-  .error-panel {
-    margin: 22px 0;
-    padding: 18px 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-  }
-
-  .loading {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-dim);
-  }
-
-  .spinner {
-    width: 18px;
-    height: 18px;
-    flex: none;
-    border: 2px solid var(--border-strong);
-    border-top-color: var(--active);
-    border-radius: 50%;
-    animation: spin .8s linear infinite;
-  }
-
-  .error-panel {
-    display: none;
-    border-left: 4px solid var(--blocked);
-  }
-
-  .error-panel.show {
-    display: block;
-  }
-
-  .error-panel h2 {
-    margin: 0 0 6px;
-    font-size: 17px;
-  }
-
-  .error-panel p {
-    margin: 0;
-    color: var(--text-dim);
-    overflow-wrap: anywhere;
-  }
-
-  .diagram {
-    display: none;
-    margin-top: 18px;
-  }
-
-  .diagram.ready {
-    display: grid;
-    gap: 7px;
-  }
-
-  .band {
-    min-width: 0;
-    padding: 13px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    box-shadow: var(--shadow);
-  }
-
-  .band.outer {
-    border-top: 4px solid var(--slate);
-  }
-
-  .band.inner {
-    border-top: 4px solid var(--gold);
-  }
-
-  .band.source {
-    border-top: 4px solid var(--active);
-  }
-
-  .band-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-
-  .band-title {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.35;
-  }
-
-  .band-cadence {
-    flex: none;
-    color: var(--text-faint);
-    font-family: var(--mono);
-    font-size: 11px;
-  }
-
-  .node-grid {
-    display: grid;
-    grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
-    gap: 24px;
-    align-items: start;
-  }
-
-  .node-wrap {
-    position: relative;
-    min-width: 0;
-  }
-
-  .node-wrap:not(:last-child)::after {
-    content: "→";
-    position: absolute;
-    top: 50%;
-    right: -19px;
-    z-index: 2;
-    width: 14px;
-    color: var(--slate-soft);
-    font-family: var(--mono);
-    font-size: 18px;
-    font-weight: 800;
-    text-align: center;
-    transform: translateY(-50%);
-  }
-
-  .inner .node-wrap:not(:last-child)::after {
-    color: var(--gold-deep);
-  }
-
-  .node-card {
-    position: relative;
-    display: block;
-    min-width: 0;
-    min-height: 145px;
-    padding: 12px 12px 11px 15px;
-    color: var(--text);
-    background: var(--surface-3);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    text-decoration: none;
-    overflow: hidden;
-    transition: border-color .12s, transform .12s, box-shadow .12s;
-  }
-
-  .node-card::before {
-    content: "";
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 3px;
-    background: var(--idle);
-  }
-
-  .node-card.open::before {
-    background: var(--done);
-  }
-
-  .node-card.partial::before {
-    background: var(--active);
-  }
-
-  .node-card.blocked::before {
-    background: var(--blocked);
-  }
-
-  .node-card[href]:hover {
-    border-color: var(--slate-soft);
-    box-shadow: 0 6px 18px rgba(34,48,58,.11);
-    transform: translateY(-1px);
-  }
-
-  .node-card[href] {
-    cursor: pointer;
-  }
-
-  .node-card:not([href]) {
-    cursor: default;
-  }
-
-  .node-top {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 8px;
-    align-items: start;
-  }
-
-  .node-name {
-    min-width: 0;
-    font-size: 14px;
-    font-weight: 800;
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-  }
-
-  .progress {
-    color: var(--slate);
-    font-family: var(--mono);
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 1.1;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .progress.missing {
-    color: var(--text-faint);
-  }
-
-  .node-line {
-    margin-top: 5px;
-    color: var(--text-dim);
-    font-size: 11.5px;
-    overflow-wrap: anywhere;
-  }
-
-  .status-row {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-top: 10px;
-    color: var(--text-dim);
-    font-size: 11.5px;
-  }
-
-  .work {
-    margin: 8px 0 0;
-    color: var(--text);
-    font-size: 12px;
-    line-height: 1.45;
-    overflow-wrap: anywhere;
-  }
-
-  .work-label {
-    color: var(--text-dim);
-    font-weight: 700;
-  }
-
-  .children {
-    margin-top: 9px;
-    padding-top: 8px;
-    border-top: 1px solid var(--border);
-  }
-
-  .children summary {
-    color: var(--text-dim);
-    font-size: 11.5px;
-    font-weight: 700;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .child-list {
-    display: grid;
-    gap: 5px;
-    margin-top: 7px;
-  }
-
-  .child {
-    display: flex;
-    min-width: 0;
-    align-items: flex-start;
-    gap: 7px;
-    padding: 5px 7px;
-    background: var(--surface-2);
-    border-radius: 6px;
-    color: var(--text-dim);
-    font-size: 11px;
-  }
-
-  .child .status-dot {
-    width: 8px;
-    height: 8px;
-    margin-top: 4px;
-  }
-
-  .child-name {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .connector {
-    display: grid;
-    min-height: 30px;
-    place-items: center;
-    color: var(--slate-soft);
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 1.15;
-    text-align: center;
-  }
-
-  .connector::before {
-    content: "";
-    width: 2px;
-    height: 11px;
-    background: currentColor;
-  }
-
-  .connector::after {
-    content: "▼";
-    margin-top: -4px;
-    font-size: 11px;
-  }
-
-  .connector.up {
-    color: var(--active);
-  }
-
-  .connector.up::before {
-    order: 2;
-  }
-
-  .connector.up::after {
-    content: "▲";
-    order: 1;
-    margin: 0 0 -4px;
-  }
-
-  .connector-label {
-    order: 1;
-    padding: 1px 8px;
-    background: var(--bg);
-    border-radius: 999px;
-  }
-
-  .connector.up .connector-label {
-    order: 3;
-  }
-
-  .note {
-    margin: 13px 0 0;
-    padding: 9px 12px;
-    color: var(--text-dim);
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--gold);
-    border-radius: 8px;
-    font-size: 12px;
-    overflow-wrap: anywhere;
-  }
-
-  .foot {
-    margin-top: 12px;
-    color: var(--text-faint);
-    font-size: 11px;
-    text-align: right;
-  }
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @media (max-width: 900px) {
-    .wrap {
-      padding: 18px 16px 36px;
-    }
-
-    .node-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .node-wrap:not(:last-child)::after {
-      display: none;
-    }
-
-    .source .node-wrap:last-child {
-      grid-column: 1 / -1;
-    }
-  }
-
-  @media (max-width: 560px) {
-    .wrap {
-      padding: 15px 12px 30px;
-    }
-
-    .mast {
-      align-items: stretch;
-    }
-
-    .actions,
-    .actions .btn {
-      width: 100%;
-    }
-
-    .meta {
-      display: grid;
-      gap: 3px;
-    }
-
-    .legend {
-      gap: 7px 12px;
-    }
-
-    .band {
-      padding: 11px;
-    }
-
-    .band-head {
-      display: block;
-    }
-
-    .band-cadence {
-      margin-top: 2px;
-    }
-
-    .node-grid {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 22px;
-    }
-
-    .source .node-wrap:last-child {
-      grid-column: auto;
-    }
-
-    .node-wrap:not(:last-child)::after {
-      content: "↓";
-      display: block;
-      top: auto;
-      right: 50%;
-      bottom: -22px;
-      width: 16px;
-      transform: translateX(50%);
-    }
-
-    .node-card {
-      min-height: 0;
-    }
-
-    .connector {
-      min-height: 35px;
-    }
-
-    .foot {
-      text-align: left;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
-      scroll-behavior: auto !important;
-    }
-  }
+:root{
+  --bg:#eceff2;--surface:#fff;--surface-2:#e6ebee;--surface-3:#f4f6f8;
+  --border:#d2dade;--border-strong:#b9c4cb;--text:#22303a;--text-dim:#5c6c77;
+  --text-faint:#8a99a3;--slate:#304854;--gold:#ffbe19;--gold-deep:#d99a12;
+  --done:#80c862;--active:#1d6a8c;--blocked:#eb6b32;--idle:#738995;
+  --ring-track:#e8edf0;--shadow:0 1px 2px rgba(34,48,58,.06),0 8px 24px rgba(34,48,58,.10);
+  --mono:"SF Mono",ui-monospace,Menlo,monospace;
+  --cjk:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#0f151a;--surface:#172128;--surface-2:#1e2a32;--surface-3:#141d24;
+    --border:#2b3944;--border-strong:#3a4b57;--text:#e4ecf1;--text-dim:#93a6b1;
+    --text-faint:#6b7c87;--slate:#7ba0b2;--gold:#ffca3a;--gold-deep:#e6ad2b;
+    --done:#8fd070;--active:#4a97bd;--blocked:#f07a45;--idle:#8a9ea9;
+    --ring-track:#2a3740;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4)
+  }
+}
+:root[data-theme=light]{
+  --bg:#eceff2;--surface:#fff;--surface-2:#e6ebee;--surface-3:#f4f6f8;
+  --border:#d2dade;--border-strong:#b9c4cb;--text:#22303a;--text-dim:#5c6c77;
+  --text-faint:#8a99a3;--slate:#304854;--gold:#ffbe19;--gold-deep:#d99a12;
+  --done:#80c862;--active:#1d6a8c;--blocked:#eb6b32;--idle:#738995;
+  --ring-track:#e8edf0;--shadow:0 1px 2px rgba(34,48,58,.06),0 8px 24px rgba(34,48,58,.10)
+}
+:root[data-theme=dark]{
+  --bg:#0f151a;--surface:#172128;--surface-2:#1e2a32;--surface-3:#141d24;
+  --border:#2b3944;--border-strong:#3a4b57;--text:#e4ecf1;--text-dim:#93a6b1;
+  --text-faint:#6b7c87;--slate:#7ba0b2;--gold:#ffca3a;--gold-deep:#e6ad2b;
+  --done:#8fd070;--active:#4a97bd;--blocked:#f07a45;--idle:#8a9ea9;
+  --ring-track:#2a3740;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.4)
+}
+*{box-sizing:border-box}
+html,body{min-width:0;overflow-x:hidden}
+body{
+  margin:0;background:radial-gradient(circle at 50% 8%,color-mix(in srgb,var(--gold) 8%,transparent),transparent 34rem),var(--bg);
+  color:var(--text);font-family:var(--cjk);line-height:1.5;-webkit-font-smoothing:antialiased
+}
+button,a{font:inherit;color:inherit}
+.wrap{width:min(1500px,100%);margin:auto;padding:20px 28px 32px}
+.mast{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:15px;padding-bottom:14px;border-bottom:2px solid var(--slate)}
+.eyebrow{color:var(--slate);font-size:12px;font-weight:800;letter-spacing:.16em}
+h1{margin:3px 0 4px;font-size:clamp(23px,2.3vw,31px);line-height:1.25;overflow-wrap:anywhere}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;color:var(--text-dim);font-size:12px}
+.meta time,.percent,.ring-percent{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;min-height:38px;align-items:center;justify-content:center;padding:7px 12px;background:var(--surface);border:1px solid var(--border-strong);border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--surface-2)}
+.btn:focus-visible,.node:focus-visible,.source-node:focus-visible,.close:focus-visible,.stage-info:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px}
+.legend{display:inline-flex;flex-wrap:wrap;align-items:center;gap:7px 17px}
+.key{display:inline-flex;align-items:center;gap:6px}
+.swatch{width:18px;height:5px;border-radius:9px;background:var(--idle)}
+.swatch.open{background:var(--done)}.swatch.partial{background:var(--active)}.swatch.blocked{background:var(--blocked)}
+.loading,.error{margin:18px 0;padding:17px 19px;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
+.loading{display:flex;align-items:center;gap:10px;color:var(--text-dim)}
+.loading[hidden],.error[hidden]{display:none}
+.spinner{width:18px;height:18px;border:2px solid var(--border-strong);border-top-color:var(--active);border-radius:50%;animation:spin .8s linear infinite}
+.error{display:none;border-left:4px solid var(--blocked)}.error.show{display:block}
+.error h2{margin:0 0 5px;font-size:17px}.error p{margin:0;color:var(--text-dim)}
+.diagram{display:none;margin-top:14px}.diagram.ready{display:block}
+.source-layer{width:min(1180px,100%);margin:0 auto 10px;padding:12px;background:var(--surface-2);border:1px solid var(--border);border-top:4px solid var(--active);border-radius:15px;box-shadow:var(--shadow)}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:8px}
+.section-head h2{margin:0;font-size:15px}.section-head span{color:var(--text-faint);font:11px var(--mono)}
+.source-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.source-node,.band-node{position:relative;min-width:0;padding:9px 10px 10px 13px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:9px;text-align:left;cursor:pointer}
+.source-node{min-height:69px}
+.source-node::before,.band-node::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;border-radius:9px 0 0 9px;background:var(--idle)}
+.open::before{background:var(--done)}.partial::before{background:var(--active)}.blocked::before{background:var(--blocked)}
+.feed{display:grid;height:34px;place-items:center;color:var(--active);font-size:11px;font-weight:800}
+.feed::after{content:"↓";margin-left:7px;font:900 19px var(--mono)}
+.ring-stage{
+  position:relative;width:min(1180px,100%);height:clamp(480px,calc(100vh - 452px),740px);
+  margin:auto;background:radial-gradient(circle at center,color-mix(in srgb,var(--active) 5%,transparent),transparent 24rem),var(--surface);
+  border:1px solid var(--border);border-radius:22px;box-shadow:var(--shadow);overflow:hidden
+}
+.ring-svg{position:absolute;inset:0;width:100%;height:100%}
+.segment-track,.segment-value{fill:none;stroke-linecap:round}
+.segment-track.outer,.segment-value.outer{stroke-width:34}
+.segment-track.inner,.segment-value.inner{stroke-width:28}
+.segment-track{stroke:var(--ring-track)}
+.segment-value.open{stroke:var(--done)}.segment-value.partial{stroke:var(--active)}.segment-value.blocked{stroke:var(--blocked)}
+.leader{fill:none;stroke:var(--border-strong);stroke-width:1.6;stroke-linecap:round}
+.anchor.open{fill:var(--done)}.anchor.partial{fill:var(--active)}.anchor.blocked{fill:var(--blocked)}
+.stage-info-shell{pointer-events:none;overflow:visible}
+.stage-info{
+  width:300px;height:62px;padding:11px 13px;pointer-events:auto;overflow:hidden;position:relative;z-index:20;
+  color:var(--text);background:color-mix(in srgb,var(--surface) 94%,transparent);
+  border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);
+  transition:width .18s ease,max-height .2s ease,background .18s ease;max-height:74px;overflow:hidden
+}
+.stage-info strong{display:block;font-size:12px;line-height:1.45}
+.stage-info p{margin:8px 0 0;color:var(--text-dim);font-size:13px;line-height:1.48;opacity:0;transition:opacity .12s ease}
+.stage-info:hover,.stage-info:focus,.stage-info:focus-within{width:360px;height:auto;max-height:320px;background:var(--surface)}  /* 高度自適應，避免第二段被截 */
+.stage-info:hover p,.stage-info:focus p,.stage-info:focus-within p{opacity:1}
+.ring-center{height:100%;display:grid;place-content:center;background:var(--surface);border:1px solid var(--border);border-radius:50%;text-align:center;box-shadow:var(--shadow)}
+.ring-center small{font-size:9px;font-weight:800;letter-spacing:.07em}
+.ring-percent{color:var(--slate);font-size:21px;font-weight:900;line-height:1.05}
+.ring-percent.inner{margin-top:4px;color:var(--active);font-size:17px}
+.node{width:100%;height:100%;padding:7px 9px;color:var(--text);background:color-mix(in srgb,var(--surface-2) 88%,transparent);border:0;border-radius:7px;text-align:left;cursor:pointer}
+.node:hover{background:var(--surface-2)}
+.node.center{text-align:center}
+.node-name{display:block;font-size:13px;font-weight:800;line-height:1.28;overflow-wrap:anywhere}
+.node-line{display:block;margin-top:1px;color:var(--text-dim);font-size:10px;overflow-wrap:anywhere}
+.progress-row{display:grid;grid-template-columns:36px 1fr;gap:7px;align-items:center;margin-top:5px}
+.percent{font-size:11px;font-weight:900;text-align:right}
+.mini{height:4px;background:var(--ring-track);border-radius:99px;overflow:hidden}
+.mini i{display:block;height:100%;border-radius:inherit;background:var(--idle)}
+.open .percent{color:var(--done)}.partial .percent{color:var(--active)}.blocked .percent{color:var(--blocked)}
+.open .mini i{background:var(--done)}.partial .mini i{background:var(--active)}.blocked .mini i{background:var(--blocked)}
+.mobile{display:none}
+.band{padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:13px;box-shadow:var(--shadow)}
+.band.source{border-top:4px solid var(--active)}.band.outer{border-top:4px solid var(--slate)}.band.inner{border-top:4px solid var(--gold)}
+.band-grid{display:grid;gap:18px}.band-node{width:100%;background:var(--surface-3)}
+.band-node:not(:last-child)::after{content:"↓";position:absolute;left:50%;bottom:-19px;color:var(--slate);font:800 15px var(--mono)}
+.mobile-link{display:grid;min-height:34px;place-items:center;color:var(--active);font-size:11px;font-weight:800}
+.note{width:min(1180px,100%);margin:11px auto 0;padding:8px 11px;color:var(--text-dim);background:var(--surface-2);border-left:3px solid var(--gold);border-radius:7px;font-size:12px}
+.foot{width:min(1180px,100%);margin:9px auto 0;color:var(--text-faint);font-size:11px;text-align:right}
+dialog{width:min(620px,calc(100% - 32px));max-height:82vh;padding:0;color:var(--text);background:var(--surface);border:1px solid var(--border-strong);border-radius:15px;box-shadow:0 24px 80px rgba(0,0,0,.32);overflow:auto}
+dialog::backdrop{background:rgba(10,18,24,.58);backdrop-filter:blur(3px)}
+.detail{padding:20px}.detail-top{display:grid;grid-template-columns:1fr auto;gap:12px}
+.detail-kicker{color:var(--text-faint);font-size:11px;font-weight:800;letter-spacing:.12em}
+.detail h2{margin:3px 0;font-size:21px}.owner{color:var(--text-dim);font-size:12px}
+.close{width:37px;height:37px;background:var(--surface-2);border:1px solid var(--border);border-radius:50%;font-size:20px;cursor:pointer}
+.detail-summary{display:flex;align-items:center;gap:10px;margin:15px 0;padding:11px;background:var(--surface-3);border-radius:10px}
+.detail-summary .percent{margin-left:auto;font-size:24px}
+.detail-block{margin-top:13px;padding-top:12px;border-top:1px solid var(--border)}
+.detail-block h3{margin:0 0 4px;color:var(--slate);font-size:12px}.detail-block p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.child{margin-top:6px;padding:7px 9px;background:var(--surface-2);border-radius:7px;font-size:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:600px){
+  .wrap{padding:14px 11px 26px}.mast{align-items:stretch}.actions,.actions .btn{width:100%}
+  .meta{display:grid;gap:2px}.legend{gap:6px 12px}
+  .source-layer,.feed,.ring-stage{display:none}.mobile{display:grid}
+  .section-head{display:block}.section-head span{display:block;margin-top:2px}
+  .foot{text-align:left}dialog{width:100%;max-width:none;max-height:88vh;margin:auto 0 0;border-radius:17px 17px 0 0}
+  .detail{padding:17px 13px max(17px,env(safe-area-inset-bottom))}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <main class="wrap">
-  <header class="mast">
-    <div class="mast-copy">
-      <div class="eyebrow" id="eyebrow">PDCA</div>
-      <h1 id="pageTitle">PDCA 運行圖</h1>
-      <div class="meta" id="meta" aria-live="polite"></div>
-    </div>
-    <nav class="actions" aria-label="頁面操作">
-      <a class="btn" href="index.html">← 回甘特總表</a>
-      <button class="btn" id="themeBtn" type="button" aria-label="切換深淺色">◐ 切換深／淺色</button>
-    </nav>
-  </header>
-
-  <div class="legend" aria-label="狀態圖例">
-    <span class="legend-item"><i class="status-dot open"></i>通</span>
-    <span class="legend-item"><i class="status-dot partial"></i>部分</span>
-    <span class="legend-item"><i class="status-dot blocked"></i>未通</span>
-    <span class="legend-item">進度為 gantt_ids 對應任務的平均值</span>
+<header class="mast">
+  <div>
+    <div class="eyebrow" id="eyebrow">PDCA</div>
+    <h1 id="title">PDCA 運行圖</h1>
+    <div class="meta" id="meta" aria-live="polite"></div>
   </div>
-
-  <section class="loading" id="loading" aria-live="polite">
-    <i class="spinner" aria-hidden="true"></i>
-    <span>正在載入運行資料…</span>
+  <nav class="actions" aria-label="頁面操作">
+    <a class="btn" href="index.html">← 回甘特總表</a>
+    <button class="btn" id="theme" type="button">◐ 切換深／淺色</button>
+  </nav>
+</header>
+<section class="loading" id="loading"><i class="spinner"></i><span>正在載入運行資料…</span></section>
+<section class="error" id="error" role="alert">
+  <h2>資料暫時無法載入</h2>
+  <p id="errorText">請確認 gantt.json 與 pdca.json 與本頁位於同一目錄。</p>
+</section>
+<noscript><section class="error show"><h2>需要啟用 JavaScript</h2><p>此資料驅動畫面需要 JavaScript。</p></section></noscript>
+<div class="diagram" id="diagram">
+  <section class="source-layer">
+    <div class="section-head"><h2>源頭層 S1–S5</h2><span>持續入料 · 供養雙環</span></div>
+    <div class="source-grid" id="sourceGrid"></div>
   </section>
-
-  <section class="error-panel" id="errorPanel" role="alert" aria-live="assertive">
-    <h2>資料暫時無法載入</h2>
-    <p id="errorMessage">請確認 gantt.json 與 pdca.json 已放在同一目錄，並重新整理頁面。</p>
+  <div class="feed">源頭層供養兩環</div>
+  <section class="ring-stage" aria-label="雙環分段 PDCA 運行圖">
+    <svg class="ring-svg" id="ringSvg" viewBox="0 0 1180 740" preserveAspectRatio="xMidYMid meet"></svg>
   </section>
-
-  <div class="diagram" id="diagram">
-    <section class="band outer" aria-labelledby="outerTitle">
-      <div class="band-head">
-        <h2 class="band-title" id="outerTitle">外環：品牌校準 PDCA</h2>
-        <span class="band-cadence">季度級</span>
-      </div>
-      <div class="node-grid" id="outerNodes"></div>
+  <div class="mobile" aria-label="PDCA 三帶直排版">
+    <section class="band source">
+      <div class="section-head"><h2>源頭層 S1–S5</h2><span>持續入料</span></div>
+      <div class="band-grid" id="mobileSource"></div>
     </section>
-
-    <div class="connector" aria-label="策略定框下發">
-      <span class="connector-label">策略定框下發</span>
-    </div>
-
-    <section class="band inner" aria-labelledby="innerTitle">
-      <div class="band-head">
-        <h2 class="band-title" id="innerTitle">內環：內容 PDCA</h2>
-        <span class="band-cadence">週／月級</span>
-      </div>
-      <div class="node-grid" id="innerNodes"></div>
+    <div class="mobile-link">↓ 供養雙環</div>
+    <section class="band outer">
+      <div class="section-head"><h2>外環：品牌校準</h2><span id="mobileOuterProgress"></span></div>
+      <div class="band-grid" id="mobileOuter"></div>
     </section>
-
-    <div class="connector up" aria-label="源頭層供養內環">
-      <span class="connector-label">供養</span>
-    </div>
-
-    <section class="band source" aria-labelledby="sourceTitle">
-      <div class="band-head">
-        <h2 class="band-title" id="sourceTitle">源頭層 S1–S5</h2>
-        <span class="band-cadence">持續入料</span>
-      </div>
-      <div class="node-grid" id="sourceNodes"></div>
+    <div class="mobile-link">↓ 策略定框下發</div>
+    <section class="band inner">
+      <div class="section-head"><h2>內環：P → D → C → A</h2><span id="mobileInnerProgress"></span></div>
+      <div class="band-grid" id="mobileInner"></div>
     </section>
-
-    <p class="note" id="pdcaNote" hidden></p>
-    <footer class="foot">資料由 gantt.json ＋ pdca.json 驅動</footer>
   </div>
+  <p class="note" id="note" hidden></p>
+  <footer class="foot">資料由 gantt.json ＋ pdca.json 驅動</footer>
+</div>
 </main>
-
+<dialog id="dialog" aria-labelledby="detailTitle"><div class="detail" id="detail"></div></dialog>
 <script>
 (() => {
-  "use strict";
+"use strict";
+const STATUS={open:"完成",partial:"進行",blocked:"阻塞"};
+const LAYER={source:"源頭層",outer:"外環 · 品牌校準",inner:"內環 · 內容 PDCA"};
+const $=id=>document.getElementById(id);
+const loading=$("loading"),diagram=$("diagram"),error=$("error"),dialog=$("dialog"),detail=$("detail");
+let views=new Map();
 
-  const STATUS_LABELS = Object.freeze({
-    open: "通",
-    partial: "部分",
-    blocked: "未通"
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function status(v){return STATUS[v]?v:"blocked"}
+async function json(file){
+  let response;
+  try{response=await fetch(file+"?ts="+Date.now(),{cache:"no-store"})}
+  catch(e){throw new Error(file+" 連線失敗。")}
+  if(!response.ok)throw new Error(file+" 載入失敗（HTTP "+response.status+"）。");
+  try{return await response.json()}catch(e){throw new Error(file+" 不是有效 JSON。")}
+}
+function validate(g,p){
+  if(!g||!Array.isArray(g.phases))throw new Error("gantt.json 缺少 phases 陣列。");
+  if(!p||!Array.isArray(p.nodes))throw new Error("pdca.json 缺少 nodes 陣列。");
+  if(p.nodes.filter(n=>n&&n.layer==="source").length!==5)throw new Error("source 必須恰有 5 個節點。");
+  for(const layer of ["outer","inner"]){
+    if(p.nodes.filter(n=>n&&n.layer===layer).length!==4)throw new Error(layer+" 必須恰有 4 個節點。");
+  }
+}
+function taskMap(g){
+  const map=new Map();
+  g.phases.forEach(p=>(p.tasks||[]).forEach(t=>{if(t&&t.id!=null)map.set(String(t.id),t)}));
+  return map
+}
+function progress(node,map){
+  const values=(Array.isArray(node.gantt_ids)?node.gantt_ids:[]).map(id=>{
+    const task=map.get(String(id)),value=task&&Number(task.progress);
+    if(!Number.isFinite(value)){console.warn("[PDCA] 無有效進度：",id,node.id);return null}
+    return Math.max(0,Math.min(100,value))
+  }).filter(Number.isFinite);
+  return values.length?Math.round(values.reduce((a,b)=>a+b,0)/values.length):null
+}
+function sorted(p,layer){
+  return p.nodes.filter(n=>n&&n.layer===layer).slice()
+    .sort((a,b)=>(Number(a.seq)||Infinity)-(Number(b.seq)||Infinity))
+}
+function model(node,map){
+  const s=status(node.status),p=progress(node,map);
+  return{
+    raw:node,id:String(node.id??""),layer:node.layer,name:String(node.name??""),
+    line:String(node.line??""),status:s,statusLabel:STATUS[s],progress:p,
+    progressText:p==null?"—":p+"%",
+    current:typeof node.current==="string"?node.current.trim():"",
+    next:typeof node.next_step==="string"?node.next_step.trim():"",
+    children:Array.isArray(node.children)?node.children:[],
+    phase:String(node.gantt_phase??"")
+  }
+}
+function average(group){
+  const values=group.map(v=>v.progress).filter(Number.isFinite);
+  return values.length?Math.round(values.reduce((a,b)=>a+b,0)/values.length):null
+}
+function compact(v,showLine=true){
+  const width=v.progress==null?0:v.progress;
+  return `<span class="node-name">${esc(v.name)}</span>
+    ${showLine&&v.line?`<span class="node-line">${esc(v.line)}</span>`:""}
+    <span class="progress-row"><b class="percent">${esc(v.progressText)}</b>
+    <span class="mini" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+      aria-valuenow="${width}"><i style="width:${width}%"></i></span></span>`
+}
+function button(v,classes,showLine=true){
+  const aria=[v.name,showLine?v.line:"",v.progressText,"查看詳情"].filter(Boolean).join("，");
+  return `<button type="button" class="${classes} ${v.status}" data-node-id="${esc(v.id)}"
+    aria-label="${esc(aria)}">${compact(v,showLine)}</button>`
+}
+function polar(cx,cy,r,degrees){
+  const a=degrees*Math.PI/180;
+  return{x:cx+r*Math.cos(a),y:cy+r*Math.sin(a)}
+}
+function arc(cx,cy,r,start,end){
+  const a=polar(cx,cy,r,start),b=polar(cx,cy,r,end);
+  return `M ${a.x.toFixed(2)} ${a.y.toFixed(2)} A ${r} ${r} 0 0 1 ${b.x.toFixed(2)} ${b.y.toFixed(2)}`
+}
+function foreign(x,y,w,h,html,extra=""){
+  return `<foreignObject x="${x}" y="${y}" width="${w}" height="${h}" ${extra}>
+    <div xmlns="http://www.w3.org/1999/xhtml" style="width:100%;height:100%">${html}</div>
+  </foreignObject>`
+}
+const LABELS={
+  outer:[
+    {x:720,y:38,w:180,h:70,leadX:720,leadY:73},
+    {x:930,y:335,w:180,h:70,leadX:930,leadY:370},
+    {x:280,y:632,w:180,h:70,leadX:460,leadY:667},
+    {x:70,y:335,w:180,h:70,leadX:250,leadY:370}
+  ],
+  inner:[
+    {x:274,y:190,w:176,h:68},
+    {x:734,y:198,w:176,h:68},
+    {x:734,y:492,w:176,h:68},
+    {x:266,y:492,w:176,h:68}
+  ]
+};
+function renderSvg(groups,outerTotal,innerTotal){
+  const cx=590,cy=370,parts=[];
+  const geometry={
+    outer:{r:260,lead:300,starts:[-131,-41,49,139]},
+    inner:{r:152,lead:192,starts:[-86,4,94,184]}
+  };
+
+  ["outer","inner"].forEach(layer=>{
+    const g=geometry[layer];
+    groups[layer].forEach((v,i)=>{
+      const start=g.starts[i],end=start+82,mid=start+41;
+      const done=start+82*(Number.isFinite(v.progress)?v.progress:0)/100;
+      const a=polar(cx,cy,g.r,mid);
+      const p=LABELS[layer][i];
+      const b=layer==="outer"
+        ?{x:p.leadX,y:p.leadY}
+        :polar(cx,cy,g.lead,mid);
+      parts.push(`<path class="segment-track ${layer}" d="${arc(cx,cy,g.r,start,end)}"/>`);
+      if(done>start)parts.push(`<path class="segment-value ${layer} ${v.status}" d="${arc(cx,cy,g.r,start,done)}"/>`);
+      parts.push(`<path class="leader" d="M ${a.x.toFixed(2)} ${a.y.toFixed(2)} L ${b.x.toFixed(2)} ${b.y.toFixed(2)}"/>`);
+      parts.push(`<circle class="anchor ${v.status}" cx="${a.x.toFixed(2)}" cy="${a.y.toFixed(2)}" r="4"/>`);
+    })
   });
 
-  const LAYERS = Object.freeze(["outer", "inner", "source"]);
-  const layerTargets = Object.freeze({
-    outer: "outerNodes",
-    inner: "innerNodes",
-    source: "sourceNodes"
+  parts.push(foreign(519,317,142,106,
+    `<div class="ring-center">
+      <small>外環整體</small><strong class="ring-percent">${esc(outerTotal)}</strong>
+      <small>內環整體</small><strong class="ring-percent inner">${esc(innerTotal)}</strong>
+    </div>`));
+
+  ["outer","inner"].forEach(layer=>{
+    groups[layer].forEach((v,i)=>{
+      const p=LABELS[layer][i],classes=`node ${layer}${p.center?" center":""}`;
+      parts.push(foreign(p.x,p.y,p.w,p.h,button(v,classes,true)))
+    })
   });
 
-  const loading = document.getElementById("loading");
-  const diagram = document.getElementById("diagram");
-  const errorPanel = document.getElementById("errorPanel");
-  const errorMessage = document.getElementById("errorMessage");
+  parts.push(foreign(28,22,360,170,
+    `<div class="stage-info-shell">
+      <aside class="stage-info" tabindex="0" aria-label="雙環運行說明">
+        <strong>內環：P → D → C → A　週／月級</strong>
+        <strong>外環：品牌校準　季度級</strong>
+        <p>外環轉得慢（季度）＝校準方向：客戶怎麼看我們、和我們想說的差多少。<br>
+        內環轉得快（週／月）＝持續產出：選題→產稿→看成效→調整。外環轉一圈，內環的規則就更新一版。</p>
+      </aside>
+    </div>`,
+    `style="overflow:visible"`));
 
-  function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, character => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[character]);
-  }
-
-  function safeStatus(status) {
-    return Object.prototype.hasOwnProperty.call(STATUS_LABELS, status)
-      ? status
-      : "blocked";
-  }
-
-  function assertData(gantt, pdca) {
-    if (!gantt || typeof gantt !== "object" || !Array.isArray(gantt.phases)) {
-      throw new Error("gantt.json 格式不符：缺少 phases 陣列。");
-    }
-
-    if (!pdca || typeof pdca !== "object" || !Array.isArray(pdca.nodes)) {
-      throw new Error("pdca.json 格式不符：缺少 nodes 陣列。");
-    }
-  }
-
-  async function fetchJSON(filename) {
-    let response;
-
-    try {
-      response = await fetch(filename + "?ts=" + Date.now(), {
-        cache: "no-store"
-      });
-    } catch (error) {
-      throw new Error(filename + " 連線失敗。");
-    }
-
-    if (!response.ok) {
-      throw new Error(filename + " 載入失敗（HTTP " + response.status + "）。");
-    }
-
-    try {
-      return await response.json();
-    } catch (error) {
-      throw new Error(filename + " 不是有效的 JSON。");
-    }
-  }
-
-  function buildTaskMap(gantt) {
-    const taskMap = new Map();
-
-    gantt.phases.forEach(phase => {
-      if (!phase || !Array.isArray(phase.tasks)) {
-        return;
-      }
-
-      phase.tasks.forEach(task => {
-        if (task && task.id != null) {
-          taskMap.set(String(task.id), task);
-        }
-      });
-    });
-
-    return taskMap;
-  }
-
-  function calculateProgress(node, taskMap) {
-    const ids = Array.isArray(node.gantt_ids) ? node.gantt_ids : [];
-    const progressValues = [];
-
-    ids.forEach(rawId => {
-      const id = String(rawId);
-      const task = taskMap.get(id);
-
-      if (!task) {
-        console.warn("[PDCA] 找不到 gantt_id：", id, "（節點：", node.id, "）");
-        return;
-      }
-
-      const progress = Number(task.progress);
-
-      if (!Number.isFinite(progress)) {
-        console.warn("[PDCA] progress 不是數字：", id, task.progress);
-        return;
-      }
-
-      progressValues.push(Math.max(0, Math.min(100, progress)));
-    });
-
-    if (progressValues.length === 0) {
-      return null;
-    }
-
-    const total = progressValues.reduce((sum, value) => sum + value, 0);
-    return Math.round(total / progressValues.length);
-  }
-
-  function makeChildren(children) {
-    if (!Array.isArray(children) || children.length === 0) {
-      return "";
-    }
-
-    const rows = children.map(child => {
-      const status = safeStatus(child && child.status);
-      const name = escapeHTML(child && child.name);
-
-      return [
-        '<div class="child">',
-        '<i class="status-dot ', status, '" aria-hidden="true"></i>',
-        '<span class="child-name">', name, "</span>",
-        "</div>"
-      ].join("");
-    }).join("");
-
-    return [
-      '<details class="children">',
-      "<summary>型別產線細目（", children.length, "）</summary>",
-      '<div class="child-list">', rows, "</div>",
-      "</details>"
-    ].join("");
-  }
-
-  function makeNode(node, taskMap) {
-    const status = safeStatus(node.status);
-    const statusLabel = STATUS_LABELS[status];
-    const progress = calculateProgress(node, taskMap);
-    const progressText = progress == null ? "—" : progress + "%";
-    const progressClass = progress == null ? "progress missing" : "progress";
-    const hasCurrent = typeof node.current === "string" && node.current.trim() !== "";
-    const workText = hasCurrent ? node.current : node.next_step;
-    const workLabel = hasCurrent ? "正在執行：" : "下一步：";
-    const href = typeof node.gantt_phase === "string" && node.gantt_phase.trim()
-      ? ' href="index.html#' + encodeURIComponent(node.gantt_phase.trim()) + '"'
-      : "";
-    const name = escapeHTML(node.name);
-    const line = escapeHTML(node.line);
-    const escapedWork = escapeHTML(workText);
-    const aria = escapeHTML(
-      [node.name, node.line, statusLabel, progressText, workLabel, workText]
-        .filter(Boolean)
-        .join("，")
-    );
-
-    return [
-      '<div class="node-wrap">',
-      '<a class="node-card ', status, '"', href,
-      ' aria-label="', aria, '">',
-      '<div class="node-top">',
-      '<div class="node-name">', name, "</div>",
-      '<div class="', progressClass, '">', progressText, "</div>",
-      "</div>",
-      '<div class="node-line">', line, "</div>",
-      '<div class="status-row">',
-      '<i class="status-dot ', status, '" aria-hidden="true"></i>',
-      "<span>", statusLabel, "</span>",
-      "</div>",
-      escapedWork
-        ? '<p class="work"><span class="work-label">' +
-          workLabel +
-          "</span>" +
-          escapedWork +
-          "</p>"
-        : "",
-      makeChildren(node.children),
-      "</a>",
-      "</div>"
-    ].join("");
-  }
-
-  function renderMeta(gantt, pdca) {
-    const ganttUpdated = escapeHTML(gantt.meta && gantt.meta.updated || "—");
-    const pdcaUpdated = escapeHTML(pdca.meta && pdca.meta.updated || "—");
-
-    document.getElementById("meta").innerHTML = [
-      "<span>甘特更新：<time>", ganttUpdated, "</time></span>",
-      "<span>PDCA 更新：<time>", pdcaUpdated, "</time></span>"
-    ].join("");
-
-    const title = gantt.meta && typeof gantt.meta.title === "string"
-      ? gantt.meta.title
-      : "PDCA";
-
-    document.title = title + "｜PDCA 運行圖";
-    document.getElementById("eyebrow").textContent = title;
-    document.getElementById("pageTitle").textContent = title + "｜PDCA 運行圖";
-
-    const note = pdca.meta && typeof pdca.meta.note === "string"
-      ? pdca.meta.note.trim()
-      : "";
-    const noteElement = document.getElementById("pdcaNote");
-
-    if (note) {
-      noteElement.textContent = note;
-      noteElement.hidden = false;
-    }
-  }
-
-  function renderNodes(pdca, taskMap) {
-    LAYERS.forEach(layer => {
-      const nodes = pdca.nodes
-        .filter(node => node && node.layer === layer)
-        .slice()
-        .sort((a, b) => {
-          const aSeq = Number.isFinite(Number(a.seq)) ? Number(a.seq) : Infinity;
-          const bSeq = Number.isFinite(Number(b.seq)) ? Number(b.seq) : Infinity;
-          return aSeq - bSeq;
-        });
-
-      const target = document.getElementById(layerTargets[layer]);
-      target.style.setProperty("--columns", Math.max(1, nodes.length));
-      target.innerHTML = nodes.map(node => makeNode(node, taskMap)).join("");
-    });
-  }
-
-  function showError(error) {
-    loading.hidden = true;
-    diagram.classList.remove("ready");
-    errorPanel.classList.add("show");
-    errorMessage.textContent =
-      (error && error.message ? error.message + " " : "") +
-      "請確認 gantt.json 與 pdca.json 已放在同一目錄，再重新整理頁面。";
-    console.error("[PDCA] 初始化失敗：", error);
-  }
-
-  async function boot() {
-    try {
-      const [gantt, pdca] = await Promise.all([
-        fetchJSON("gantt.json"),
-        fetchJSON("pdca.json")
-      ]);
-
-      assertData(gantt, pdca);
-      const taskMap = buildTaskMap(gantt);
-
-      renderMeta(gantt, pdca);
-      renderNodes(pdca, taskMap);
-
-      loading.hidden = true;
-      errorPanel.classList.remove("show");
-      diagram.classList.add("ready");
-    } catch (error) {
-      showError(error);
-    }
-  }
-
-  document.getElementById("themeBtn").addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const next = current
-      ? (current === "dark" ? "light" : "dark")
-      : (systemDark ? "light" : "dark");
-
-    document.documentElement.setAttribute("data-theme", next);
+  $("ringSvg").innerHTML=parts.join("");
+}
+function renderMeta(g,p){
+  const gt=g.meta&&g.meta.updated||"—",pt=p.meta&&p.meta.updated||"—";
+  $("meta").innerHTML=`<span>甘特更新：<time>${esc(gt)}</time></span>
+    <span>PDCA 更新：<time>${esc(pt)}</time></span>
+    <span class="legend" aria-label="狀態圖例">
+      <span class="key"><i class="swatch open"></i>完成</span>
+      <span class="key"><i class="swatch partial"></i>進行</span>
+      <span class="key"><i class="swatch blocked"></i>阻塞</span>
+    </span>`;
+  const title=g.meta&&typeof g.meta.title==="string"?g.meta.title:"PDCA";
+  document.title=title+"｜PDCA 運行圖 v5";
+  $("eyebrow").textContent=title;
+  $("title").textContent=title+"｜PDCA 運行圖";
+  const note=p.meta&&typeof p.meta.note==="string"?p.meta.note.trim():"";
+  if(note){$("note").textContent=note;$("note").hidden=false}
+}
+function render(p,map){
+  views=new Map();
+  const groups={};
+  ["source","outer","inner"].forEach(layer=>{
+    groups[layer]=sorted(p,layer).map(n=>model(n,map));
+    groups[layer].forEach(v=>views.set(v.id,v))
   });
+  const outer=average(groups.outer),inner=average(groups.inner);
+  const ot=outer==null?"—":outer+"%",it=inner==null?"—":inner+"%";
 
-  boot();
+  $("sourceGrid").innerHTML=groups.source.map(v=>button(v,"source-node",false)).join("");
+  $("mobileSource").innerHTML=groups.source.map(v=>button(v,"band-node",false)).join("");
+  $("mobileOuter").innerHTML=groups.outer.map(v=>button(v,"band-node",true)).join("");
+  $("mobileInner").innerHTML=groups.inner.map(v=>button(v,"band-node",true)).join("");
+  $("mobileOuterProgress").textContent="整體 "+ot+" · 季度級";
+  $("mobileInnerProgress").textContent="整體 "+it+" · 週／月級";
+  renderSvg(groups,ot,it)
+}
+function block(title,text){
+  return text?`<section class="detail-block"><h3>${esc(title)}</h3><p>${esc(text)}</p></section>`:""
+}
+function openDetail(v){
+  const children=v.children.length
+    ?`<section class="detail-block"><h3>子項目 · ${v.children.length}</h3>${
+      v.children.map(c=>`<div class="child">${esc(c&&c.name)}</div>`).join("")
+    }</section>`:"";
+  const link=v.phase
+    ?`<a class="btn" style="width:100%;margin-top:17px" href="index.html#${encodeURIComponent(v.phase)}">前往甘特對應階段 →</a>`:"";
+  detail.innerHTML=`<div class="detail-top"><div>
+      <div class="detail-kicker">${esc(LAYER[v.layer]||v.layer)}</div>
+      <h2 id="detailTitle">${esc(v.name)}</h2>
+      ${v.line?`<div class="owner">${esc(v.line)}</div>`:""}
+    </div><button class="close" id="close" type="button" aria-label="關閉">×</button></div>
+    <div class="detail-summary ${v.status}">
+      <strong>${esc(v.statusLabel)}</strong><b class="percent">${esc(v.progressText)}</b>
+    </div>
+    ${block("正在執行",v.current)}${block("下一步",v.next)}${children}${link}`;
+  $("close").onclick=()=>dialog.close();
+  typeof dialog.showModal==="function"?dialog.showModal():dialog.setAttribute("open","")
+}
+function fail(e){
+  loading.hidden=true;
+  diagram.classList.remove("ready");
+  error.classList.add("show");
+  $("errorText").textContent=(e&&e.message?e.message+" ":"")+
+    "請確認 gantt.json 與 pdca.json 位於同一目錄，並以網站伺服器開啟。";
+  console.error("[PDCA] 初始化失敗：",e)
+}
+async function boot(){
+  try{
+    const [g,p]=await Promise.all([json("gantt.json"),json("pdca.json")]);
+    validate(g,p);
+    renderMeta(g,p);
+    render(p,taskMap(g));
+    loading.hidden=true;
+    error.classList.remove("show");
+    diagram.classList.add("ready")
+  }catch(e){fail(e)}
+}
+document.addEventListener("click",e=>{
+  const target=e.target.closest("[data-node-id]");
+  if(target&&views.has(target.dataset.nodeId))openDetail(views.get(target.dataset.nodeId))
+});
+dialog.addEventListener("click",e=>{
+  if(e.target!==dialog)return;
+  const r=dialog.getBoundingClientRect();
+  if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()
+});
+$("theme").onclick=()=>{
+  const current=document.documentElement.dataset.theme;
+  const dark=matchMedia("(prefers-color-scheme:dark)").matches;
+  document.documentElement.dataset.theme=current
+    ?(current==="dark"?"light":"dark")
+    :(dark?"light":"dark")
+};
+boot()
 })();
 </script>
 </body>
