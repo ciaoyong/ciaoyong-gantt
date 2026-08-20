@@ -54,7 +54,7 @@ h1{margin:3px 0 4px;font-size:clamp(27px,2.3vw,35px);line-height:1.25;overflow-w
 .actions{display:flex;flex-wrap:wrap;gap:8px}
 .btn{display:inline-flex;min-height:38px;align-items:center;justify-content:center;padding:7px 12px;background:var(--surface);border:1px solid var(--border-strong);border-radius:8px;font-size:17px;font-weight:700;text-decoration:none;cursor:pointer}
 .btn:hover{background:var(--surface-2)}
-.btn:focus-visible,.node:focus-visible,.source-node:focus-visible,.close:focus-visible,.stage-info:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px}
+.btn:focus-visible,.node:focus-visible,.source-node:focus-visible,.close:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px}
 .legend{display:inline-flex;flex-wrap:wrap;align-items:center;gap:7px 17px}
 .key{display:inline-flex;align-items:center;gap:6px}
 .swatch{width:18px;height:5px;border-radius:9px;background:var(--idle)}
@@ -89,23 +89,14 @@ h1{margin:3px 0 4px;font-size:clamp(27px,2.3vw,35px);line-height:1.25;overflow-w
 .segment-value.open{stroke:var(--done)}.segment-value.partial{stroke:var(--active)}.segment-value.blocked{stroke:var(--blocked)}
 .leader{fill:none;stroke:var(--border-strong);stroke-width:1.6;stroke-linecap:round}
 .anchor.open{fill:var(--done)}.anchor.partial{fill:var(--active)}.anchor.blocked{fill:var(--blocked)}
-.stage-info-shell{pointer-events:none;overflow:visible}
-.stage-info{
-  width:288px;height:auto;padding:11px 13px;pointer-events:auto;overflow:hidden;position:relative;z-index:20;
-  color:var(--text);background:color-mix(in srgb,var(--surface) 94%,transparent);
-  border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);
-  transition:background .18s ease
+.ring-legend{
+  width:min(1180px,100%);margin:0 auto 10px;padding:11px 15px;
+  color:var(--text);background:var(--surface);
+  border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)
 }
-.stage-info strong{display:block;font-size:16px;line-height:1.45}
-.stage-info p{
-  max-height:0;margin:0;color:var(--text-dim);font-size:17px;line-height:1.48;
-  opacity:0;visibility:hidden;overflow:hidden;
-  transition:max-height .2s ease,margin .2s ease,opacity .12s ease
-}
-.stage-info:hover,.stage-info:focus,.stage-info:focus-within{width:246px;background:var(--surface)}  /* 展開態縮窄：右緣 20+246=266 < P選題卡左緣 274，不壓卡 */
-.stage-info:hover p,.stage-info:focus p,.stage-info:focus-within p{
-  max-height:210px;margin-top:8px;opacity:1;visibility:visible
-}
+.ring-legend-labels{display:flex;flex-wrap:wrap;gap:6px 22px}
+.ring-legend-labels strong{font-size:16px;line-height:1.45}
+.ring-legend p{margin:6px 0 0;color:var(--text-dim);font-size:15px;line-height:1.48}
 .ring-center{height:100%;display:grid;place-content:center;background:var(--surface);border:1px solid var(--border);border-radius:50%;text-align:center;box-shadow:var(--shadow)}
 .ring-center small{font-size:13px;font-weight:800;letter-spacing:.07em}
 .ring-percent{color:var(--slate);font-size:25px;font-weight:900;line-height:1.05}
@@ -177,6 +168,14 @@ dialog::backdrop{background:rgba(10,18,24,.58);backdrop-filter:blur(3px)}
     <div class="source-grid" id="sourceGrid"></div>
   </section>
   <div class="feed">源頭層供養兩環</div>
+  <div class="ring-legend" aria-label="雙環運行說明">
+    <div class="ring-legend-labels">
+      <strong>內環：P → D → C → A　週／月級</strong>
+      <strong>外環：品牌校準　季度級</strong>
+    </div>
+    <p>外環轉得慢（季度）＝校準方向：客戶怎麼看我們、和我們想說的差多少。<br>
+    內環轉得快（週／月）＝持續產出：選題→產稿→看成效→調整。外環轉一圈，內環的規則就更新一版。</p>
+  </div>
   <section class="ring-stage" aria-label="雙環分段 PDCA 運行圖">
     <svg class="ring-svg" id="ringSvg" viewBox="0 0 1180 740" preserveAspectRatio="xMidYMid meet"></svg>
   </section>
@@ -336,17 +335,6 @@ function renderSvg(groups,outerTotal,innerTotal){
       parts.push(foreign(p.x,p.y,p.w,p.h,button(v,classes,true)))
     })
   });
-
-  parts.push(foreign(20,22,288,300,
-    `<div class="stage-info-shell">
-      <aside class="stage-info" tabindex="0" aria-label="雙環運行說明">
-        <strong>內環：P → D → C → A　週／月級</strong>
-        <strong>外環：品牌校準　季度級</strong>
-        <p>外環轉得慢（季度）＝校準方向：客戶怎麼看我們、和我們想說的差多少。<br>
-        內環轉得快（週／月）＝持續產出：選題→產稿→看成效→調整。外環轉一圈，內環的規則就更新一版。</p>
-      </aside>
-    </div>`,
-    `style="overflow:visible"`));
 
   $("ringSvg").innerHTML=parts.join("");
 }
