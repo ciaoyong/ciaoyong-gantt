@@ -112,6 +112,34 @@ h1{margin:3px 0 4px;font-size:clamp(27px,2.3vw,35px);line-height:1.25;overflow-w
 .mini i{display:block;height:100%;border-radius:inherit;background:var(--idle)}
 .open .percent{color:var(--done)}.partial .percent{color:var(--active)}.blocked .percent{color:var(--blocked)}
 .open .mini i{background:var(--done)}.partial .mini i{background:var(--active)}.blocked .mini i{background:var(--blocked)}
+.mobile-ring{
+  display:none;width:100%;margin:0 auto 12px;padding:8px 4px 6px;
+  background:radial-gradient(circle at center,color-mix(in srgb,var(--active) 6%,transparent),transparent 12rem),var(--surface);
+  border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);overflow:hidden
+}
+.mobile-ring-svg{display:block;width:100%;height:auto;max-height:390px}
+.mobile-ring .segment-track.outer,.mobile-ring .segment-value.outer{stroke-width:24}
+.mobile-ring .segment-track.inner,.mobile-ring .segment-value.inner{stroke-width:20}
+.mobile-ring-center{fill:var(--surface);stroke:var(--border);stroke-width:1.5}
+.mobile-ring-label{
+  fill:var(--text);font-family:var(--cjk);font-size:13px;font-weight:900;
+  text-anchor:middle;dominant-baseline:middle
+}
+.mobile-ring-label.inner{fill:var(--active)}
+.mobile-ring-label-box{fill:var(--surface-2);stroke:var(--border);stroke-width:1}
+.mobile-ring-center-label{
+  fill:var(--text-dim);font-family:var(--cjk);font-size:13px;font-weight:800;
+  text-anchor:middle
+}
+.mobile-ring-total{
+  fill:var(--slate);font-family:var(--mono);font-size:21px;font-weight:900;
+  text-anchor:middle;font-variant-numeric:tabular-nums
+}
+.mobile-ring-total.inner{fill:var(--active);font-size:18px}
+.mobile-ring-caption{
+  fill:var(--text-faint);font-family:var(--cjk);font-size:13px;font-weight:700;
+  text-anchor:middle
+}
 .mobile{display:none}
 .band{padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:13px;box-shadow:var(--shadow)}
 .band.source{border-top:4px solid var(--active)}.band.outer{border-top:4px solid var(--slate)}.band.inner{border-top:4px solid var(--gold)}
@@ -135,7 +163,12 @@ dialog::backdrop{background:rgba(10,18,24,.58);backdrop-filter:blur(3px)}
 @media(max-width:600px){
   .wrap{padding:14px 11px 26px}.mast{align-items:stretch}.actions,.actions .btn{width:100%}
   .meta{display:grid;gap:2px}.legend{gap:6px 12px}
-  .source-layer,.feed,.ring-stage{display:none}.mobile{display:grid}
+  .source-layer,.feed,.ring-stage{display:none}
+  .mobile-ring{display:block}
+  .mobile{display:grid}
+  .ring-legend{padding:10px 12px}
+  .ring-legend-labels{display:grid;gap:3px}
+  .ring-legend p{font-size:14px}
   .section-head{display:block}.section-head span{display:block;margin-top:2px}
   .foot{text-align:left}dialog{width:100%;max-width:none;max-height:88vh;margin:auto 0 0;border-radius:17px 17px 0 0}
   .detail{padding:17px 13px max(17px,env(safe-area-inset-bottom))}
@@ -178,6 +211,13 @@ dialog::backdrop{background:rgba(10,18,24,.58);backdrop-filter:blur(3px)}
   </div>
   <section class="ring-stage" aria-label="雙環分段 PDCA 運行圖">
     <svg class="ring-svg" id="ringSvg" viewBox="0 0 1180 740" preserveAspectRatio="xMidYMid meet"></svg>
+  </section>
+  <section class="mobile-ring" aria-label="手機版雙環進度摘要">
+    <svg class="mobile-ring-svg" id="mobileRingSvg" viewBox="0 0 360 390"
+      role="img" aria-labelledby="mobileRingTitle mobileRingDesc">
+      <title id="mobileRingTitle">雙環進度摘要</title>
+      <desc id="mobileRingDesc">外環為季度級品牌校準，內環為週月級內容 PDCA；詳細節點列於圖下方。</desc>
+    </svg>
   </section>
   <div class="mobile" aria-label="PDCA 三帶直排版">
     <section class="band source">
@@ -299,6 +339,10 @@ const LABELS={
     {x:266,y:492,w:176,h:94}
   ]
 };
+const MOBILE_LABELS={
+  outer:["搜尋源","社群源","對話源","落差回饋"],
+  inner:["P 選題","D 產稿","C 回看","A 調整"]
+};
 function renderSvg(groups,outerTotal,innerTotal){
   const cx=590,cy=370,parts=[];
   const geometry={
@@ -338,6 +382,48 @@ function renderSvg(groups,outerTotal,innerTotal){
 
   $("ringSvg").innerHTML=parts.join("");
 }
+function renderMobileRing(groups,outerTotal,innerTotal){
+  const cx=180,cy=122,parts=[];
+  const geometry={
+    outer:{r:94,starts:[-135,-45,45,135]},
+    inner:{r:64,starts:[-135,-45,45,135]}
+  };
+  const labelGroups=[
+    {x:12,y:244,w:156,h:52,index:0},
+    {x:192,y:244,w:156,h:52,index:1},
+    {x:192,y:306,w:156,h:52,index:2},
+    {x:12,y:306,w:156,h:52,index:3}
+  ];
+
+  ["outer","inner"].forEach(layer=>{
+    const g=geometry[layer];
+    groups[layer].forEach((v,i)=>{
+      const start=g.starts[i],end=start+80;
+      const done=start+80*(Number.isFinite(v.progress)?v.progress:0)/100;
+      parts.push(`<path class="segment-track ${layer}" d="${arc(cx,cy,g.r,start,end)}"/>`);
+      if(done>start){
+        parts.push(`<path class="segment-value ${layer} ${v.status}" d="${arc(cx,cy,g.r,start,done)}"/>`);
+      }
+    })
+  });
+
+  parts.push(`<circle class="mobile-ring-center" cx="${cx}" cy="${cy}" r="49"/>`);
+  parts.push(`<text class="mobile-ring-center-label" x="${cx}" y="96">外環整體</text>`);
+  parts.push(`<text class="mobile-ring-total" x="${cx}" y="119">${esc(outerTotal)}</text>`);
+  parts.push(`<text class="mobile-ring-center-label" x="${cx}" y="140">內環整體</text>`);
+  parts.push(`<text class="mobile-ring-total inner" x="${cx}" y="162">${esc(innerTotal)}</text>`);
+
+  labelGroups.forEach(p=>{
+    parts.push(`<rect class="mobile-ring-label-box" x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="9"/>`);
+    parts.push(`<text class="mobile-ring-label outer" x="${p.x+p.w/2}" y="${p.y+17}">外｜${esc(MOBILE_LABELS.outer[p.index])}</text>`);
+    parts.push(`<text class="mobile-ring-label inner" x="${p.x+p.w/2}" y="${p.y+37}">內｜${esc(MOBILE_LABELS.inner[p.index])}</text>`);
+  });
+  parts.push(`<text class="mobile-ring-caption" x="${cx}" y="381">外環季度校準 · 內環週／月運行</text>`);
+
+  $("mobileRingSvg").innerHTML=`<title id="mobileRingTitle">雙環進度摘要</title>
+    <desc id="mobileRingDesc">外環整體 ${esc(outerTotal)}，內環整體 ${esc(innerTotal)}；四個方位分組依序標示各外環與內環節點，詳細節點列於圖下方。</desc>
+    ${parts.join("")}`;
+}
 function renderMeta(g,p){
   const gt=g.meta&&g.meta.updated||"—",pt=p.meta&&p.meta.updated||"—";
   $("meta").innerHTML=`<span>甘特更新：<time>${esc(gt)}</time></span>
@@ -370,7 +456,8 @@ function render(p,map){
   $("mobileInner").innerHTML=groups.inner.map(v=>button(v,"band-node",true)).join("");
   $("mobileOuterProgress").textContent="整體 "+ot+" · 季度級";
   $("mobileInnerProgress").textContent="整體 "+it+" · 週／月級";
-  renderSvg(groups,ot,it)
+  renderSvg(groups,ot,it);
+  renderMobileRing(groups,ot,it)
 }
 function block(title,text){
   return text?`<section class="detail-block"><h3>${esc(title)}</h3><p>${esc(text)}</p></section>`:""
