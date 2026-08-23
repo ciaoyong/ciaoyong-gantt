@@ -124,30 +124,14 @@
           ]
         },
         {
-          "id": "qa-cy-batch",
-          "name": "喬雍官網文章 QA 首批編製",
-          "owner": "喬雍",
-          "start": "2026-07-21",
-          "end": "2026-07-25",
-          "status": "idle",
-          "progress": 0,
-          "note": "依賴喬雍官網 SEO 現況彙整；2026-07-26 盤點：逾期仍未動工",
-          "deps": [
-            "seo-cy-crawl"
-          ]
-        },
-        {
           "id": "qa-cy-flow",
           "name": "新文章隨稿三問答常態線",
           "owner": "喬雍",
           "start": "2026-07-20",
           "end": "2026-09-30",
-          "status": "idle",
-          "progress": 0,
-          "note": "隨上稿滾動，銜接既有隨稿問答產出",
-          "deps": [
-            "qa-cy-batch"
-          ]
+          "status": "done",
+          "progress": 100,
+          "note": "隨上稿滾動，銜接既有隨稿問答產出 ✅ 08-23 結案：實查確認此線已由 kn 上稿管線承接——/kn-draft 產上稿包即含 FAQ 候選五選三，隨稿問答是現行流程非待建線；站上 6 頁（3 KN＋3 服務頁）已帶 FAQPage 且 validate 有可見內容閘門。"
         },
         {
           "id": "qa-hs-collect",
