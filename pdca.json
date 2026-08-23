@@ -1,238 +1,238 @@
 {
-  "meta": {
-    "updated": "2026-08-23",
-    "source": "健檢D＋PM 抽驗＋07-30 管道盤點（固定動作，最近一輪 08-20）",
-    "model": "雙環×源頭層（外環品牌校準／內環 P→D→C→A／源頭層 S1–S5）",
-    "legend": {
-      "open": "通——資料或稿件真的在流動",
-      "partial": "部分——機制在，但料沒進或只試跑",
-      "blocked": "未通——閒置或被上游卡住"
-    },
-    "note": "手工欄位由 PM 每次甘特發布時同步更新。**2026-07-30 起加一項固定動作＝管道盤點**（逐條問「上游有料、下游有沒有吃」）。｜**2026-08-22 盤點結果**：①**發包管道本身改道**——站台修改自即日起走專用寫入指令，外部引擎直接在站台倉內改檔、看得到整個倉；先前「只挑幾個檔給它看」導致過兩個靜默失效的方案。②**一項安全假設經實測推翻**：先前記載的四層防護中，「挑檔給它看」那層一直沒有作用（讀取範圍本來就沒有邊界），真正擋住外送的只有「無網路」——故外部引擎維持無網路，代價是它驗不了自己的成果，**驗收一律由人這端做**。③仍斷／等裁：搜尋語彙每週併入（停擺七期）＋客戶認知落差 B／C 空白，第 5 輪重複記載未動。④量測端修一個潛在斷點：週報主筆的退階鏈三段有兩段是死的（主力一失敗會整鏈失敗），已全修。⑤新記帳一筆：知識庫有三個目錄無明訂負責線（誰都可動、誰都不負責），未裁。"
+ "meta": {
+  "updated": "2026-08-23",
+  "source": "健檢D＋PM 抽驗＋07-30 管道盤點（固定動作，最近一輪 08-20）",
+  "model": "雙環×源頭層（外環品牌校準／內環 P→D→C→A／源頭層 S1–S5）",
+  "legend": {
+   "open": "通——資料或稿件真的在流動",
+   "partial": "部分——機制在，但料沒進或只試跑",
+   "blocked": "未通——閒置或被上游卡住"
   },
-  "nodes": [
+  "note": "手工欄位由 PM 每次甘特發布時同步更新。**2026-07-30 起加一項固定動作＝管道盤點**（逐條問「上游有料、下游有沒有吃」）。｜**2026-08-23 盤點結果**：①基準表 9 條現況＝#1/#2/#4 已接通、#5 等外部裝機、#9 待首填；**仍斷 3 條**——#3 社群內文不落檔（設計如此，落檔屬 PII 上磁碟決定、待提案）、#7 落差回饋無著陸點（卡品牌定框，結構性）、#8 新型別寫作規範未訂（依品牌前綴歸線，記帳）；搜尋語彙每週併入＋落差 B／C 空白為第 6 輪重複記載。②一條管道修復：內容產線元件規則已由平台線落地（列表卡／重點框／雙卡放寬），下游新文章即可產出板主認可的排版——上週「引擎產不出認可排版」的能力缺口已補。③量測端 08-23 收口：B2B 站四管道事件全上線可拆分，「表單黑洞」診斷經端到端實測更正為「管線通、無人送出」——「宣告生效≠實測生效」的又一例，這次是反向（實測推翻了壞的宣告）。"
+ },
+ "nodes": [
+  {
+   "id": "s1",
+   "layer": "source",
+   "seq": 1,
+   "name": "S1 客戶資料週摘餵入",
+   "line": "報表",
+   "status": "partial",
+   "gantt_phase": "gm",
+   "gantt_ids": [
+    "g3"
+   ],
+   "current": "7/29 首戰已跑，週摘落檔鏈路通；CRM 仍為試跑口徑、件數零（**正確行為，非故障**）",
+   "next_step": "收訊裝置 8/5 到位後轉正式口徑，屆時漏斗件數才有意義"
+  },
+  {
+   "id": "s2",
+   "layer": "source",
+   "seq": 2,
+   "name": "S2 資料通路與報表",
+   "line": "報表",
+   "status": "open",
+   "gantt_phase": "s2",
+   "gantt_ids": [
+    "report-ana-auto",
+    "market-scan",
+    "src-social-connect",
+    "marketing-actions",
+    "report-ux"
+   ],
+   "current": "15 條量測管道全通；**驗收場已定 8/31**（板主 08-23 點時段），場前債清空——驗收辦法升格正式方法論、C 層兩判準已裁、管道心跳 PM 端已接（checklist ⑧）、週報主筆退階鏈二修終驗收訖；雙品牌管道事件盤點 08-23 收口（喬雍四事件＋版位維度全上線並登記契約）",
+   "next_step": "**8/26（三）主鏈生產考**（三批改動首次實戰＋版位拆分首窗）→ 8/27 前備妥關鍵值位置 → **8/31 驗收場**（官方介面抽驗對數＋KPI 對板格式併場議定），通過即併入 PM"
+  },
+  {
+   "id": "s3",
+   "layer": "source",
+   "seq": 3,
+   "name": "S3 品牌策略定框",
+   "line": "板主",
+   "status": "blocked",
+   "gantt_phase": "p5",
+   "gantt_ids": [
+    "brand-frame",
+    "slogan-fix",
+    "about-rewrite",
+    "mkt-plan-rev"
+   ],
+   "current": "定框仍 10%（已逾期）；**g5 B2B 立場 08-01 已拍板結案**（混合修正版：量測錨定主動來電、B2B 文章提案制、費用題官網自寫）；雙品牌 KPI 同日全數定案（好室 9 條覆核＋喬雍 9 條新立）",
+   "next_step": "S3 剩三件全在定框鏈：brand-frame（最高瓶頸，壓 slogan／關於我們／行銷計畫修訂）；「專門店」語彙素材已收循環表待定框時議。g1 KPI 覆核已結案出佇列"
+  },
+  {
+   "id": "s4",
+   "layer": "source",
+   "seq": 4,
+   "name": "S4 B2B 官網地面",
+   "line": "喬雍",
+   "status": "open",
+   "gantt_phase": "p9",
+   "gantt_ids": [
+    "faq-selfserve",
+    "ga4-keyevents"
+   ],
+   "current": "量測動線 08-23 補齊收口：四個管道事件全上線並標重要事件、版位維度可拆分、表單「零觸發」診斷經實測更正（管線通、確實無人送出）；通知落點改推客服群（單一收件人結構）；基礎建設 SoT 更新為現況（DNS 全貌／不搬遷決策留檔）。板上收斂為一張活卡（首頁分區塊改版＋基本 6 篇合併推進）；QA 隨文編、獨立項撤銷",
+   "next_step": "ESG 首篇動筆（基本 6 篇第 1 題；引用佔位窗正在關，無任何前置阻擋）；首頁 #9 最新文章區塊 mockup 三案待選"
+  },
+  {
+   "id": "s5",
+   "layer": "source",
+   "seq": 5,
+   "name": "S5 B2C 官網自管化",
+   "line": "好室",
+   "status": "open",
+   "gantt_phase": "s5",
+   "gantt_ids": [
+    "opt-batch"
+   ],
+   "current": "新站上線後 SEO 收尾持續：08-02 og:title 修畢；08-09 服務頁相關實績區塊上線、16 實績個案全獲入鏈（實績孤島缺口收掉）。同屬「最後驗收中」（Ming 08-08 定義）",
+   "next_step": "8/11 起優化終審與清零；下游資產退役 8/1 起"
+  },
+  {
+   "id": "ring-p",
+   "layer": "inner",
+   "seq": 6,
+   "name": "P 選題",
+   "line": "PM",
+   "status": "open",
+   "gantt_phase": "ring-p",
+   "gantt_ids": [
+    "faq-bank",
+    "pdca-pilot",
+    "topic-plan"
+   ],
+   "current": "選題表已收正式＋**08-01 板主裁定性＝發想素材池**（不設閘門、勾選權在板主）；N2/N3 由 g5 解掉（提案制／官網自寫）、N6 非服務項目詞結案",
+   "next_step": "選題表 08-16 經 Ming 六校正（五題目標線改隸好室、兩題既有文退出自動佇列、玩偶×地域頁入列＝題 9）；週四自動線下輪取題＝題 9；落地位置一題仍 🟢 等裁"
+  },
+  {
+   "id": "ring-d",
+   "layer": "inner",
+   "seq": 7,
+   "name": "D 產製與上稿",
+   "line": "編輯室／喬雍／好室",
+   "status": "partial",
+   "gantt_phase": "ring-d",
+   "gantt_ids": [
+    "review-hub",
+    "phase2-build",
+    "gl-select",
+    "qa-hs-collect"
+   ],
+   "current": "**08-08 審稿總站結案 100%：首次全自動上線達成**（投稿→排版→三簽核→自動上稿全鏈真實走通）。**08-09～10 續接第二條自動生稿線＝報表數據產稿（hs-stub，好室 blog）**：週四自動線＋退回稿自動重寫回圈；08-10 churn 實故後補兩道上限（嘗試 2 次／鏈深度 2，超過標 needs_human 停手）；⚠ 08-13 截斷／08-15 審稿回寫兩筆實故修復尚在工作樹未收（已信催編輯室）",
+   "next_step": "LINE 通知總閘裁「至少驗完 3 條再開」（08-08）——現實測中 2 條（seo-struct、hs-stub）；新拆七類寫作規範待訂；hs-blog 出口改接自管站",
+   "children": [
     {
-      "id": "s1",
-      "layer": "source",
-      "seq": 1,
-      "name": "S1 客戶資料週摘餵入",
-      "line": "報表",
-      "status": "partial",
-      "gantt_phase": "gm",
-      "gantt_ids": [
-        "g3"
-      ],
-      "current": "7/29 首戰已跑，週摘落檔鏈路通；CRM 仍為試跑口徑、件數零（**正確行為，非故障**）",
-      "next_step": "收訊裝置 8/5 到位後轉正式口徑，屆時漏斗件數才有意義"
+     "name": "結構化檢視（第一線，驗收中）",
+     "status": "partial"
     },
     {
-      "id": "s2",
-      "layer": "source",
-      "seq": 2,
-      "name": "S2 資料通路與報表",
-      "line": "報表",
-      "status": "open",
-      "gantt_phase": "s2",
-      "gantt_ids": [
-        "report-ana-auto",
-        "market-scan",
-        "src-social-connect",
-        "marketing-actions",
-        "report-ux"
-      ],
-      "current": "**15 條量測管道全通**（GBP 7 月雙品牌 08-10 入檔＝最後一塊）；08-16 三項收尾債結案（月線首航／工作紀錄表／三平台抓取）；`seo-data/` 已遷出暫存區立獨立資料倉（週三自動推地端）",
-      "next_step": "驗收場（report-merge **窗已改期 8/30**，Ming 08-20 裁）：A 層自檢底稿 08-16 已交、15/15 全過；等 Ming 給半天時段開場，通過即併入 PM。KPI 對板格式併場議定（C 層題一裁 (d)）"
+     "name": "喬雍知識文章（月線）",
+     "status": "partial"
     },
     {
-      "id": "s3",
-      "layer": "source",
-      "seq": 3,
-      "name": "S3 品牌策略定框",
-      "line": "板主",
-      "status": "blocked",
-      "gantt_phase": "p5",
-      "gantt_ids": [
-        "brand-frame",
-        "slogan-fix",
-        "about-rewrite",
-        "mkt-plan-rev"
-      ],
-      "current": "定框仍 10%（已逾期）；**g5 B2B 立場 08-01 已拍板結案**（混合修正版：量測錨定主動來電、B2B 文章提案制、費用題官網自寫）；雙品牌 KPI 同日全數定案（好室 9 條覆核＋喬雍 9 條新立）",
-      "next_step": "S3 剩三件全在定框鏈：brand-frame（最高瓶頸，壓 slogan／關於我們／行銷計畫修訂）；「專門店」語彙素材已收循環表待定框時議。g1 KPI 覆核已結案出佇列"
+     "name": "喬雍 FB（暫不動——小編續幫，板主 07-27 裁）",
+     "status": "blocked"
     },
     {
-      "id": "s4",
-      "layer": "source",
-      "seq": 4,
-      "name": "S4 B2B 官網地面",
-      "line": "喬雍",
-      "status": "open",
-      "gantt_phase": "p9",
-      "gantt_ids": [
-        "faq-selfserve",
-        "ga4-keyevents"
-      ],
-      "current": "08-01 搬離套版平台＋08-02 全站稽核（修畢部署）後，**最後驗收中**（Ming 08-08 定義：SEO/AEO/GEO 修正全驗收完才算自管工程收尾）。08-08 GBP 校正結案（主類別維持管理顧問定位）；首頁分區塊改版月計畫開跑 30%（跑馬燈 60 家＋KNOWLEDGE news 式列表上線）",
-      "next_step": "首頁改版逐塊提案→核可→上線（約一個月）；基本 6 篇已上 1/6（多工項排程篇），續篇提案制"
+     "name": "好室 Blog（報表數據產稿週線 08-09 上線，實測中）",
+     "status": "partial"
     },
     {
-      "id": "s5",
-      "layer": "source",
-      "seq": 5,
-      "name": "S5 B2C 官網自管化",
-      "line": "好室",
-      "status": "open",
-      "gantt_phase": "s5",
-      "gantt_ids": [
-        "opt-batch"
-      ],
-      "current": "新站上線後 SEO 收尾持續：08-02 og:title 修畢；08-09 服務頁相關實績區塊上線、16 實績個案全獲入鏈（實績孤島缺口收掉）。同屬「最後驗收中」（Ming 08-08 定義）",
-      "next_step": "8/11 起優化終審與清零；下游資產退役 8/1 起"
-    },
-    {
-      "id": "ring-p",
-      "layer": "inner",
-      "seq": 6,
-      "name": "P 選題",
-      "line": "PM",
-      "status": "open",
-      "gantt_phase": "ring-p",
-      "gantt_ids": [
-        "faq-bank",
-        "pdca-pilot",
-        "topic-plan"
-      ],
-      "current": "選題表已收正式＋**08-01 板主裁定性＝發想素材池**（不設閘門、勾選權在板主）；N2/N3 由 g5 解掉（提案制／官網自寫）、N6 非服務項目詞結案",
-      "next_step": "選題表 08-16 經 Ming 六校正（五題目標線改隸好室、兩題既有文退出自動佇列、玩偶×地域頁入列＝題 9）；週四自動線下輪取題＝題 9；落地位置一題仍 🟢 等裁"
-    },
-    {
-      "id": "ring-d",
-      "layer": "inner",
-      "seq": 7,
-      "name": "D 產製與上稿",
-      "line": "編輯室／喬雍／好室",
-      "status": "partial",
-      "gantt_phase": "ring-d",
-      "gantt_ids": [
-        "review-hub",
-        "phase2-build",
-        "gl-select",
-        "qa-hs-collect"
-      ],
-      "current": "**08-08 審稿總站結案 100%：首次全自動上線達成**（投稿→排版→三簽核→自動上稿全鏈真實走通）。**08-09～10 續接第二條自動生稿線＝報表數據產稿（hs-stub，好室 blog）**：週四自動線＋退回稿自動重寫回圈；08-10 churn 實故後補兩道上限（嘗試 2 次／鏈深度 2，超過標 needs_human 停手）；⚠ 08-13 截斷／08-15 審稿回寫兩筆實故修復尚在工作樹未收（已信催編輯室）",
-      "next_step": "LINE 通知總閘裁「至少驗完 3 條再開」（08-08）——現實測中 2 條（seo-struct、hs-stub）；新拆七類寫作規範待訂；hs-blog 出口改接自管站",
-      "children": [
-        {
-          "name": "結構化檢視（第一線，驗收中）",
-          "status": "partial"
-        },
-        {
-          "name": "喬雍知識文章（月線）",
-          "status": "partial"
-        },
-        {
-          "name": "喬雍 FB（暫不動——小編續幫，板主 07-27 裁）",
-          "status": "blocked"
-        },
-        {
-          "name": "好室 Blog（報表數據產稿週線 08-09 上線，實測中）",
-          "status": "partial"
-        },
-        {
-          "name": "其餘九類（型別在、生稿零）",
-          "status": "blocked"
-        }
-      ]
-    },
-    {
-      "id": "ring-c",
-      "layer": "inner",
-      "seq": 8,
-      "name": "C 成效回看",
-      "line": "喬雍／好室",
-      "status": "blocked",
-      "gantt_phase": "ring-c",
-      "gantt_ids": [
-        "cycle1"
-      ],
-      "current": "pilot 首件進回看窗（娃娃送洗標題改動 08-01 上線，08-29 對照）——C 段從零件變一件",
-      "next_step": "回看要能轉，等內環有內容產出——全環首轉里程碑改期 08-29（08-16 PM 對齊：與 pilot 回看窗同收；D 段第二條自動線 08-09 才上線實測）",
-      "evidence": "進度以全環首轉里程碑為準；ring-c 兩項彙整任務已 done 但屬準備工作"
-    },
-    {
-      "id": "ring-a",
-      "layer": "inner",
-      "seq": 9,
-      "name": "A 調整與補強",
-      "line": "好室／PM",
-      "status": "blocked",
-      "gantt_phase": "ring-a",
-      "gantt_ids": [
-        "act-legacy-fix",
-        "q3-refresh"
-      ],
-      "current": "",
-      "next_step": "舊文補強不依賴新產出，可 8 月提前起跑；其餘待全環首轉後定"
-    },
-    {
-      "id": "outer-search",
-      "layer": "outer",
-      "seq": 10,
-      "name": "搜尋源",
-      "line": "PM",
-      "status": "open",
-      "gantt_phase": "outer",
-      "gantt_ids": [
-        "src-search"
-      ],
-      "current": "已編入知識庫、週報持續供料（100% 指編入任務完成，非外環轉完）",
-      "next_step": "累積滿一季升 v1"
-    },
-    {
-      "id": "outer-social",
-      "layer": "outer",
-      "seq": 11,
-      "name": "社群源",
-      "line": "報表→PM",
-      "status": "partial",
-      "gantt_phase": "outer",
-      "gantt_ids": [
-        "src-social-connect",
-        "src-social-edit"
-      ],
-      "current": "抓取端七成、收件匣監看每小時在跑；內容落檔已遷紅線區（08-15，output 非保存區新規）。**GBP 新評價主源已裁改信箱通知**（08-15 Ming 裁）：PM 收信輪逐封抓內文落檔，Places API 降為輔——08-11 實測其漏收新評價、「信＝冗餘」假設不成立",
-      "next_step": "以信箱主源累積評價素材，編入客戶認知；PM 每週外環對帳"
-    },
-    {
-      "id": "outer-dialog",
-      "layer": "outer",
-      "seq": 12,
-      "name": "對話源",
-      "line": "報表→PM",
-      "status": "blocked",
-      "gantt_phase": "outer",
-      "gantt_ids": [
-        "crm-feedback",
-        "src-dialog-edit"
-      ],
-      "current": "",
-      "next_step": "素材包首批回流 8/12；8/17 起三源整合"
-    },
-    {
-      "id": "outer-gap",
-      "layer": "outer",
-      "seq": 13,
-      "name": "落差分析→策略回饋",
-      "line": "PM",
-      "status": "blocked",
-      "gantt_phase": "outer",
-      "gantt_ids": [
-        "outer-standing",
-        "persona-b2c",
-        "persona-b2b"
-      ],
-      "current": "非服務項目詞訊號 08-01 終局定性：非服務項目＝無關需求（板主），僅餘 GBP 類別查修（好室線）；「判準互斥」機制問題已修（修的是 PM 行為不是表）；「專門店」語彙收為定框素材",
-      "next_step": "常設對帳 8/1 起建；定框素材已有著陸點（brand-frame 議程外掛素材清單）"
+     "name": "其餘九類（型別在、生稿零）",
+     "status": "blocked"
     }
-  ]
+   ]
+  },
+  {
+   "id": "ring-c",
+   "layer": "inner",
+   "seq": 8,
+   "name": "C 成效回看",
+   "line": "喬雍／好室",
+   "status": "blocked",
+   "gantt_phase": "ring-c",
+   "gantt_ids": [
+    "cycle1"
+   ],
+   "current": "pilot 首件進回看窗（娃娃送洗標題改動 08-01 上線，08-29 對照）——C 段從零件變一件",
+   "next_step": "回看要能轉，等內環有內容產出——全環首轉里程碑改期 08-29（08-16 PM 對齊：與 pilot 回看窗同收；D 段第二條自動線 08-09 才上線實測）",
+   "evidence": "進度以全環首轉里程碑為準；ring-c 兩項彙整任務已 done 但屬準備工作"
+  },
+  {
+   "id": "ring-a",
+   "layer": "inner",
+   "seq": 9,
+   "name": "A 調整與補強",
+   "line": "好室／PM",
+   "status": "blocked",
+   "gantt_phase": "ring-a",
+   "gantt_ids": [
+    "act-legacy-fix",
+    "q3-refresh"
+   ],
+   "current": "",
+   "next_step": "舊文補強不依賴新產出，可 8 月提前起跑；其餘待全環首轉後定"
+  },
+  {
+   "id": "outer-search",
+   "layer": "outer",
+   "seq": 10,
+   "name": "搜尋源",
+   "line": "PM",
+   "status": "open",
+   "gantt_phase": "outer",
+   "gantt_ids": [
+    "src-search"
+   ],
+   "current": "已編入知識庫、週報持續供料（100% 指編入任務完成，非外環轉完）",
+   "next_step": "累積滿一季升 v1"
+  },
+  {
+   "id": "outer-social",
+   "layer": "outer",
+   "seq": 11,
+   "name": "社群源",
+   "line": "報表→PM",
+   "status": "partial",
+   "gantt_phase": "outer",
+   "gantt_ids": [
+    "src-social-connect",
+    "src-social-edit"
+   ],
+   "current": "抓取端七成、收件匣監看每小時在跑；內容落檔已遷紅線區（08-15，output 非保存區新規）。**GBP 新評價主源已裁改信箱通知**（08-15 Ming 裁）：PM 收信輪逐封抓內文落檔，Places API 降為輔——08-11 實測其漏收新評價、「信＝冗餘」假設不成立",
+   "next_step": "以信箱主源累積評價素材，編入客戶認知；PM 每週外環對帳"
+  },
+  {
+   "id": "outer-dialog",
+   "layer": "outer",
+   "seq": 12,
+   "name": "對話源",
+   "line": "報表→PM",
+   "status": "blocked",
+   "gantt_phase": "outer",
+   "gantt_ids": [
+    "crm-feedback",
+    "src-dialog-edit"
+   ],
+   "current": "",
+   "next_step": "素材包首批回流 8/12；8/17 起三源整合"
+  },
+  {
+   "id": "outer-gap",
+   "layer": "outer",
+   "seq": 13,
+   "name": "落差分析→策略回饋",
+   "line": "PM",
+   "status": "blocked",
+   "gantt_phase": "outer",
+   "gantt_ids": [
+    "outer-standing",
+    "persona-b2c",
+    "persona-b2b"
+   ],
+   "current": "非服務項目詞訊號 08-01 終局定性：非服務項目＝無關需求（板主），僅餘 GBP 類別查修（好室線）；「判準互斥」機制問題已修（修的是 PM 行為不是表）；「專門店」語彙收為定框素材",
+   "next_step": "常設對帳 8/1 起建；定框素材已有著陸點（brand-frame 議程外掛素材清單）"
+  }
+ ]
 }
