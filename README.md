@@ -45,9 +45,10 @@
 ## 更新 SOP（板主／AI）
 
 1. 改 `gantt.json`
-2. `python3 update_gantt.py --message "一句話說明"` —— 它會自動：
+2. **發布前先取得板主明示**（AGENTS.md；腳本本身沒有人工確認，跑下去就直接 push）
+3. `python3 update_gantt.py --message "一句話說明"` —— 它會自動：
    pull 最新 → 蓋 `meta.updated` → 跑 `validate.py` → commit → push
-3. push 後 CI 會再跑一次 validate 當保險
+4. push 後 CI 會再跑一次 validate 當保險
 
 ## 給 AI 的維護 SOP（同事的 Claude／AI 照此執行）
 
@@ -62,7 +63,8 @@
      done 必 100、日期 YYYY-MM-DD 且 end ≥ start）
    - 新增任務：加進對應 phase 的 `tasks`，`id` 全域唯一、`deps` 填前置任務 id
    - **本 repo 其他檔案一律不動**（index.html／validate.py 等由板主維護）
-3. **發布**：`python3 update_gantt.py --message "一句話說明"`
+3. **發布**：**發布前先取得板主明示**（AGENTS.md；腳本本身沒有人工確認，跑下去就直接 push），
+   取得後再跑 `python3 update_gantt.py --message "一句話說明"`
    （自動驗證＋推送；驗證不過會列出原因，修好重跑）
 4. **push 被拒**＝別人剛更新過：重跑一次 update_gantt.py 即可（內建 rebase）
 5. 🔴 **公開紅線（每次都要自檢）**：gantt.json 與 commit 訊息**不可出現**
@@ -80,6 +82,7 @@
 - 任務名使用抽象流程詞，內部作業細節留在私有 repo
 - `validate.py` 內建樣態掃描；已知人名黑名單放本機檔
   （環境變數 `GANTT_BLOCKLIST`，不入 repo）
+  ⚠ 本機目前未設 `GANTT_BLOCKLIST`（2026-10-22 查），未設時 validate 靜默跳過黑名單、照印通過
 
 ## 部署（一次性設定）
 
