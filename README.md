@@ -45,7 +45,7 @@
 ## 更新 SOP（板主／AI）
 
 1. 改 `gantt.json`
-2. **發布前先取得板主明示**（AGENTS.md；腳本本身沒有人工確認，跑下去就直接 push）
+2. 發布不需逐次明示（AGENTS.md §Git 例外，板主 2026-10-23 裁）；公開紅線與 validate 照舊。腳本本身沒有人工確認，跑下去就直接 push，所以改完先自己回讀一遍
 3. `python3 update_gantt.py --message "一句話說明"` —— 它會自動：
    pull 最新 → 蓋 `meta.updated` → 跑 `validate.py` → commit → push
 4. push 後 CI 會再跑一次 validate 當保險
@@ -63,8 +63,8 @@
      done 必 100、日期 YYYY-MM-DD 且 end ≥ start）
    - 新增任務：加進對應 phase 的 `tasks`，`id` 全域唯一、`deps` 填前置任務 id
    - **本 repo 其他檔案一律不動**（index.html／validate.py 等由板主維護）
-3. **發布**：**發布前先取得板主明示**（AGENTS.md；腳本本身沒有人工確認，跑下去就直接 push），
-   取得後再跑 `python3 update_gantt.py --message "一句話說明"`
+3. **發布**：不需逐次明示（AGENTS.md §Git 例外，板主 2026-10-23 裁）；公開紅線與 validate 照舊。
+   改完回讀一遍，再跑 `python3 update_gantt.py --message "一句話說明"`
    （自動驗證＋推送；驗證不過會列出原因，修好重跑）
 4. **push 被拒**＝別人剛更新過：重跑一次 update_gantt.py 即可（內建 rebase）
 5. 🔴 **公開紅線（每次都要自檢）**：gantt.json 與 commit 訊息**不可出現**
