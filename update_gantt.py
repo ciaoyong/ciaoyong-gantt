@@ -44,6 +44,17 @@ def main():
     ap.add_argument("--no-push", action="store_true")
     args = ap.parse_args()
 
+    # 0) --message 會進公開 commit 訊息：先用 validate.py 同一套紅線樣態掃它（2026-10-22）
+    import tempfile
+    with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8") as tf:
+        tf.write(args.message)
+        tmp = tf.name
+    mv = run([sys.executable, str(HERE / "validate.py"), tmp], check=False)
+    Path(tmp).unlink(missing_ok=True)
+    if mv.returncode != 0:
+        print(mv.stderr, file=sys.stderr, end="")
+        raise SystemExit("中止：--message 含紅線樣態（電話／Email／客戶代號／外部連結等），未發布。")
+
     # 1) 工作區只允許白名單檔有變更
     dirty = [l for l in run(["git", "status", "--porcelain"]).stdout.splitlines() if l.strip()]
     others = [l for l in dirty if not any(l.endswith(f) for f in PUBLISHABLE)]

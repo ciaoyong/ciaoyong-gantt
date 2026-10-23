@@ -107,7 +107,9 @@ def scan_sensitive(path: Path) -> list[str]:
 
 def main():
     here = Path(__file__).parent
-    targets = [Path(a) for a in sys.argv[1:]] or [here / "gantt.json", here / "README.md", here / "index.html"]
+    # pdca.json 也走 update_gantt.py 發布，一併掃（2026-10-22；不存在則略過）
+    defaults = [here / "gantt.json", here / "pdca.json", here / "README.md", here / "index.html"]
+    targets = [Path(a) for a in sys.argv[1:]] or [p for p in defaults if p.name != "pdca.json" or p.exists()]
     errs = []
     for p in targets:
         if not p.exists():
