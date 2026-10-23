@@ -102,6 +102,11 @@ def scan_sensitive(path: Path) -> list[str]:
         for word in Path(bl_path).read_text(encoding="utf-8").split():
             if word and word in text:
                 errs.append(f"{path.name}: 黑名單詞命中 → {word}")
+    else:
+        # 未設或檔不在＝黑名單這一道沒有跑。以前靜默跳過、照印通過（2026-10-22 自盤查出從未執行）；
+        # 現在出聲但不擋——要不要列為錯誤由板主裁（2026-10-24）
+        print(f"⚠ {path.name}: 人名黑名單未掃（GANTT_BLOCKLIST "
+              f"{'未設定' if not bl_path else '指向不存在的檔'}），只掃了內建樣態", file=sys.stderr)
     return errs
 
 
